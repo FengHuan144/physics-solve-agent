@@ -8,9 +8,11 @@
 验什么：
 1. 首页有「贴一道新题」面板，textarea / 文件框 / 按钮都在
 2. POST /api/zero 的入参校验（空题干、太短、图太多）——不触发真实解题，不花钱
-3. 结果页：顶栏写「未判分」而不是 0 分；无 null/undefined/NaN/data_error/raw
-4. 结果页：页脚说明「本题不判分」；校验记录说人话；无 JS 报错
-5. 小问分值与题干标注一致（4/4/4 之类，从 doc 里读，不写死）
+3. 客户视图（默认）：只有「题目 + 思路 + 分步 + 每步给分点」；内部账（校验标记、
+   采分点明细、任务号、耗时成本）一律不出现；顶栏写步数与卷面分，不写 0/N
+4. 每步给分点数量与步数一致，分值合计等于卷面分
+5. 技术视图（?tech=1）：内部账复原，校验记录必须是「没检」不能是「通过」
+6. 小问分值与题干标注一致（从产物读，不写死）
 
 不会调用模型：只验收已经落盘的任务页与接口的拒绝分支。
 """
@@ -121,34 +123,68 @@ def main() -> int:
             chk("有开始按钮", pg.query_selector("#go") is not None)
             n_before = len(errs)
 
-        # ---------- 结果页 ----------
+        # ---------- 结果页：客户视图（默认） ----------
         pg.goto((jd / "result.html").resolve().as_uri(), wait_until="load")
         pg.wait_for_timeout(400)
         body = pg.inner_text("body")
 
         score = pg.inner_text("#score")
-        chk("顶栏写「未判分」", "未判分" in score, score[:60])
+        chk("顶栏写步数", re.search(r"\d+\s*步", score) is not None, score[:60])
         chk("顶栏不出现 0/N 分", not re.search(r"\b0/\d+\s*分", score), score[:60])
-        chk("模式标为题库外新题", "题库外新题" in pg.inner_text("#mode"))
+        chk("客户视图不露内部题号与模式",
+            pg.inner_text("#qtitle").strip() == "题目解析"
+            and not pg.inner_text("#mode").strip(),
+            pg.inner_text("#qtitle") + " | " + pg.inner_text("#mode"))
 
         bad = {k: body.count(k) for k in ("null", "undefined", "NaN", "data_error", "raw:")}
         chk("无内部占位串", sum(bad.values()) == 0, bad)
+        noise = [k for k in ("本次运行", "总耗时", "采分点明细", "校验 L1", "任务 1", "未判分")
+                 if k in body]
+        chk("客户视图不出现内部账", not noise, noise)
 
         n_steps = len(pg.query_selector_all("#steps .step"))
         chk("步骤非空", n_steps == len(doc["steps"]) and n_steps > 0,
             "%d / doc %d" % (n_steps, len(doc["steps"])))
 
-        chk("页脚写明不判分", "本题不判分" in pg.inner_text("#foot"))
-        chk("页脚卷面分来自小问", "题干小问标注合计" in pg.inner_text("#foot"))
+        # 每步给分点：数量与步数一致，分值合计等于卷面分（两者都从产物读，不写死）
+        n_pt = len(pg.query_selector_all("#steps .ptline"))
+        chk("每步都有给分点", n_pt == n_steps, "%d / %d 步" % (n_pt, n_steps))
+        zm_p = jd / "zero_meta.json"
+        zm = json.loads(zm_p.read_text(encoding="utf-8")) if zm_p.exists() else {}
+        pts = (zm.get("display") or {}).get("points") or []
+        if not pts:
+            dp = next(iter(jd.glob("*_draft.json")), None)
+            if dp:
+                dr = json.loads(dp.read_text(encoding="utf-8"))
+                pts = [{"score": s.get("score")} for s in dr.get("steps") or []]
+        pt_sum = sum(float(s.get("score") or 0) for s in pts)
+        full = doc["meta"].get("full_score")
+        chk("给分点分值合计等于卷面分",
+            full is None or abs(pt_sum - float(full)) < 1e-6, "%s / %s" % (pt_sum, full))
 
-        # 校验记录必须是「没检」，不能是「检过且通过」
-        chkrec = pg.inner_text("#steps")
-        chk("校验记录说人话", "登记表" in chkrec or "没检" in chkrec,
-            [x[:40] for x in chkrec.split("\n") if "校验" in x][:2])
+        foot = pg.inner_text("#foot")
+        chk("页脚写明参考性质", "不是官方评分标准" in foot and "仅供参考" in foot, foot[:80])
+        chk("页脚卷面分说明来源",
+            full is None or ("卷面总分" in foot and "分值合计" in foot), foot[:80])
+
+        # 客户视图不摊校验记录；技术视图才看得到，而且必须是「没检」不是「通过」
+        chk("客户视图不摊校验记录",
+            len([e for e in pg.query_selector_all("#steps .chkrec")
+                 if e.evaluate("e => e.offsetParent !== null")]) == 0)
+
+        pg.goto((jd / "result.html").resolve().as_uri() + "?tech=1", wait_until="load")
+        pg.wait_for_timeout(400)
+        tech_body = pg.inner_text("body")
+        chk("技术视图露内部账", "本次运行" in tech_body and "校验 L1" in tech_body)
+        chk("校验记录说人话", "登记表" in pg.inner_text("#steps") or "没检" in tech_body,
+            pg.inner_text("#steps")[:60])
         chk("无「校验 L1✓ L2✓」误报全过",
-            not (doc["validation"]["layers"].get("L1") == "na" and "L1✓" in chkrec
+            not (doc["validation"]["layers"].get("L1") == "na" and "L1✓" in tech_body
                  and all(c.get("status") == "na"
                          for s in doc["steps"] for c in (s.get("checks") or []))))
+
+        pg.goto((jd / "result.html").resolve().as_uri(), wait_until="load")
+        pg.wait_for_timeout(300)
 
         # 小问分值
         sub_txt = pg.inner_text("#subqs")

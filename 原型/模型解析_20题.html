@@ -301,6 +301,34 @@ button{font-family:inherit;cursor:pointer}
   font-family:var(--font-sans,"PingFang SC",sans-serif);
 }
 
+/* 每步给分点：给客户看的那一层。题库内 20 题不显示这一块（它们走判分器）。 */
+.ptline{
+  display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+  margin:12px 0 0; padding:7px 11px; background:#f7f5ef;
+  border-left:2px solid var(--line2); border-radius:0 3px 3px 0;
+  font-size:12.5px; line-height:1.7; color:var(--ink2);
+}
+.ptline .pt-lb{
+  font-size:10.5px; letter-spacing:.12em; color:var(--ink3);
+  border:1px solid var(--line2); border-radius:2px; padding:0 5px; flex:0 0 auto;
+}
+.ptline .pt-sc{
+  font-variant-numeric:tabular-nums; color:var(--ink); font-weight:600; flex:0 0 auto;
+}
+.ptline .pt-tx{flex:1 1 260px; min-width:0; text-align:justify}
+
+/* 客户视图：题库外新题的默认形态。内部账（校验标记、采分点明细、任务号、成本、raw 串）
+   一律不进正文；要看就加 ?tech=1。 */
+body.clean #banner,
+body.clean #legend,
+body.clean #runbar,
+body.clean #ptable,
+body.clean #qbtn,
+body.clean #qlist,
+body.clean .chkrec,
+body.clean .eq .raw{display:none !important}
+body.clean #paper{padding-top:26px}
+
 @media (max-width:1080px){
   #main{display:block}
   #side{
@@ -382,6 +410,12 @@ var LAWS    = DATA.laws || {};
 var IMAGES  = DATA.images || {};
 var IDS     = Object.keys(ANSWERS);
 var cur = IDS[0] || null;
+
+/* 客户视图：题库外新题默认只出「题目 + 思路 + 分步 + 每步给分点」。
+   内部账（L1/L2 标记、采分点明细、任务号、耗时成本、raw 串）默认不上页面，
+   加 ?tech=1 复原，给自己查问题时用。20 题页不受影响。 */
+var TECH  = /[?&]tech=1(?:&|$)/.test(location.search);
+var CLEAN = false;
 
 var $ = function (id) { return document.getElementById(id); };
 
@@ -611,6 +645,15 @@ var KIND_NAME = {
 
 function renderTop(a) {
   var m = a.meta || {};
+  if (CLEAN) {
+    /* 客户视图不露内部题号（Z-04 是我们自己的编号，不是卷面题号） */
+    $('qtitle').innerHTML = '<b>题目解析</b>';
+    var n = (a.steps || []).length, fs = m.full_score;
+    $('score').innerHTML = '<span class="cov"><b>' + n + '</b> 步</span>' +
+      (fs != null ? '<span class="sc">卷面 <b>' + num(fs) + '</b> 分</span>' : '');
+    $('mode').textContent = '';
+    return;
+  }
   $('qtitle').innerHTML = '<b>' + esc(m.answer_id) + '</b> · ' +
     esc(m.source || '') + (m.question_no != null ? ' 第' + m.question_no + '题' : '');
 
@@ -649,7 +692,8 @@ function renderTop(a) {
 function renderStemNote(a) {
   var d = a._display || {}, bits = [];
   if (d.stem_source === 'model_ocr') bits.push('题干由<b>题图转写</b>（模型读图，不是你贴的原文）');
-  if (d.scores_printed === false) bits.push('分值<b>非题面所印</b>，按模型分配显示');
+  /* 客户视图里「分值非题面所印」改由页脚统一说明（参考给分点），这里不重复 */
+  if (d.scores_printed === false && !CLEAN) bits.push('分值<b>非题面所印</b>，按模型分配显示');
   if (d.sub_text_from === 'model_ocr' && d.stem_source !== 'model_ocr') bits.push('小问文本取自题图转写');
   var el = $('stemnote');
   if (!el) return;
@@ -666,10 +710,16 @@ function renderSidebar(a) {
   } else {
     $('figures').innerHTML = figs.map(function (f) {
       var src = imgMap[f.fig_no];
-      var text = f.caption || '（原文无图题）';
+      var text = String(f.caption || '').trim();
+      /* 新题的图注是上传文件名（fig1.png），对客户没意义：只留「图 1」 */
+      if (/\.(png|jpe?g|webp|bmp|gif)$/i.test(text)) text = '';
+      if (!text) text = src ? '' : '（原文无图题）';
       /* caption 自己常以「图甲：」「图 (a)：」开头，再加前缀会变成「图 1 图甲」 */
-      var lead = /^图/.test(text) ? '' : ('图 ' + esc(f.fig_no) + '　');
-      var cap = '<div class="fig-cap"><span class="no">' + lead + '</span>' + esc(text) + '</div>';
+      var lead = /^图/.test(text) ? '' : ('图 ' + esc(f.fig_no));
+      var cap = (lead || text)
+        ? '<div class="fig-cap"><span class="no">' + lead +
+          (lead && text ? '　' : '') + '</span>' + esc(text) + '</div>'
+        : '';
       if (src) {
         return '<div class="fig"><img src="' + esc(src) + '" alt="图 ' + esc(f.fig_no) + '">' + cap + '</div>';
       }
@@ -893,7 +943,9 @@ function whyHTML(step) {
   var cand = [];
 
   var crit = (step.criterion && step.criterion.text) || '';
-  if (crit && similar(crit, stmt) < 0.6) {
+  /* 新题的 criterion 就是模型写的给分点原文，客户视图里已经在「给分点」行给出，
+     再挂一条「判据」就是同一句话说两遍。 */
+  if (crit && !CLEAN && similar(crit, stmt) < 0.6) {
     cand.push({ lb: '判　据', tx: crit, trap: false });
   }
 
@@ -917,14 +969,29 @@ function whyHTML(step) {
   }).join('');
 }
 
+/* 每步给分点：模型在草稿里写的 score / point，随 zero_meta 落到 _display.points。
+   这一层只讲「这一步值几分、分给的是什么」，不做命中判定（新题不判分）。 */
+function ptLineHTML(p) {
+  if (!p || (p.score == null && !p.text)) return '';
+  return '<div class="ptline">' +
+    '<span class="pt-lb">给分点</span>' +
+    (p.score != null ? '<span class="pt-sc">' + num(p.score) + ' 分</span>' : '') +
+    (p.text ? '<span class="pt-tx">' + esc(p.text) + '</span>' : '') +
+    '</div>';
+}
+
 function renderSteps(a) {
   var steps = a.steps || [], hits = hitMap(a);
   if (!steps.length) {
     $('steps').innerHTML = '<div class="empty">这道题没有步骤数据。</div>';
     return;
   }
+  var pts = {};
+  ((a._display && a._display.points) || []).forEach(function (p) {
+    if (p && p.step_no != null) pts[p.step_no] = p;
+  });
   $('paper-note').textContent = (a.meta && a.meta.mode === 'zero')
-    ? steps.length + ' 步 · 每步的式子、结果与依据'
+    ? steps.length + ' 步 · 每步的式子、结果与给分点'
     : steps.length + ' 步 · 逐步给出分值与依据';
 
   $('steps').innerHTML = steps.map(function (s) {
@@ -960,6 +1027,7 @@ function renderSteps(a) {
       lawHTML(s.law_ids) +
       (s.statement ? '<div class="stmt">' + esc(s.statement) + '</div>' : '') +
       eqBlock + valueHTML(s, disp) + whyHTML(s) +
+      ptLineHTML(pts[s.step_no] || null) +
       checksHTML(s, a.meta && a.meta.mode === 'zero') +
       '</section>';
   }).join('');
@@ -969,6 +1037,18 @@ function renderFoot(a) {
   var m = a.meta || {}, g = a.grading || {};
   var t = a.triage || {};
   var zero = m.mode === 'zero';
+  if (CLEAN) {
+    var cb = [];
+    cb.push('题目来源：' + esc(m.source || '未记'));
+    if (m.full_score != null) {
+      /* 不写「按题干标注合计」：有的题面没印分值、有的旧任务没记 scores_printed，
+         断不出来的事不写死，只报「各小问分值合计」这个恒真的说法。 */
+      cb.push('卷面总分：' + num(m.full_score) + ' 分（各小问分值合计）');
+    }
+    cb.push('解析与分值由 AI 生成，仅供参考；每步「给分点」是按步给出的参考评分要点，不是官方评分标准。');
+    $('foot').innerHTML = cb.join('<br>');
+    return;
+  }
   var bits = [];
   bits.push('题目来源：' + (m.source || '未记') + (m.question_no != null ? ' 第' + m.question_no + ' 题' : ''));
   if (zero) {
@@ -1032,8 +1112,10 @@ function renderRunbar() {
 }
 
 function renderAll() {
-  renderRunbar();
   var a = ANSWERS[cur];
+  CLEAN = !TECH && !!(a && a.meta && a.meta.mode === 'zero');
+  document.body.classList.toggle('clean', CLEAN);
+  renderRunbar();
   if (!a) {
     $('steps').innerHTML = '<div class="empty">没有数据。<br><br>' +
       '在工作区运行 <code>python 原型/_build.py</code> 注入 answer JSON。</div>';

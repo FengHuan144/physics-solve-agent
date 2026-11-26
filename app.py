@@ -234,6 +234,7 @@ def render_result(job: dict) -> Path:
 
     if job["mode"] == "zero":
         doc["grading"] = {}
+        doc.setdefault("_display", {})
         zmeta_p = jd / "zero_meta.json"
         if zmeta_p.exists():
             try:
@@ -242,6 +243,21 @@ def render_result(job: dict) -> Path:
                 doc["_display"]["issues"] = zd.get("issues") or []
             except (ValueError, OSError):
                 pass
+        # 每步给分点：模型在草稿里写了 score / point，但产物 schema 里没这两格。
+        # 优先用 zero_meta.display.points（新跑的任务自带），老任务回落到草稿文件。
+        if not doc["_display"].get("points"):
+            draft_p = jd / f"{qid}_draft.json"
+            if draft_p.exists():
+                try:
+                    dr = json.loads(draft_p.read_text(encoding="utf-8"))
+                    raw_steps = sorted(dr.get("steps") or [],
+                                       key=lambda s: int(s.get("no") or 0))
+                    doc["_display"]["points"] = [
+                        {"step_no": i, "score": s.get("score"),
+                         "text": str(s.get("point") or "").strip()}
+                        for i, s in enumerate(raw_steps, 1)]
+                except (ValueError, OSError, TypeError):
+                    pass
         sref = jd / f"{qid}_symbols.json"
         doc["symbols"] = (json.loads(sref.read_text(encoding="utf-8"))
                           if sref.exists() else {"steps": {}, "givens": []})

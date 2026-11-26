@@ -126,7 +126,12 @@ def _resolve_stem(stem: str, draft: dict, issues: list) -> tuple[str, str]:
     if split_subquestions(s):
         return s, "user_paste"
     ms = str(draft.get("stem_text") or "").strip()
-    if ms and split_subquestions(ms):
+    # 模型转写不一定也带 (1)(2)：单问的题它常常只抄题干、或把编号抄丢（Z-06 就是）。
+    # 所以除「转写能切出小问」外，再加一条「用户那段像占位话」：
+    # 一个数字都没有、比转写短得多。真实题干几乎总带数字或单位，占位话不会。
+    looks_placeholder = bool(ms) and len(ms) >= 40 and len(ms) >= 1.5 * max(len(s), 1) \
+        and not re.search(r"[0-9０-９]", s)
+    if ms and (split_subquestions(ms) or looks_placeholder):
         issues.append("用户题干里切不出小问；改用模型读图转写的题干（%d 字）" % len(ms))
         return ms, "model_ocr"
     return s, "user_paste"
@@ -156,6 +161,11 @@ def build_from_zero(qid: str, draft: dict, stem: str, *,
             "scores_printed": True if SCORE_PAT.search(stem) else draft.get("scores_printed"),
             "sub_text_from": "model_ocr" if any(
                 "模型读图转写" in x or "模型转写" in x for x in issues) else "stem",
+            # 每步给分点：产物 schema 没有这两格，随 zero_meta 存一份，页面按 step_no 取。
+            "points": [{"step_no": i,
+                        "score": s.get("score"),
+                        "text": str(s.get("point") or "").strip()}
+                       for i, s in enumerate(steps_in, 1)],
         })
     full = sum(q["score"] for q in subs if q["score"] is not None)
     if not full:
