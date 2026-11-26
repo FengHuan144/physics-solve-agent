@@ -1,0 +1,117 @@
+{
+  "givens": [
+    {"symbol": "m", "value": 42, "unit": "kg", "text": "重物质量 m＝42 kg"},
+    {"symbol": "g", "value": 10, "unit": "m/s^2", "text": "重力加速度大小 g＝10 m/s²"},
+    {"symbol": "alpha", "value": 37, "unit": "1", "text": "P绳与竖直方向夹角 α＝37°"},
+    {"symbol": "beta", "value": 53, "unit": "1", "text": "Q绳与竖直方向夹角 β＝53°"},
+    {"symbol": "sin37", "value": 0.6, "unit": "1", "text": "题给 sin37°＝0.6，由此得 cos37°＝0.8，sin53°＝0.8，cos53°＝0.6"},
+    {"symbol": "h", "value": 10, "unit": "m", "text": "开始下降时重物距地面高度 h＝10 m"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "P = 336 N，Q = 252 N", "steps": [1, 2, 3, 4]},
+    {"no": "(2)(ⅰ)", "result": "W_G = 4200 J", "steps": [5, 6, 7]},
+    {"no": "(2)(ⅱ)", "result": "W_T = -4200 J", "steps": [8, 9, 10]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "确定平衡状态",
+      "kind": "judgment",
+      "stmt": "选重物为研究对象；因重物缓慢竖直下降，每一时刻速度变化可忽略，处于平衡状态，受重力、P绳拉力和Q绳拉力。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出缓慢下降对应平衡状态，受力分析正确。"
+    },
+    {
+      "no": 2,
+      "title": "水平方向平衡",
+      "kind": "equation",
+      "stmt": "对重物在水平方向列平衡方程：P绳拉力水平分量与Q绳拉力水平分量大小相等、方向相反。",
+      "eq": "P*Rational(3,5) - Q*Rational(4,5)",
+      "value": null,
+      "score": 1,
+      "point": "正确列出水平方向平衡方程 P sinα＝Q sinβ。"
+    },
+    {
+      "no": 3,
+      "title": "竖直方向平衡",
+      "kind": "equation",
+      "stmt": "对重物在竖直方向列平衡方程：两绳拉力的竖直向上分量之和等于重力。",
+      "eq": "P*Rational(4,5) + Q*Rational(3,5) - m*g",
+      "value": null,
+      "score": 1,
+      "point": "正确列出竖直方向平衡方程 P cosα＋Q cosβ＝mg。"
+    },
+    {
+      "no": 4,
+      "title": "解两绳拉力",
+      "kind": "value",
+      "stmt": "联立两平衡方程，由水平方程得 Q＝3P/4，代入竖直方程解得 P＝336 N，Q＝252 N。",
+      "eq": "P*Rational(4,5) + (P*Rational(3,4))*Rational(3,5) - m*g",
+      "value": {"symbol": "P", "number": 336, "exact": null, "unit": "N"},
+      "score": 1,
+      "point": "正确解出P、Q绳中拉力分别为336 N、252 N。"
+    },
+    {
+      "no": 5,
+      "title": "判断重力做功",
+      "kind": "judgment",
+      "stmt": "重物下降过程中位移竖直向下，重力也竖直向下，重力对重物做正功。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "判断出重力对重物做正功，为计算重力功作准备。"
+    },
+    {
+      "no": 6,
+      "title": "列重力做功式",
+      "kind": "equation",
+      "stmt": "重力做功等于重力乘以下降高度：W_G＝mgh。",
+      "eq": "W_G - m*g*h",
+      "value": null,
+      "score": 1,
+      "point": "正确写出重力做功公式 W_G＝mgh。"
+    },
+    {
+      "no": 7,
+      "title": "算重力做功",
+      "kind": "value",
+      "stmt": "代入 m＝42 kg、g＝10 m/s²、h＝10 m，得 W_G＝4200 J。",
+      "eq": "W_G - 42*10*10",
+      "value": {"symbol": "W_G", "number": 4200, "exact": null, "unit": "J"},
+      "score": 2,
+      "point": "代入数据并正确算得重力做功4200 J。"
+    },
+    {
+      "no": 8,
+      "title": "判断动能变化",
+      "kind": "judgment",
+      "stmt": "重物缓慢下降到地面，初、末速度均可视为零，动能变化量为零。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出缓慢下降过程中动能变化量为零。"
+    },
+    {
+      "no": 9,
+      "title": "列动能定理式",
+      "kind": "equation",
+      "stmt": "对重物应用动能定理：重力做功W_G与两根绳子拉力对重物做的总功W_T的代数和等于动能变化量零。",
+      "eq": "W_G + W_T",
+      "value": null,
+      "score": 2,
+      "point": "正确写出动能定理 W_G＋W_T＝0。"
+    },
+    {
+      "no": 10,
+      "title": "算拉力总功",
+      "kind": "value",
+      "stmt": "把W_G＝4200 J代入W_G＋W_T＝0，得W_T＝-4200 J；负号表示两根绳子拉力对重物做负功。",
+      "eq": "W_T + 4200",
+      "value": {"symbol": "W_T", "number": -4200, "exact": null, "unit": "J"},
+      "score": 3,
+      "point": "得出两根绳子拉力对重物做的总功为-4200 J，并说明负号含义。"
+    }
+  ]
+}

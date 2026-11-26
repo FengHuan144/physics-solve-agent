@@ -1,0 +1,12 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-12.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-12_validated.json
+
+对象：B-12（题 B-12，10 步）
+L1  pass 9 / fail 0 / na 1 / skipped 0    判定通过率 100.0%    na 比例 10.0%
+L2  pass 9 / fail 0 / na 1 / skipped 0    判定通过率 100.0%    na 比例 10.0%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-12-S05 [L1] per_step：data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2 + m*g*l + f*l｜chain：data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2 + m*g*l + f*l
+  - B-12-S05 [L2] data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2 + m*g*l + f*l
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\B-12_validated.json

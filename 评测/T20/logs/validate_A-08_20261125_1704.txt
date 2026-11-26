@@ -1,0 +1,37 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe schema/validate_schema.py D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-08_nothink.json
+
+校验对象：评测\T20\out\A-08_nothink.json
+[OK] S0         JSON Schema 通过（draft-07，0 处违规）
+[OK] R6-tab     采分点表：采分点总表 223 点
+[OK] R6-law     定律表：12 条（知识表\定律适用条件_v1.csv）
+[OK] R6-sym     符号白名单：84 个（知识表\符号白名单_v1.csv）
+[OK] R1         step_id 唯一：23 个
+[OK] R1-ns      free 模式：step_id 与 point_id 已分区
+[OK] R2         步骤-大纲对齐：23/23
+[W] R6-sym     A-08-S03 用了白名单外的符号 ['N']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S05 用了白名单外的符号 ['b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S06 用了白名单外的符号 ['b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S07 用了白名单外的符号 ['b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S08 用了白名单外的符号 ['N', 'b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S09 用了白名单外的符号 ['N', 'b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S12 用了白名单外的符号 ['b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S15 用了白名单外的符号 ['b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S18 用了白名单外的符号 ['b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S21 用了白名单外的符号 ['b']（需 T09 登记后归一化）
+[W] R6-sym     A-08-S23 用了白名单外的符号 ['Q', 'b']（需 T09 登记后归一化）
+[OK] R6         引用完整性：23 步 / 0 个命中点 / 0 处悬空
+[OK] R3         方程双表示：23/23 步有方程且全部可解析、符号闭合、latex 在子集内；其余 0 步为判据步
+[OK] R4         解析状态：23/23 ok，degraded 0%（另有 0 步无方程，不参与统计）
+[OK] R8         分值闭合：0/19，weighted_rate=0.0，小问合计 19
+[OK] R10        归零点：zero_point_hit=false，level=yellow
+[OK] R-mode     模式=free，rewrite_rounds=0，verdict=pending
+[OK] R11        本题无图读数（figures 无 provides），无需校验来源
+[OK] R12        input_sha256 与题干+0 条读数一致：d95eeb99464c5f20…
+[OK] R13        整题层 = 步级反推：L1/L2/L3/L4 逐层一致
+[OK] R14        过程分段：1/1 段有 segment_id，23/23 步已归属，0 悬空
+[OK] R15        判断/临界步 0 步：equation 全 null、criterion 全在；其余方程/求值步 equation 全非空（无方程步合计 0）
+[OK] R16        图指纹字段成对：0/1 张有文件，其余双 null
+[OK] R17        没有带 file 的图，无磁盘文件可比对
+[OK] R18        本题无 discussion 步，无需检查锚点
+--------------------------------------------------------------------
+通过：E 0 项，W 11 项 → 退出 0

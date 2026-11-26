@@ -1,0 +1,695 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-09",
+    "question_id": "A-09",
+    "group": "A",
+    "source": "2025 安徽卷",
+    "question_no": 14,
+    "full_score": 14,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:40:11+08:00",
+    "latency_ms": 114730,
+    "tokens": {
+      "in": 1115,
+      "out": 23763
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，M、N 为固定在竖直平面内同一高度的两根细钉，间距 L＝0.5 m。一根长为 3L 的轻绳一端系在 M 上，另一端竖直悬挂质量 m＝0.1 kg 的小球，小球与水平地面接触但无压力。t＝0 时，小球以水平向右的初速度 v₀＝10 m/s 开始在竖直平面内做圆周运动。小球牵引着绳子绕过 N、M，运动到 M 正下方与 M 相距 L 的位置时，绳子刚好被拉断，小球开始做平抛运动。小球可视为质点，绳子不可伸长，不计空气阻力，重力加速度 g 取 10 m/s²。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "同一高度的两细钉 M、N（间距 L），长 3L 的轻绳系于 M、悬挂小球；原文无图题，绕钉次序与断绳位置已由文字给定",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "绳子被拉断时小球的速度大小，及绳子所受的最大拉力大小。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "小球做平抛运动时抛出点到落地点的水平距离。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "若在 t＝0 时只改变小球的初速度大小，使小球能通过 N 的正上方且绳子不松弛，求初速度的最小值。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "a650e85fce2ae3332cdd790600a6aefc9a83415d2cea4caf6ec838ff7c6460db",
+    "input_sha256": "cedfac1309ca2e5f4bcbfff6d982b0192583068c980a8cff69d1bd76fd026f43"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球",
+        "mass_symbol": "m",
+        "note": "质量 0.1 kg，视为质点；被绳牵引做变半径圆周运动"
+      },
+      {
+        "id": "obj2",
+        "name": "细钉 M、N",
+        "mass_symbol": "m",
+        "note": "同一高度、间距 L＝0.5 m；绳依次绕 M、N、M，半径 3L→2L→L"
+      },
+      {
+        "id": "obj3",
+        "name": "轻绳",
+        "mass_symbol": "m",
+        "note": "长 3L，不可伸长；绕钉处半径突变，拉力提供向心力"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "L",
+        "value": 0.5,
+        "unit": "m",
+        "text": "两钉间距 L＝0.5 m（题干给出）"
+      },
+      {
+        "symbol": "l",
+        "value": 1.5,
+        "unit": "m",
+        "text": "轻绳长 l＝3L＝1.5 m（题干给出）"
+      },
+      {
+        "symbol": "m",
+        "value": 0.1,
+        "unit": "kg",
+        "text": "小球质量 m＝0.1 kg（题干给出）"
+      },
+      {
+        "symbol": "v0",
+        "value": 10.0,
+        "unit": "m/s",
+        "text": "初速度 v₀＝10 m/s（题干给出）"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²（题干给出）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v1",
+        "text": "断绳时小球速度大小"
+      },
+      {
+        "no": "(1)",
+        "quantity": "FT",
+        "text": "绳所受最大拉力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "x",
+        "text": "平抛水平距离"
+      },
+      {
+        "no": "(3)",
+        "quantity": "v",
+        "text": "能过 N 正上方且绳不松弛的最小初速度"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "确定两段半径",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "初态到断点能量",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求断点速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "判断最大拉力点",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "断点径向方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "求最大拉力",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "判断平抛运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "竖直方向方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "求平抛时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求水平距离",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "确定临界位置",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "最高点临界方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "初态到最高点能量",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "消去最高点速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 15,
+      "title": "说明全程不松弛",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 16,
+      "title": "求最小初速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-09-S01",
+      "step_no": 1,
+      "title": "确定两段半径",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "由绳长 3L 和几何关系可知，初始小球在 N 正下方，绕 N 的半径 R1=2L；断绳点在 M 正下方距 M 为 L，绕 M 的半径 R2=L；断点比初位置高 L。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能确定两段圆周半径及初末高度差"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S02",
+      "step_no": 2,
+      "title": "初态到断点能量",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从初态到断绳点，绳中张力不做功，只有重力做功，按机械能守恒有 v0²-v²=2gL。",
+      "equation": {
+        "latex": "v0^2 - v^2 - 2 g L",
+        "sympy": "v0**2 - v**2 - 2*g*L",
+        "symbols": [
+          "L",
+          "g",
+          "v",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S03",
+      "step_no": 3,
+      "title": "求断点速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 v0=10 m/s、g=10 m/s²、L=0.5 m，得 v²=90，故 v=3√10 m/s（约9.49 m/s）。",
+      "equation": {
+        "latex": "v^2 - 90",
+        "sympy": "v**2 - 90",
+        "symbols": [
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v",
+        "number": 9.486832980505138,
+        "exact": "3*sqrt(10)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S04",
+      "step_no": 4,
+      "title": "判断最大拉力点",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "绕 M 运动阶段半径保持 L；从 M 左侧到 M 正下方高度降低、速率增大，且正下方时重力沿径向向外，故该点所需拉力最大。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "判断最大拉力出现在 M 正下方断点"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S05",
+      "step_no": 5,
+      "title": "断点径向方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "在 M 正下方取径向向上为正，绳拉力和重力共同提供向心力：T-mg=mv²/L。",
+      "equation": {
+        "latex": "T - m g - m v^2/L",
+        "sympy": "T - m*g - m*v**2/L",
+        "symbols": [
+          "L",
+          "T",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S06",
+      "step_no": 6,
+      "title": "求最大拉力",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 m=0.1 kg、g=10 m/s²、v²=90、L=0.5 m，得 Tmax=19 N。",
+      "equation": {
+        "latex": "T - 19",
+        "sympy": "T - 19",
+        "symbols": [
+          "T"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "T",
+        "number": 19.0,
+        "exact": "19",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S07",
+      "step_no": 7,
+      "title": "判断平抛运动",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "断点处速度水平向右，距地面高度 h=L=0.5 m；断绳后只受重力，做平抛运动。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "判断平抛并确定抛出高度和速度方向"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S08",
+      "step_no": 8,
+      "title": "竖直方向方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "竖直方向为自由落体，满足 L=1/2 gt²。",
+      "equation": {
+        "latex": "L - (1/2) g t^2",
+        "sympy": "L - Rational(1,2)*g*t**2",
+        "symbols": [
+          "L",
+          "g",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S09",
+      "step_no": 9,
+      "title": "求平抛时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 L=0.5 m、g=10 m/s²，得 t²=1/10，故 t=√10/10 s。",
+      "equation": {
+        "latex": "t^2 - (1/10)",
+        "sympy": "t**2 - Rational(1,10)",
+        "symbols": [
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t",
+        "number": 0.31622776601683794,
+        "exact": "sqrt(10)/10",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S10",
+      "step_no": 10,
+      "title": "求水平距离",
+      "point_id": null,
+      "kind": "value",
+      "statement": "水平方向匀速，x=vt；代入 v=3√10 m/s、t=√10/10 s，得 x=3 m。",
+      "equation": {
+        "latex": "x - v t",
+        "sympy": "x - v*t",
+        "symbols": [
+          "t",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "x",
+        "number": 3.0,
+        "exact": "3",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S11",
+      "step_no": 11,
+      "title": "确定临界位置",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "要到达 N 的正上方，小球先在以 N 为圆心、半径 2L 的圆弧上运动；该圆弧上不断升高，最高点就是 N 的正上方，是否松弛以该点最危险。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "确定临界点为 N 正上方并明确半径 2L"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S12",
+      "step_no": 12,
+      "title": "最高点临界方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "在 N 正上方，临界不松弛条件为绳拉力刚好为零，此时重力提供向心力：m v1²/(2L)=mg。",
+      "equation": {
+        "latex": "m v1^2/(2 L) - m g",
+        "sympy": "m*v1**2/(2*L) - m*g",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S13",
+      "step_no": 13,
+      "title": "初态到最高点能量",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从初态到 N 正上方，只有重力做功，机械能守恒，初末高度差为 4L。",
+      "equation": {
+        "latex": "(1/2) v0min^2 - (1/2) v1^2 - 4 g L",
+        "sympy": "Rational(1,2)*v0min**2 - Rational(1,2)*v1**2 - 4*g*L",
+        "symbols": [
+          "L",
+          "g",
+          "v0min",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S14",
+      "step_no": 14,
+      "title": "消去最高点速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "将 v1²=2gL 代入能量方程，得 v0min²=10gL。",
+      "equation": {
+        "latex": "v0min^2 - 10 g L",
+        "sympy": "v0min**2 - 10*g*L",
+        "symbols": [
+          "L",
+          "g",
+          "v0min"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S15",
+      "step_no": 15,
+      "title": "说明全程不松弛",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "在到达 N 正上方前的上升圆弧上，速率逐渐减小且重力沿径向的分量使绳拉力逐渐减小，故最高点满足不松弛即可保证全程不松弛。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "说明最高点条件可保证全程绳不松弛"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-09-S16",
+      "step_no": 16,
+      "title": "求最小初速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 g=10 m/s²、L=0.5 m，得 v0min²=50，故最小值 v0min=5√2 m/s（约7.07 m/s）。",
+      "equation": {
+        "latex": "v0min^2 - 50",
+        "sympy": "v0min**2 - 50",
+        "symbols": [
+          "v0min"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v0min",
+        "number": 7.0710678118654755,
+        "exact": "5*sqrt(2)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 14,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

@@ -1,0 +1,877 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-05",
+    "question_id": "A-05",
+    "group": "A",
+    "source": "2025 全国甲卷",
+    "question_no": 25,
+    "full_score": 20,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:36:35+08:00",
+    "latency_ms": 107260,
+    "tokens": {
+      "in": 1129,
+      "out": 21647
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，物块 P 固定在水平面上，其上表面有半径为 R 的圆弧轨道。P 右端与薄板 Q 连在一起，圆弧轨道与 Q 上表面平滑连接。一轻弹簧的右端固定在 Q 上，另一端自由。质量为 m 的小球自圆弧顶端 A 点上方的 B 点自由下落，落到 A 点后沿圆弧轨道下滑，小球与弹簧接触后，当速度减小至刚接触时的 1/3 时弹簧的弹性势能为 2mgR，此时断开 P 和 Q 的连接，Q 从静止开始向右滑动。g 为重力加速度大小，忽略空气阻力，圆弧轨道及 Q 的上、下表面均光滑，弹簧长度的变化始终在弹性限度内。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "物块 P 上的半径 R 圆弧（顶端 A）、与之相连的薄板 Q、右端固定在 Q 上的水平轻弹簧；原文无图题，几何关系已由文字给全",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "小球从落入圆弧轨道至离开圆弧轨道，重力对其做的功。",
+        "score": 3
+      },
+      {
+        "no": "(2)",
+        "text": "小球与弹簧刚接触时速度的大小及 B、A 两点间的距离。",
+        "score": 7
+      },
+      {
+        "no": "(3)",
+        "text": "欲使 P 和 Q 断开后弹簧的最大弹性势能等于 2.2mgR，Q 的质量应为多大？",
+        "score": 6
+      },
+      {
+        "no": "(4)",
+        "text": "欲使 P 和 Q 断开后 Q 的最终动能最大，Q 的质量应为多大？",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "295778fdd7b20457139a9c01b594a115de65728045bb31edfd899e36604de25a",
+    "input_sha256": "86100e240e35cfc5bbd5359b1885481d60aca6ee83a5d02cec59534b9a820cee"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球",
+        "mass_symbol": "m",
+        "note": "质量 m，自 B 点自由下落，经圆弧后压缩弹簧"
+      },
+      {
+        "id": "obj2",
+        "name": "薄板 Q",
+        "mass_symbol": "M",
+        "note": "质量 M（第 (3) 问）、M′（第 (4) 问）；断开后开始滑动"
+      },
+      {
+        "id": "obj3",
+        "name": "物块 P 与圆弧",
+        "mass_symbol": "M",
+        "note": "固定不动，只提供半径 R 的圆弧与支撑面"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "小球质量 m（题干给出）"
+      },
+      {
+        "symbol": "R",
+        "value": null,
+        "unit": "m",
+        "text": "圆弧轨道半径 R（题干给出）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g（题干给出）"
+      },
+      {
+        "symbol": "h",
+        "value": null,
+        "unit": "m",
+        "text": "圆弧轨道 A 点到与 Q 上表面平滑连接处的竖直高度差 h＝R（图上几何关系）"
+      },
+      {
+        "symbol": "Ep",
+        "value": null,
+        "unit": "J",
+        "text": "断开 P 和 Q 时弹簧弹性势能 E0＝2mgR（题干给出）"
+      },
+      {
+        "symbol": "Epmax",
+        "value": null,
+        "unit": "J",
+        "text": "要求的最大弹性势能 Emax＝2.2mgR＝11mgR/5（题干给出）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "W",
+        "text": "重力对小球做的功"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v0",
+        "text": "小球与弹簧刚接触时的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "h",
+        "text": "B、A 两点间的距离"
+      },
+      {
+        "no": "(3)",
+        "quantity": "M",
+        "text": "使最大弹性势能为 2.2mgR 的 Q 质量"
+      },
+      {
+        "no": "(4)",
+        "quantity": "Mp",
+        "text": "使 Q 最终动能最大的 Q 质量"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "判断下降高度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "列重力做功式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "得重力做功",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "压缩弹簧能量式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "求刚接触速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "联系自由落体",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "求 BA 距离",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求断开瞬间速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "最大势能条件",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求最大势能对应质量",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "最终状态守恒式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "表示 Q 最终速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "极值条件",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "求最终动能最大质量",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-05-S01",
+      "step_no": 1,
+      "title": "判断下降高度",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "由图可知圆弧轨道为四分之一圆，A 点到与 Q 平滑连接处的竖直高度差为 R。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "确认小球从 A 到离开圆弧下降的高度为 R"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S02",
+      "step_no": 2,
+      "title": "列重力做功式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "重力做功等于重力乘竖直下降高度，故 W_G＝mgR。",
+      "equation": {
+        "latex": "W_G - m g R",
+        "sympy": "W - m*g*R",
+        "symbols": [
+          "G",
+          "R",
+          "W",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：4 未知 / 1 方程（chain 可解，本步不判）含 R, W, g, m｜chain：全题联立后仍含自由符号 R, W, g, m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S03",
+      "step_no": 3,
+      "title": "得重力做功",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入下降高度 R，得到 W_G＝mgR。",
+      "equation": {
+        "latex": "W_G - m g R",
+        "sympy": "W - m*g*R",
+        "symbols": [
+          "G",
+          "R",
+          "W",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "W",
+        "number": null,
+        "exact": "m*g*R",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：4 未知 / 1 方程（chain 可解，本步不判）含 R, W, g, m｜chain：全题联立后仍含自由符号 R, W, g, m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2；值单位 J 与符号 W 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S04",
+      "step_no": 4,
+      "title": "压缩弹簧能量式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "设刚接触弹簧时速度为 v0，速度减为 v0/3 时弹性势能为 2mgR，由能量守恒列式。",
+      "equation": {
+        "latex": "(1/2) m v0^2 - (1/2) m (v0/3)^2 - 2 m g R",
+        "sympy": "Rational(1,2)*m*v0**2 - Rational(1,2)*m*(v0/3)**2 - 2*m*g*R",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：4 未知 / 1 方程（chain 可解，本步不判）含 R, g, m, v0｜chain：全题联立后仍含自由符号 R, g, m, v0（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S05",
+      "step_no": 5,
+      "title": "求刚接触速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由能量守恒解得 v0^2＝9gR/2，因此 v0＝3sqrt(gR/2)。",
+      "equation": {
+        "latex": "v0^2 - (9/2) g R",
+        "sympy": "v0**2 - Rational(9,2)*g*R",
+        "symbols": [
+          "R",
+          "g",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "3*sqrt(g*R/2)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 R, g, v0｜chain：全题联立后仍含自由符号 R, g, v0（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m^2/s^2；值单位 m/s 与符号 v0 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S06",
+      "step_no": 6,
+      "title": "联系自由落体",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从 B 到 A 自由下落，设 BA 距离为 H，则 A 点速度满足 v_A^2＝2gH；从 A 到圆弧末端又下降 R，故 v0^2＝v_A^2＋2gR。",
+      "equation": {
+        "latex": "v0^2 - 2 g H - 2 g R",
+        "sympy": "v0**2 - 2*g*H - 2*g*R",
+        "symbols": [
+          "H",
+          "R",
+          "g",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：4 未知 / 1 方程（chain 可解，本步不判）含 H, R, g, v0｜chain：全题联立后仍含自由符号 H, R, g, v0（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S07",
+      "step_no": 7,
+      "title": "求 BA 距离",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 v0^2＝9gR/2，得 2gH＝9gR/2－2gR＝5gR/2，所以 H＝5R/4。",
+      "equation": {
+        "latex": "v0^2 - 2 g H - 2 g R",
+        "sympy": "v0**2 - 2*g*H - 2*g*R",
+        "symbols": [
+          "H",
+          "R",
+          "g",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "H",
+        "number": null,
+        "exact": "5*R/4",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：4 未知 / 1 方程（chain 可解，本步不判）含 H, R, g, v0｜chain：全题联立后仍含自由符号 H, R, g, v0（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m^2/s^2；值单位 m 与符号 H 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S08",
+      "step_no": 8,
+      "title": "求断开瞬间速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "刚接触速度为 v0，断开时速度为 v1＝v0/3，故 v1^2＝gR/2。",
+      "equation": {
+        "latex": "v1^2 - g R/2",
+        "sympy": "v1**2 - g*R/2",
+        "symbols": [
+          "R",
+          "g",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": null,
+        "exact": "sqrt(g*R/2)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 R, g, v1｜chain：全题联立后仍含自由符号 R, g, v1（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m^2/s^2；值单位 m/s 与符号 v1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S09",
+      "step_no": 9,
+      "title": "最大势能条件",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "断开后系统水平方向动量守恒，弹簧最长时小球与 Q 共速；最大弹性势能等于初始弹性势能加初始相对动能。",
+      "equation": {
+        "latex": "Emax - E0 - (1/2) m M/(m+M) v1^2",
+        "sympy": "Epmax - Ep - Rational(1,2)*m*M/(m+M)*v1**2",
+        "symbols": [
+          "E0",
+          "Emax",
+          "M",
+          "m",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：5 未知 / 1 方程（chain 可解，本步不判）含 Ep, Epmax, M, m｜chain：全题联立后仍含自由符号 Ep, Epmax, M, m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S10",
+      "step_no": 10,
+      "title": "求最大势能对应质量",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 Emax＝11mgR/5、E0＝2mgR、v1^2＝gR/2，得 M＝4m。",
+      "equation": {
+        "latex": "M - 4 m",
+        "sympy": "M - 4*m",
+        "symbols": [
+          "M",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "M",
+        "number": null,
+        "exact": "4*m",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 M, m｜chain：全题联立后仍含自由符号 M, m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg；值单位 kg 与符号 M 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S11",
+      "step_no": 11,
+      "title": "最终状态守恒式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "弹簧恢复原长后，设小球速度为 u、Q 速度为 V，系统动量守恒且机械能守恒。",
+      "equation": {
+        "latex": "m v1 - m u - M V + E0 + (1/2) m v1^2 - (1/2) m u^2 - (1/2) M V^2",
+        "sympy": "m*v1 - m*v1p - M*v2p + Ep + Rational(1,2)*m*v1**2 - Rational(1,2)*m*v1p**2 - Rational(1,2)*M*v2p**2",
+        "symbols": [
+          "E0",
+          "M",
+          "V",
+          "m",
+          "u",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：6 未知 / 1 方程（chain 可解，本步不判）含 Ep, M, m, v1｜chain：全题联立后仍含自由符号 Ep, M, m, v1（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "fail",
+          "detail": "加减项量纲不一致：Ep 为 kg·m^2/s^2；m*v1 为 kg·m/s；-M*v2p 为 kg·m/s；-m*v1p 为 kg·m/s",
+          "error_code": "E-12"
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S12",
+      "step_no": 12,
+      "title": "表示 Q 最终速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "消去小球速度 u，取弹簧恢复原长后 Q 速度较大的解，得 Q 的最终速度 V。",
+      "equation": {
+        "latex": "V - m (v1 + sqrt(v1^2 + 2 E0 (m+M)/(m M)))/(m+M)",
+        "sympy": "v2p - m*(v1 + sqrt(v1**2 + 2*Ep*(m+M)/(m*M)))/(m+M)",
+        "symbols": [
+          "E0",
+          "M",
+          "V",
+          "m",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：5 未知 / 1 方程（chain 可解，本步不判）含 Ep, M, m, v1｜chain：全题联立后仍含自由符号 Ep, M, m, v1（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S13",
+      "step_no": 13,
+      "title": "极值条件",
+      "point_id": null,
+      "kind": "discussion",
+      "statement": "Q 的最终动能 K_Q＝(1/2)MV^2，将其对 M 求导并令导数为零，得到唯一极大值条件 m－9M＝0。",
+      "equation": {
+        "latex": "m - 9 M",
+        "sympy": "m - 9*M",
+        "symbols": [
+          "M",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "通过对 Q 最终动能求极值得到 m－9M＝0"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 M, m｜chain：全题联立后仍含自由符号 M, m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-05-S14",
+      "step_no": 14,
+      "title": "求最终动能最大质量",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由极值条件 m－9M＝0，得 M＝m/9，此时 Q 的最终动能最大。",
+      "equation": {
+        "latex": "m - 9 M",
+        "sympy": "m - 9*M",
+        "symbols": [
+          "M",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "M",
+        "number": null,
+        "exact": "m/9",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 M, m｜chain：全题联立后仍含自由符号 M, m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg；值单位 kg 与符号 M 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 20,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "fail",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [
+      {
+        "step_id": "A-05-S11",
+        "layer": "L2",
+        "error_code": "E-12",
+        "detail": "加减项量纲不一致：Ep 为 kg·m^2/s^2；m*v1 为 kg·m/s；-M*v2p 为 kg·m/s；-m*v1p 为 kg·m/s"
+      }
+    ],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

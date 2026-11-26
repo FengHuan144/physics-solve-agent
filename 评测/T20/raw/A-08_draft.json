@@ -1,0 +1,355 @@
+{
+  "givens": [
+    {
+      "symbol": "R",
+      "value": 1.8,
+      "unit": "m",
+      "text": "圆轨道半径 R＝1.8 m（题干给出）"
+    },
+    {
+      "symbol": "d",
+      "value": 2.7,
+      "unit": "m",
+      "text": "PM 长度 d＝2.7 m（题干给出）"
+    },
+    {
+      "symbol": "L",
+      "value": 3.3,
+      "unit": "m",
+      "text": "传送带长度 L＝3.3 m（题干给出）"
+    },
+    {
+      "symbol": "v0",
+      "value": 1,
+      "unit": "m/s",
+      "text": "传送带恒定速率 v0＝1 m/s（题干给出）"
+    },
+    {
+      "symbol": "I",
+      "value": 6,
+      "unit": "N*s",
+      "text": "瞬时冲量大小 I＝6 N·s（题干给出）"
+    },
+    {
+      "symbol": "Delta_t",
+      "value": 0.6,
+      "unit": "s",
+      "text": "冲量时间间隔 Δt＝0.6 s（题干给出）"
+    },
+    {
+      "symbol": "m_a",
+      "value": 1,
+      "unit": "kg",
+      "text": "物块 a 质量 m_a＝1 kg（题干给出）"
+    },
+    {
+      "symbol": "m_b",
+      "value": 2,
+      "unit": "kg",
+      "text": "物块 b 质量 m_b＝2 kg（题干给出）"
+    },
+    {
+      "symbol": "mu",
+      "value": 0.5,
+      "unit": "1",
+      "text": "动摩擦因数 μ＝0.5（题干给出）"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "重力加速度 g＝10 m/s²（题干给出）"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "N = 30 N",
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "no": "(2)",
+      "result": "t = 3.2 s",
+      "steps": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "no": "(3)",
+      "result": "Q = 95 J",
+      "steps": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "机械能守恒求速度",
+      "kind": "equation",
+      "stmt": "a 从圆轨道顶端由静止滑到 P 点，轨道光滑，只有重力做功，机械能守恒，取 P 点重力势能为零。",
+      "eq": "m_a*g*R - Rational(1,2)*m_a*v_P**2",
+      "value": null,
+      "score": 1,
+      "point": "列出 a 下滑到 P 点的机械能守恒方程"
+    },
+    {
+      "no": 2,
+      "title": "求P点速度",
+      "kind": "value",
+      "stmt": "由机械能守恒方程解得 v_P=sqrt(2gR)=6 m/s。",
+      "eq": "m_a*g*R - Rational(1,2)*m_a*v_P**2",
+      "value": {
+        "symbol": "v_P",
+        "number": 6,
+        "exact": "6",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确得到 a 到 P 点时的速度 6 m/s"
+    },
+    {
+      "no": 3,
+      "title": "列径向方程",
+      "kind": "equation",
+      "stmt": "在 P 点，轨道支持力 N 与重力 m_a g 的合力提供向心力，速度方向水平，沿轨道半径指向圆心竖直向上。",
+      "eq": "N - m_a*g - m_a*v_P**2/R",
+      "value": null,
+      "score": 1,
+      "point": "列出最低点径向牛顿第二定律方程"
+    },
+    {
+      "no": 4,
+      "title": "求支持力",
+      "kind": "value",
+      "stmt": "将 v_P^2=2gR 代入，得 N=m_a g+2m_a g=3m_a g=30 N。",
+      "eq": "N - 3*m_a*g",
+      "value": {
+        "symbol": "N",
+        "number": 30,
+        "exact": "30",
+        "unit": "N"
+      },
+      "score": 1,
+      "point": "代入数据得到支持力 N=30 N"
+    },
+    {
+      "no": 5,
+      "title": "求a碰前速度",
+      "kind": "value",
+      "stmt": "a 在 PM 段受摩擦力 μ m_a g，做匀减速运动。由 v_Ma^2=v_P^2-2μg d 得 v_Ma=3 m/s，方向向左。",
+      "eq": "v_Ma**2 - v_P**2 + 2*mu*g*d",
+      "value": {
+        "symbol": "v_Ma",
+        "number": 3,
+        "exact": "3",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确求出 a 碰前速度 3 m/s"
+    },
+    {
+      "no": 6,
+      "title": "弹性碰撞求b速度",
+      "kind": "value",
+      "stmt": "取左为正，a 与静止 b 发生一维弹性正碰，碰前 u_a=3 m/s、u_b=0。由弹性正碰公式 v_b=2m_a u_a/(m_a+m_b)=2 m/s，方向向左。",
+      "eq": "v_b*(m_a+m_b) - 2*m_a*v_Ma",
+      "value": {
+        "symbol": "v_b",
+        "number": 2,
+        "exact": "2",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "由弹性碰撞公式求出碰后 b 速度 2 m/s"
+    },
+    {
+      "no": 7,
+      "title": "判断带的运动方向",
+      "kind": "judgment",
+      "stmt": "传送带逆时针转动，其上表面向左运动，速度大小为 v0=1 m/s。碰后 b 以 2 m/s 向左进入传送带，相对带向左运动，故所受滑动摩擦力向右，b 向左减速。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "判断出传送带上表面向左运动且 b 相对带向左，从而确定摩擦力方向"
+    },
+    {
+      "no": 8,
+      "title": "求减速到带速时间",
+      "kind": "value",
+      "stmt": "取左为正，b 在传送带上的加速度为 -μg=-5 m/s²。由 v0=v_b-μg t1 得 t1=0.2 s。",
+      "eq": "v_b - mu*g*t1 - v0",
+      "value": {
+        "symbol": "t_1",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "s"
+      },
+      "score": 0.5,
+      "point": "求出 b 减速到与传送带同速所需时间 0.2 s"
+    },
+    {
+      "no": 9,
+      "title": "求该段位移",
+      "kind": "value",
+      "stmt": "在 t1 内 b 向左运动，位移 s1=(v_b+v0)t1/2=0.3 m。",
+      "eq": "s1 - Rational(1,2)*(v_b+v0)*t1",
+      "value": {
+        "symbol": "s_1",
+        "number": 0.3,
+        "exact": "3/10",
+        "unit": "m"
+      },
+      "score": 0.5,
+      "point": "求出减速阶段 b 向左的位移 0.3 m"
+    },
+    {
+      "no": 10,
+      "title": "求总运动时间",
+      "kind": "value",
+      "stmt": "与带同速后无相对滑动，b 与传送带同速以 1 m/s 向左匀速运动；剩余距离 L-s1=3.0 m。总时间 t=t1+(L-s1)/v0=0.2+3.0/1=3.2 s。",
+      "eq": "t_total - t1 - (L - s1)/v0",
+      "value": {
+        "symbol": "t_total",
+        "number": 3.2,
+        "exact": "16/5",
+        "unit": "s"
+      },
+      "score": 0.5,
+      "point": "得到 b 从 M 运动到 N 的总时间 3.2 s"
+    },
+    {
+      "no": 11,
+      "title": "第一个冲量后速度",
+      "kind": "value",
+      "stmt": "到 N 时 b 速度向左 1 m/s。瞬间冲量 I=6 N·s 向右，取向右为正，初速 u=-v0=-1 m/s。由 I=m_b(v1-u) 得 v1=2 m/s，方向向右。",
+      "eq": "I - m_b*(v_1 + v0)",
+      "value": {
+        "symbol": "v_1",
+        "number": 2,
+        "exact": "2",
+        "unit": "m/s"
+      },
+      "score": 0.5,
+      "point": "由冲量定理得到第一次冲量后速度 2 m/s 向右"
+    },
+    {
+      "no": 12,
+      "title": "运动到带速时间",
+      "kind": "equation",
+      "stmt": "取向右为正，传送带速度 v_B=-v0=-1 m/s。v1=2 m/s 时 b 相对带向右，摩擦力向左，加速度 a=-μg=-5 m/s²。速度规律 v=v1-μg t；经过一个间隔 Δt 时 v=2-5×0.6=-1 m/s，刚好等于带速。",
+      "eq": "v_1 - mu*g*Delta_t + v0",
+      "value": null,
+      "score": 1,
+      "point": "判断摩擦方向并验证每个 0.6 s 间隔末 b 速度恰回到带速 -1 m/s"
+    },
+    {
+      "no": 13,
+      "title": "求每段相对滑程",
+      "kind": "value",
+      "stmt": "每个完整 0.6 s 间隔内，b 相对传送带的滑行距离 s_rel=(v1+v0)Δt-Rational(1,2)μgΔt²=(2+1)×0.6-0.5×5×0.6²=0.9 m。",
+      "eq": "s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+      "value": {
+        "symbol": "s_rel",
+        "number": 0.9,
+        "exact": "9/10",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "求出一个完整间隔内 b 相对传送带的滑行距离 0.9 m"
+    },
+    {
+      "no": 14,
+      "title": "求每段位移",
+      "kind": "value",
+      "stmt": "一个完整 0.6 s 间隔内 b 的位移 d1=v1Δt-Rational(1,2)μgΔt²=2×0.6-0.5×5×0.6²=0.3 m，方向向右。",
+      "eq": "d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+      "value": {
+        "symbol": "d_1",
+        "number": 0.3,
+        "exact": "3/10",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "求出一个完整间隔内 b 向右移动 0.3 m"
+    },
+    {
+      "no": 15,
+      "title": "判断完整间隔数",
+      "kind": "judgment",
+      "stmt": "每完整间隔 b 向右移动 0.3 m。10 个完整间隔后位置 x=10×0.3=3.0 m，仍在传送带上；离 M 点还差 L-3.0=0.3 m，故第 11 个间隔开始后在到达 M 时即离开传送带。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "确定离开前经过 10 个完整间隔，并在第 11 个间隔内离开"
+    },
+    {
+      "no": 16,
+      "title": "列剩余距离方程",
+      "kind": "equation",
+      "stmt": "第 11 个间隔从 x=3.0 m、向右速度 v1=2 m/s 开始，设经 t_e 到 M。由 v1t_e-Rational(1,2)μg t_e² 等于剩余距离 0.3 m 列方程。",
+      "eq": "v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)",
+      "value": null,
+      "score": 0.5,
+      "point": "列出第 11 个间隔内到达 M 的位移方程"
+    },
+    {
+      "no": 17,
+      "title": "取舍到达时间",
+      "kind": "discussion",
+      "stmt": "方程化简为 2t_e-2.5t_e²=0.3，即 25t_e²-20t_e+3=0，两根为 0.2 s 和 0.6 s；b 先向右越过 M 离开传送带，故取较小根 t_e=0.2 s。",
+      "eq": "25*t_e**2 - 20*t_e + 3",
+      "value": null,
+      "score": 0.5,
+      "point": "正确舍去 0.6 s，取先到达 M 的 0.2 s"
+    },
+    {
+      "no": 18,
+      "title": "求末段相对滑程",
+      "kind": "value",
+      "stmt": "在 t_e=0.2 s 内，b 相对传送带的滑行距离 s_e=(v1+v0)t_e-Rational(1,2)μg t_e²=3×0.2-0.5×5×0.2²=0.5 m。",
+      "eq": "s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2",
+      "value": {
+        "symbol": "s_e",
+        "number": 0.5,
+        "exact": "1/2",
+        "unit": "m"
+      },
+      "score": 0.5,
+      "point": "求出最后一段 b 相对传送带的滑行距离 0.5 m"
+    },
+    {
+      "no": 19,
+      "title": "求总摩擦热",
+      "kind": "value",
+      "stmt": "传送带对 b 的滑动摩擦力大小 f=μm_b g=10 N。10 个完整间隔的发热 Q1=10 f s_rel=10×10×0.9 J=90 J；末段发热 Q2=f s_e=10×0.5 J=5 J；总热量 Q=Q1+Q2=95 J。",
+      "eq": "Q - mu*m_b*g*(10*s_rel + s_e)",
+      "value": {
+        "symbol": "Q",
+        "number": 95,
+        "exact": "95",
+        "unit": "J"
+      },
+      "score": 0.5,
+      "point": "综合各段相对滑行距离得到总摩擦生热 95 J"
+    }
+  ]
+}

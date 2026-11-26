@@ -1,0 +1,909 @@
+{
+  "meta": {
+    "built_at": "2026-11-25T16:18:29+08:00",
+    "schema_note": "本文件是对齐表，不属于 answer.schema（schema 只描述金标答案）。式级对齐属 Schema 1.3，本卡不碰契约。",
+    "source": "评测/基线/raw/",
+    "gold": "schema/examples/ + 采分点总表 223 步"
+  },
+  "items": [
+    {
+      "qid": "A-09",
+      "variant": "v1",
+      "raw_file": "评测/基线/raw/v1/A-09.json",
+      "verdict": "wrong",
+      "failure_type": "calc",
+      "segments": [
+        {
+          "i": 1,
+          "quote": "设 \\(M\\) 在左、\\(N\\) 在右。初始时小球在 \\(N\\) 正下方，距 \\(N\\) 为 \\(2L\\)；断绳时绳子绕过 \\(M\\)，小球在 \\(M\\) 正下方，距 \\(M\\) 为 \\(L\\)。",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "开头一句声明研究对象（小球）与初始、断绳两处几何位置，按 role=setup 不挂步。它把初始悬挂点放在 N 正下方（绳子一开始就绕过 N），后文所有高度差都由此推出。"
+        },
+        {
+          "i": 2,
+          "quote": "已知  \n\\[\nL=0.5\\ \\text{m},\\quad m=0.1\\ \\text{kg},\\quad v_0=10\\ \\text{m/s},\\quad g=10\\ \\text{m/s}^2\n\\]",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "题干给定量的重述（L、m、v₀、g），不承担采分点。"
+        },
+        {
+          "i": 3,
+          "quote": "从初始位置到断绳位置，小球升高\n\\[\n\\Delta h=2L-L=L=0.5\\ \\text{m}\n\\]",
+          "step_id": "A-09-S02",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "该高度差正是金标 S02 守恒式里重力项所对应的高度。金标取断绳点距地 2L、初始在地面（Δh=2L）；此处按上一段几何取 Δh=2L−L=L。"
+        },
+        {
+          "i": 4,
+          "quote": "由机械能守恒：\n\\[\n\\frac12 m v_0^2=\\frac12 m v^2+mgL\n\\]",
+          "step_id": "A-09-S02",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S02 同一守恒式，仅重力项写成 mgL（随上段 Δh 取法）。"
+        },
+        {
+          "i": 5,
+          "quote": "\\[\nv^2=v_0^2-2gL=100-2\\times10\\times0.5=90\n\\]",
+          "step_id": "A-09-S03",
+          "role": "equation",
+          "confidence": "high",
+          "note": "S03 的中间量 v²=90；金标由 2L 得 v²=80。"
+        },
+        {
+          "i": 6,
+          "quote": "\\[\nv=3\\sqrt{10}\\ \\text{m/s}\n\\]",
+          "step_id": "A-09-S03",
+          "role": "value",
+          "confidence": "high",
+          "note": "v=3√10≈9.49 m/s；金标 4√5≈8.94 m/s。"
+        },
+        {
+          "i": 7,
+          "quote": "断绳时小球在绕 \\(M\\) 半径为 \\(L\\) 的圆周最低点，绳张力最大：",
+          "step_id": "A-09-S04",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "为 S04 径向方程提供前提（圆周最低点张力最大）。金标 S01 的半径序列（3L→2L→L）在此未展开，题干已直接给出断绳点位置。"
+        },
+        {
+          "i": 8,
+          "quote": "\\[\nT_{\\max}-mg=m\\frac{v^2}{L}\n\\]",
+          "step_id": "A-09-S04",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S04 同一径向式 F_T−mg=mv²/L。"
+        },
+        {
+          "i": 9,
+          "quote": "\\[\nT_{\\max}=mg+m\\frac{v^2}{L}\n=0.1\\times10+0.1\\times\\frac{90}{0.5}=19\\ \\text{N}\n\\]",
+          "step_id": "A-09-S04",
+          "role": "value",
+          "confidence": "high",
+          "note": "T_max=19 N；金标 17 N。"
+        },
+        {
+          "i": 10,
+          "quote": "断绳后小球做平抛运动。抛出点距地面高度为\n\\[\nh=L=0.5\\ \\text{m}\n\\]",
+          "step_id": "A-09-S05",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "平抛的竖直高度，属 S05 分解式的前提；金标取断绳点距地 2L，此处取 h=L=0.5 m。"
+        },
+        {
+          "i": 11,
+          "quote": "平抛时间：\n\\[\nt=\\sqrt{\\frac{2h}{g}}\n=\\sqrt{\\frac{2\\times0.5}{10}}\n=\\frac1{\\sqrt{10}}\\ \\text{s}\n\\]",
+          "step_id": "A-09-S05",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S05 同一竖直分式 2h=½gt²（h 取法见上段）。"
+        },
+        {
+          "i": 12,
+          "quote": "水平距离：\n\\[\nx=vt=3\\sqrt{10}\\times\\frac1{\\sqrt{10}}=3\\ \\text{m}\n\\]",
+          "step_id": "A-09-S06",
+          "role": "value",
+          "confidence": "high",
+          "note": "x=3 m；金标 4 m。"
+        },
+        {
+          "i": 13,
+          "quote": "要使小球通过 \\(N\\) 正上方且绳不松弛，临界条件是在 \\(N\\) 正上方时绳中张力恰好为零。此时由牛顿第二定律：\n\\[\nmg=m\\frac{v_1^2}{2L}\n\\]",
+          "step_id": "A-09-S07",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S07 同一临界式：金标记作 mg=mv₂²/(2L)，临界位置在 N 正上方、半径 2L。"
+        },
+        {
+          "i": 14,
+          "quote": "\\[\nv_1^2=g\\cdot 2L=10\\times1=10\n\\]",
+          "step_id": "A-09-S07",
+          "role": "value",
+          "confidence": "high",
+          "note": "临界速度平方 v₁²=10；金标未单列此中间量，S08 直接代入。"
+        },
+        {
+          "i": 15,
+          "quote": "从初始最低点到 \\(N\\) 正上方，升高\n\\[\n\\Delta h=4L=2\\ \\text{m}\n\\]",
+          "step_id": "A-09-S08",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "该高度差对应金标 S08 守恒式的重力项。金标取 N 正上方距地 5L；此处取升高 4L（承接第 1 段把地面定在 M 下方 2L 处）。"
+        },
+        {
+          "i": 16,
+          "quote": "由机械能守恒：\n\\[\n\\frac12 m v_{\\min}^2=\\frac12 m v_1^2+mg\\cdot 4L\n\\]",
+          "step_id": "A-09-S08",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S08 同一守恒式，重力项为 mg·4L。"
+        },
+        {
+          "i": 17,
+          "quote": "\\[\nv_{\\min}^2=v_1^2+2g\\cdot4L\n=10+2\\times10\\times2=50\n\\]",
+          "step_id": "A-09-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "S09 的中间量 v_min²=50；金标 60。"
+        },
+        {
+          "i": 18,
+          "quote": "\\[\nv_{\\min}=5\\sqrt2\\ \\text{m/s}\n\\]",
+          "step_id": "A-09-S09",
+          "role": "value",
+          "confidence": "high",
+          "note": "v_min=5√2≈7.07 m/s；金标 2√15≈7.75 m/s。"
+        }
+      ],
+      "unaligned": [
+        {
+          "quote": "### 最终答案\n（1）断绳时小球速度大小为  \n\\[\n\\boxed{3\\sqrt{10}\\ \\text{m/s}}\n\\]\n绳子所受最大拉力为  \n\\[\n\\boxed{19\\ \\text{N}}\n\\]\n\n（2）平抛运动的水平距离为  \n\\[\n\\boxed{3\\ \\text{m}}\n\\]\n\n（3）初速度的最小值为  \n\\[\n\\boxed{5\\sqrt2\\ \\text{m/s}}\n\\]\n约为  \n\\[\n\\boxed{7.07\\ \\text{m/s}}\n\\]",
+          "reason": "重复：最终答案汇总，四个结果与正文同值（末项另给了 7.07 的近似值），无新增过程。"
+        }
+      ]
+    },
+    {
+      "qid": "B-17",
+      "variant": "v1",
+      "raw_file": "评测/基线/raw/v1/B-17.json",
+      "verdict": "wrong",
+      "failure_type": "calc",
+      "segments": [
+        {
+          "i": 1,
+          "quote": "设小物块质量为 \\(m\\)。",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "只声明研究对象的质量符号，不承担采分点。"
+        },
+        {
+          "i": 2,
+          "quote": "小物块恰好能到达竖直圆弧轨道的最高点 \\(D\\)，临界条件下轨道对小物块的支持力为零，由重力提供向心力：",
+          "step_id": "B-17-S01",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S01 同一判断：恰好通过最高点 ⇒ 轨道弹力为零，仅重力提供向心力。"
+        },
+        {
+          "i": 3,
+          "quote": "\\[\nmg=m\\frac{v_D^2}{R}\n\\]",
+          "step_id": "B-17-S02",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S02 同一式 mg=mv_D²/R。"
+        },
+        {
+          "i": 4,
+          "quote": "因此\n\\[\nv_D=\\sqrt{gR}\n\\]\n\n**答：**\n\\[\n\\boxed{v_D=\\sqrt{gR}\\ \\text{m/s}}\n\\]",
+          "step_id": "B-17-S03",
+          "role": "value",
+          "confidence": "high",
+          "note": "「因此…」到「答：」给的是同一结果 v_D=√(gR)。金标 S02 的结论即此式，S03 只要求结果用 g、R 表示（1 分），故这段挂 S03，S02 由上一段方程承担，避免同一式重复计入。"
+        },
+        {
+          "i": 5,
+          "quote": "由几何关系，过 \\(C\\) 点的半径与竖直方向夹角为 \\(60^\\circ\\)，因此 \\(C\\) 点到最高点 \\(D\\) 的竖直高度差为\n\\[\nh_{CD}=R-R\\cos60^\\circ=\\frac{R}{2}\n\\]",
+          "step_id": "B-17-S05",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "该高度差进入 S05 的守恒式。金标取 C 点在 D 下方 R+Rcos60°=3R/2；此处取 R−Rcos60°=R/2。"
+        },
+        {
+          "i": 6,
+          "quote": "小物块从 \\(C\\) 到 \\(D\\) 机械能守恒：\n\\[\n\\frac12mv_C^2=\\frac12mv_D^2+mgh_{CD}\n\\]",
+          "step_id": "B-17-S05",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S05 同一守恒式，h_CD 取法见上段。"
+        },
+        {
+          "i": 7,
+          "quote": "代入 \\(v_D^2=gR\\)，得：\n\\[\nv_C^2=gR+2g\\cdot\\frac{R}{2}=2gR\n\\]\n所以\n\\[\nv_C=\\sqrt{2gR}\n\\]",
+          "step_id": "B-17-S05",
+          "role": "value",
+          "confidence": "high",
+          "note": "v_C=√(2gR)；金标 v_C=2√(gR)。"
+        },
+        {
+          "i": 8,
+          "quote": "物块从 \\(B\\) 到 \\(C\\) 做平抛运动，在 \\(C\\) 点沿轨道切线方向进入，速度方向与水平方向夹角为 \\(60^\\circ\\)。因此\n\\[\nv_B=v_C\\cos60^\\circ=\\frac12\\sqrt{2gR}\n\\]",
+          "step_id": "B-17-S04",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S04 同一判断（沿切线进入 ⇒ 水平分速度 v_B=v_C cos60°），并把这式一并写出。"
+        },
+        {
+          "i": 9,
+          "quote": "竖直方向分速度\n\\[\nv_y=v_C\\sin60^\\circ\n\\]\n于是 \\(B\\) 到 \\(C\\) 的竖直下落高度\n\\[\nh_{BC}=\\frac{v_y^2}{2g}\n=\\frac{v_C^2\\sin^260^\\circ}{2g}\n=\\frac{2gR\\cdot\\frac34}{2g}\n=\\frac{3R}{4}\n\\]",
+          "step_id": "B-17-S06",
+          "role": "equation",
+          "confidence": "low",
+          "note": "金标 S06 走 B→D 的能量式 mgH_BD=½mv_D²−½mv_B²；此处改走平抛运动学，先求 h_BC。所求量同为 H_BD，故挂 S06 但置信度降为 low。"
+        },
+        {
+          "i": 10,
+          "quote": "故\n\\[\nh_{BD}=h_{BC}-h_{CD}\n=\\frac{3R}{4}-\\frac{R}{2}\n=\\frac{R}{4}\n\\]\n即 \\(B\\) 点比 \\(D\\) 点高 \\(\\frac{R}{4}\\)。\n\n**答：**\n\\[\n\\boxed{\\Delta h_{BD}=\\frac{R}{4}\\ \\text{m}}\n\\]\n其中 \\(B\\) 点比 \\(D\\) 点高。",
+          "step_id": "B-17-S07",
+          "role": "value",
+          "confidence": "high",
+          "note": "H_BD=R/4（B 比 D 高）；金标 S07 为 0（B 与 D 等高）。"
+        },
+        {
+          "i": 11,
+          "quote": "由（2）知\n\\[\nv_B=\\frac12\\sqrt{2gR}\n\\]\n所以\n\\[\nv_B^2=\\frac{gR}{2}\n\\]",
+          "step_id": "B-17-S09",
+          "role": "equation",
+          "confidence": "low",
+          "note": "为 S09 的动能定理准备 v_B²；金标该步直接以 v_B 代入，无独立中间式，故置信度 low。"
+        },
+        {
+          "i": 12,
+          "quote": "半圆形挡板半径为 \\(2R\\)，从 \\(A\\) 到 \\(B\\) 是半个圆周，路程为\n\\[\ns=\\pi(2R)=2\\pi R\n\\]",
+          "step_id": "B-17-S08",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S08 同一判断：摩擦路程取半个圆周长 2πR，不是位移 4R。"
+        },
+        {
+          "i": 13,
+          "quote": "物块与桌面间的动摩擦因数为\n\\[\n\\mu=\\frac{1}{2\\pi}\n\\]",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "题干已给 μ=1/(2π)，此处为重述，不承担采分点。"
+        },
+        {
+          "i": 14,
+          "quote": "摩擦力做功大小为\n\\[\nW_f=\\mu mgs\n=\\frac{1}{2\\pi}mg\\cdot 2\\pi R\n=mgR\n\\]",
+          "step_id": "B-17-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S09 同一摩擦功（金标写作 −μmg·2πR，此处取正号大小 W_f=mgR）。"
+        },
+        {
+          "i": 15,
+          "quote": "从 \\(A\\) 到 \\(B\\) 应用动能定理：\n\\[\n\\frac12mv_A^2-\\frac12mv_B^2=mgR\n\\]",
+          "step_id": "B-17-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S09 同一动能定理式，仅移项方向相反。"
+        },
+        {
+          "i": 16,
+          "quote": "因此\n\\[\nv_A^2=v_B^2+2gR\n=\\frac{gR}{2}+2gR\n=\\frac{5gR}{2}\n\\]",
+          "step_id": "B-17-S10",
+          "role": "equation",
+          "confidence": "high",
+          "note": "S10 的中间量 v_A²=5gR/2；金标 3gR。"
+        },
+        {
+          "i": 17,
+          "quote": "所以\n\\[\nv_A=\\sqrt{\\frac{5gR}{2}}\n\\]\n\n**答：**\n\\[\n\\boxed{v_A=\\sqrt{\\frac{5gR}{2}}\\ \\text{m/s}}\n\\]\n也可写为\n\\[\n\\boxed{v_A=\\frac{\\sqrt{10gR}}{2}\\ \\text{m/s}}\n\\]",
+          "step_id": "B-17-S10",
+          "role": "value",
+          "confidence": "high",
+          "note": "v_A=√(5gR/2)；金标 √(3gR)。「也可写为」是同一值的另一种形式。"
+        }
+      ],
+      "unaligned": [
+        {
+          "quote": "### 最终答案汇总\n\n\\[\n\\boxed{(1)\\ v_D=\\sqrt{gR}\\ \\text{m/s}}\n\\]\n\n\\[\n\\boxed{(2)\\ \\Delta h_{BD}=\\frac{R}{4}\\ \\text{m},\\quad B\\text{点比}D\\text{点高}}\n\\]\n\n\\[\n\\boxed{(3)\\ v_A=\\sqrt{\\frac{5gR}{2}}\\ \\text{m/s}\n=\\frac{\\sqrt{10gR}}{2}\\ \\text{m/s}}\n\\]\n\n以上式中 \\(g\\) 的单位为 \\(\\text{m/s}^2\\)，\\(R\\) 的单位为 \\(\\text{m}\\)。",
+          "reason": "重复：最终答案汇总，三问结果与正文同值；末句只是单位说明。"
+        }
+      ]
+    },
+    {
+      "qid": "B-15",
+      "variant": "v2",
+      "raw_file": "评测/基线/raw/v2/B-15.json",
+      "verdict": "wrong",
+      "failure_type": "calc",
+      "segments": [
+        {
+          "i": 1,
+          "quote": "1. **研究对象与过程划分**  \n   将滑雪者视为质点。  \n   - 过程①：从 \\(A\\) 点由静止沿倾角为 \\(45^\\circ\\) 的坡道滑到 \\(P\\) 点；\n   - 过程②：从 \\(A\\) 点滑到 \\(B\\) 点并从 \\(B\\) 点水平飞出；\n   - 过程③：从 \\(B\\) 点水平飞出后做平抛运动，落在缓冲坡 \\(CD\\) 上。  ",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "过程划分与研究对象声明，不承担采分点。"
+        },
+        {
+          "i": 2,
+          "quote": "   题中“从 \\(P\\) 点由静止下滑恰好到达 \\(B\\) 点”说明 \\(P\\to B\\) 过程中重力做功恰好等于克服摩擦力做功，即到 \\(B\\) 点速度为零。",
+          "step_id": "B-15-S03",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S03 同一判断：P→B 恰好到达 ⇒ 该段合功为零。金标由此推出「A→B 到 B 的速度与 A→P 到 P 时相同」；此处改用「A→B 与 P→B 的净功之差」表达同一结论（见下方 S04 段）。"
+        },
+        {
+          "i": 3,
+          "quote": "   沿坡道方向的加速度由牛顿第二定律得\n   \\[\n   ma=mg\\sin45^\\circ-\\mu mg\\cos45^\\circ,\n   \\]",
+          "step_id": "B-15-S01",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S01 同一式 mg sin45°−μmg cos45°=ma。"
+        },
+        {
+          "i": 4,
+          "quote": "   所以\n   \\[\n   a=g(\\sin45^\\circ-\\mu\\cos45^\\circ)\n    =\\frac{g}{\\sqrt2}(1-\\mu).\n   \\]",
+          "step_id": "B-15-S02",
+          "role": "equation",
+          "confidence": "high",
+          "note": "S02 的 a 式，与金标同形。"
+        },
+        {
+          "i": 5,
+          "quote": "   由匀加速直线运动公式\n   \\[\n   d=\\frac12 at^2,\n   \\]\n   得\n   \\[\n   t=\\sqrt{\\frac{2d}{a}}\n   =\\sqrt{\\frac{2\\sqrt2\\,d}{g(1-\\mu)}}.\n   \\]",
+          "step_id": "B-15-S02",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S02 同一结果 t=√(2√2d/((1−μ)g))，此处由 d=½at² 导出。"
+        },
+        {
+          "i": 6,
+          "quote": "   对 \\(P\\to B\\) 过程，因恰好到达 \\(B\\) 点，末速度为零，故该段重力做功等于克服摩擦力做功。  \n   比较 \\(A\\to B\\) 与 \\(P\\to B\\) 两过程，多出的净功来自 \\(A\\to P\\) 段：",
+          "step_id": "B-15-S04",
+          "role": "judgment",
+          "confidence": "low",
+          "note": "承接 S03 的「净功为零」，改用 A→B 与 P→B 的净功之差求 v；金标 S04 走 v²=2ad。目标量相同、路径不同，置信度 low。"
+        },
+        {
+          "i": 7,
+          "quote": "   \\[\n   \\frac12 mv^2\n   =mgd\\sin45^\\circ-\\mu mgd\\cos45^\\circ.\n   \\]",
+          "step_id": "B-15-S04",
+          "role": "equation",
+          "confidence": "high",
+          "note": "上述净功之差的方程；金标无此式（金标用 v²=2ad）。"
+        },
+        {
+          "i": 8,
+          "quote": "   因此\n   \\[\n   \\frac12 v^2=g d(\\sin45^\\circ-\\mu\\cos45^\\circ)\n   =\\frac{g d(1-\\mu)}{\\sqrt2},\n   \\]",
+          "step_id": "B-15-S04",
+          "role": "equation",
+          "confidence": "high",
+          "note": "化简到 ½v²=gd(1−μ)/√2。"
+        },
+        {
+          "i": 9,
+          "quote": "   从而\n   \\[\n   v=\\sqrt{2gd(\\sin45^\\circ-\\mu\\cos45^\\circ)}\n   =\\sqrt{\\sqrt2\\,gd(1-\\mu)}.\n   \\]",
+          "step_id": "B-15-S05",
+          "role": "value",
+          "confidence": "high",
+          "note": "v=√(√2gd(1−μ))，与金标 S04 结果同形。S04 已由上面两段方程承担，此处把最终式挂到 S05（结果只用题给符号 d、μ、g 表示，不含 a、t）——该步没有独立文本，只能由结果式体现。"
+        },
+        {
+          "i": 10,
+          "quote": "   速度方向沿水平道末端方向，即从 \\(B\\) 点水平飞出。",
+          "step_id": "B-15-S06",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "该句判定 B 点飞出方向。金标 S06 为「沿 45° 坡道方向，飞出后做斜抛」；此处判为水平飞出，后文据此按平抛处理。"
+        },
+        {
+          "i": 11,
+          "quote": "   建立平抛运动方程，取 \\(B\\) 为原点，水平向右为 \\(x\\) 轴，竖直向下为 \\(y\\) 轴：\n   \\[\n   x=vt,\\qquad y=\\frac12 gt^2.\n   \\]\n   消去 \\(t\\)，得轨迹方程\n   \\[\n   y=\\frac{g x^2}{2v^2}.\n   \\]",
+          "step_id": "B-15-S07",
+          "role": "equation",
+          "confidence": "low",
+          "note": "金标 S07 用斜抛射程 L=v cos45°·(2v sin45°/g)=v²/g；此处改按平抛轨迹与 45° 缓冲坡相切求平台长度上限。方法不同、目标量同为 L，置信度 low。"
+        },
+        {
+          "i": 12,
+          "quote": "   平台 \\(BC\\) 水平，长度为 \\(L\\)，缓冲坡 \\(CD\\) 与水平方向成 \\(45^\\circ\\)。对临界情况，轨迹恰与 \\(CD\\) 相切，令\n   \\[\n   y=x-L.\n   \\]\n   联立得\n   \\[\n   \\frac{g x^2}{2v^2}=x-L,\n   \\]\n   即\n   \\[\n   g x^2-2v^2x+2v^2L=0.\n   \\]\n   能落在 \\(CD\\) 上的条件是该方程有实根：\n   \\[\n   \\Delta=(2v^2)^2-4g(2v^2L)\\ge 0,\n   \\]\n   得\n   \\[\n   L\\le \\frac{v^2}{2g}.\n   \\]",
+          "step_id": "B-15-S07",
+          "role": "equation",
+          "confidence": "high",
+          "note": "相切条件与判别式 Δ≥0 的推导，得 L≤v²/(2g)。金标同一问的结果为 L=v²/g。"
+        },
+        {
+          "i": 13,
+          "quote": "   故平台 \\(BC\\) 的最大长度为\n   \\[\n   L_{\\max}=\\frac{v^2}{2g}\n   =\\frac{\\sqrt2}{2}d(1-\\mu)\n   =\\frac{d(1-\\mu)}{\\sqrt2}.\n   \\]",
+          "step_id": "B-15-S08",
+          "role": "value",
+          "confidence": "high",
+          "note": "L_max=√2/2·d(1−μ)=d(1−μ)/√2；金标 √2d(1−μ)，二者差 2 倍。"
+        }
+      ],
+      "unaligned": [
+        {
+          "quote": "3. **求解结果**\n   \\[\n   \\boxed{t=\\sqrt{\\frac{2\\sqrt2\\,d}{g(1-\\mu)}}}\n   \\]\n   \\[\n   \\boxed{v=\\sqrt{\\sqrt2\\,gd(1-\\mu)}}\n   \\]\n   方向：从 \\(B\\) 点沿水平道末端方向水平飞出。\n\n   \\[\n   \\boxed{L_{\\max}=\\frac{\\sqrt2}{2}d(1-\\mu)}\n   \\]\n   或写成\n   \\[\n   \\boxed{L_{\\max}=\\frac{d(1-\\mu)}{\\sqrt2}}.\n   \\]\n\n   各量单位分别为：\\(t\\) 的单位为 \\(\\mathrm{s}\\)，\\(v\\) 的单位为 \\(\\mathrm{m/s}\\)，\\(L\\) 的单位为 \\(\\mathrm{m}\\)。",
+          "reason": "重复：结果汇总，三问答案与正文同值，末句为单位说明。"
+        },
+        {
+          "quote": "4. **必要的讨论**\n   - 为使滑雪者能从 \\(A\\) 点由静止下滑，需\n     \\[\n     \\mu<1.\n     \\]\n     若 \\(\\mu\\ge 1\\)，在 \\(45^\\circ\\) 坡道上重力沿坡分量不大于最大摩擦力，不能按题意加速下滑。\n   - 第 (3) 问中，\\(L=L_{\\max}\\) 时，平抛轨迹恰好与缓冲坡 \\(CD\\) 相切，是“能着陆在 \\(CD\\) 上”的临界情形。  \n     若 \\(L>L_{\\max}\\)，平抛轨迹与缓冲坡无交点，滑雪者不能着陆在 \\(CD\\) 上。\n   - 题中“从 \\(P\\) 点由静止下滑恰好到达 \\(B\\) 点”用于确定 \\(P\\to B\\) 段末速度为零，从而在比较 \\(A\\to B\\) 过程时消去未知的 \\(P\\to B\\) 段能量损失。",
+          "reason": "讨论与自我检查：μ<1 的可行性、L=L_max 的临界说明、以及 P→B 用途的重述。均无新增采分内容，末条与 S03 重复。"
+        }
+      ]
+    },
+    {
+      "qid": "B-17",
+      "variant": "v3",
+      "raw_file": "评测/基线/raw/v3/B-17.json",
+      "verdict": "wrong",
+      "failure_type": "calc",
+      "segments": [
+        {
+          "i": 1,
+          "quote": "设小物块质量为 \\(m\\)，半圆挡板半径为 \\(2R\\)，圆弧轨道半径为 \\(R\\)。",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "声明质量与两个半径符号，不承担采分点。"
+        },
+        {
+          "i": 2,
+          "quote": "1. 研究对象与过程：小物块；过程分为 \\(A\\to B\\) 在水平桌面上沿半圆挡板内侧滑动，\\(B\\to C\\) 平抛运动，\\(C\\to D\\) 沿光滑圆弧轨道内侧运动到最高点 \\(D\\)。",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "过程划分（A→B 滑动、B→C 平抛、C→D 圆弧），不承担采分点。"
+        },
+        {
+          "i": 3,
+          "quote": "(1) 小物块恰好到达最高点 \\(D\\)，临界条件下轨道对小物块的压力为零，重力提供向心力：",
+          "step_id": "B-17-S01",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S01 同一判断（恰好到达最高点 ⇒ 压力为零，重力提供向心力）。"
+        },
+        {
+          "i": 4,
+          "quote": "\\[\nmg=m\\frac{v_D^2}{R}\n\\]",
+          "step_id": "B-17-S02",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S02 同一式。"
+        },
+        {
+          "i": 5,
+          "quote": "故\n\\[\nv_D=\\sqrt{gR}\n\\]",
+          "step_id": "B-17-S03",
+          "role": "value",
+          "confidence": "high",
+          "note": "结果只用 g、R 表示，满足 S03；S02 由上一段方程承担，避免同一式重复计入。"
+        },
+        {
+          "i": 6,
+          "quote": "(2) 按图示，\\(C\\) 点低于 \\(D\\) 点，高度差为\n\\[\nh_{CD}=R+R\\cos60^\\circ=\\frac{3R}{2}\n\\]",
+          "step_id": "B-17-S05",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S05 的高度差一致（C 在 D 下方 R+Rcos60°=3R/2）。"
+        },
+        {
+          "i": 7,
+          "quote": "由 \\(C\\to D\\) 机械能守恒：\n\\[\n\\frac12mv_C^2=\\frac12mv_D^2+mg\\frac{3R}{2}\n\\]",
+          "step_id": "B-17-S05",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S05 同一守恒式。"
+        },
+        {
+          "i": 8,
+          "quote": "代入 \\(v_D^2=gR\\)，得\n\\[\nv_C^2=gR+3gR=4gR\n\\]\n\\[\nv_C=2\\sqrt{gR}\n\\]",
+          "step_id": "B-17-S05",
+          "role": "value",
+          "confidence": "high",
+          "note": "v_C=2√(gR)，与金标 S05 结果一致。"
+        },
+        {
+          "i": 9,
+          "quote": "在 \\(C\\) 点速度沿轨道切线方向，因过 \\(C\\) 点的半径与竖直方向夹角为 \\(60^\\circ\\)，切线与水平方向夹角为 \\(30^\\circ\\)。  ",
+          "step_id": "B-17-S04",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "该句判定 C 点切线方向。金标 S04 为切线与水平成 60°（v_B=v_C cos60°）；此处判为 30°。"
+        },
+        {
+          "i": 10,
+          "quote": "小物块从 \\(B\\to C\\) 做平抛运动：\n\\[\nv_{Cy}=v_C\\sin30^\\circ=\\sqrt{gR}\n\\]\n故 \\(B\\) 到 \\(C\\) 的竖直下降高度为\n\\[\nh_{BC}=\\frac{v_{Cy}^2}{2g}=\\frac{R}{2}\n\\]",
+          "step_id": "B-17-S06",
+          "role": "equation",
+          "confidence": "low",
+          "note": "金标 S06 走 B→D 能量式；此处改走平抛运动学求 h_BC，所求量同为 H_BD，置信度 low。"
+        },
+        {
+          "i": 11,
+          "quote": "于是\n\\[\nh_{BD}=h_{CD}-h_{BC}\n=\\frac{3R}{2}-\\frac{R}{2}=R\n\\]\n即 \\(D\\) 点比 \\(B\\) 点高 \\(R\\)。",
+          "step_id": "B-17-S07",
+          "role": "value",
+          "confidence": "high",
+          "note": "H_BD=R（D 比 B 高 R）；金标 S07 为 0。"
+        },
+        {
+          "i": 12,
+          "quote": "同时，\n\\[\nv_B=v_C\\cos30^\\circ\n=2\\sqrt{gR}\\cdot\\frac{\\sqrt3}{2}\n=\\sqrt{3gR}\n\\]",
+          "step_id": "B-17-S04",
+          "role": "value",
+          "confidence": "high",
+          "note": "金标 S04 为 v_B=v_C cos60°=√(gR)；此处用 cos30° 得 √(3gR)。对齐依据是它承担 S04 的 v_B 计算；该值与金标 S10 的 v_A=√(3gR) 同形，但不是对齐依据。"
+        },
+        {
+          "i": 13,
+          "quote": "(3) 小物块在桌面上从 \\(A\\) 到 \\(B\\) 沿半圆挡板运动，路程为\n\\[\ns=\\pi(2R)=2\\pi R\n\\]",
+          "step_id": "B-17-S08",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S08 同一判断（摩擦路程 2πR）。"
+        },
+        {
+          "i": 14,
+          "quote": "摩擦力做功为\n\\[\nW_f=-\\mu mgs\n=-\\frac1{2\\pi}mg\\cdot2\\pi R\n=-mgR\n\\]",
+          "step_id": "B-17-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S09 同一摩擦功 −μmg·2πR=−mgR。"
+        },
+        {
+          "i": 15,
+          "quote": "由动能定理：\n\\[\n\\frac12mv_B^2-\\frac12mv_A^2=-mgR\n\\]",
+          "step_id": "B-17-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S09 同一动能定理式。"
+        },
+        {
+          "i": 16,
+          "quote": "所以\n\\[\nv_A^2=v_B^2+2gR\n=3gR+2gR=5gR\n\\]",
+          "step_id": "B-17-S10",
+          "role": "equation",
+          "confidence": "high",
+          "note": "S10 的中间量 v_A²=5gR；金标 3gR。"
+        },
+        {
+          "i": 17,
+          "quote": "\\[\nv_A=\\sqrt{5gR}\n\\]",
+          "step_id": "B-17-S10",
+          "role": "value",
+          "confidence": "high",
+          "note": "v_A=√(5gR)；金标 √(3gR)。"
+        }
+      ],
+      "unaligned": [
+        {
+          "quote": "3. 结果：\n\\[\n(1)\\quad v_D=\\sqrt{gR}\n\\]\n\\[\n(2)\\quad B、D\\ 两点间高度差为\\ R，且\\ D\\ 点比\\ B\\ 点高\\ R\n\\]\n\\[\n(3)\\quad v_A=\\sqrt{5gR}\n\\]",
+          "reason": "重复：结果汇总，三问与正文同值。"
+        },
+        {
+          "quote": "4. 讨论：最高点 \\(D\\) 取恰好通过时的临界条件，压力为零；速度方向由“沿圆弧切线方向进入”唯一确定，本题无临界舍根。",
+          "reason": "自我检查/讨论：首句重复 S01 的临界判断，后句说明无舍根，无新增采分内容。"
+        }
+      ]
+    },
+    {
+      "qid": "B-18",
+      "variant": "v3",
+      "raw_file": "评测/基线/raw/v3/B-18.json",
+      "verdict": "wrong",
+      "failure_type": "calc",
+      "segments": [
+        {
+          "i": 1,
+          "quote": "1. 研究对象与过程：  \n   滑块1从AB上高 \\(h\\) 处由静止下滑，在C点与滑块2发生完全非弹性碰撞，碰后组合为质量 \\(2m\\) 的滑块3；此后滑块3经竖直半圆轨道、水平轨道、粗糙斜面EF后从F点抛出，与高台GHI发生落点、反弹，最终讨论是否落入I点洞中。",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "研究对象与过程声明（含反弹规则的复述），不承担采分点。"
+        },
+        {
+          "i": 2,
+          "quote": "   滑块1到C前：  \n   \\[\n   v_1^2=2gh\n   \\]",
+          "step_id": "B-18-S01",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S01 同一式 mgh=½mv₀²；但模型只留 v₁²=2gh，没有单独写出 v₀=4 m/s。"
+        },
+        {
+          "i": 3,
+          "quote": "   C点完全非弹性碰撞：  \n   \\[\n   mv_1=2mv_C\n   \\]\n   得\n   \\[\n   v_C^2=\\frac{gh}{2}=5h\n   \\]\n   （取 \\(g=10\\,\\mathrm{m/s^2}\\)）。",
+          "step_id": "B-18-S02",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S02 同一碰撞式 mv₁=2mv_C，并化为 v_C²=gh/2。"
+        },
+        {
+          "i": 4,
+          "quote": "   （1）当 \\(h=0.8\\,\\mathrm m\\) 时：\n   \\[\n   v_C=\\sqrt{5\\times0.8}=2\\,\\mathrm{m/s}\n   \\]",
+          "step_id": "B-18-S02",
+          "role": "value",
+          "confidence": "high",
+          "note": "v_C=2 m/s，与金标 S02 结果一致。"
+        },
+        {
+          "i": 5,
+          "quote": "   （2）滑块3恰好通过圆轨道最高点C′时，最高点临界条件：\n   \\[\n   v_{\\text{top}}^2=gR\n   \\]",
+          "step_id": "B-18-S03",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S03 同一临界条件（金标记作 2mg=2m·v_D²/R，等效 v²=gR）。"
+        },
+        {
+          "i": 6,
+          "quote": "   从C到C′机械能守恒：\n   \\[\n   v_C^2=v_{\\text{top}}^2+4gR=5gR\n   \\]\n   所以",
+          "step_id": "B-18-S04",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S04 同一路径：C→C′ 机械能守恒，再逆推 h。"
+        },
+        {
+          "i": 7,
+          "quote": "   \\[\n   5h=5gR=5\\times10\\times0.2=10\n   \\]\n   \\[\n   h=2.0\\,\\mathrm m\n   \\]",
+          "step_id": "B-18-S04",
+          "role": "value",
+          "confidence": "high",
+          "note": "h=2.0 m，与金标 S04 结果一致。"
+        },
+        {
+          "i": 8,
+          "quote": "   （3）从C到F，对滑块3用能量守恒：\n   \\[\n   v_F^2=v_C^2-2g(2R+L\\sin37^\\circ)-2\\mu gL\\cos37^\\circ\n   \\]\n   代入\n   \\[\n   L=\\frac5{16}\\,\\mathrm m,\\quad \\sin37^\\circ=0.6,\\quad \\cos37^\\circ=0.8,\\quad \\mu=0.25\n   \\]\n   得\n   \\[\n   v_F^2=5h-13\n   \\]",
+          "step_id": "B-18-S08",
+          "role": "equation",
+          "confidence": "low",
+          "note": "金标 S08 把 C′→F 的动能定理（含 EF 段摩擦 μmg cos37°·L）作为最后反推 h 的工具；此处提前给出通用式 v_F²=5h−13。金标反推所用的等效关系是 v_F²=5h−5（h=2.5→7.5、h=2→5），两式常数项不同，但同属 C→F 的能量关系，故挂 S08 且置信度 low。"
+        },
+        {
+          "i": 9,
+          "quote": "   F点抛出后，第一次落回同一高度处的水平距离为\n   \\[\n   s=\\frac{v_F^2\\sin74^\\circ}{g}\n   =\\frac{v_F^2}{10}\\cdot\\frac{24}{25}\n   =\\frac{12}{125}v_F^2\n   \\]",
+          "step_id": "B-18-S06",
+          "role": "equation",
+          "confidence": "low",
+          "note": "该式即金标 S06/S07 共用的射程式（v_F cos37°·2v_F sin37°/g = v_F² sin74°/g）。S07 的反弹情形另按 1.5 倍飞行时间处理，此处用等比和表达，故挂 S06 且置信度 low。"
+        },
+        {
+          "i": 10,
+          "quote": "   每次在GH段反弹后，竖直分速度减半，因此下一次水平飞行距离减半。第 \\(n\\) 次落点距F的水平距离为\n   \\[\n   X_n=s\\left(1+\\frac12+\\cdots+\\frac1{2^{n-1}}\\right)\n   \\]",
+          "step_id": "B-18-S05",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S05 同一判断（反弹后竖直分速度减半，故水平飞行距离减半）。金标只列「直接落入」与「反弹一次」两种情形，此处推广到 n 次并据此展开多解。"
+        },
+        {
+          "i": 11,
+          "quote": "   I点距F：\n   \\[\n   X_I=L_{FG}+L_{GH}+L_{HI}\n   =0.4+0.22+0.1=0.72\\,\\mathrm m\n   \\]\n   要求\n   \\[\n   X_n=0.72\n   \\]",
+          "step_id": "B-18-S06",
+          "role": "equation",
+          "confidence": "high",
+          "note": "0.72 m 的落点条件，对应金标 S06 的直接落入。"
+        },
+        {
+          "i": 12,
+          "quote": "   分别讨论：\n   - \\(n=1\\)：直接落入I点，\n     \\[\n     s=0.72=\\frac{18}{25}\n     \\]",
+          "step_id": "B-18-S06",
+          "role": "equation",
+          "confidence": "high",
+          "note": "n=1 直接落入：s=0.72，由 s=12v_F²/125 得 v_F²=7.5，与金标 S06 一致。"
+        },
+        {
+          "i": 13,
+          "quote": "   - \\(n=2\\)：先落在GH段再反弹入洞，\n     \\[\n     s=\\frac{0.72}{1+\\frac12}=0.48=\\frac{12}{25}\n     \\]",
+          "step_id": "B-18-S07",
+          "role": "equation",
+          "confidence": "high",
+          "note": "等价于金标 S07：0.72=v_F′cos37°·3v_F′sin37°/g，即 1.5s=0.72，得 v_F′²=5。"
+        },
+        {
+          "i": 14,
+          "quote": "   由\n   \\[\n   s=\\frac{12}{125}(5h-13)\n   \\]\n   得对应高度：",
+          "step_id": "B-18-S08",
+          "role": "equation",
+          "confidence": "high",
+          "note": "由 s=12(5h−13)/125 反解 h，与金标 S08 的反推动作相同。"
+        },
+        {
+          "i": 15,
+          "quote": "   - \\(s=\\frac{72}{175}\\)：\n     \\[\n     h=\\frac{121}{35}\\,\\mathrm m\n     \\]\n   - \\(s=\\frac{12}{25}\\)：\n     \\[\n     h=\\frac{18}{5}\\,\\mathrm m\n     \\]\n   - \\(s=\\frac{18}{25}\\)：\n     \\[\n     h=\\frac{41}{10}\\,\\mathrm m\n     \\]",
+          "step_id": "B-18-S08",
+          "role": "value",
+          "confidence": "high",
+          "note": "h=121/35、18/5、41/10（≈3.46、3.60、4.10 m）；金标 S08 为 2.5 m 或 2 m。"
+        }
+      ],
+      "unaligned": [
+        {
+          "quote": "   - \\(n=3\\)：\n     \\[\n     s=\\frac{0.72}{1+\\frac12+\\frac14}\n     =\\frac{72}{175}\n     \\]\n     此时\n     \\[\n     X_2=\\frac32s=\\frac{108}{175}\\approx0.617<0.62\n     \\]\n     仍在GH段内，可再次反弹，故有效。\n   - \\(n\\ge4\\) 时，\n     \\[\n     s\\le \\frac{0.72}{1+\\frac12+\\frac14+\\frac18}\n     =0.384<0.4\n     \\]\n     第一次落点已在G点左侧，不能进入高台，舍去。",
+          "reason": "超出金标情形：金标 S05 只列直接落入与反弹一次两种，n=3、n≥4 两段是模型自设的推广情形，采分点表无对应步。"
+        },
+        {
+          "quote": "3. 结果：  \n   （1）碰撞后瞬间滑块3的速度大小：\n   \\[\n   \\boxed{v_C=2\\,\\mathrm{m/s}}\n   \\]\n   方向与滑块1碰前速度方向相同。\n\n   （2）滑块3恰好通过圆轨道时：\n   \\[\n   \\boxed{h=2.0\\,\\mathrm m}\n   \\]\n\n   （3）游戏成功的高度为：\n   \\[\n   \\boxed{h=\\frac{121}{35}\\,\\mathrm m,\\quad \\frac{18}{5}\\,\\mathrm m,\\quad \\frac{41}{10}\\,\\mathrm m}\n   \\]\n   即\n   \\[\n   \\boxed{h\\approx3.46\\,\\mathrm m,\\ 3.60\\,\\mathrm m,\\ 4.10\\,\\mathrm m}\n   \\]",
+          "reason": "重复：结果汇总，三问（含三个 h 值及其近似值）与正文同值。"
+        },
+        {
+          "quote": "4. 讨论：  \n   上述三个高度分别对应滑块3经3次、2次、1次与水平面相遇后落入I点洞中。若 \\(h\\) 取其他值，滑块3要么不能通过圆轨道或不能到达F点，要么第一次落点不在GH段，要么在H点右侧停止，均不能成功。本题无临界舍根问题，满足条件的 \\(h\\) 为上述三个离散值。",
+          "reason": "自我讨论：把三个解分别对应到反弹次数，并声明无舍根；无新增采分内容。"
+        }
+      ]
+    },
+    {
+      "qid": "B-20",
+      "variant": "v3",
+      "raw_file": "评测/基线/raw/v3/B-20.json",
+      "verdict": "wrong",
+      "failure_type": "guessed_without_figure",
+      "segments": [
+        {
+          "i": 1,
+          "quote": "1. 研究对象与过程：  \n（1）轨道固定，小物块做竖直平面内圆周运动，研究小物块经过最高点 \\(Q\\) 时的瞬时状态。  \n（2）轨道不固定。推力较小时，小物块与轨道无相对滑动；推力超过临界值后，小物块相对轨道滑动。  \n（ⅱ）中 \\(F=8\\ \\mathrm N\\) 时物块相对轨道滑动，到达 \\(P\\) 前二者做不同加速度的匀加速运动；撤去 \\(F\\) 后，轨道与物块系统水平方向动量守恒，且轨道半圆形部分光滑，机械能守恒。",
+          "step_id": null,
+          "role": "setup",
+          "confidence": "high",
+          "note": "过程声明。其中「推力超过临界值后相对滑动」未给临界值，临界值在后文由图读出。"
+        },
+        {
+          "i": 2,
+          "quote": "（1）在 \\(Q\\) 点，轨道对物块的弹力与重力同向下，由牛顿第二定律：",
+          "step_id": "B-20-S01",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "与金标 S01 同一判断（3mg 与 mg 同向）。"
+        },
+        {
+          "i": 3,
+          "quote": "\\[\nN+mg=m\\frac{v^2}{R},\\qquad N=3mg\n\\]",
+          "step_id": "B-20-S02",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S02 同一式 N+mg=mv²/R，N=3mg。"
+        },
+        {
+          "i": 4,
+          "quote": "所以\n\\[\n4mg=m\\frac{v^2}{R}\n\\Rightarrow v=\\sqrt{4gR}\n=\\sqrt{4\\times10\\times0.4}=4\\ \\mathrm{m/s}\n\\]",
+          "step_id": "B-20-S03",
+          "role": "value",
+          "confidence": "high",
+          "note": "v=4 m/s，与金标 S03 一致（(1) 问不依赖图）。"
+        },
+        {
+          "i": 5,
+          "quote": "（2）（ⅰ）由题图乙可知：折点为\n\\[\nF=4\\ \\mathrm N,\\quad a=1\\ \\mathrm{m/s^2},\n\\]\n且相对滑动后的图线过\n\\[\nF=8\\ \\mathrm N,\\quad a=3\\ \\mathrm{m/s^2}.\n\\]",
+          "step_id": "B-20-S04",
+          "role": "judgment",
+          "confidence": "high",
+          "note": "题干（2）（ⅱ）只给了 F=8 N 一个数；折点坐标 (4 N, 1 m/s²) 与滑动段点 (8 N, 3 m/s²) 的读数在题干文字中都没有。金标图乙登记的 provides 是 k₁=0.5 kg⁻¹、k₂=1 kg⁻¹、b₂=−2 m/s²，对应折点 (4 N, 2 m/s²)。模型补出的读数与金标登记值不一致——这是 guessed_without_figure 的实证点。",
+          "invented_from_figure": true
+        },
+        {
+          "i": 6,
+          "quote": "无相对滑动时：\n\\[\na=\\frac{F}{M+m}\n\\]\n其斜率为\n\\[\n\\frac{1}{M+m}=\\frac14\n\\Rightarrow M+m=4\\ \\mathrm{kg}.\n\\]",
+          "step_id": "B-20-S05",
+          "role": "equation",
+          "confidence": "high",
+          "note": "斜率 1/(M+m)=1/4 由上段补出的 (4 N, 1 m/s²) 算得；金标 k₁=0.5 kg⁻¹（即 1/(M+m)，M+m=2 kg）。",
+          "invented_from_figure": true
+        },
+        {
+          "i": 7,
+          "quote": "临界时 \\(a=\\mu g\\)，故\n\\[\n\\mu g=1\\Rightarrow \\mu=0.1.\n\\]",
+          "step_id": "B-20-S05",
+          "role": "equation",
+          "confidence": "high",
+          "note": "临界时 a=μg 取的是补出的折点纵坐标 1 m/s²，得 μ=0.1；金标由 b₂=−2 m/s² 得 μ=0.2。",
+          "invented_from_figure": true
+        },
+        {
+          "i": 8,
+          "quote": "相对滑动后：\n\\[\na=\\frac{F-\\mu mg}{M},\n\\]\n图线斜率为\n\\[\n\\frac1M=\\frac{3-1}{8-4}=\\frac12\n\\Rightarrow M=2\\ \\mathrm{kg}.\n\\]",
+          "step_id": "B-20-S05",
+          "role": "equation",
+          "confidence": "high",
+          "note": "斜率由补出的两点 (4,1)、(8,3) 算得 1/2，得 M=2 kg；金标 k₂=1 kg⁻¹，M=1 kg。",
+          "invented_from_figure": true
+        },
+        {
+          "i": 9,
+          "quote": "于是\n\\[\nm=4-2=2\\ \\mathrm{kg}.\n\\]",
+          "step_id": "B-20-S06",
+          "role": "value",
+          "confidence": "high",
+          "note": "m=4−2=2 kg；金标 M=1 kg、m=1 kg、μ=0.2。此处三个参数全部由图读数补出。",
+          "invented_from_figure": true
+        },
+        {
+          "i": 10,
+          "quote": "（ⅱ）\\(F=8\\ \\mathrm N>4\\ \\mathrm N\\)，物块相对轨道向右滑动。  \n轨道加速度：\n\\[\na_T=\\frac{F-\\mu mg}{M}\n=\\frac{8-0.1\\times2\\times10}{2}\n=3\\ \\mathrm{m/s^2}",
+          "step_id": "B-20-S07",
+          "role": "equation",
+          "confidence": "high",
+          "note": "由补出的 μ=0.1、m=2 kg、M=2 kg 代入得 a_T=3 m/s²（金标 S07 为 6 m/s²）。该数值同样不在题干中，但它由已补出的参数算得、不是新的读图动作，按本卡口径不重复标 invented_from_figure。"
+        },
+        {
+          "i": 11,
+          "quote": "物块加速度：\n\\[\na_B=\\mu g=1\\ \\mathrm{m/s^2}.\n\\]\n物块相对轨道的加速度大小：\n\\[\na_{\\rm rel}=a_T-a_B=2\\ \\mathrm{m/s^2}.\n\\]",
+          "step_id": "B-20-S07",
+          "role": "equation",
+          "confidence": "high",
+          "note": "a_B=μg=1 m/s²、a_rel=2 m/s²；金标为 a_物=2 m/s²、a_rel=4 m/s²。参数沿用上文补出值。"
+        },
+        {
+          "i": 12,
+          "quote": "设从开始到物块到达 \\(P\\) 所用时间为 \\(t\\)，则\n\\[\nL=\\frac12 a_{\\rm rel}t^2=t^2.\n\\]",
+          "step_id": "B-20-S08",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S08 同一关系 L=½a_rel t²（a_rel 取 2 而非 4）。"
+        },
+        {
+          "i": 13,
+          "quote": "到达 \\(P\\) 时，轨道向左速度\n\\[\nV=3t,\n\\]\n物块向左速度\n\\[\nu=t.\n\\]",
+          "step_id": "B-20-S08",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S08 同一组速度式，系数随 a_T 变化（此处 V=3t、u=t；金标 6t、2t）。"
+        },
+        {
+          "i": 14,
+          "quote": "撤去 \\(F\\) 后到 \\(Q\\) 点，设轨道速度为 \\(U\\)（向左），物块相对地面速度为 \\(7\\ \\mathrm{m/s}\\)（向左）。水平方向动量守恒：\n\\[\nM V+m u=MU+m\\cdot 7,\n\\]\n即\n\\[\n2(3t)+2t=2U+2\\times7,\n\\]\n得\n\\[\nU=4t-7.\n\\]",
+          "step_id": "B-20-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S09 同一动量守恒式（质量取 2 kg、速度系数取 3t 与 t）。"
+        },
+        {
+          "i": 15,
+          "quote": "从 \\(P\\) 到 \\(Q\\) 机械能守恒：\n\\[\n\\frac12 M V^2+\\frac12 m u^2\n=\n\\frac12 M U^2+\\frac12 m\\cdot7^2+mg(2R).\n\\]",
+          "step_id": "B-20-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S09 同一机械能守恒式（含 mg·2R）。"
+        },
+        {
+          "i": 16,
+          "quote": "代入数值：\n\\[\n\\frac12\\cdot2(3t)^2+\\frac12\\cdot2t^2\n=\n\\frac12\\cdot2U^2+\\frac12\\cdot2\\times49\n+2\\times10\\times(2\\times0.4),\n\\]\n化简得\n\\[\n10t^2=U^2+65.\n\\]",
+          "step_id": "B-20-S09",
+          "role": "equation",
+          "confidence": "high",
+          "note": "代入数值后的化简结果 10t²=U²+65。"
+        },
+        {
+          "i": 17,
+          "quote": "代入 \\(U=4t-7\\)：\n\\[\n10t^2=(4t-7)^2+65,\n\\]\n\\[\n3t^2-28t+57=0,\n\\]\n解得",
+          "step_id": "B-20-S10",
+          "role": "equation",
+          "confidence": "high",
+          "note": "与金标 S10 同一二次方程形态；系数随前面补出的参数变化。"
+        },
+        {
+          "i": 18,
+          "quote": "\\[\nt=3\\ \\mathrm s\\quad\\text{或}\\quad t=\\frac{19}{3}\\ \\mathrm s.\n\\]\n其中 \\(t=\\frac{19}{3}\\ \\mathrm s\\) 时，物块到达 \\(Q\\) 点相对轨道的速度方向已不符合沿原圆周运动方向，舍去。  \n所以\n\\[\nt=3\\ \\mathrm s.\n\\]\n于是\n\\[\nL=t^2=9\\ \\mathrm m.\n\\]",
+          "step_id": "B-20-S10",
+          "role": "value",
+          "confidence": "high",
+          "note": "t=3 s、L=9 m；金标 t=1.5 s、L=4.5 m。金标舍去的根是 3.17 s，此处舍去的是 19/3≈6.33 s。"
+        }
+      ],
+      "unaligned": [
+        {
+          "quote": "3. 结果：  \n（1）\n\\[\nv=4\\ \\mathrm{m/s},\n\\]\n方向沿 \\(Q\\) 点切线方向，即水平方向。  \n\n（2）（ⅰ）\n\\[\n\\mu=0.1,\\qquad m=2\\ \\mathrm{kg}.\n\\]\n同时可得\n\\[\nM=2\\ \\mathrm{kg}.\n\\]\n\n（ⅱ）\n\\[\nL=9\\ \\mathrm m.\n\\]\n",
+          "reason": "重复：结果汇总，三问（含 M=2 kg）与正文同值。"
+        },
+        {
+          "quote": "4. 讨论：  \n（1）\\(Q\\) 点弹力 \\(3mg\\) 与重力同向下，故只能取合外力提供向心力的解，无其他舍根。  \n（2）\\(F=8\\ \\mathrm N>4\\ \\mathrm N\\)，物块与轨道必发生相对滑动，不能按整体法处理。  \n（3）解时间方程得到两个根，其中 \\(t=\\frac{19}{3}\\ \\mathrm s\\) 对应到 \\(Q\\) 点时相对轨道速度方向不符合实际运动过程，应舍去；取 \\(t=3\\ \\mathrm s\\)。此时物块到达 \\(Q\\) 点相对轨道速度为 \\(2\\ \\mathrm{m/s}\\)，满足通过最高点的临界条件。",
+          "reason": "自我讨论/检查：弹力方向、F=8 N 必滑动、舍根说明；末句另给了 Q 点相对轨道速度 2 m/s 的自检，无新增采分内容。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-02",
+    "question_id": "B-02",
+    "group": "B",
+    "source": "2025 北京卷",
+    "question_no": 17,
+    "full_score": 9,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T13:20:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "某物体以一定初速度从地面竖直向上抛出，经过时间 t 到达最高点。在最高点该物体炸裂成 A、B 两部分，质量分别为 2m 和 m，其中 A 以速度 v 沿水平方向飞出。重力加速度为 g，不计空气阻力。求：(1)该物体抛出时的初速度大小 v₀；(2)炸裂后瞬间 B 的速度大小 v_B；(3)A、B 落地点之间的距离 d。",
+    "figures": [],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "该物体抛出时的初速度大小 v₀。",
+        "score": 2
+      },
+      {
+        "no": "(2)",
+        "text": "炸裂后瞬间 B 的速度大小 v_B。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "A、B 落地点之间的距离 d。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "dc63eea5037572f030b7e73e68fb38c9f0457c4991d2bb2110631f8d4e49d79c",
+    "input_sha256": "c02a1098f7f0cd8e3e0713337b413da1daca8ea938ce84de9a1b75d4da6e4b3a"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "炸裂前的物体",
+        "mass_symbol": "m",
+        "note": "质量 3m（m 为质量单位）；从地面竖直上抛"
+      },
+      {
+        "id": "obj2",
+        "name": "A 部分",
+        "mass_symbol": "m",
+        "note": "质量 2m；炸裂后沿水平方向飞出，式中以系数 2 体现"
+      },
+      {
+        "id": "obj3",
+        "name": "B 部分",
+        "mass_symbol": "m",
+        "note": "质量 m；炸裂后与 A 反向沿水平方向飞出"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "v0",
+        "value": null,
+        "unit": "m/s",
+        "text": "抛出时的初速度 v₀（题给符号，无值）"
+      },
+      {
+        "symbol": "t",
+        "value": null,
+        "unit": "s",
+        "text": "从抛出到最高点所用时间 t（题给符号）"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "A、B 质量分别为 2m 与 m —— m 是质量单位，全题不出现数值"
+      },
+      {
+        "symbol": "v",
+        "value": null,
+        "unit": "m/s",
+        "text": "A 炸裂后沿水平方向飞出的速度 v（题给符号）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g（题给符号，无数值）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "竖直上抛",
+        "start": "物体以 v₀ 从地面抛出",
+        "end": "到达最高点（速度为零，历时 t）",
+        "segment_id": "SEG-01",
+        "boundary_reference": "以地面抛出点为起点、最高点速度为零为终点；竖直向上为正"
+      },
+      {
+        "no": 2,
+        "name": "最高点炸裂",
+        "start": "在最高点炸裂为 A、B",
+        "end": "A 以 v 水平飞出、B 以 v_B 反向水平飞出（竖直分速度均为零）",
+        "segment_id": "SEG-02",
+        "boundary_reference": "以最高点炸裂的瞬间为起止；竖直分速度为零，水平方向动量为零"
+      },
+      {
+        "no": 3,
+        "name": "两段平抛",
+        "start": "炸裂后瞬间",
+        "end": "A、B 同时落地（下落时间同为 t）",
+        "segment_id": "SEG-03",
+        "boundary_reference": "以炸裂点为起点、落地点为终点；下落时间与上升时间同为 t"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v0",
+        "text": "抛出时的初速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v2",
+        "text": "炸裂后瞬间 B 的速度大小"
+      },
+      {
+        "no": "(3)",
+        "quantity": "d",
+        "text": "A、B 落地点之间的距离"
+      }
+    ],
+    "assumptions": [
+      "取竖直向上为 +y、水平方向为 +x；A 沿 +x 飞出，B 沿 −x",
+      "炸裂瞬间内力远大于重力，且炸裂前竖直分速度为零，故 A、B 的竖直分速度均为零",
+      "m 是质量单位（A＝2m、B＝m），全题不出现数值；L1 无值可回代，按 na 处理",
+      "不计空气阻力；重力加速度记为 g，题给符号无值"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "上抛到最高点：v0 = gt",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-02-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "判定只有水平方向动量守恒",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-02-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "水平动量守恒求 B 的速度",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-02-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "下落时间与上升时间同为 t",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-02-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "两段平抛的水平位移",
+      "depends_on": [
+        3,
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-02-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "反向飞出，d = 3vt",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-02-S06"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-02-S01",
+      "step_no": 1,
+      "title": "上抛到最高点：v0 = gt",
+      "point_id": "B-02-S01",
+      "kind": "equation",
+      "statement": "物体以 v₀ 上抛、只受重力，到最高点时速度为零、历时 t：v₀＝gt。这是本题唯一的运动学约束。",
+      "equation": {
+        "latex": "v_{0} = g t",
+        "sympy": "v0 - g*t",
+        "symbols": [
+          "g",
+          "t",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "g*t",
+        "unit": "m/s",
+        "direction": "+y",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：g、t、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边均为 m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "「到最高点速度为零」只能配速度式；写成 v₀＝½gt² 或 v₀＝gt² 是把位移式当速度式（判分口径本步 0 分）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-02-S02",
+      "step_no": 2,
+      "title": "判定只有水平方向动量守恒",
+      "point_id": "B-02-S02",
+      "kind": "judgment",
+      "statement": "炸裂内力沿竖直方向成对抵消、水平方向无外力冲量；又因最高点竖直分速度为零，故只对水平方向写动量守恒（炸裂前水平动量为零）。",
+      "equation": null,
+      "criterion": {
+        "expr": "Fnet",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "炸裂内力沿竖直方向成对抵消、水平方向无外力冲量，故只对水平方向写动量守恒。"
+      },
+      "segment_id": "SEG-02",
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Fnet，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N（水平方向合外力为零）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "此式是「水平方向合外力为零」的等式化，不是对竖直方向受力求和：竖直方向有炸裂内力，但成对且瞬时",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-02-S03",
+      "step_no": 3,
+      "title": "水平动量守恒求 B 的速度",
+      "point_id": "B-02-S03",
+      "kind": "equation",
+      "statement": "炸裂前水平动量为零，炸裂后 A 沿 +x 以 v 飞出、B 沿 −x 飞出：0＝2m·v−m·v_B，得 v_B＝2v；题问速度大小，取 2v。",
+      "equation": {
+        "latex": "2 m v = m v_{2}",
+        "sympy": "2*m*v - m*v2",
+        "symbols": [
+          "m",
+          "v",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "v2",
+        "number": null,
+        "exact": "2*v",
+        "unit": "m/s",
+        "direction": "-x",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：m、v、v2 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边均为 kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "负号只表示 B 与 A 反向；漏负号会把 B 写成与 A 同向，质量比颠倒会得 v/2——两种都是本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-02-S04",
+      "step_no": 4,
+      "title": "下落时间与上升时间同为 t",
+      "point_id": "B-02-S04",
+      "kind": "judgment",
+      "statement": "炸裂点高度 h＝½gt²；从该高度自由落体到地面所需时间由 ½gt² 反解仍为 t —— 上抛的上升段与下落段对同一高度对称。",
+      "equation": null,
+      "criterion": {
+        "expr": "t2",
+        "expected": "t",
+        "comparator": "eq",
+        "text": "炸裂点高度 h＝½gt²，从该高度自由落体到地面的时间由 ½gt² 反解仍为 t。"
+      },
+      "value": {
+        "symbol": "t2",
+        "number": null,
+        "exact": "t",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-02",
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 t、t2，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只对「从最高点落到地面」这一段成立；把下落时间另设为 √(2h/g) 而不化简到 t，本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-02-S05",
+      "step_no": 5,
+      "title": "两段平抛的水平位移",
+      "point_id": "B-02-S05",
+      "kind": "equation",
+      "statement": "A、B 均做平抛、水平方向匀速：x_A＝v·t、x_B＝v_B·t＝2v·t（下落时间同为 t），合写为 s₁＋s₂＝(v＋v₂)t。",
+      "equation": {
+        "latex": "s_{1} + s_{2} = (v + v_{2}) t",
+        "sympy": "s1 + s2 - (v + v2)*t",
+        "symbols": [
+          "s1",
+          "s2",
+          "t",
+          "v",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：s1、s2、t、v、v2 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两个水平位移共用同一个下落时间 t；漏乘 t 或把 x_B 写成 v_B·t/2 都是本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-02-S06",
+      "step_no": 6,
+      "title": "反向飞出，d = 3vt",
+      "point_id": "B-02-S06",
+      "kind": "value",
+      "statement": "A、B 从同一点反向水平飞出，落地点在炸裂点正下方两侧：d＝x_A＋x_B＝vt＋2vt＝3vt（不是相减）。",
+      "equation": {
+        "latex": "d = s_{1} + s_{2}",
+        "sympy": "d - s1 - s2",
+        "symbols": [
+          "d",
+          "s1",
+          "s2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": {
+        "symbol": "d",
+        "number": null,
+        "exact": "3*v*t",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：d、s1、s2 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "「距离」是两点间距离，反向必相加；写成 |x_A−x_B|＝vt 是本步 0 分。结果不含 m、不带单位",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-02-S01",
+        "step_id": "B-02-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-02-S02",
+        "step_id": "B-02-S02",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-02-S03",
+        "step_id": "B-02-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-02-S04",
+        "step_id": "B-02-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-02-S05",
+        "step_id": "B-02-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-02-S06",
+        "step_id": "B-02-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 9,
+    "score_total": 9,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "mid",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号题，L1 全步 na（无数值可回代），L2 量纲逐式手判；9/9 满分，未触归零点"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "qid": "B-08",
+  "variant": "v3",
+  "prompt_file": "v3_fewshot.md",
+  "prompt_sha256": "c8886b6bd68d22e118d11289023a497889a37f512593d58fc267074ab22e6177",
+  "prompt_chars": 525,
+  "stem_sha256": "37839e927e88c6958541ff74224457000e23c800de25bf22cf8043523b7dee17",
+  "model_requested": "deepseek-flash",
+  "temperature": 0.0,
+  "max_tokens": 32768,
+  "created_at": "2026-11-25T09:55:24+08:00",
+  "attempts": [
+    {
+      "ok": true,
+      "status": null,
+      "elapsed_s": 12.085,
+      "error": null
+    }
+  ],
+  "ok": true,
+  "content": "1. 研究对象与过程：小球。过程分为弹簧释放到离开桌面、离开桌面后到第一次落地两段。弹簧恢复原长过程中机械能守恒；离桌后做平抛运动；与地面碰撞时水平分速度不变，竖直分速度大小变为碰前的 \\(\\frac45\\)。\n\n2. 方程：\n   - 弹簧释放到离开桌面：  \n     \\[\n     E_p=\\frac12 m v_x^2\n     \\]\n     得\n     \\[\n     v_x=\\sqrt{\\frac{2E_p}{m}}\n     \\]\n   - 设第一次落地前瞬间竖直分速度为 \\(v_y\\)。碰后竖直分速度大小为 \\(\\frac45v_y\\)，弹起的最大高度为 \\(h\\)，故\n     \\[\n     \\left(\\frac45 v_y\\right)^2=2gh\n     \\]\n     又平抛运动有\n     \\[\n     v_y=gt\n     \\]\n     得\n     \\[\n     t=\\frac54\\sqrt{\\frac{2h}{g}}\n     \\]\n   - 水平距离\n     \\[\n     s=v_x t\n     \\]\n\n3. 结果：\n   \\[\n   \\boxed{v_x=\\sqrt{\\frac{2E_p}{m}}}\n   \\]\n   方向沿小球离开桌面时的速度方向，即水平方向。\n\n   \\[\n   \\boxed{s=\\frac52\\sqrt{\\frac{E_p h}{mg}}}\n   \\]\n\n4. 讨论：本题无临界情况，无舍根；在 \\(h>0\\) 时各量均为正，结果单解。",
+  "reasoning_content": "We need answer Chinese. Need solve physics. Need infer from problem. Need structure like demonstration. Need be careful collision coefficient vertical restitution = 4/5, horizontal velocity preserved. After collision, maximum height h. Need find (1) speed leaving table, (2) horizontal distance from takeoff point on desktop to first landing point.\n\nWe need parse: ball compressed spring PE Ep, released, separates, slides smooth table, horizontal leaves edge. Mass m. Energy conservation gives speed at leave table v0 = sqrt(2 Ep / m)? Wait elastic energy converts to kinetic. Since light spring, smooth table, yes if spring mass negligible and separation after natural length. Ep = 1/2 m v^2 => v = sqrt(2Ep/m). This is horizontal speed at leaving table? Table horizontal, leaves horizontally. Yes. Part (1) likely this. But there is also h info. Hmm part (2) uses h and v? Wait collision vertical velocity after bounce reaches height h. We know vertical pre-impact speed determined by table height, but table height unknown? Wait problem asks horizontal distance of first landing from takeoff point on desktop. We can get time of flight from vertical collision outcome h? Let's parse.\n\nThe ball leaves table horizontally with speed v (part 1 known from Ep). It falls from table height? Not given. It collides ground; after collision vertical component becomes 4/5 of pre-collision vertical, then rises max height h. This gives pre-impact vertical speed via energy: after collision vertical speed v_y' = 4/5 v_y (upward after bounce). Max height h => v_y'^2/(2g)=h => v_y' = sqrt(2gh). Then pre-impact downward speed v_y = (5/4) sqrt(2gh). Since falling from table rest vertical, v_y^2=2gH where H table height, so H = v_y^2/(2g) = (25/16) h? Check: v_y'^2 = (16/25)*2gH =2gh => H = (25/16)h. But not asked table height.\n\nFlight time from leaving table to first collision: t = sqrt(2H/g) =? Since v_y pre = sqrt(2gH). Using v_y = 5/4 sqrt(2gh), t = v_y/g = (5/4) sqrt(2h/g). Horizontal distance d = v_x * t. v_x = sqrt(2Ep/m). So d = sqrt(2Ep/m)*(5/4)sqrt(2h/g). Simplify = (5/4)*sqrt(4 Ep h/(m g)) = (5/2) sqrt(Ep h/(m g)). Need check.\n\nBut wait: The collision occurs after first landing. The term \"第一次落地点距桌面上其飞出点的水平距离\" means horizontal distance from the point on tabletop where it flew out (directly below? \"桌面上其飞出点\" = \"the point on the tabletop from which it flew out\") to first landing point. So horizontal distance from edge point to landing point. Same as d = v_x t. Yes.\n\nPotential ambiguity: Part (1) \"小球离开桌面时的速度大小\" after spring release and moving on table; speed when leaves table. Is there friction? smooth table, no. Energy conservation. But wait Ep spring initially compressed. When released, ball accelerates until spring natural length, then separates. It may continue across table; if table is smooth, speed constant. It leaves with sqrt(2Ep/m). But if the spring is fixed to wall and mass attached? \"用小球压弹簧的另一端...释放后，小球在弹簧作用下从静止开始在桌面上运动，与弹簧分离后...\" not attached. Energy conservation at separation. yes.\n\nNeed present structured answer same style:\n1. 研究对象与过程: 小球; stage 1 spring release to leaving table (horizontal), stage 2 projectile from table to ground; collision info to rebound height. Maybe separate.\n2. 方程:\n(1) mechanical energy conserved from compressed to leaving: Ep = 1/2 m v_x^2 => v_x = sqrt(2Ep/m).\n(2) After collision vertical component =4/5 pre, max h: (4/5 v_y)^2 = 2gh. Projectile from leave point to first hit: vertical free fall from rest, v_y = g t. Horizontal x = v_x t. Could derive: (4/5 gt)^2=2gh => t =5/4 sqrt(2h/g). x= sqrt(2Ep/m)*t = 5/2 sqrt(Ep h/(mg)). Need mention horizontal velocity at collision unchanged; vertical pre v_y = gt. Since launching horizontally vertical initial zero.\n\nLet's calculate algebra carefully:\n(4/5 v_y)^2 = 2gh -> (16/25) v_y^2=2gh -> v_y^2 = (25/16)*2gh = 25gh/8? Wait 2gh *25/16 = 50gh/16 =25gh/8. Then v_y = (5/4) sqrt(2gh)? Let's compute: sqrt(25gh/8) = 5/4? sqrt? v_y' = (4/5)v_y = sqrt(2gh) => v_y = (5/4) sqrt(2gh). Square gives 25/16 *2gh=25gh/8 yes.\n\nSince v_y=gt => t=(5/4g)sqrt(2gh) = (5/4) sqrt(2h/g). correct.\n\nx= v * t = sqrt(2Ep/m) * (5/4) sqrt(2h/g) = (5/4) sqrt(4 Ep h/(m g)) = (5/4)*2 sqrt(Ep h/(m g)) = (5/2) sqrt(Ep h/(m g)). Good.\n\nNeed include direction for velocity? Leaving table horizontal. So v size; direction horizontal in direction motion. Part (2) distance. Discussion critical/no roots? There is no critical; collision coefficient less than 1, positive. Maybe if h=0? But likely h>0. Single solution. Mention no air resistance, spring light.\n\nNeed ensure \"第一落地点\" might mean after leaving table it falls and first collides with ground. Yes.\n\nLet's craft final in Chinese with numbered sections. Desired oververbosity 5; answer concise. Maybe include figure irrelevant.\n\nNeed not mention table height maybe can as intermediate. Let's formulate:\n\n1. 研究对象与过程：小球，分为两个阶段：弹簧恢复原长到离开桌面（水平方向，机械能守恒），离桌后到第一次落地（平抛；碰撞后反弹到最高点 h，只用于确定落地前竖直分速度/飞行时间）。碰撞前后水平分速度不变。\n\n2. 方程：\n(1) \\(E_p =\\frac12 m v_x^2\\) => \\(v_x=\\sqrt{\\frac{2E_p}{m}}\\).\n(2) 设第一次落地前竖直分速度 \\(v_y\\)。碰后竖直向上分速度 \\(\\frac45 v_y\\)。由反弹最大高度：\\(\\frac{(4v_y/5)^2}{2g}=h\\) or \\( (4/5 v_y)^2=2gh\\). Also from平抛 \\(v_y=g t\\). Then \\(t=\\frac{5}{4}\\sqrt{\\frac{2h}{g}}\\). Horizontal distance \\(s=v_x t\\). Put.\n\n3. Results:\n(1) \\(v=\\sqrt{2E_p/m}\\), horizontal direction.\n(2) \\(s=\\frac{5}{2}\\sqrt{\\frac{E_p h}{m g}}\\).\n\n4. discussion: h>0; no critical/extra roots; unique.\n\nNeed maybe if after collision upward speed is 4/5 of pre colliding \"垂直于地面的速度分量大小变为碰撞前瞬间的4/5\" after collision velocity vertical upward magnitude = 4/5 v_y. We used.\n\nLet's final.",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 370,
+    "completion_tokens": 2046,
+    "total_tokens": 2416,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1706
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 370
+  },
+  "model_returned": "deepseek-flash",
+  "response_id": "4535c9e4-3435-4d82-824c-c2e60832fc3a",
+  "elapsed_s": 12.085
+}

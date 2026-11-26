@@ -1,0 +1,1265 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-02",
+    "question_id": "A-02",
+    "group": "A",
+    "source": "2022 全国乙卷",
+    "question_no": 25,
+    "full_score": 20,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T13:35:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图（a），一质量为 m 的物块 A 与轻质弹簧连接，静止在光滑水平面上；物块 B 向 A 运动，t＝0 时与弹簧接触，到 t＝2t₀ 时与弹簧分离，第一次碰撞结束，A、B 的 v-t 图像如图（b）所示。已知从 t＝0 到 t＝t₀ 时间内，物块 A 运动的距离为 0.36v₀t₀。A、B 分离后，A 滑上粗糙斜面，然后滑下，与一直在水平面上运动的 B 再次碰撞，之后 A 再次滑上斜面，达到的最高点与前一次相同。斜面倾角为 θ（sin θ＝0.6），与水平面光滑连接。碰撞过程中弹簧始终处于弹性限度内。求(1)第一次碰撞过程中，弹簧弹性势能的最大值；(2)第一次碰撞过程中，弹簧压缩量的最大值；(3)物块 A 与斜面间的动摩擦因数。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "图 (a)：物块 A 与轻质弹簧相连静置于光滑水平面，物块 B 向其运动；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      },
+      {
+        "fig_no": 2,
+        "caption": "图 (b)：A、B 的 v–t 图（纵轴以 v₀ 为单位）。四处读数（B 碰前 1.2v₀、t₀ 处交于 v₀、2t₀ 处 A 为 2v₀、B 为 0.8v₀）题干文字未给，逐条登记在 provides；原文无图题",
+        "caption_source": "human",
+        "is_required": true,
+        "provides": [
+          {
+            "symbol": "v2",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) 纵轴 t＝0 处 B 的截距",
+            "text": "由图 (b) 纵轴 t＝0 处读出 B 的碰前速度为 1.2v₀（符号读数，无数值）"
+          },
+          {
+            "symbol": "v0",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) t＝t₀ 处 A、B 两线的交点",
+            "text": "由图 (b) 读出 t＝t₀ 时两线交于 v₀，即弹簧压缩最短时两者共速（v₀ 同时是全图的纵轴单位）"
+          },
+          {
+            "symbol": "v1p",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) 纵轴 t＝2t₀ 处 A 的取值",
+            "text": "由图 (b) 读出 t＝2t₀ 时 A 的速度为 2v₀（分离后 A 的速度）"
+          },
+          {
+            "symbol": "v2p",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) 纵轴 t＝2t₀ 处 B 的取值",
+            "text": "由图 (b) 读出 t＝2t₀ 时 B 的速度为 0.8v₀（分离后 B 的速度）"
+          }
+        ],
+        "file": "原始资料/题图/A-02_图2.png",
+        "file_sha256": "b1c0ec48120c84c81c69f578ae26b0f413a866c386fdc45be8ef9e0274afa8b5"
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "第一次碰撞过程中弹簧弹性势能的最大值。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "第一次碰撞过程中弹簧压缩量的最大值。",
+        "score": 4
+      },
+      {
+        "no": "(3)",
+        "text": "物块 A 与斜面间的动摩擦因数。",
+        "score": 10
+      }
+    ],
+    "stem_sha256": "5774db62c4e6337d89ba99e2fc6c411b232f404f9a6beb9a82e8ddd449f1b2e9",
+    "input_sha256": "f255f7f327b159f34f6b61f71da87230072d85195e7fee547ca72db3f0e6c77e"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "物块 A",
+        "mass_symbol": "m",
+        "note": "与轻质弹簧连接，静止在光滑水平面上；质量 m"
+      },
+      {
+        "id": "obj2",
+        "name": "物块 B",
+        "mass_symbol": "M",
+        "note": "向 A 运动；题干未给质量，由动量守恒反解 M＝5m"
+      },
+      {
+        "id": "obj3",
+        "name": "轻质弹簧",
+        "mass_symbol": "Mspring",
+        "note": "轻质（质量不计），只提供弹力与弹性势能；始终在弹性限度内"
+      },
+      {
+        "id": "obj4",
+        "name": "粗糙斜面",
+        "mass_symbol": "Mface",
+        "note": "倾角 θ（sinθ＝0.6、cosθ＝0.8），与水平面光滑连接；质量远大于物块，视为固定"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "物块 A 的质量 m（符号量）"
+      },
+      {
+        "symbol": "M",
+        "value": null,
+        "unit": "kg",
+        "text": "物块 B 的质量（题干未给，由动量守恒反解）"
+      },
+      {
+        "symbol": "v0",
+        "value": null,
+        "unit": "m/s",
+        "source": "figure",
+        "text": "速度以 v₀ 为单位，全题无一个数值；v₀ 由 t₀ 处两线交点读出（见 fig_no=2 的 provides）"
+      },
+      {
+        "symbol": "v2",
+        "value": null,
+        "unit": "m/s",
+        "source": "figure",
+        "text": "【图 (b) 读出】B 的碰前速度为 1.2v₀；题干文字未给（见 fig_no=2 的 provides 与 T05a2 的 D1 条）"
+      },
+      {
+        "symbol": "t1",
+        "value": null,
+        "unit": "s",
+        "text": "0 到 t₀ 的时间（原文 t₀，按 T09 归一为 t1＝第一段过程时间）"
+      },
+      {
+        "symbol": "s1",
+        "value": null,
+        "unit": "m",
+        "text": "0~t₀ 内 A 运动的距离：s_A＝0.36v₀t₀（题给 0.36 为纯数）"
+      },
+      {
+        "symbol": "theta",
+        "value": null,
+        "unit": "rad",
+        "text": "斜面倾角 θ，sinθ＝0.6（cosθ＝0.8）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "B 压缩弹簧（0→t₀）",
+        "start": "t＝0，B 与弹簧接触",
+        "end": "t＝t₀，两者共速 v₀、压缩量最大",
+        "segment_id": "SEG-01",
+        "boundary_reference": "以 t＝0 两物块接触为起点、t＝t₀ 共速（压缩量最大）为终点；水平面为势能零点"
+      },
+      {
+        "no": 2,
+        "name": "回弹分离（t₀→2t₀）",
+        "start": "t＝t₀",
+        "end": "t＝2t₀，弹簧恢复原长，A 以 2v₀ 向右、B 以 0.8v₀ 向右",
+        "segment_id": "SEG-02",
+        "boundary_reference": "以 t＝t₀ 共速为起点、t＝2t₀ 弹簧恢复原长为终点"
+      },
+      {
+        "no": 3,
+        "name": "A 沿斜面上滑",
+        "start": "A 以 2v₀ 滑上斜面",
+        "end": "A 到达最高点（速度为零）",
+        "segment_id": "SEG-03",
+        "boundary_reference": "以斜面底端为起点、最高点速度为零为终点；重力势能以水平面为 0"
+      },
+      {
+        "no": 4,
+        "name": "A 下滑回水平面",
+        "start": "A 从最高点下滑",
+        "end": "A 回到水平面，以 v_A′ 向左运动",
+        "segment_id": "SEG-04",
+        "boundary_reference": "以最高点为起点、回到水平面为终点；与第 3 段共用同一零势能面"
+      },
+      {
+        "no": 5,
+        "name": "第二次碰撞与再次上滑",
+        "start": "A 与 B 再次碰撞",
+        "end": "A 以 2v₀ 再次上滑到同一最高点",
+        "segment_id": "SEG-05",
+        "boundary_reference": "以第二次碰撞的瞬间为起点、再次到达与前次相同的最高点为终点"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "Ep",
+        "text": "弹簧弹性势能的最大值"
+      },
+      {
+        "no": "(2)",
+        "quantity": "ds",
+        "text": "弹簧压缩量的最大值"
+      },
+      {
+        "no": "(3)",
+        "quantity": "mu",
+        "text": "A 与斜面间的动摩擦因数"
+      }
+    ],
+    "assumptions": [
+      "水平面光滑；斜面与水平面光滑连接，连接处无能量损失",
+      "弹簧轻质，碰撞过程中始终在弹性限度内；t₀ 时两者共速，压缩量最大",
+      "物块 B 的质量题干未给，由动量守恒反解 M＝5m",
+      "取水平向右为正方向；A 沿斜面上滑后返回时速度方向向左（第二次碰前 v₁ 取大小）",
+      "图 (b) 的四处读数（B 碰前 1.2v₀、t₀ 处交于 v₀、2t₀ 处 A 为 2v₀、B 为 0.8v₀）只在图上，题干文字未给；1.2 起登记在 figures[fig_no=2].provides，given 的 v0/v2 标 source=figure",
+      "sinθ＝0.6、cosθ＝0.8；第 (3) 问用「最高点与前一次相同」反推第二次碰后 A 的速度大小仍为 2v₀"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "从 v–t 图读出 B 的碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-02-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "动量守恒解质量比",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "M = 5m",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "动能损失＝最大弹性势能",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "Ep = 0.6mv₀²",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "压缩量＝两图线间面积（质心匀速）",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "质心位移定 s_B",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "Δs = 0.768v₀t₀",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "由「最高点相同」定第二次碰后 A 的速度",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S09"
+    },
+    {
+      "step_no": 10,
+      "title": "第二次碰撞的动量守恒",
+      "depends_on": [
+        9
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S10"
+    },
+    {
+      "step_no": 11,
+      "title": "第二次碰撞的动能守恒",
+      "depends_on": [
+        10
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S11"
+    },
+    {
+      "step_no": 12,
+      "title": "v_A′=v₀，另一解舍去",
+      "depends_on": [
+        11
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S12"
+    },
+    {
+      "step_no": 13,
+      "title": "上滑动能定理",
+      "depends_on": [
+        12
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S13"
+    },
+    {
+      "step_no": 14,
+      "title": "下滑动能定理",
+      "depends_on": [
+        13
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S14"
+    },
+    {
+      "step_no": 15,
+      "title": "μ = 0.45",
+      "depends_on": [
+        14
+      ],
+      "expanded": true,
+      "point_hint": "A-02-S15"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-02-S01",
+      "step_no": 1,
+      "title": "从 v–t 图读出 B 的碰前速度",
+      "point_id": "A-02-S01",
+      "kind": "judgment",
+      "statement": "图 (b)：B 的初速度为 1.2v₀；t₀ 处两线相交于 v₀，即弹簧压缩最短时两者共速。这两个读数题干文字未给。",
+      "equation": null,
+      "criterion": {
+        "expr": "v2",
+        "expected": "Rational(6,5)*v0",
+        "comparator": "eq",
+        "text": "由图 (b) 纵轴 t＝0 处读出 B 的碰前速度为 1.2v₀；t₀ 处两线交于 v₀，即弹簧压缩最短时两者共速。"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v2",
+        "number": null,
+        "exact": "6/5*v0",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 v0、v2，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "读图错则本问后续级联失效（E-20 归零点）：把 B 初速读成 v₀ 会得 M＝m，Ep 与压缩量全错",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S02",
+      "step_no": 2,
+      "title": "动量守恒解质量比",
+      "point_id": "A-02-S02",
+      "kind": "equation",
+      "statement": "弹簧压缩最短时两者共速：M·1.2v₀＝(M＋m)v₀ —— 弹力是内力，水平面光滑，系统水平动量守恒。",
+      "equation": {
+        "latex": "M \\cdot \\frac{6}{5} v_{0} = (M + m) v_{0}",
+        "sympy": "M*Rational(6,5)*v0 - (M + m)*v0",
+        "symbols": [
+          "M",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边均为 kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "共速时刻即压缩量最大时刻（相对速度为零）；用能量式代替动量式会多一个未知量 Ep",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S03",
+      "step_no": 3,
+      "title": "M = 5m",
+      "point_id": "A-02-S03",
+      "kind": "value",
+      "statement": "约去 v₀：1.2M＝M＋m ⇒ M＝5m，即 B 的质量是 A 的 5 倍。",
+      "equation": {
+        "latex": "M = 5 m",
+        "sympy": "M - 5*m",
+        "symbols": [
+          "M",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "M",
+        "number": null,
+        "exact": "5*m",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "此式是后续全部计算的钥匙；质量比颠倒（m＝5M）会让 Ep 与压缩量同时错",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S04",
+      "step_no": 4,
+      "title": "动能损失＝最大弹性势能",
+      "point_id": "A-02-S04",
+      "kind": "equation",
+      "statement": "压缩最短时动能损失全部转为弹性势能：Ep＝½M(1.2v₀)²−½(M＋m)v₀²。",
+      "equation": {
+        "latex": "E_{p} = \\frac{1}{2} M (1.2 v_{0})^{2} - \\frac{1}{2} (M + m) v_{0}^{2}",
+        "sympy": "Ep - (Rational(1,2)*M*(Rational(6,5)*v0)**2 - Rational(1,2)*(M + m)*v0**2)",
+        "symbols": [
+          "Ep",
+          "M",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-09",
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Ep、M、m、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "弹簧压缩过程无摩擦，机械能守恒；「动能损失＝弹性势能」的文字表述亦给分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S05",
+      "step_no": 5,
+      "title": "Ep = 0.6mv₀²",
+      "point_id": "A-02-S05",
+      "kind": "value",
+      "statement": "代入 M＝5m：Ep＝½·5m·1.44v₀²−½·6m·v₀²＝3.6mv₀²−3mv₀²＝0.6mv₀²。",
+      "equation": {
+        "latex": "E_{p} = \\frac{3}{5} m v_{0}^{2}",
+        "sympy": "Ep - Rational(3,5)*m*v0**2",
+        "symbols": [
+          "Ep",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "Ep",
+        "number": null,
+        "exact": "3/5*m*v0^2",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Ep、m、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "结果不再含 M；未化简也给满分（判分口径），但必须写成 v₀² 量纲，不能留 1.2² 的小数",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S06",
+      "step_no": 6,
+      "title": "压缩量＝两图线间面积（质心匀速）",
+      "point_id": "A-02-S06",
+      "kind": "judgment",
+      "statement": "0~t₀ 内压缩量的最大值等于两条 v–t 线所夹面积；等价依据是「系统合外力为零 ⇒ 质心匀速 v₀」，故 m·s_A＋5m·s_B＝6m·v₀t₀。",
+      "equation": null,
+      "criterion": {
+        "expr": "Fnet",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "系统水平方向合外力为零，故质心匀速 v₀；压缩量最大值等于两条 v–t 线所夹面积。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Fnet，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N（水平方向合外力为零）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两种说法都要落到「质心匀速」这个依据上；只说「面积」不解释，判分口径给 1 分（满分 2 分）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S07",
+      "step_no": 7,
+      "title": "质心位移定 s_B",
+      "point_id": "A-02-S07",
+      "kind": "value",
+      "statement": "质心匀速：m·s_A＋5m·s_B＝6m·v₀t₀，代入 s_A＝0.36v₀t₀ 得 s_B＝1.128v₀t₀。",
+      "equation": {
+        "latex": "m s_{1} + 5 m s_{2} = 6 m v_{0} t_{1}",
+        "sympy": "m*s1 + 5*m*s2 - 6*m*v0*t1",
+        "symbols": [
+          "m",
+          "s1",
+          "s2",
+          "t1",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "s2",
+        "number": null,
+        "exact": "141/125*v0*t1",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：m、s1、s2、t1、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "系数 5、6 来自 M＝5m 与总质量 6m；把 s_A 当成压缩量会直接得 0.36v₀t₀（错）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S08",
+      "step_no": 8,
+      "title": "Δs = 0.768v₀t₀",
+      "point_id": "A-02-S08",
+      "kind": "value",
+      "statement": "压缩量最大值＝两物块位移之差：Δs＝s_B−s_A＝1.128v₀t₀−0.36v₀t₀＝0.768v₀t₀。",
+      "equation": {
+        "latex": "\\Delta s = s_{2} - s_{1}",
+        "sympy": "ds - s2 + s1",
+        "symbols": [
+          "ds",
+          "s1",
+          "s2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "ds",
+        "number": null,
+        "exact": "96/125*v0*t1",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01",
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：ds、s1、s2 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "未减 s_A 不得分：面积法里 s_A 是 A 的位移，不是零；写成 0.77v₀t₀ 亦可",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S09",
+      "step_no": 9,
+      "title": "由「最高点相同」定第二次碰后 A 的速度",
+      "point_id": "A-02-S09",
+      "kind": "judgment",
+      "statement": "A 第二次滑上斜面达到的最高点与前一次相同 ⇒ 第二次碰后 A 的速度大小仍为 2v₀、方向水平向右（沿斜面向上）。2v₀ 由图 (b) 在 2t₀ 处读出，也可由 5:1 弹性碰撞算出。",
+      "equation": null,
+      "criterion": {
+        "expr": "v1p",
+        "expected": "2*v0",
+        "comparator": "eq",
+        "text": "A 第二次滑上斜面达到的最高点与前一次相同，故第二次碰后 A 的速度大小仍为 2v₀、方向水平向右。"
+      },
+      "segment_id": "SEG-05",
+      "value": {
+        "symbol": "v1p",
+        "number": null,
+        "exact": "2*v0",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-09",
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 v0、v1p，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "「最高点相同」只给速度大小，方向由「再次滑上斜面」确定为向右；不写这句而直接代 2v₀，后续错时无法补救",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S10",
+      "step_no": 10,
+      "title": "第二次碰撞的动量守恒",
+      "point_id": "A-02-S10",
+      "kind": "equation",
+      "statement": "碰前：B 以 0.8v₀ 向右（第一次碰后速度，由 M·1.2v₀＝M·0.8v₀＋m·2v₀ 或图上读出）、A 以 v_A′ 向左；碰后 A 以 2v₀ 向右、B 以 v_B′ 向右：M·0.8v₀−m·v_A′＝m·2v₀＋M·v_B′。",
+      "equation": {
+        "latex": "M \\cdot \\frac{4}{5} v_{0} - m v_{1} = m v_{1p} + M v_{2p}",
+        "sympy": "M*Rational(4,5)*v0 - m*v1 - (m*v1p + M*v2p)",
+        "symbols": [
+          "M",
+          "m",
+          "v0",
+          "v1",
+          "v1p",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-05",
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m、v0、v1、v1p、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "A 碰前速度方向向左，故取负号；这一项符号错是本题最典型的失分点（E-06，本步 0 分）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S11",
+      "step_no": 11,
+      "title": "第二次碰撞的动能守恒",
+      "point_id": "A-02-S11",
+      "kind": "equation",
+      "statement": "两物块在水平面上弹性碰撞：½M(0.8v₀)²＋½m·v_A′²＝½m(2v₀)²＋½M·v_B′²。",
+      "equation": {
+        "latex": "\\frac{1}{2} M (\\frac{4}{5} v_{0})^{2} + \\frac{1}{2} m v_{1}^{2} = \\frac{1}{2} m v_{1p}^{2} + \\frac{1}{2} M v_{2p}^{2}",
+        "sympy": "Rational(1,2)*M*(Rational(4,5)*v0)**2 + Rational(1,2)*m*v1**2 - Rational(1,2)*m*v1p**2 - Rational(1,2)*M*v2p**2",
+        "symbols": [
+          "M",
+          "m",
+          "v0",
+          "v1",
+          "v1p",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-05",
+      "value": null,
+      "law_ids": [
+        "L-09",
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m、v0、v1、v1p、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "弹簧已分离，第二次是直接碰撞（无弹簧储能），故用动能守恒；与 S10 重复写动量守恒不重复给分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S12",
+      "step_no": 12,
+      "title": "v_A′=v₀，另一解舍去",
+      "point_id": "A-02-S12",
+      "kind": "discussion",
+      "statement": "两式联立消去 v_B′ 得 v_A′²＋v₀v_A′−2v₀²＝0，即 (v_A′−v₀)(v_A′＋2v₀)＝0：v_A′＝v₀ 或 v_A′＝−2v₀。后者表示 A 仍以 2v₀ 向右运动，即 A 没有从斜面返回，与「再次碰撞」的前提矛盾，舍去。",
+      "equation": {
+        "latex": "v_{1}^{2} + v_{0} v_{1} - 2 v_{0}^{2} = 0",
+        "sympy": "v1**2 + v0*v1 - 2*v0**2",
+        "symbols": [
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-05",
+      "value": {
+        "symbol": "v1",
+        "number": null,
+        "exact": "v0",
+        "unit": "m/s",
+        "direction": "-x",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：v0、v1 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两个根都满足方程，只有 v₀ 符合过程（解集退化为单解，value 单槽够用）。判分口径：只给一个解未说明给 1 分，两解都写未取舍也给 1 分（本步满分 1 分）【待裁定】",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S13",
+      "step_no": 13,
+      "title": "上滑动能定理",
+      "point_id": "A-02-S13",
+      "kind": "equation",
+      "statement": "A 以 2v₀ 沿斜面向上滑行 L 到最高点：−μmgLcosθ−mgLsinθ＝0−½m(2v₀)²，其中 cosθ＝4/5、sinθ＝3/5。",
+      "equation": {
+        "latex": "- \\mu m g L \\cdot \\frac{4}{5} - m g L \\cdot \\frac{3}{5} = 0 - \\frac{1}{2} m (2 v_{0})^{2}",
+        "sympy": "-mu*m*g*L*Rational(4,5) - m*g*L*Rational(3,5) - (0 - Rational(1,2)*m*(2*v0)**2)",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "mu",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": null,
+      "law_ids": [
+        "L-08",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、g、m、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "摩擦力与重力分量都做负功；sinθ 与 cosθ 配错会得 μ≠0.45（判分口径扣 1 分）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S14",
+      "step_no": 14,
+      "title": "下滑动能定理",
+      "point_id": "A-02-S14",
+      "kind": "equation",
+      "statement": "A 从最高点滑回水平面，末速 v₀：mgLsinθ−μmgLcosθ＝½mv₀²−0。",
+      "equation": {
+        "latex": "m g L \\cdot \\frac{3}{5} - \\mu m g L \\cdot \\frac{4}{5} = \\frac{1}{2} m v_{0}^{2}",
+        "sympy": "m*g*L*Rational(3,5) - mu*m*g*L*Rational(4,5) - Rational(1,2)*m*v0**2",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "mu",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-04",
+      "value": null,
+      "law_ids": [
+        "L-08",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、g、m、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "与上滑式的符号相反（重力做正功、摩擦仍做负功），这是本步的采分关键",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-02-S15",
+      "step_no": 15,
+      "title": "μ = 0.45",
+      "point_id": "A-02-S15",
+      "kind": "value",
+      "statement": "两式相加得 1.2mgL＝2.5mv₀²，相减得 1.6μmgL＝1.5mv₀²，相比得 μ＝0.45（纯数，与 g、v₀ 无关）。",
+      "equation": {
+        "latex": "\\mu = \\frac{9}{20}",
+        "sympy": "mu - Rational(9,20)",
+        "symbols": [
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "mu",
+        "number": 0.45,
+        "exact": "9/20",
+        "unit": "1",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（mu=0.45）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只有结果无过程，最高给本步 1 分；μ 是本题唯一的数值，也是全题唯一能 L1 回代的一步",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-02-S01",
+        "step_id": "A-02-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S02",
+        "step_id": "A-02-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S03",
+        "step_id": "A-02-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S04",
+        "step_id": "A-02-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S05",
+        "step_id": "A-02-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S06",
+        "step_id": "A-02-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S07",
+        "step_id": "A-02-S07",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S08",
+        "step_id": "A-02-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S09",
+        "step_id": "A-02-S09",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S10",
+        "step_id": "A-02-S10",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S11",
+        "step_id": "A-02-S11",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S12",
+        "step_id": "A-02-S12",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S13",
+        "step_id": "A-02-S13",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S14",
+        "step_id": "A-02-S14",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-02-S15",
+        "step_id": "A-02-S15",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 20,
+    "score_total": 20,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号 + 二次方程舍根；L1 仅 μ=0.45 一步可回代、其余 na，L2 逐式手判；20/20 满分，未触归零点"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

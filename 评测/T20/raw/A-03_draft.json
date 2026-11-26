@@ -1,0 +1,241 @@
+{
+  "givens": [
+    {
+      "symbol": "l",
+      "value": null,
+      "unit": "m",
+      "text": "圆盘与管的上端口距离为 l"
+    },
+    {
+      "symbol": "L",
+      "value": null,
+      "unit": "m",
+      "text": "圆管长度为 L＝20l"
+    },
+    {
+      "symbol": "M",
+      "value": null,
+      "unit": "kg",
+      "text": "圆盘质量为 M"
+    },
+    {
+      "symbol": "m",
+      "value": null,
+      "unit": "kg",
+      "text": "小球质量 m＝M/3"
+    },
+    {
+      "symbol": "f",
+      "value": null,
+      "unit": "N",
+      "text": "圆盘所受滑动摩擦力大小 f＝Mg，方向向上"
+    },
+    {
+      "symbol": "g",
+      "value": null,
+      "unit": "m/s^2",
+      "text": "重力加速度为 g"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "第一次碰后瞬间，小球速度大小 sqrt(gl/2)、方向向上；圆盘速度大小 sqrt(gl/2)、方向向下。",
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "第一次到第二次碰撞之间，小球与圆盘间的最远距离 dmax＝l。",
+      "steps": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "圆盘在管内运动过程中，小球与圆盘碰撞的次数为 4 次。",
+      "steps": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "求碰前速度",
+      "kind": "value",
+      "stmt": "小球从管口自由下落距离 l 到圆盘，由机械能守恒求第一次碰前速度 v0。",
+      "eq": "m*g*l - Rational(1,2)*m*v0**2",
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "sqrt(2*g*l)",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "机械能守恒得到第一次碰前小球速度。"
+    },
+    {
+      "no": 2,
+      "title": "列动量守恒",
+      "kind": "equation",
+      "stmt": "取竖直向下为正方向。第一次碰撞前圆盘静止，碰撞极短，系统动量守恒。",
+      "eq": "m*v0 - m*vm - M*vM",
+      "value": null,
+      "score": 1,
+      "point": "碰撞过程列对动量守恒方程。"
+    },
+    {
+      "no": 3,
+      "title": "列弹性碰撞关系",
+      "kind": "equation",
+      "stmt": "弹性碰撞恢复系数为 1，碰后相对速度大小等于碰前相对速度大小；取向下为正有 vM-vm=v0。",
+      "eq": "vM - vm - v0",
+      "value": null,
+      "score": 1,
+      "point": "写出弹性碰撞的速度关系。"
+    },
+    {
+      "no": 4,
+      "title": "求第一次碰后速度",
+      "kind": "value",
+      "stmt": "将 M＝3m 代入动量守恒和弹性碰撞关系，得 vm＝-v0/2，vM＝v0/2；速度大小均为 v＝sqrt(gl/2)，小球向上、圆盘向下。",
+      "eq": "vm + Rational(1,2)*v0",
+      "value": {
+        "symbol": "v",
+        "number": null,
+        "exact": "sqrt(g*l/2)",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "代入质量比得到第一次碰后两物体速度大小。"
+    },
+    {
+      "no": 5,
+      "title": "判碰后运动状态",
+      "kind": "judgment",
+      "stmt": "第一次碰后，圆盘以 v0/2 向下做匀速运动，小球以 v0/2 向上做竖直上抛运动；圆盘相对小球向下，初相对速度为 v0。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "明确碰后两物体的运动状态和相对运动。"
+    },
+    {
+      "no": 6,
+      "title": "列相对距离式",
+      "kind": "equation",
+      "stmt": "取第一次碰撞时刻为 t＝0，圆盘在小球下方，二者距离 d＝v0t-1/2gt^2。",
+      "eq": "d - v0*t + Rational(1,2)*g*t**2",
+      "value": null,
+      "score": 1,
+      "point": "写出第一次到第二次碰撞前间距随时间的表达式。"
+    },
+    {
+      "no": 7,
+      "title": "最远时速度相等",
+      "kind": "equation",
+      "stmt": "间距最大时二者相对速度为零，即 d 对时间导数为零，v0-gt＝0。",
+      "eq": "v0 - g*t",
+      "value": null,
+      "score": 1,
+      "point": "由相对速度为零确定最远距离对应时刻。"
+    },
+    {
+      "no": 8,
+      "title": "求最远距离",
+      "kind": "value",
+      "stmt": "代入 t＝v0/g 得 dmax＝v0^2/(2g)，又 v0^2＝2gl，所以 dmax＝l。",
+      "eq": "d - l",
+      "value": {
+        "symbol": "d",
+        "number": null,
+        "exact": "l",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "算出第一次到第二次之间最远距离为 l。"
+    },
+    {
+      "no": 9,
+      "title": "判相对速度恒定",
+      "kind": "equation",
+      "stmt": "设第 n 次碰后小球、圆盘速度分别为 un、Vn。由弹性碰撞公式可得 V_{n+1}-u_{n+1}＝Vn-un；第一次碰后 V1-u1＝v0，故每次碰后圆盘相对小球向下速度均为 v0。",
+      "eq": "(Vn1 - un1) - (Vn - un)",
+      "value": null,
+      "score": 1,
+      "point": "由弹性碰撞递推说明碰后相对速度大小保持为 v0。"
+    },
+    {
+      "no": 10,
+      "title": "求碰撞时间间隔",
+      "kind": "equation",
+      "stmt": "两次碰撞之间圆盘匀速，小球受重力，相对位移再次为零所需时间满足 0＝(Vn-un)Dt-1/2gDt^2，取非零解 Dt＝2v0/g。",
+      "eq": "g*Dt - 2*v0",
+      "value": null,
+      "score": 1,
+      "point": "导出任意相邻两次碰撞的时间间隔均为 2v0/g。"
+    },
+    {
+      "no": 11,
+      "title": "求第n次碰后盘速",
+      "kind": "value",
+      "stmt": "由第一次碰后 V1＝v0/2，且每次碰撞后 V 增加 v0/2，得第 n 次碰后圆盘速度 Vn＝n v0/2。",
+      "eq": "Vn - n*v0/2",
+      "value": {
+        "symbol": "Vn",
+        "number": null,
+        "exact": "n*v0/2",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "得到第 n 次碰后圆盘速度的通式。"
+    },
+    {
+      "no": 12,
+      "title": "求两碰间盘位移",
+      "kind": "value",
+      "stmt": "第 n 次到第 n+1 次碰撞间圆盘位移 sn＝VnDt＝(n v0/2)(2v0/g)＝2nl。",
+      "eq": "s_n - 2*n*l",
+      "value": {
+        "symbol": "s_n",
+        "number": null,
+        "exact": "2*n*l",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "得到相邻碰撞间圆盘下滑距离为 2nl。"
+    },
+    {
+      "no": 13,
+      "title": "列各次碰撞位置",
+      "kind": "judgment",
+      "stmt": "第一次碰撞在 y1＝l；由 y_{n+1}＝y_n+2nl 依次得 y1＝l，y2＝3l，y3＝7l，y4＝13l，y5＝21l。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "由位移递推得到前几次碰撞的位置。"
+    },
+    {
+      "no": 14,
+      "title": "判断总碰撞次数",
+      "kind": "judgment",
+      "stmt": "管长为 20l，下端坐标为 20l。第 5 次碰撞若发生应在 y＝21l＞20l，且在圆盘到达下端前相对位移尚未再次为零，因此圆盘出管前只发生前 4 次碰撞。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "比较第 5 次碰撞位置与管长，得出总碰撞次数为 4。"
+    }
+  ]
+}

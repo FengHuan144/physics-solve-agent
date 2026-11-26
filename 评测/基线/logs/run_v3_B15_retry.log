@@ -1,0 +1,5 @@
+[覆盖] max_tokens = 65536
+[模型] deepseek-chat 不在可用列表，继续探测
+[模型] 请求名=deepseek-flash ｜ 可用=['deepseek-flash', 'deepseek-v4-pro']
+[OK] v3/B-15  332.4s  finish=stop  tok=382+55748
+[汇总] v3 → {'OK': 1, 'FAIL': 0, 'skip': 0}

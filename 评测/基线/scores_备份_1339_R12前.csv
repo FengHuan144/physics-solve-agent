@@ -1,0 +1,67 @@
+qid,variant,verdict,g_used,elapsed_s,prompt_tokens,completion_tokens,failure_type,notes
+A-06,v1,correct,10,22.011,226,3728,none,[manual] 答 4 m/s、1/3 s、5/9 m — 三项全中 || auto: 1.1:got=4[m/s] std=4 1.2:got=1/3[s] std=0.333333 2:got=5/9[m] std=0.555556
+A-08,v1,correct,10,66.558,380,6582,none,[manual] 答 30 N、3.2 s、95 J — 全中 || auto: 1:got=30[N] std=30 2:got=3.2[s] std=3.2 3:got=95[J] std=95
+A-09,v1,wrong,10,60.372,308,9100,calc,[manual] 答 3√10≈9.49 m/s、19 N、3 m、5√2≈7.07 m/s；标准 4√5≈8.94、17 N、4 m、2√15≈7.75 — 四问全错 || auto: 1.1:got=2[m/s] std=8.944272 1.2:got=1 std=17 2:got=10 std=4 3:got=7.07[m/s] std=7.745967
+A-10,v1,correct,-,23.25,314,3525,none,[manual] 答 √(GM/r)、r√(GM/R³)、(n−1)M — 全中 || auto: 1:sym got=(n-1)M std=sqrt(G*M/r) 2:sym got=(n-1)M std=r*sqrt(G*M/R**3) 3:sym=(n-1)M
+B-01,v1,correct,-,9.414,194,1871,none,[manual] 答 1.0 m/s²；4 号锥筒 || auto: 1:got=1.0[m/s2] std=1 2:label nec_suff_ok｜support=(?:到不了|不能|不超过|无法)\s*(?
+B-02,v1,correct,symbolic,7.113,163,1224,none,[manual] 答 gt、2v、3vt || auto: 1:sym=gt 2:sym=2v 3:sym=3vt
+B-03,v1,correct,10,5.737,254,1059,none,[manual] 答 2 m/s²、4 m/s、2.7 m || auto: 1:got=2[m/s2] std=2 2:got=4[m/s] std=4 3:got=2.7[m] std=2.7
+B-04,v1,correct,10,32.156,255,4983,none,[manual] 答 F_P=1.2×10³ N、F_Q=9.0×10² N、W=−4.2×10³ J || auto: 1.1:got=1.2*10^3[N] std=1200 1.2:got=9.0*10^2[N] std=900 2:got=-4.2*10^3[J] std=-4200
+B-05,v1,correct,10,8.275,222,1414,none,[manual] 答 5 m/s、8 m/s、α=60° || auto: 1:got=5[m/s] std=5 2.1:got=8[m/s] std=8 2.2:got=60[°] std=60
+B-06,v1,correct,-,7.983,266,1237,none,[manual] 答 450 N、9.0×10³ J、600 W || auto: 1:got=450[N] std=450 2:got=9.0*10^3[J] std=9000 3:got=600[W] std=600
+B-07,v1,correct,symbolic,19.997,205,3164,none,[manual] 答 v²/(2g)、mg+mv²/L、¼mv² || auto: 1:sym got=1/4 mv^2 J std=v**2/(2*g) 2:sym got=1/4 mv^2 J std=m*g + m*v**2/L 3:sym=1/4 mv^2
+B-08,v1,correct,symbolic,10.994,224,1936,none,[manual] 答 √(2E_p/m)；(5/2)√(E_p h/(mg)) 与标准 5√(mghE_p)/(2mg) 等价 || auto: 1:sym got=5/2sqrt(((E_ph)/(mg))) m std=sqrt(2*E_p/m) 2:sym got=5/2sqrt(((E_ph)/(mg))) m std=5*sqrt(m*g*h*E_p)/(2*m*g)
+B-09,v1,correct,10,13.357,269,2219,none,[manual] 答「能，且恰好到达」；0.2 s || auto: 1:label nec_suff_ok｜support==\s*s_?2\b 2:got=0.2[s] std=0.2
+B-10,v1,correct,10,44.205,281,6436,none,[manual] 答 k=0.1；L=67/185 m≈0.362 m || auto: 1:got=13000 std=0.1 2:got=67/185[m] std=0.362162
+B-12,v1,correct,10,18.894,276,2746,none,[manual] 答 8 N、5 N、8 m/s、0.2 m || auto: 1.1:got=8[N] std=8 1.2:got=5[N] std=5 2:got=8[m/s] std=8 3:got=0.2[m] std=0.2
+B-13,v1,correct,10,24.264,277,3669,none,[manual] 答 9 m；7.44 m/s || auto: 1:got=1 std=9 2:got=9 std=7.44
+B-15,v1,correct,symbolic,106.184,236,14930,none,[manual] 答 t=√(2√2d/((1−μ)g))、v=√(√2gd(1−μ))、L=√2d(1−μ) — 与标准同形 || auto: 1:sym got=sqrt2 d(1-mu) m std=sqrt(2*sqrt(2)*d/((1-mu)*g)) 2:sym got=sqrt2 d(1-mu) m std=sqrt(sqrt(2)*g*d*(1-mu)) 3:sym got=sqrt2 d(1-mu) m std=sqrt(2)*d*(1-mu)
+B-16,v1,correct,symbolic,43.797,200,6351,none,[manual] 答 x=v²/[2g(sinθ+μcosθ)]、P=mgv(sinθ+μcosθ)、E₁/E₂=sinθ/(sinθ+μcosθ) — 已核 \boxed 原文 || auto: 1:sym got=mgL(sintheta+mucostheta) J std=v**2/(2*g*(sin(theta)+mu*cos(theta))) 2:sym got=mgL(sintheta+mucostheta) J std=m*g*v*(sin(theta)+mu*cos(theta)) 3:sym got=mgL(sintheta+mucostheta) J std=sin(theta)/(sin(theta)+mu*cos(theta))
+B-17,v1,wrong,symbolic,118.792,276,10749,calc,[manual] v_D=√(gR) 对；H_BD 答 R/4（标准 0）；v_A 答 √(5gR/2)（标准 √(3gR)） || auto: 1:sym got=((sqrt(10gR))/(2)) m/s std=sqrt(g*R) 2:got=1 std=0 3:sym got=((sqrt(10gR))/(2)) m/s std=sqrt(3*g*R)
+B-18,v1,correct,10,92.935,433,14995,none,[manual] 答 2 m/s；2 m；h=2 m 或 2.5 m — 两解全 || auto: 1:got=2[m/s] std=2 2:got=2[m] std=2 3:roots 2/2
+B-19,v1,correct,10,21.867,217,2352,none,[manual] 答 4.5 J、9 N || auto: 1:got=4.5[J] std=4.5 2:got=9[N] std=9
+B-20,v1,correct,10,92.121,375,14511,none,[manual] 答 v=4 m/s；μ=0.2；m=1 kg；L=4.5 m || auto: 1:got=4[m/s] std=4 2.1:got=2 std=0.2 2.2:got=1[kg] std=1 2.3:got=4.5[m] std=4.5
+A-06,v2,correct,10,45.277,270,4537,none,[manual] 答 4 m/s、1/3 s、5/9 m — 三项全中 || auto: 1.1:got=4[m/s] std=4 1.2:got=1/3[s] std=0.333333 2:got=5/9[m] std=0.555556
+A-08,v2,correct,10,71.478,424,12084,none,[manual] 答 30 N、3.2 s、95 J — 全中 || auto: 1:got=3.3 std=30 2:got=2[s] std=3.2 3:got=-3.0 std=95
+A-09,v2,correct,10,71.532,352,11046,none,[manual] 答 4√5≈8.94 m/s、17 N、4 m、2√15≈7.75 m/s — 全中（v1 同题四问全错） || auto: 1.1:got=5[m/s] std=8.944272 1.2:got=17[N] std=17 2:got=4[m] std=4 3:got=7.75[m/s] std=7.745967
+A-10,v2,correct,-,26.233,358,4190,none,[manual] 答 √(GM/r)、r√(GM/R³)（写成 (r/R)√(GM/R) 等价）、(n−1)M — 全中 || auto: 1:sym got=(n-1)M std=sqrt(G*M/r) 2:sym=sqrt(((GM)/(R^3))) r 3:sym=(n-1)M
+B-01,v2,correct,-,22.232,238,4230,none,[manual] 答 1.0 m/s²；4 号锥筒（label 规则，R8 字面为 undecidable，待裁定） || auto: 1:got=1.0[m/s2] std=1 2:label nec_suff_ok｜support=(?:到不了|不能|不超过|无法)\s*(?
+B-02,v2,correct,symbolic,23.235,207,2264,none,[manual] 答 gt、2v、3vt — 全中（§6 单解） || auto: 1:sym=gt 2:sym=2v 3:sym=3vt
+B-03,v2,correct,10,27.445,298,2858,none,[manual] 答 2 m/s²、4 m/s、2.7 m — 全中 || auto: 1:got=2 std=2 2:got=4 std=4 3:got=2 std=2.7
+B-04,v2,correct,10,57.898,299,5713,none,[manual] 答 1.2×10³ N、9.0×10² N、−4.2×10³ J — 全中 || auto: 1.1:got=1200[N] std=1200 1.2:got=900[N] std=900 2:got=4200 std=-4200
+B-05,v2,correct,10,16.764,266,1941,none,[manual] 答 5 m/s、8 m/s、α=60° — 全中 || auto: 1:got=5[m/s] std=5 2.1:got=8[m/s] std=8 2.2:got=60[°] std=60
+B-06,v2,correct,-,15.26,310,1564,none,[manual] 答 450 N、9000 J、600 W — 全中 || auto: 1:got=450[N] std=450 2:got=9000[J] std=9000 3:got=600[W] std=600
+B-07,v2,correct,symbolic,51.908,249,7661,none,[manual] 答 v²/(2g)、m(g+v²/L)≡mg+mv²/L、¼mv² — 全中 || auto: 1:sym got=L std=v**2/(2*g) 2:sym got=L std=m*g + m*v**2/L 3:sym=1/4 mv^2
+B-08,v2,correct,symbolic,22.198,268,3670,none,[manual] 答 √(2E_p/m)；(5/2)√(E_p h/(mg)) 与标准等价 || auto: 1:sym got=0 std=sqrt(2*E_p/m) 2:sym got=0 std=5*sqrt(m*g*h*E_p)/(2*m*g)
+B-09,v2,correct,10,21.927,313,3825,none,[manual] 答「能滑动到边框 a，且恰好到达」；0.2 s（label 规则，待裁定） || auto: 1:label nec_suff_ok｜support==\s*s_?2\b 2:got=0.2[s] std=0.2
+B-10,v2,correct,10,102.145,325,7590,none,[manual] 答 k=0.1；L=67/185 m≈0.36 m — 全中 || auto: 1:got=1 std=0.1 2:got=67/185[m] std=0.362162
+B-12,v2,correct,10,31.74,320,5045,none,[manual] 答 8 N、5 N、8 m/s、0.2 m — 全中 || auto: 1.1:got=8[N] std=8 1.2:got=5[N] std=5 2:got=8[m/s] std=8 3:got=0.2[m] std=0.2
+B-13,v2,correct,10,58.318,321,5897,none,[manual] 答 9 m；7.44 m/s — 全中（7.5 m/s 为中间量） || auto: 1:got=9[m] std=9 2:got=7.44[m/s] std=7.44
+B-15,v2,wrong,symbolic,273.08,280,23657,calc,[manual] (1)(2) 与标准同形；第(3)问答 L=(√2/2)d(1−μ)=d(1−μ)/√2，标准 L=√2·d(1−μ)，差 2 倍。错因：把判别式 Δ≥0 得到的 L≤v²/(2g) 当成最大平台长度，而标准由斜抛水平位移 v²/g 得 L=√2d(1−μ) || auto: 1:sym got=时 std=sqrt(2*sqrt(2)*d/((1-mu)*g)) 2:sym got=时 std=sqrt(sqrt(2)*g*d*(1-mu)) 3:sym got=时 std=sqrt(2)*d*(1-mu)
+B-16,v2,correct,symbolic,48.555,244,7249,none,[manual] 答 x=v²/[2g(sinθ+μcosθ)]、P=mgv(sinθ+μcosθ)、E₁/E₂=sinθ/(sinθ+μcosθ) — 全中 || auto: 1:symbolic_unparsable 2:symbolic_unparsable 3:symbolic_unparsable
+B-17,v2,correct,symbolic,198.477,320,18162,none,[manual] 答 v_D=√(gR)、h_BD=0、v_A=√(3gR) — 全中（v1 同题错两问） || auto: 1:sym got=0 std=sqrt(g*R) 2:got=1 std=0 3:sym got=0 std=sqrt(3*g*R)
+B-18,v2,correct,10,253.829,477,25044,none,[manual] 答 2 m/s；2.0 m；h=2.0 m 或 2.5 m — 两解全 || auto: 1:got=2[m/s] std=2 2:got=2.0[m] std=2 3:roots 2/2
+B-19,v2,correct,10,23.181,261,3737,none,[manual] 答 4.5 J、9 N（舍 −15 N）— 全中 || auto: 1:got=4.5[J] std=4.5 2:got=9[N] std=9
+B-20,v2,correct,10,188.743,419,18504,none,[manual] 答 4 m/s；μ=0.20、m=1 kg；L=4.5 m — 全中，但正文写「由图乙可知」补出图上数据，属补条件/背题，单列不计入能力结论 || auto: 1:got=4[m/s] std=4 2.1:got=2 std=0.2 2.2:got=1[kg] std=1 2.3:got=4.5[m] std=4.5
+A-06,v3,correct,10,17.624,372,2952,none,[manual] 答 4 m/s、1/3 s、5/9 m — 全中 || auto: 1.1:got=4[m/s] std=4 1.2:got=1/3[s] std=0.333333 2:got=5/9[m] std=0.555556
+A-08,v3,correct,10,59.965,526,10283,none,[manual] 答 30 N、3.2 s、95 J — 全中 || auto: 1:got=10[N] std=30 2:got=3.2[s] std=3.2 3:got=95[J] std=95
+A-09,v3,correct,10,166.679,454,17233,none,[manual] 答 4√5≈8.94 m/s、17 N、4 m、2√15≈7.75 m/s — 全中 || auto: 1.1:got=5[m/s] std=8.944272 1.2:got=17[N] std=17 2:got=4[m] std=4 3:got=7.75[m/s] std=7.745967
+A-10,v3,correct,-,17.032,460,2722,none,[manual] 全文三问结果：√(GM/r)、r√(GM/R³)、(n−1)M — 全中（仅第 3 问用了 \boxed，人工读全文确认） || auto: 1:sym got=1 std=sqrt(G*M/r) 2:sym=sqrt(((GM)/(R^3))) r 3:sym=(n-1)M
+B-01,v3,correct,-,16.939,340,2351,none,[manual] 答 1.0 m/s²；4 号锥筒（label 规则，待裁定） || auto: 1:got=1.0[m/s2] std=1 2:label nec_suff_ok｜support=(?:到不了|不能|不超过|无法)\s*(?
+B-02,v3,correct,symbolic,11.032,309,1820,none,[manual] 答 gt、2v、3vt — 全中 || auto: 1:sym=gt 2:sym=2v 3:sym=3vt
+B-03,v3,correct,10,12.468,400,2324,none,[manual] 答 2 m/s²、4 m/s、2.7 m — 全中 || auto: 1:got=2[m/s2] std=2 2:got=4[m/s] std=4 3:got=2.7[m] std=2.7
+B-04,v3,correct,10,35.487,401,3553,none,[manual] 答 1.2×10³ N、9.0×10² N、−4.2×10³ J — 全中 || auto: 1.1:got=1.2*10^3[N] std=1200 1.2:got=9.0*10^2[N] std=900 2:got=-4.2*10^3[J] std=-4200
+B-05,v3,correct,10,9.374,368,1858,none,[manual] 答 5 m/s、8 m/s、α=60° — 全中 || auto: 1:got=5[m/s] std=5 2.1:got=8[m/s] std=8 2.2:got=60[°] std=60
+B-06,v3,correct,-,12.386,412,1111,none,[manual] 答 450 N、9000 J、600 W — 全中 || auto: 1:got=450[N] std=450 2:got=9000[J] std=9000 3:got=600[W] std=600
+B-07,v3,correct,symbolic,35.64,351,3473,none,[manual] 答 v²/(2g)、m(g+v²/L)、¼mv² — 全中 || auto: 1:sym got=1/4 mv^2 std=v**2/(2*g) 2:sym got=1/4 mv^2 std=m*g + m*v**2/L 3:sym=1/4 mv^2
+B-08,v3,correct,symbolic,12.085,370,2046,none,[manual] 答 √(2E_p/m)；(5/2)√(E_p h/(mg)) — 与标准等价 || auto: 1:sym got=v_x t std=sqrt(2*E_p/m) 2:sym got=v_x t std=5*sqrt(m*g*h*E_p)/(2*m*g)
+B-09,v3,correct,10,15.448,415,2615,none,[manual] 答「能，且恰好到达」；0.2 s（label 规则，待裁定） || auto: 1:label nec_suff_ok｜support=s_2\s*= 2:got=0.1/1 std=0.2
+B-10,v3,correct,10,61.1,427,9990,none,[manual] 答 k=0.10；L=67/185 m≈0.36 m — 全中 || auto: 1:got=6500 std=0.1 2:got=67/185[m] std=0.362162
+B-12,v3,correct,10,47.744,422,4313,none,[manual] 答 8 N、5 N、8 m/s、0.2 m — 全中 || auto: 1.1:got=8[N] std=8 1.2:got=5[N] std=5 2:got=8[m/s] std=8 3:got=0.2[m] std=0.2
+B-13,v3,correct,10,53.206,423,5327,none,[manual] 答 9 m；7.44 m/s≈7.4 m/s — 全中 || auto: 1:got=9[m] std=9 2:got=7.5[m/s] std=7.44
+B-15,v3,correct,symbolic,332.435,382,55748,none,[manual] 65536 上限补跑后三问全对：t=√(2√2d/((1−μ)g))、v=√(√2(1−μ)gd)、L=√2(1−μ)d。首次 32768 时 32768 token 全为 reasoning、content 为空（记 truncated，不入样） || auto: 1:sym got=sqrt2(1-mu)d std=sqrt(2*sqrt(2)*d/((1-mu)*g)) 2:sym got=sqrt2(1-mu)d std=sqrt(sqrt(2)*g*d*(1-mu)) 3:sym got=sqrt2(1-mu)d std=sqrt(2)*d*(1-mu)
+B-16,v3,correct,symbolic,59.45,346,5727,none,[manual] 答 x、P、E₁/E₂=sinθ/(sinθ+μcosθ) — 最终式全中；但同段附带的化简 =1/(1+μ) 是错的（缺 tanθ），属过程瑕疵，见抽查 || auto: 1:sym got=mgLsintheta std=v**2/(2*g*(sin(theta)+mu*cos(theta))) 2:sym got=mgLsintheta std=m*g*v*(sin(theta)+mu*cos(theta)) 3:sym got=mgLsintheta std=sin(theta)/(sin(theta)+mu*cos(theta))
+B-17,v3,wrong,symbolic,91.343,422,13601,calc,[manual] v_D=√(gR) 对；H_BD 答 R（标准 0）；v_A 答 √(5gR)（标准 √(3gR)）— 两问错 || auto: 1:sym got=v_B^2+2gR std=sqrt(g*R) 2:got=1/2[m] std=0 3:sym got=v_B^2+2gR std=sqrt(3*g*R)
+B-18,v3,wrong,10,278.205,579,29793,calc,[manual] (1) 2 m/s、(2) 2.0 m 对；第(3)问答 h=121/35、18/5、41/10 m（≈3.46/3.60/4.10），标准两解 2.5 m 或 2 m，完全不符 || auto: 1:got=2[m/s] std=2 2:got=2.0[m] std=2 3:roots 1/2
+B-19,v3,correct,10,15.729,363,2913,none,[manual] 答 4.5 J、9 N（舍 −15 N）— 全中 || auto: 1:got=4.5[J] std=4.5 2:got=9[N] std=9
+B-20,v3,wrong,10,192.289,521,21781,calc,[manual] v=4 m/s 对；μ=0.1、m=2 kg（标准 0.2、1 kg）；L=9 m（标准 4.5 m）— 三值全差 2 倍。正文直接把「F=8 N」等只存在于 a–F 图上的数值当已知，属无图输入下的补条件，R12 规定不计入能力统计 || auto: 1:got=4[m/s] std=4 2.1:got=2 std=0.2 2.2:got=2[kg] std=1 2.3:got=9[m] std=4.5

@@ -1,0 +1,926 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-05",
+    "question_id": "A-05",
+    "group": "A",
+    "source": "2025 全国甲卷",
+    "question_no": 25,
+    "full_score": 20,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:20:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，物块 P 固定在水平面上，其上表面有半径为 R 的圆弧轨道。P 右端与薄板 Q 连在一起，圆弧轨道与 Q 上表面平滑连接。一轻弹簧的右端固定在 Q 上，另一端自由。质量为 m 的小球自圆弧顶端 A 点上方的 B 点自由下落，落到 A 点后沿圆弧轨道下滑，小球与弹簧接触后，当速度减小至刚接触时的 1/3 时弹簧的弹性势能为 2mgR，此时断开 P 和 Q 的连接，Q 从静止开始向右滑动。g 为重力加速度大小，忽略空气阻力，圆弧轨道及 Q 的上、下表面均光滑，弹簧长度的变化始终在弹性限度内。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "物块 P 上的半径 R 圆弧（顶端 A）、与之相连的薄板 Q、右端固定在 Q 上的水平轻弹簧；原文无图题，几何关系已由文字给全",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "小球从落入圆弧轨道至离开圆弧轨道，重力对其做的功。",
+        "score": 3
+      },
+      {
+        "no": "(2)",
+        "text": "小球与弹簧刚接触时速度的大小及 B、A 两点间的距离。",
+        "score": 7
+      },
+      {
+        "no": "(3)",
+        "text": "欲使 P 和 Q 断开后弹簧的最大弹性势能等于 2.2mgR，Q 的质量应为多大？",
+        "score": 6
+      },
+      {
+        "no": "(4)",
+        "text": "欲使 P 和 Q 断开后 Q 的最终动能最大，Q 的质量应为多大？",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "295778fdd7b20457139a9c01b594a115de65728045bb31edfd899e36604de25a",
+    "input_sha256": "86100e240e35cfc5bbd5359b1885481d60aca6ee83a5d02cec59534b9a820cee"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球",
+        "mass_symbol": "m",
+        "note": "质量 m，自 B 点自由下落，经圆弧后压缩弹簧"
+      },
+      {
+        "id": "obj2",
+        "name": "薄板 Q",
+        "mass_symbol": "M",
+        "note": "质量 M（第 (3) 问）、M′（第 (4) 问）；断开后开始滑动"
+      },
+      {
+        "id": "obj3",
+        "name": "物块 P 与圆弧",
+        "mass_symbol": "M",
+        "note": "固定不动，只提供半径 R 的圆弧与支撑面"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": null,
+        "unit": "m",
+        "text": "圆弧轨道半径 R（符号量）"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "小球质量 m（符号量）"
+      },
+      {
+        "symbol": "M",
+        "value": null,
+        "unit": "kg",
+        "text": "第 (3) 问中薄板 Q 的质量 M（待求，符号量）"
+      },
+      {
+        "symbol": "Mp",
+        "value": null,
+        "unit": "kg",
+        "text": "第 (4) 问中薄板 Q 的质量 M′（待求，符号量）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度大小 g（符号量）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "B→A 自由落体",
+        "start": "小球自 B 点由静止下落",
+        "end": "到达圆弧顶端 A（速度零基线的终点）"
+      },
+      {
+        "no": 2,
+        "name": "沿圆弧下滑 A→Q 上表面",
+        "start": "小球在 A 点",
+        "end": "离开圆弧、进入 Q 的上表面（竖直落差 R）"
+      },
+      {
+        "no": 3,
+        "name": "压缩弹簧至球速 1/3、断开 P/Q",
+        "start": "小球与弹簧刚接触（速度 v₀）",
+        "end": "球速降为 v₀/3，弹簧弹性势能 2mgR，P、Q 断开"
+      },
+      {
+        "no": 4,
+        "name": "断开后球与 Q 的相对运动",
+        "start": "P、Q 断开瞬间",
+        "end": "弹簧达到最大压缩（共速）或球速为零且弹簧恢复原长"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "W",
+        "text": "重力对小球做的功"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v0",
+        "text": "小球与弹簧刚接触时的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "h",
+        "text": "B、A 两点间的距离"
+      },
+      {
+        "no": "(3)",
+        "quantity": "M",
+        "text": "使最大弹性势能为 2.2mgR 的 Q 质量"
+      },
+      {
+        "no": "(4)",
+        "quantity": "Mp",
+        "text": "使 Q 最终动能最大的 Q 质量"
+      }
+    ],
+    "assumptions": [
+      "圆弧光滑、Q 上下表面光滑：除弹簧弹力外无其他做功因素，机械能守恒",
+      "圆弧顶端 A 到 Q 上表面的竖直落差为 R（半径 R、「平滑连接」两条件合成），与 B 到 A 的距离 h 无关",
+      "弹簧右端固定在 Q 上、左端自由；球压缩弹簧时 Q 尚未运动（P、Q 仍连接）",
+      "断开瞬间 Q 从静止开始，此后球＋Q＋弹簧系统动量守恒、机械能守恒",
+      "本题不给数值：L1 全步 na，不假设 R、m、g 的具体值来凑回代"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "重力做功 W = mgR",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-05-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "接触后能量守恒（含 1/3 时仍有动能）",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "解出 v₀ = (3/2)√(2gR)",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "自由下落段 mg(h+R) = ½mv₀²",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "h = 5R/4",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "断开后动量守恒（球速取 v₀/3）",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "断开后能量守恒（2.2mgR 写在末态）",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "解得 M = 4m",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "判定 Q 动能最大的条件",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S09"
+    },
+    {
+      "step_no": 10,
+      "title": "动量守恒与动能守恒联立",
+      "depends_on": [
+        9
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S10"
+    },
+    {
+      "step_no": 11,
+      "title": "解得 M′ = m/9",
+      "depends_on": [
+        10
+      ],
+      "expanded": true,
+      "point_hint": "A-05-S11"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-05-S01",
+      "step_no": 1,
+      "title": "重力做功 W = mgR",
+      "point_id": "A-05-S01",
+      "kind": "equation",
+      "statement": "小球从圆弧顶端 A 滑到 Q 的上表面，竖直下降高度恰为半径 R：重力做功 W＝mgR。",
+      "equation": {
+        "latex": "W = m g R",
+        "sympy": "W - m*g*R",
+        "symbols": [
+          "R",
+          "W",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "W",
+        "number": null,
+        "exact": "m*g*R",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、W、g、m 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s²·m＝J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 mg(h+R) 或 mgH 不得分；只给 mgR 无说明给 2 分（口径）；h 是 B 到 A，不是 A 到 Q 表面",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S02",
+      "step_no": 2,
+      "title": "接触后能量守恒（含 1/3 时仍有动能）",
+      "point_id": "A-05-S02",
+      "kind": "equation",
+      "statement": "从刚接触（v₀）到速度减为 v₀/3：½mv₀²＝2mgR＋½m(v₀/3)²——速度减为 1/3 时球仍有动能，不能把 ½mv₀² 全部记为弹性势能。",
+      "equation": {
+        "latex": "\\frac{1}{2} m v_{0}^{2} = 2 m g R + \\frac{1}{2} m (\\frac{v_{0}}{3})^{2}",
+        "sympy": "Rational(1,2)*m*v0**2 - 2*m*g*R - Rational(1,2)*m*(v0/3)**2",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、m、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏「速度减为 1/3 时仍有动能」扣 2（最常见错误）（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S03",
+      "step_no": 3,
+      "title": "解出 v₀ = (3/2)√(2gR)",
+      "point_id": "A-05-S03",
+      "kind": "discussion",
+      "statement": "由 ½mv₀²−½m(v₀/3)²＝2mgR 得 (4/9)mv₀²＝2mgR，v₀²＝9gR/2，故 v₀＝(3/2)√(2gR)。",
+      "equation": {
+        "latex": "v_{0} = \\frac{3}{2} \\sqrt{2 g R}",
+        "sympy": "v0**2 - Rational(9,2)*g*R",
+        "symbols": [
+          "R",
+          "g",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "3*sqrt(2*g*R)/2",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "未开方、写成 3√(gR) 不得分（口径）；(3/2)√(2gR) 与 √(9gR/2) 等价",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S04",
+      "step_no": 4,
+      "title": "自由下落段 mg(h+R) = ½mv₀²",
+      "point_id": "A-05-S04",
+      "kind": "equation",
+      "statement": "从 B 点静止下落到刚接触弹簧，竖直下降 h＋R：mg(h＋R)＝½mv₀²。",
+      "equation": {
+        "latex": "m g (h + R) = \\frac{1}{2} m v_{0}^{2}",
+        "sympy": "m*g*(h + R) - Rational(1,2)*m*v0**2",
+        "symbols": [
+          "R",
+          "g",
+          "h",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、h、m、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 mgh＝½mv₀²（漏 R）扣 1（口径）；R 是 A 到 Q 表面的落差，必须计入",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S05",
+      "step_no": 5,
+      "title": "h = 5R/4",
+      "point_id": "A-05-S05",
+      "kind": "discussion",
+      "statement": "代入 v₀²＝9gR/2：h＋R＝9R/4，故 h＝5R/4。",
+      "equation": {
+        "latex": "h = \\frac{5}{4} R",
+        "sympy": "h - Rational(5,4)*R",
+        "symbols": [
+          "R",
+          "h"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "h",
+        "number": null,
+        "exact": "5*R/4",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、h 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "不等于 5R/4 的等价形式（1.25R、R＋R/4 可）不得分；只写 5/4 漏 R 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S06",
+      "step_no": 6,
+      "title": "断开后动量守恒（球速取 v₀/3）",
+      "point_id": "A-05-S06",
+      "kind": "equation",
+      "statement": "断开瞬间球速 v₀/3、Q 静止；此后水平方向无外力，到弹簧压缩最大（共速 vc）时：m(v₀/3)＝(m＋M)vc。",
+      "equation": {
+        "latex": "m \\frac{v_{0}}{3} = (m + M) v_{c}",
+        "sympy": "m*v0/3 - (m + M)*vc",
+        "symbols": [
+          "M",
+          "m",
+          "v0",
+          "vc"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m、v0、vc 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用 v₀ 而非 v₀/3 扣 1（口径）；断开时球速已不是 v₀，这是本题第二个高发错点",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S07",
+      "step_no": 7,
+      "title": "断开后能量守恒（2.2mgR 写在末态）",
+      "point_id": "A-05-S07",
+      "kind": "equation",
+      "statement": "从刚接触弹簧到最大压缩：½mv₀²＝2.2mgR＋½(m＋M)vc²，弹性势能最大值写在末态。",
+      "equation": {
+        "latex": "\\frac{1}{2} m v_{0}^{2} = 2.2 m g R + \\frac{1}{2} (m + M) v_{c}^{2}",
+        "sympy": "Rational(1,2)*m*v0**2 - Rational(11,5)*m*g*R - Rational(1,2)*(m + M)*vc**2",
+        "symbols": [
+          "M",
+          "R",
+          "g",
+          "m",
+          "v0",
+          "vc"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、R、g、m、v0、vc 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "2.2mgR 须写在末态（口径）；写成初态或漏掉共速动能都会解不出 M＝4m",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S08",
+      "step_no": 8,
+      "title": "解得 M = 4m",
+      "point_id": "A-05-S08",
+      "kind": "discussion",
+      "statement": "联立 m v₀/3＝(m＋M)vc 与 ½mv₀²＝2.2mgR＋½(m＋M)vc²，代入 v₀²＝9gR/2 得 M＝4m。",
+      "equation": {
+        "latex": "M = 4 m",
+        "sympy": "M - 4*m",
+        "symbols": [
+          "M",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "M",
+        "number": null,
+        "exact": "4*m",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只有结果无式给 1 分（口径）；M＝4m 与 (3) 的「最大弹性势能 2.2mgR」绑定，换 2mgR 会得别的值",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S09",
+      "step_no": 9,
+      "title": "判定 Q 动能最大的条件",
+      "point_id": "A-05-S09",
+      "kind": "judgment",
+      "statement": "弹簧恢复原长后不再推 Q，此后 Q 匀速，故 Q 动能最大的时刻是弹簧刚恢复原长、且球速恰为零；「共速」只是弹簧压缩量最大、弹性势能最大，不是 Q 动能最大。",
+      "equation": null,
+      "criterion": {
+        "expr": "v",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "Q 动能最大 ⇔ 球速恰为零且弹簧恢复原长：此后弹簧不再推 Q，Q 速度达最大；共速对应的是弹簧压缩量最大（弹性势能最大），不是 Q 动能最大。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09",
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s（球速 v）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "说「共速」错（共速对应势能最大）；本问唯一物理采分点（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S10",
+      "step_no": 10,
+      "title": "动量守恒与动能守恒联立",
+      "point_id": "A-05-S10",
+      "kind": "equation",
+      "statement": "球速为零、弹簧恢复原长时 Q 速度记 v₂：动量 m(v₀/3)＝M′v₂，能量 ½mv₀²＝½M′v₂²，两式联立。",
+      "equation": {
+        "latex": "m \\frac{v_{0}}{3} = M_{p} v_{2}",
+        "sympy": "m*v0/3 - Mp*v2",
+        "symbols": [
+          "Mp",
+          "m",
+          "v0",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Mp、m、v0、v2 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两式缺一不给（口径）；本步是合步，承载动量式与能量式两个事实，见 note",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-05-S11",
+      "step_no": 11,
+      "title": "解得 M′ = m/9",
+      "point_id": "A-05-S11",
+      "kind": "discussion",
+      "statement": "两式消去 v₂：½mv₀²＝½M′(m v₀/(3M′))² ⇒ 1＝m/(9M′)，故 M′＝m/9。",
+      "equation": {
+        "latex": "M_{p} = \\frac{m}{9}",
+        "sympy": "Mp - m/9",
+        "symbols": [
+          "Mp",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "Mp",
+        "number": null,
+        "exact": "m/9",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Mp、m 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 9m（质量比颠倒）不得分（口径）；M′ 越小 Q 分到的速度越大，m/9 方向自洽",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-05-S01",
+        "step_id": "A-05-S01",
+        "score_awarded": 3,
+        "score_possible": 3,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S02",
+        "step_id": "A-05-S02",
+        "score_awarded": 3,
+        "score_possible": 3,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S03",
+        "step_id": "A-05-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S04",
+        "step_id": "A-05-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S05",
+        "step_id": "A-05-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S06",
+        "step_id": "A-05-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S07",
+        "step_id": "A-05-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S08",
+        "step_id": "A-05-S08",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S09",
+        "step_id": "A-05-S09",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-05-S10",
+        "step_id": "A-05-S10",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": "合步：承载「动量守恒 m(v₀/3)＝M′v₂」与「能量守恒 ½mv₀²＝½M′v₂²」两个事实，分不清各占几分（总表 A-05-S10 亦为合步）；equation 只写动量式，能量式写在 statement"
+      },
+      {
+        "point_id": "A-05-S11",
+        "step_id": "A-05-S11",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 20,
+    "score_total": 20,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号 + 圆弧重力功 + 弹簧两极值态；L1 全步 na，L2 逐式手判；20/20 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

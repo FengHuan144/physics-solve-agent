@@ -1,0 +1,614 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-04",
+    "question_id": "B-04",
+    "group": "B",
+    "source": "2024 新课标卷",
+    "question_no": 24,
+    "full_score": 10,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:50:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "将重物从高层楼房的窗外运到地面时，为安全起见，要求下降过程中重物与楼墙保持一定的距离。如图，一种简单的操作方法是一人在高处控制一端系在重物上的绳子 P，另一人在地面控制另一根一端系在重物上的绳子 Q，二人配合可使重物缓慢竖直下降。若重物的质量 m＝42 kg，重力加速度大小 g＝10 m/s²。当 P 绳与竖直方向的夹角 α＝37° 时，Q 绳与竖直方向的夹角 β＝53°。(sin 37°＝0.6)",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "重物由高处的 P 绳与地面的 Q 绳共同悬吊，两绳与竖直方向夹角分别为 37°、53°；原文无图题，两绳方位需图才能唯一确定（依赖图＝是），工作区暂无该题图文件",
+        "caption_source": "none",
+        "is_required": true,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "此时 P、Q 绳中拉力的大小。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "若开始竖直下降时重物距地面的高度 h＝10 m，求在重物下降到地面的过程中，两根绳子拉力对重物做的总功。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "78fc099f9105da91c3d347e52ecb2b9ffa5451f8eb200b16228ffa1423ada089",
+    "input_sha256": "1d8b9585614b185982ca60e5877015be25f0d60912dcbda03f662c8a12c2016d"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "重物",
+        "mass_symbol": "m",
+        "note": "质量 42 kg，缓慢竖直下降，任一时刻处于平衡"
+      },
+      {
+        "id": "obj2",
+        "name": "P 绳",
+        "mass_symbol": "m",
+        "note": "高处的人控制，与竖直方向夹角 α＝37°，拉力 F1"
+      },
+      {
+        "id": "obj3",
+        "name": "Q 绳",
+        "mass_symbol": "m",
+        "note": "地面的人控制，与竖直方向夹角 β＝53°，拉力 F2"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": 42,
+        "unit": "kg",
+        "text": "重物质量 m＝42 kg"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      },
+      {
+        "symbol": "angA",
+        "value": 37,
+        "unit": "deg",
+        "text": "P 绳与竖直方向夹角 α＝37°"
+      },
+      {
+        "symbol": "angB",
+        "value": 53,
+        "unit": "deg",
+        "text": "Q 绳与竖直方向夹角 β＝53°"
+      },
+      {
+        "symbol": "h",
+        "value": 10,
+        "unit": "m",
+        "text": "开始下降时重物距地面高度 h＝10 m"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "缓慢竖直下降",
+        "start": "重物在高处以 α＝37°、β＝53° 平衡",
+        "end": "到达地面（下降 h＝10 m）"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "F1",
+        "text": "P 绳拉力"
+      },
+      {
+        "no": "(1)",
+        "quantity": "F2",
+        "text": "Q 绳拉力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "W",
+        "text": "两绳拉力对重物做的总功"
+      }
+    ],
+    "assumptions": [
+      "「缓慢」⇒ 每一时刻加速度为零，重物处于平衡态；动能始终为零",
+      "P 绳斜向上、Q 绳斜向下拉（一人在高处、一人在地面），两绳都在竖直平面内",
+      "水平方向两绳拉力分量等大反向；竖直方向两拉力分量之和与重力平衡",
+      "两绳拉力做总功按动能定理求：W＋mgh＝ΔEk＝0，不分别求两绳的功",
+      "sin 37°＝0.6、cos 37°＝0.8，故 sin 53°＝0.8、cos 53°＝0.6"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "缓慢下降 ⇒ 任一时刻平衡",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-04-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "水平方向：0.6F₁ = 0.8F₂",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-04-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "竖直方向：0.8F₁ = 0.6F₂ + mg",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-04-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "F₁ = 1 200 N、F₂ = 900 N",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-04-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "缓慢 ⇒ 动能不变，W + mgh = 0",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-04-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "W = −mgh = −4 200 J",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-04-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "写作 −4 200 J，负号表示负功",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-04-S07"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-04-S01",
+      "step_no": 1,
+      "title": "缓慢下降 ⇒ 任一时刻平衡",
+      "point_id": "B-04-S01",
+      "kind": "judgment",
+      "statement": "「缓慢」意味着下降过程中速度始终极小、加速度为零，重物在任一位置都处于平衡态：重力与两绳拉力的合力为零，可对两绳拉力做正交分解。",
+      "equation": null,
+      "criterion": {
+        "expr": "Fnet",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "缓慢下降 ⇒ 加速度为零，重物任一时刻处于平衡态，合力为零，可用正交分解求两绳拉力。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Fnet，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把「缓慢」当作有加速度本步 0 分；只写「平衡」未说明由缓慢所致本步给分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-04-S02",
+      "step_no": 2,
+      "title": "水平方向：0.6F₁ = 0.8F₂",
+      "point_id": "B-04-S02",
+      "kind": "equation",
+      "statement": "水平方向合力为零：F1 sin 37°＝F2 sin 53°，即 0.6F1＝0.8F2。",
+      "equation": {
+        "latex": "F_{1} \\sin 37° = F_{2} \\sin 53°",
+        "sympy": "Rational(3,5)*F1 - Rational(4,5)*F2",
+        "symbols": [
+          "F1",
+          "F2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F1=1200、F2=900）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "sin、cos 配错本步 0 分；把 P 绳与 53° 对应（角标搞反）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-04-S03",
+      "step_no": 3,
+      "title": "竖直方向：0.8F₁ = 0.6F₂ + mg",
+      "point_id": "B-04-S03",
+      "kind": "equation",
+      "statement": "竖直方向合力为零：F1 cos 37°＝F2 cos 53°＋mg，即 0.8F1＝0.6F2＋420。",
+      "equation": {
+        "latex": "F_{1} \\cos 37° = F_{2} \\cos 53° + m g",
+        "sympy": "Rational(4,5)*F1 - Rational(3,5)*F2 - m*g",
+        "symbols": [
+          "F1",
+          "F2",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F1=1200、F2=900、g=10、m=42）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 mg 本步 0 分；两绳竖直分量都写成向上本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-04-S04",
+      "step_no": 4,
+      "title": "F₁ = 1 200 N、F₂ = 900 N",
+      "point_id": "B-04-S04",
+      "kind": "discussion",
+      "statement": "联立 0.6F1＝0.8F2 与 0.8F1＝0.6F2＋420，得 F1＝1 200 N、F2＝900 N。",
+      "equation": {
+        "latex": "F_{1} = 1200",
+        "sympy": "F1 - 1200",
+        "symbols": [
+          "F1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "F1",
+        "number": 1200.0,
+        "exact": "1200",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F1=1200）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只解出一个力本步 0 分；只写数值不写单位 N 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-04-S05",
+      "step_no": 5,
+      "title": "缓慢 ⇒ 动能不变，W + mgh = 0",
+      "point_id": "B-04-S05",
+      "kind": "judgment",
+      "statement": "缓慢下降 ⇒ 动能始终为零、不变；由动能定理，重力做的正功 mgh 与两绳拉力做的总功 W 之和为零。",
+      "equation": null,
+      "criterion": {
+        "expr": "W + m*g*h",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "缓慢下降 ⇒ 动能变化为零，动能定理给出 W＋mgh＝0；拉力总功必为负。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "判据回代成立（W=-4200、g=10、h=10、m=42，差值 0）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把拉力做功当作正功本步 0 分；漏 mgh 项本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-04-S06",
+      "step_no": 6,
+      "title": "W = −mgh = −4 200 J",
+      "point_id": "B-04-S06",
+      "kind": "equation",
+      "statement": "W＝−mgh＝−42×10×10 J＝−4 200 J。",
+      "equation": {
+        "latex": "W = - m g h",
+        "sympy": "W + m*g*h",
+        "symbols": [
+          "W",
+          "g",
+          "h",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "W",
+        "number": -4200.0,
+        "exact": "-4200",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（W=-4200、g=10、h=10、m=42）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏负号本步 0 分；按单绳计算或除以 2 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-04-S07",
+      "step_no": 7,
+      "title": "写作 −4 200 J，负号表示负功",
+      "point_id": "B-04-S07",
+      "kind": "discussion",
+      "statement": "结果写作 −4 200 J，负号表示两绳拉力对重物做负功（拉力方向与下降方向相反）。",
+      "equation": {
+        "latex": "W = -4200",
+        "sympy": "W + 4200",
+        "symbols": [
+          "W"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "W",
+        "number": -4200.0,
+        "exact": "-4200",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（W=-4200）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 4 200 J 未说明是负功本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-04-S01",
+        "step_id": "B-04-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-04-S02",
+        "step_id": "B-04-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-04-S03",
+        "step_id": "B-04-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-04-S04",
+        "step_id": "B-04-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-04-S05",
+        "step_id": "B-04-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-04-S06",
+        "step_id": "B-04-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-04-S07",
+        "step_id": "B-04-S07",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 10,
+    "score_total": 10,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：正交分解求两拉力 + 缓慢过程动能定理；L1 逐式回代，10/10 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

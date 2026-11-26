@@ -1,0 +1,688 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-06",
+    "question_id": "A-06",
+    "group": "A",
+    "source": "2024 新课标卷",
+    "question_no": 25,
+    "full_score": 14,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:37:57+08:00",
+    "latency_ms": 62256,
+    "tokens": {
+      "in": 1033,
+      "out": 13399
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一长度 l＝1.0 m 的均匀薄板初始时静止在一光滑平台上，薄板的右端与平台的边缘 O 对齐。薄板上的一小物块从薄板的左端以某一初速度向右滑动，当薄板运动的距离 Δl＝l/6 时，物块从薄板右端水平飞出；当物块落到地面时，薄板中心恰好运动到 O 点。已知物块与薄板的质量相等，它们之间的动摩擦因数 μ＝0.3，重力加速度大小 g＝10 m/s²。求",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "长 l 的薄板静置于光滑平台，右端与边缘 O 对齐，物块自板左端向右滑；原文无图题，几何关系已由文字给全",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "物块初速度大小及其在薄板上运动的时间。",
+        "score": 10
+      },
+      {
+        "no": "(2)",
+        "text": "平台距地面的高度。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "ea815c82b9ade30697a5f5615c3562ccaeb8c71ad2f01e8c628a5869b3b6e94a",
+    "input_sha256": "e67dc986122ce6056fd1d9e7281a08b09e0e6a27b721429e54cfb79c0c882a56"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小物块",
+        "mass_symbol": "m",
+        "note": "与薄板等质量；相对板向右滑，受向左摩擦力"
+      },
+      {
+        "id": "obj2",
+        "name": "薄板",
+        "mass_symbol": "m",
+        "note": "长 L＝1.0 m，初始静止；受物块向右的摩擦力而加速"
+      },
+      {
+        "id": "obj3",
+        "name": "平台",
+        "mass_symbol": "m",
+        "note": "光滑，无摩擦；右缘为 O 点，物块从 O 外水平飞出"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "L",
+        "value": 1.0,
+        "unit": "m",
+        "text": "薄板长度 l＝1.0 m"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "物块与薄板质量相等，均为 m"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v0",
+        "text": "物块初速度"
+      },
+      {
+        "no": "(1)",
+        "quantity": "t",
+        "text": "物块在薄板上运动的时间"
+      },
+      {
+        "no": "(2)",
+        "quantity": "h",
+        "text": "平台距地面的高度"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "摩擦力与加速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "由板位移求时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "物块位移关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "求物块初速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "离板后板匀速",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "分离时板速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "板心剩余位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求后续运动时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "平抛竖直方向",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "时间对应的判断",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "求平台高度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-06-S01",
+      "step_no": 1,
+      "title": "摩擦力与加速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取向右为正。物块受摩擦力向左，薄板受摩擦力向右，大小均为 μmg；由牛顿第二定律得 a1＝－μg，a2＝μg。",
+      "equation": {
+        "latex": "f - mu m g + a1 + a2",
+        "sympy": "f - mu*m*g + a1 + a2",
+        "symbols": [
+          "a1",
+          "a2",
+          "f",
+          "g",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：5 未知 / 1 方程（chain 可解，本步不判）含 a1, a2, f, m｜chain：全题联立后仍含自由符号 a1, a2, f, m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "fail",
+          "detail": "加减项量纲不一致：a1 为 m/s^2；f 为 kg·m/s^2；-g*m*mu 为 kg·m/s^2",
+          "error_code": "E-12"
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S02",
+      "step_no": 2,
+      "title": "由板位移求时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "薄板从静止开始做匀加速运动，运动 Δl＝l/6 时物块离板，代入 a2＝μg＝3 m/s²、l＝1.0 m，求时间 t1。",
+      "equation": {
+        "latex": "(1/2) 3 t1^2 - (1/6)",
+        "sympy": "Rational(1,2)*3*t1**2 - Rational(1,6)",
+        "symbols": [
+          "t1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t1",
+        "number": 0.3333333333,
+        "exact": "1/3",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 t1=-0.333333、0.333333，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 s^2；值单位 s 与符号 t1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S03",
+      "step_no": 3,
+      "title": "物块位移关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从开始到物块离板，物块相对薄板向右移动 l，薄板又向右移动 l/6，因此物块对地位移为 l＋l/6；物块对地做匀减速运动。",
+      "equation": {
+        "latex": "v0 t1 - (1/2) mu g t1^2 - (7/6) l",
+        "sympy": "v0*t1 - Rational(1,2)*mu*g*t1**2 - Rational(7,6)*L",
+        "symbols": [
+          "g",
+          "l",
+          "mu",
+          "t1",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 mu, v0｜chain：全题联立后仍含自由符号 mu（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S04",
+      "step_no": 4,
+      "title": "求物块初速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "把 t1＝1/3 s、μ＝0.3、g＝10 m/s²、l＝1.0 m 代入物块位移关系，求得物块初速度 v0。",
+      "equation": {
+        "latex": "v0 (1/3) - (1/2) 3 ((1/3))^2 - (7/6)",
+        "sympy": "v0*Rational(1,3) - Rational(1,2)*3*(Rational(1,3))**2 - Rational(7,6)",
+        "symbols": [
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v0",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 v0=4，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s；值单位 m/s 与符号 v0 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S05",
+      "step_no": 5,
+      "title": "离板后板匀速",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "物块从薄板右端飞出后，薄板在光滑平台上水平方向不再受摩擦力，因此薄板保持匀速直线运动。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "识别物块离板后薄板水平方向不受力，后续运动为匀速。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S06",
+      "step_no": 6,
+      "title": "分离时板速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "薄板从静止以 a2＝μg 加速 t1＝1/3 s，分离时薄板速度 v_b＝a2t1。",
+      "equation": {
+        "latex": "v_b - mu g t1",
+        "sympy": "v2 - mu*g*t1",
+        "symbols": [
+          "b",
+          "g",
+          "mu",
+          "t1",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v2",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：解含自由符号 mu, v2（chain 再判）｜chain：全题联立后仍含自由符号 mu（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s；值单位 m/s 与符号 v2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S07",
+      "step_no": 7,
+      "title": "板心剩余位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "初始时薄板中心在 O 点左侧 l/2 处；分离时薄板已向右运动 l/6，故薄板中心还需运动 s＝l/2－l/6。",
+      "equation": {
+        "latex": "s - l/2 + l/6",
+        "sympy": "s2 - L/2 + L/6",
+        "symbols": [
+          "l",
+          "s"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "s2",
+        "number": 0.3333333333,
+        "exact": "1/3",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 s2=0.333333，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m；值单位 m 与符号 s2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S08",
+      "step_no": 8,
+      "title": "求后续运动时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "物块离板后薄板以速度 v_b 匀速运动，薄板中心再运动 s 到达 O 点，所用时间 t2＝s/v_b。",
+      "equation": {
+        "latex": "t2 - s/v_b",
+        "sympy": "t2 - s2/v2",
+        "symbols": [
+          "b",
+          "s",
+          "t2",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t2",
+        "number": 0.3333333333,
+        "exact": "1/3",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 t2=0.333333，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 s；值单位 s 与符号 t2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S09",
+      "step_no": 9,
+      "title": "平抛竖直方向",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "物块从薄板右端水平飞出后做平抛运动，竖直方向初速度为零，只受重力，满足 H＝1/2 g t²。",
+      "equation": {
+        "latex": "H - (1/2) g t2^2",
+        "sympy": "H - Rational(1,2)*g*t2**2",
+        "symbols": [
+          "H",
+          "g",
+          "t2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 H，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S10",
+      "step_no": 10,
+      "title": "时间对应的判断",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "题给“当物块落到地面时，薄板中心恰好运动到 O 点”，所以物块平抛飞行的时间等于薄板中心运动到 O 点所用的时间 t2。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "明确落地时刻与薄板中心到 O 的时刻相同，因此平抛时间取 t2。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-06-S11",
+      "step_no": 11,
+      "title": "求平台高度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 t2＝1/3 s、g＝10 m/s²，求平台距地面的高度 H。",
+      "equation": {
+        "latex": "H - (1/2) 10 ((1/3))^2",
+        "sympy": "H - Rational(1,2)*10*(Rational(1,3))**2",
+        "symbols": [
+          "H"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "H",
+        "number": 0.5555555556,
+        "exact": "5/9",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 H=0.555556，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m；值单位 m 与符号 H 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 14,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "fail",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [
+      {
+        "step_id": "A-06-S01",
+        "layer": "L2",
+        "error_code": "E-12",
+        "detail": "加减项量纲不一致：a1 为 m/s^2；f 为 kg·m/s^2；-g*m*mu 为 kg·m/s^2"
+      }
+    ],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

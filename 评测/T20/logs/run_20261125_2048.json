@@ -1,0 +1,46 @@
+[
+  {
+    "qid": "B-19",
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "max_tokens": 40000,
+    "prompt_chars": 1725,
+    "figures": [],
+    "created_at": "2026-11-25T20:48:35+08:00",
+    "ok": true,
+    "attempts": 1,
+    "parse_error": "",
+    "finish_reason": "stop",
+    "tokens_in": 1024,
+    "tokens_out": 10805,
+    "reasoning_tokens": 9144,
+    "cost_cny": 0.0756,
+    "extra_params": {},
+    "elapsed_s": 54.8,
+    "n_steps": 11,
+    "n_gold": 8,
+    "step_ratio": 1.375,
+    "issues": [],
+    "score_audit": [
+      {
+        "no": "(1)",
+        "n_steps": 4,
+        "sum_score": 4.0,
+        "paper_score": 6,
+        "delta": -2.0
+      },
+      {
+        "no": "(2)(ⅰ)",
+        "n_steps": 4,
+        "sum_score": 4.0,
+        "paper_score": 6,
+        "delta": -2.0
+      }
+    ],
+    "schema_rc": 0,
+    "n_e": 0,
+    "n_w": 10,
+    "e_lines": [],
+    "layers": "{\"L1\": \"na\", \"L2\": \"na\", \"L3\": \"na\", \"L4\": \"na\"}"
+  }
+]

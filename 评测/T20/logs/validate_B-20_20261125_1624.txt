@@ -1,0 +1,17 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe schema/validate_schema.py D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-20.json
+
+校验对象：评测\T20\out\B-20.json
+[E] S0         steps/1/criterion: None is not of type 'object'
+[E] S0         steps/2/criterion: None is not of type 'object'
+[E] S0         steps/4/criterion: None is not of type 'object'
+[E] S0         steps/5/criterion: None is not of type 'object'
+[E] S0         steps/6/criterion: None is not of type 'object'
+[E] S0         steps/7/criterion: None is not of type 'object'
+[E] S0         steps/9/criterion: None is not of type 'object'
+[E] S0         steps/10/criterion: None is not of type 'object'
+[E] S0         steps/11/criterion: None is not of type 'object'
+[E] S0         steps/13/criterion: None is not of type 'object'
+[E] S0         steps/15/criterion: None is not of type 'object'
+     共 11 处 Schema 违规，业务规则不再执行（先修结构）
+--------------------------------------------------------------------
+失败：11 项 E，0 项 W → 退出 1

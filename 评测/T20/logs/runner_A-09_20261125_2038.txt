@@ -1,0 +1,28 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-09.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-09_validated.json
+
+对象：A-09（题 A-09，16 步）
+L1  pass 7 / fail 0 / na 9 / skipped 0    判定通过率 100.0%    na 比例 56.2%
+L2  pass 6 / fail 2 / na 8 / skipped 0    判定通过率 75.0%    na 比例 50.0%
+整题层状态：{"L1": "na", "L2": "fail", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-09-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-09-S01 [L2] data_error(empty): sympy 串为空
+  - A-09-S04 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-09-S04 [L2] data_error(empty): sympy 串为空
+  - A-09-S07 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-09-S07 [L2] data_error(empty): sympy 串为空
+  - A-09-S11 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-09-S11 [L2] data_error(empty): sympy 串为空
+  - A-09-S13 [L1] per_step：data_error(unknown_symbol): 符号「v0min」不在白名单：Rational(1,2)*v0min**2 - Rational(1,2)*v1**2 - 4*g*L｜chain：data_error(unknown_symbol): 符号「v0min」不在白名单：Rational(1,2)*v0min**2 - Rational(1,2)*v1**2 - 4*g*L
+  - A-09-S13 [L2] data_error(unknown_symbol): 符号「v0min」不在白名单：Rational(1,2)*v0min**2 - Rational(1,2)*v1**2 - 4*g*L
+  - A-09-S14 [L1] per_step：data_error(unknown_symbol): 符号「v0min」不在白名单：v0min**2 - 10*g*L｜chain：data_error(unknown_symbol): 符号「v0min」不在白名单：v0min**2 - 10*g*L
+  - A-09-S14 [L2] data_error(unknown_symbol): 符号「v0min」不在白名单：v0min**2 - 10*g*L
+  - A-09-S15 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-09-S15 [L2] data_error(empty): sympy 串为空
+  - A-09-S16 [L1] per_step：data_error(unknown_symbol): 符号「v0min」不在白名单：v0min**2 - 50｜chain：data_error(unknown_symbol): 符号「v0min」不在白名单：v0min**2 - 50
+  - A-09-S16 [L2] data_error(unknown_symbol): 符号「v0min」不在白名单：v0min**2 - 50
+失败：
+  x A-09-S05 [L2/E-12] 加减项量纲不一致：T 为 s；-g*m 为 kg·m/s^2；-m*v**2/L 为 kg·m/s^2
+  x A-09-S06 [L2/E-12] 值单位 N 的量纲 [mass] * [length] / [time] ** 2 与符号 T 的白名单量纲 [time] 不符
+check 契约校验：0 处违约
+已写：评测\T20\out\A-09_validated.json

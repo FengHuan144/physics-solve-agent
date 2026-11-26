@@ -1,0 +1,25 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-10.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-10_validated.json
+
+对象：B-10（题 B-10，10 步）
+L1  pass 3 / fail 0 / na 7 / skipped 0    判定通过率 100.0%    na 比例 70.0%
+L2  pass 2 / fail 1 / na 7 / skipped 0    判定通过率 66.7%    na 比例 70.0%
+整题层状态：{"L1": "na", "L2": "fail", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-10-S01 [L1] per_step：data_error(unknown_symbol): 符号「U」不在白名单：F*v - U*I + I**2*R｜chain：data_error(unknown_symbol): 符号「U」不在白名单：F*v - U*I + I**2*R
+  - B-10-S01 [L2] data_error(unknown_symbol): 符号「U」不在白名单：F*v - U*I + I**2*R
+  - B-10-S02 [L1] per_step：data_error(unknown_symbol): 符号「m_0」不在白名单：F + m_0*g - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g｜chain：data_error(unknown_symbol): 符号「m_0」不在白名单：F + m_0*g - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g
+  - B-10-S02 [L2] data_error(unknown_symbol): 符号「m_0」不在白名单：F + m_0*g - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g
+  - B-10-S03 [L1] per_step：data_error(unknown_symbol): 符号「m_1」不在白名单：m_1*g*sin(theta) - m_0*g - k*m_1*g｜chain：data_error(unknown_symbol): 符号「m_1」不在白名单：m_1*g*sin(theta) - m_0*g - k*m_1*g
+  - B-10-S03 [L2] data_error(unknown_symbol): 符号「m_1」不在白名单：m_1*g*sin(theta) - m_0*g - k*m_1*g
+  - B-10-S05 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-10-S05 [L2] data_error(empty): sympy 串为空
+  - B-10-S06 [L1] per_step：data_error(unknown_symbol): 符号「m_1」不在白名单：(m_1+m_2+m_0)*a - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g + m_0*g｜chain：data_error(unknown_symbol): 符号「m_1」不在白名单：(m_1+m_2+m_0)*a - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g + m_0*g
+  - B-10-S06 [L2] data_error(unknown_symbol): 符号「m_1」不在白名单：(m_1+m_2+m_0)*a - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g + m_0*g
+  - B-10-S07 [L1] per_step：data_error(unknown_symbol): 符号「m_1」不在白名单：a - (m_1+m_2)*g*sin(theta)/(m_1+m_2+m_0) - k*(m_1+m_2)*g/(m_1+m_2+m_0) + m_0*g/(m_1+m_2+m_0)｜chain：data_error(unknown_symbol): 符号「m_1」不在白名单：a - (m_1+m_2)*g*sin(theta)/(m_1+m_2+m_0) - k*(m_1+m_2)*g/(m_1+m_2+m_0) + m_0*g/(m_1+m_2+m_0)
+  - B-10-S07 [L2] data_error(unknown_symbol): 符号「m_1」不在白名单：a - (m_1+m_2)*g*sin(theta)/(m_1+m_2+m_0) - k*(m_1+m_2)*g/(m_1+m_2+m_0) + m_0*g/(m_1+m_2+m_0)
+  - B-10-S08 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-10-S08 [L2] data_error(empty): sympy 串为空
+失败：
+  x B-10-S04 [L2/E-12] 值单位 1 的量纲 dimensionless 与符号 k 的白名单量纲 [mass] / [time] ** 2 不符
+check 契约校验：0 处违约
+已写：评测\T20\out\B-10_validated.json

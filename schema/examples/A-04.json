@@ -1,0 +1,554 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-04",
+    "question_id": "A-04",
+    "group": "A",
+    "source": "2024 全国甲卷",
+    "question_no": 24,
+    "full_score": 12,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:15:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "为抢救病人，一辆救护车紧急出发，鸣着笛沿水平直路从 t＝0 时由静止开始做匀加速运动，加速度大小 a＝2 m/s²，在 t₁＝10 s 时停止加速开始做匀速运动，之后某时刻救护车停止鸣笛，t₂＝41 s 时在救护车出发处的人听到救护车发出的最后的鸣笛声。已知声速 v₀＝340 m/s，求",
+    "figures": [],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "救护车匀速运动时的速度大小。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "在停止鸣笛时救护车距出发处的距离。",
+        "score": 8
+      }
+    ],
+    "stem_sha256": "b70c685218666d1bb89da895cb4ca5319907ace7bca3df4d55d67c8cea20af53",
+    "input_sha256": "28b9273a7b9f97d96d82e8e5d703b29f2eaed0f906ef2b8b2afc34a0053ad9d4"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "救护车",
+        "mass_symbol": "m",
+        "note": "自 t＝0 由静止匀加速（a＝2 m/s²）10 s，随后匀速；质量不参与计算"
+      },
+      {
+        "id": "obj2",
+        "name": "声波",
+        "mass_symbol": "m",
+        "note": "在静止空气中以 340 m/s 匀速传播，不随车运动"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "a",
+        "value": 2,
+        "unit": "m/s^2",
+        "text": "加速度大小 a＝2 m/s²"
+      },
+      {
+        "symbol": "t1",
+        "value": 10,
+        "unit": "s",
+        "text": "在 t₁＝10 s 时停止加速开始做匀速运动"
+      },
+      {
+        "symbol": "t2",
+        "value": 41,
+        "unit": "s",
+        "text": "t₂＝41 s 时在出发处听到最后的鸣笛声"
+      },
+      {
+        "symbol": "v2",
+        "value": 340,
+        "unit": "m/s",
+        "text": "声速 v₀＝340 m/s —— 本档记作 v2（v0 在白名单里指初速度，而小车初速为 0）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "匀加速段（0～10 s）",
+        "start": "t＝0 由静止出发",
+        "end": "t₁＝10 s，速度达 20 m/s，位移 100 m"
+      },
+      {
+        "no": 2,
+        "name": "匀速段与声波传播",
+        "start": "t₁＝10 s 起匀速",
+        "end": "某时刻 t 停止鸣笛（x＝680 m），最后一声再经 2 s 于 t₂＝41 s 传到出发点"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v1",
+        "text": "匀速运动时的速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "x",
+        "text": "停止鸣笛时车距出发处的距离"
+      }
+    ],
+    "assumptions": [
+      "以出发处为原点、沿车运动方向为正；t＝0 为出发时刻",
+      "加速段 a 恒定、t₁＝10 s 后 a＝0；匀速段速度由 v₁＝a t₁ 给出",
+      "声波相对地面以 v2＝340 m/s 匀速传播，传播距离等于鸣笛时车到出发处的距离 x",
+      "「听到最后的鸣笛声」的时刻 = 停止鸣笛时刻 t ＋ 声波传播时间 x/v2，故 t＋x/v2＝t₂"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "加速段末速度 v₁ = a t₁",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-04-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "匀速运动速度 20 m/s",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-04-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "加速段位移 s₁ = ½at₁²",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-04-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "匀速段位移与总距离 x",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-04-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "声波传播时间与总时刻联立",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-04-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "解得 x = 680 m",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "A-04-S06"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-04-S01",
+      "step_no": 1,
+      "title": "加速段末速度 v₁ = a t₁",
+      "point_id": "A-04-S01",
+      "kind": "equation",
+      "statement": "0～10 s 匀加速，初速为零：v₁＝a t₁＝2×10＝20 m/s。",
+      "equation": {
+        "latex": "v_{1} = a t_{1}",
+        "sympy": "v1 - a*t1",
+        "symbols": [
+          "a",
+          "t1",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v1",
+        "number": 20.0,
+        "exact": "a*t1",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a=2、t1=10、v1=20）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s²·s＝m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 20 m/s 无公式给 1 分（口径）；a 取 2、t₁ 取 10，不能用 t₂＝41 s 代入",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-04-S02",
+      "step_no": 2,
+      "title": "匀速运动速度 20 m/s",
+      "point_id": "A-04-S02",
+      "kind": "discussion",
+      "statement": "救护车匀速运动时的速度大小为 20 m/s（方向沿出发点指向远处）。",
+      "equation": {
+        "latex": "v_{1} = 20",
+        "sympy": "v1 - 20",
+        "symbols": [
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v1",
+        "number": 20.0,
+        "exact": "a*t1",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v1=20）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "无单位扣 1（口径）；「大小」已明示，方向可不在答案中重复",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-04-S03",
+      "step_no": 3,
+      "title": "加速段位移 s₁ = ½at₁²",
+      "point_id": "A-04-S03",
+      "kind": "equation",
+      "statement": "0～10 s 匀加速、初速为零：s₁＝½a t₁²＝½×2×10²＝100 m。",
+      "equation": {
+        "latex": "s_{1} = \\frac{1}{2} a t_{1}^{2}",
+        "sympy": "s1 - Rational(1,2)*a*t1**2",
+        "symbols": [
+          "a",
+          "s1",
+          "t1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "s1",
+        "number": 100.0,
+        "exact": "a*t1^2/2",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a=2、s1=100、t1=10）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s²·s²＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏写则无法建第 (2) 问的位移式（口径）；加速段位移只能用 ½at₁²，不能用 v₁t₁",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-04-S04",
+      "step_no": 4,
+      "title": "匀速段位移与总距离 x",
+      "point_id": "A-04-S04",
+      "kind": "equation",
+      "statement": "设 t 时刻停止鸣笛，则匀速段时间为 t−t₁：x＝s₁＋v₁(t−t₁)＝100＋20(t−10)。",
+      "equation": {
+        "latex": "x = s_{1} + v_{1} (t - t_{1})",
+        "sympy": "x - s1 - v1*(t - t1)",
+        "symbols": [
+          "s1",
+          "t",
+          "t1",
+          "v1",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": 680.0,
+        "exact": "s1 + v1*(t - t1)",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（s1=100、t=39、t1=10、v1=20、x=680）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m＋m/s·s＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "符号含义清楚即可（口径）；t 是「停止鸣笛」的时刻，不是总时间 41 s",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-04-S05",
+      "step_no": 5,
+      "title": "声波传播时间与总时刻联立",
+      "point_id": "A-04-S05",
+      "kind": "equation",
+      "statement": "最后一声从 x 处传回出发点需 x/v2；听到时刻等于鸣笛时刻加传播时间：t＋x/v2＝t₂，即 680/340＋t＝41。",
+      "equation": {
+        "latex": "t + \\frac{x}{v_{2}} = t_{2}",
+        "sympy": "t2 - x/v2 - t",
+        "symbols": [
+          "t",
+          "t2",
+          "v2",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（t=39、t2=41、v2=340、x=680）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "s＋m/(m/s)＝s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "唯一难点：发出时刻＋传播时间，写成 41−x/340＝t 等价（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-04-S06",
+      "step_no": 6,
+      "title": "解得 x = 680 m",
+      "point_id": "A-04-S06",
+      "kind": "discussion",
+      "statement": "代入 s₁＝100 m、v₁＝20 m/s、v2＝340 m/s 解 t＋x/340＝41 与 x＝100＋20(t−10)，得 t＝39 s、x＝680 m。",
+      "equation": {
+        "latex": "x = 680",
+        "sympy": "x - 680",
+        "symbols": [
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": 680.0,
+        "exact": "680",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（x=680）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "无单位视为结果不完整，给 0.5 分（按整分记则不给）（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-04-S01",
+        "step_id": "A-04-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-04-S02",
+        "step_id": "A-04-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-04-S03",
+        "step_id": "A-04-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-04-S04",
+        "step_id": "A-04-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-04-S05",
+        "step_id": "A-04-S05",
+        "score_awarded": 3,
+        "score_possible": 3,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-04-S06",
+        "step_id": "A-04-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 12,
+    "score_total": 12,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "pass",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：匀加速＋匀速＋声波传播的时间方程；L1 逐式数值回代，12/12 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

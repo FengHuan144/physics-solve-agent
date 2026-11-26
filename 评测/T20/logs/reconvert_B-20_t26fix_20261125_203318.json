@@ -1,0 +1,29 @@
+{
+  "qid": "B-20",
+  "tag": "_t26fix",
+  "draft": "B-20_draft.json",
+  "call": "B-20_call.json",
+  "cm": {
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "latency_ms": 0,
+    "tokens_in": 3045,
+    "tokens_out": 23136
+  },
+  "n_steps": 17,
+  "n_gold": 10,
+  "n_eq": 13,
+  "issues": [
+    "givens.symbol 去下划线归一：'v_Q' → 'vQ'",
+    "givens.symbol 去下划线归一：'F_1' → 'F1'",
+    "givens.symbol 去下划线归一：'a_1' → 'a1'",
+    "givens.symbol 去下划线归一：'F_2' → 'F2'",
+    "givens.symbol 去下划线归一：'a_2' → 'a2'",
+    "B-20-S06 value.symbol 不合规：'M+m'，已置 null"
+  ],
+  "n_e": 0,
+  "n_w": 5,
+  "e_lines": [],
+  "chained": true,
+  "note": "离线重转：未调用 API，cm 取自 raw/B-20_call.json"
+}

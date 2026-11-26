@@ -1,0 +1,27 @@
+[指纹] 写入 D:\峤的个人档案\做点东西\物理解题agent\评测\基线\stems\stem_fingerprints.csv（22 行）
+[题干] 落盘 22 份 → D:\峤的个人档案\做点东西\物理解题agent\评测\基线\stems
+[模型] deepseek-chat 不在可用列表，继续探测
+[模型] 请求名=deepseek-flash ｜ 可用=['deepseek-flash', 'deepseek-v4-pro']
+[OK] v1/A-06  22.0s  finish=stop  tok=226+3728
+[OK] v1/A-08  66.6s  finish=stop  tok=380+6582
+[OK] v1/A-09  60.4s  finish=stop  tok=308+9100
+[OK] v1/A-10  23.2s  finish=stop  tok=314+3525
+[OK] v1/B-01  9.4s  finish=stop  tok=194+1871
+[OK] v1/B-02  7.1s  finish=stop  tok=163+1224
+[OK] v1/B-03  5.7s  finish=stop  tok=254+1059
+[OK] v1/B-04  32.2s  finish=stop  tok=255+4983
+[OK] v1/B-05  8.3s  finish=stop  tok=222+1414
+[OK] v1/B-06  8.0s  finish=stop  tok=266+1237
+[OK] v1/B-07  20.0s  finish=stop  tok=205+3164
+[OK] v1/B-08  11.0s  finish=stop  tok=224+1936
+[OK] v1/B-09  13.4s  finish=stop  tok=269+2219
+[OK] v1/B-10  44.2s  finish=stop  tok=281+6436
+[OK] v1/B-12  18.9s  finish=stop  tok=276+2746
+[OK] v1/B-13  24.3s  finish=stop  tok=277+3669
+[OK] v1/B-15  122.8s  finish=length  tok=236+16384
+[OK] v1/B-16  43.8s  finish=stop  tok=200+6351
+[OK] v1/B-17  118.8s  finish=stop  tok=276+10749
+[OK] v1/B-18  92.9s  finish=stop  tok=433+14995
+[OK] v1/B-19  21.9s  finish=stop  tok=217+2352
+[OK] v1/B-20  92.1s  finish=stop  tok=375+14511
+[汇总] v1 → {'OK': 22, 'FAIL': 0, 'skip': 0}

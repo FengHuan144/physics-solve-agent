@@ -1,0 +1,21 @@
+[
+  {
+    "qid": "B-20",
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "max_tokens": 16000,
+    "prompt_chars": 1954,
+    "figures": [
+      "原始资料/题图/B-20_图甲.png",
+      "原始资料/题图/B-20_图乙.png"
+    ],
+    "created_at": "2026-11-25T16:20:40+08:00",
+    "ok": false,
+    "attempts": 2,
+    "parse_error": "Unterminated string starting at: line 132 column 15 (char 4076)",
+    "finish_reason": "length",
+    "tokens_in": 3045,
+    "tokens_out": 16000,
+    "elapsed_s": 88.3
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "qid": "B-12",
+  "model": "deepseek-flash",
+  "temperature": 0.2,
+  "max_tokens": 40000,
+  "prompt_chars": 1814,
+  "figures": [],
+  "created_at": "2026-11-25T16:59:02+08:00",
+  "ok": true,
+  "elapsed_s": 5.6929543018341064,
+  "content": null,
+  "reasoning": "",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 1057,
+    "completion_tokens": 1720,
+    "total_tokens": 2777,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 1057
+  },
+  "model_returned": "deepseek-flash",
+  "id": "61a866e3-b1e1-4097-9723-7d1bc870e603"
+}

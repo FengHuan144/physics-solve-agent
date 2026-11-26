@@ -1,0 +1,27 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-10.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-10_validated.json
+
+对象：A-10（题 A-10，12 步）
+L1  pass 0 / fail 0 / na 12 / skipped 0    判定通过率 —    na 比例 100.0%
+L2  pass 2 / fail 3 / na 7 / skipped 0    判定通过率 40.0%    na 比例 58.3%
+整题层状态：{"L1": "na", "L2": "fail", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-10-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-10-S01 [L2] data_error(empty): sympy 串为空
+  - A-10-S04 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-10-S04 [L2] data_error(empty): sympy 串为空
+  - A-10-S05 [L1] per_step：data_error(unknown_symbol): 符号「M_r」不在白名单：G*M_r*m/r**2 - m*v**2/r｜chain：data_error(unknown_symbol): 符号「M_r」不在白名单：G*M_r*m/r**2 - m*v**2/r
+  - A-10-S05 [L2] data_error(unknown_symbol): 符号「M_r」不在白名单：G*M_r*m/r**2 - m*v**2/r
+  - A-10-S07 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-10-S07 [L2] data_error(empty): sympy 串为空
+  - A-10-S08 [L1] per_step：data_error(unknown_symbol): 符号「v_R」不在白名单：v_R**2 - G*M/R｜chain：data_error(unknown_symbol): 符号「v_R」不在白名单：v_R**2 - G*M/R
+  - A-10-S08 [L2] data_error(unknown_symbol): 符号「v_R」不在白名单：v_R**2 - G*M/R
+  - A-10-S09 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-10-S09 [L2] data_error(empty): sympy 串为空
+  - A-10-S10 [L1] per_step：data_error(unknown_symbol): 符号「v_n」不在白名单：G*(M+Mp)*m/(n*R)**2 - m*v_n**2/(n*R)｜chain：data_error(unknown_symbol): 符号「v_n」不在白名单：G*(M+Mp)*m/(n*R)**2 - m*v_n**2/(n*R)
+  - A-10-S10 [L2] data_error(unknown_symbol): 符号「v_n」不在白名单：G*(M+Mp)*m/(n*R)**2 - m*v_n**2/(n*R)
+失败：
+  x A-10-S02 [L2/E-12] 加减项量纲不一致：-m*v**2/r 为 kg·m/s^2；G*M*m/r**2 为 kg^3/m/s^2
+  x A-10-S03 [L2/E-12] 加减项量纲不一致：v**2 为 m^2/s^2；-G*M/r 为 kg^2/s^2
+  x A-10-S06 [L2/E-12] 加减项量纲不一致：v**2 为 m^2/s^2；-G*M*r**2/R**3 为 kg^2/s^2
+check 契约校验：0 处违约
+已写：评测\T20\out\A-10_validated.json

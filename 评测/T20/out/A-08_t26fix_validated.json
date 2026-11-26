@@ -1,0 +1,1175 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-08",
+    "question_id": "A-08",
+    "group": "A",
+    "source": "2024 贵州卷",
+    "question_no": 15,
+    "full_score": 19,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:31:40+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 1187,
+      "out": 22525
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，半径为 R＝1.8 m 的四分之一光滑圆轨道固定在竖直平面内，其末端与水平地面 PM 相切于 P 点，PM 的长度 d＝2.7 m。一长为 L＝3.3 m 的水平传送带以恒定速率 v₀＝1 m/s 逆时针转动，其右端与地面在 M 点无缝对接。物块 a 从圆轨道顶端由静止释放，沿轨道下滑至 P 点，再向左做直线运动至 M 点与静止的物块 b 发生弹性正碰，碰撞时间极短。碰撞后 b 向左运动到达传送带的左端 N 时，瞬间给 b 一水平向右的冲量 I，其大小为 6 N·s。以后每隔 Δt＝0.6 s 给 b 一相同的瞬时冲量 I，直到 b 离开传送带。已知 a 的质量为 mₐ＝1 kg，b 的质量为 m_b＝2 kg，它们均可视为质点。a、b 与地面及传送带间的动摩擦因数均为 μ＝0.5，取重力加速度大小 g＝10 m/s²。求：(1)a 运动到圆轨道底端时轨道对它的支持力大小；(2)b 从 M 运动到 N 的时间；(3)b 从 N 运动到 M 的过程中与传送带摩擦产生的热量。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "四分之一圆轨道（半径 R）与水平地面相切于 P、PM 段、传送带 MN；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "a 运动到圆轨道底端时轨道对它的支持力大小。",
+        "score": 5
+      },
+      {
+        "no": "(2)",
+        "text": "b 从 M 运动到 N 的时间。",
+        "score": 6
+      },
+      {
+        "no": "(3)",
+        "text": "b 从 N 运动到 M 的过程中与传送带摩擦产生的热量。",
+        "score": 8
+      }
+    ],
+    "stem_sha256": "d69523ffab7de084651bbb78b2ebd6a28e98fed8ab128001c2ed1b1b82eacfe2",
+    "input_sha256": "d95eeb99464c5f2081398c833176e5b988f74f1b644d0fd4faf359b8d7d2df91"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "物块 a",
+        "mass_symbol": "m1",
+        "note": "从圆轨道顶端静止释放，视为质点，质量 1 kg"
+      },
+      {
+        "id": "obj2",
+        "name": "物块 b",
+        "mass_symbol": "m2",
+        "note": "原静止于 M 点，视为质点，质量 2 kg"
+      },
+      {
+        "id": "obj3",
+        "name": "传送带",
+        "mass_symbol": "Mbelt",
+        "note": "长 3.3 m，以 1 m/s 逆时针（上表面向左）匀速转动"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": 1.8,
+        "unit": "m",
+        "text": "圆轨道半径 R＝1.8 m（题干给出）"
+      },
+      {
+        "symbol": "d",
+        "value": 2.7,
+        "unit": "m",
+        "text": "PM 长度 d＝2.7 m（题干给出）"
+      },
+      {
+        "symbol": "L",
+        "value": 3.3,
+        "unit": "m",
+        "text": "传送带长度 L＝3.3 m（题干给出）"
+      },
+      {
+        "symbol": "v0",
+        "value": 1.0,
+        "unit": "m/s",
+        "text": "传送带恒定速率 v0＝1 m/s（题干给出）"
+      },
+      {
+        "symbol": "I",
+        "value": 6.0,
+        "unit": "N*s",
+        "text": "瞬时冲量大小 I＝6 N·s（题干给出）"
+      },
+      {
+        "symbol": "Deltat",
+        "value": 0.6,
+        "unit": "s",
+        "text": "冲量时间间隔 Δt＝0.6 s（题干给出）"
+      },
+      {
+        "symbol": "ma",
+        "value": 1.0,
+        "unit": "kg",
+        "text": "物块 a 质量 m_a＝1 kg（题干给出）"
+      },
+      {
+        "symbol": "mb",
+        "value": 2.0,
+        "unit": "kg",
+        "text": "物块 b 质量 m_b＝2 kg（题干给出）"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.5,
+        "unit": "1",
+        "text": "动摩擦因数 μ＝0.5（题干给出）"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²（题干给出）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "Nf",
+        "text": "圆轨道底端轨道对 a 的支持力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "t",
+        "text": "b 从 M 到 N 的时间"
+      },
+      {
+        "no": "(3)",
+        "quantity": "Qheat",
+        "text": "b 从 N 到 M 与传送带摩擦产生的热量"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "机械能守恒求速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "求P点速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "列径向方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "求支持力",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "求a碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "弹性碰撞求b速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "判断带的运动方向",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求减速到带速时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "求该段位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求总运动时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "第一个冲量后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "运动到带速时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "求每段相对滑程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "求每段位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 15,
+      "title": "判断完整间隔数",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 16,
+      "title": "列剩余距离方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 17,
+      "title": "取舍到达时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 18,
+      "title": "求末段相对滑程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 19,
+      "title": "求总摩擦热",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-08-S01",
+      "step_no": 1,
+      "title": "机械能守恒求速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "a 从圆轨道顶端由静止滑到 P 点，轨道光滑，只有重力做功，机械能守恒，取 P 点重力势能为零。",
+      "equation": {
+        "latex": "m_a g R - (1/2) m_a v_P^2",
+        "sympy": "m_a*g*R - Rational(1,2)*m_a*v_P**2",
+        "symbols": [
+          "P",
+          "R",
+          "a",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S02",
+      "step_no": 2,
+      "title": "求P点速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由机械能守恒方程解得 v_P=sqrt(2gR)=6 m/s。",
+      "equation": {
+        "latex": "m_a g R - (1/2) m_a v_P^2",
+        "sympy": "m_a*g*R - Rational(1,2)*m_a*v_P**2",
+        "symbols": [
+          "P",
+          "R",
+          "a",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vP",
+        "number": 6.0,
+        "exact": "6",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S03",
+      "step_no": 3,
+      "title": "列径向方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "在 P 点，轨道支持力 N 与重力 m_a g 的合力提供向心力，速度方向水平，沿轨道半径指向圆心竖直向上。",
+      "equation": {
+        "latex": "N - m_a g - m_a v_P^2/R",
+        "sympy": "N - m_a*g - m_a*v_P**2/R",
+        "symbols": [
+          "N",
+          "P",
+          "R",
+          "a",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - m_a*g - m_a*v_P**2/R｜chain：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - m_a*g - m_a*v_P**2/R",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - m_a*g - m_a*v_P**2/R",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S04",
+      "step_no": 4,
+      "title": "求支持力",
+      "point_id": null,
+      "kind": "value",
+      "statement": "将 v_P^2=2gR 代入，得 N=m_a g+2m_a g=3m_a g=30 N。",
+      "equation": {
+        "latex": "N - 3 m_a g",
+        "sympy": "N - 3*m_a*g",
+        "symbols": [
+          "N",
+          "a",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "N",
+        "number": 30.0,
+        "exact": "30",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - 3*m_a*g｜chain：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - 3*m_a*g",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - 3*m_a*g",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S05",
+      "step_no": 5,
+      "title": "求a碰前速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "a 在 PM 段受摩擦力 μ m_a g，做匀减速运动。由 v_Ma^2=v_P^2-2μg d 得 v_Ma=3 m/s，方向向左。",
+      "equation": {
+        "latex": "v_Ma^2 - v_P^2 + 2 mu g d",
+        "sympy": "v_Ma**2 - v_P**2 + 2*mu*g*d",
+        "symbols": [
+          "Ma",
+          "P",
+          "d",
+          "g",
+          "mu",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vMa",
+        "number": 3.0,
+        "exact": "3",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_Ma」不在白名单：v_Ma**2 - v_P**2 + 2*mu*g*d｜chain：data_error(unknown_symbol): 符号「v_Ma」不在白名单：v_Ma**2 - v_P**2 + 2*mu*g*d",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_Ma」不在白名单：v_Ma**2 - v_P**2 + 2*mu*g*d",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S06",
+      "step_no": 6,
+      "title": "弹性碰撞求b速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "取左为正，a 与静止 b 发生一维弹性正碰，碰前 u_a=3 m/s、u_b=0。由弹性正碰公式 v_b=2m_a u_a/(m_a+m_b)=2 m/s，方向向左。",
+      "equation": {
+        "latex": "v_b (m_a+m_b) - 2 m_a v_Ma",
+        "sympy": "v_b*(m_a+m_b) - 2*m_a*v_Ma",
+        "symbols": [
+          "Ma",
+          "a",
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vb",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b*(m_a+m_b) - 2*m_a*v_Ma｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b*(m_a+m_b) - 2*m_a*v_Ma",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_b」不在白名单：v_b*(m_a+m_b) - 2*m_a*v_Ma",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S07",
+      "step_no": 7,
+      "title": "判断带的运动方向",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "传送带逆时针转动，其上表面向左运动，速度大小为 v0=1 m/s。碰后 b 以 2 m/s 向左进入传送带，相对带向左运动，故所受滑动摩擦力向右，b 向左减速。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "判断出传送带上表面向左运动且 b 相对带向左，从而确定摩擦力方向"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S08",
+      "step_no": 8,
+      "title": "求减速到带速时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "取左为正，b 在传送带上的加速度为 -μg=-5 m/s²。由 v0=v_b-μg t1 得 t1=0.2 s。",
+      "equation": {
+        "latex": "v_b - mu g t1 - v0",
+        "sympy": "v_b - mu*g*t1 - v0",
+        "symbols": [
+          "b",
+          "g",
+          "mu",
+          "t1",
+          "v",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t1",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1 - v0｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1 - v0",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1 - v0",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S09",
+      "step_no": 9,
+      "title": "求该段位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "在 t1 内 b 向左运动，位移 s1=(v_b+v0)t1/2=0.3 m。",
+      "equation": {
+        "latex": "s1 - (1/2) (v_b+v0) t1",
+        "sympy": "s1 - Rational(1,2)*(v_b+v0)*t1",
+        "symbols": [
+          "b",
+          "s1",
+          "t1",
+          "v",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "s1",
+        "number": 0.3,
+        "exact": "3/10",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：s1 - Rational(1,2)*(v_b+v0)*t1｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：s1 - Rational(1,2)*(v_b+v0)*t1",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_b」不在白名单：s1 - Rational(1,2)*(v_b+v0)*t1",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S10",
+      "step_no": 10,
+      "title": "求总运动时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "与带同速后无相对滑动，b 与传送带同速以 1 m/s 向左匀速运动；剩余距离 L-s1=3.0 m。总时间 t=t1+(L-s1)/v0=0.2+3.0/1=3.2 s。",
+      "equation": {
+        "latex": "t_total - t1 - (L - s1)/v0",
+        "sympy": "t_total - t1 - (L - s1)/v0",
+        "symbols": [
+          "L",
+          "s1",
+          "t",
+          "t1",
+          "total",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "ttotal",
+        "number": 3.2,
+        "exact": "16/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「t_total」不在白名单：t_total - t1 - (L - s1)/v0｜chain：data_error(unknown_symbol): 符号「t_total」不在白名单：t_total - t1 - (L - s1)/v0",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「t_total」不在白名单：t_total - t1 - (L - s1)/v0",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S11",
+      "step_no": 11,
+      "title": "第一个冲量后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "到 N 时 b 速度向左 1 m/s。瞬间冲量 I=6 N·s 向右，取向右为正，初速 u=-v0=-1 m/s。由 I=m_b(v1-u) 得 v1=2 m/s，方向向右。",
+      "equation": {
+        "latex": "I - m_b (v_1 + v0)",
+        "sympy": "I - m_b*(v_1 + v0)",
+        "symbols": [
+          "b",
+          "m",
+          "v",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(reserved): 用了 sympy 保留名「I」，会被静默替换：I - m_b*(v_1 + v0)｜chain：data_error(reserved): 用了 sympy 保留名「I」，会被静默替换：I - m_b*(v_1 + v0)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(reserved): 用了 sympy 保留名「I」，会被静默替换：I - m_b*(v_1 + v0)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S12",
+      "step_no": 12,
+      "title": "运动到带速时间",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取向右为正，传送带速度 v_B=-v0=-1 m/s。v1=2 m/s 时 b 相对带向右，摩擦力向左，加速度 a=-μg=-5 m/s²。速度规律 v=v1-μg t；经过一个间隔 Δt 时 v=2-5×0.6=-1 m/s，刚好等于带速。",
+      "equation": {
+        "latex": "v_1 - mu g Delta_t + v0",
+        "sympy": "v_1 - mu*g*Delta_t + v0",
+        "symbols": [
+          "Delta",
+          "g",
+          "mu",
+          "t",
+          "v",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*Delta_t + v0｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*Delta_t + v0",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*Delta_t + v0",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S13",
+      "step_no": 13,
+      "title": "求每段相对滑程",
+      "point_id": null,
+      "kind": "value",
+      "statement": "每个完整 0.6 s 间隔内，b 相对传送带的滑行距离 s_rel=(v1+v0)Δt-Rational(1,2)μgΔt²=(2+1)×0.6-0.5×5×0.6²=0.9 m。",
+      "equation": {
+        "latex": "s_rel - (v_1+v0) Delta_t + (1/2) mu g Delta_t^2",
+        "sympy": "s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+        "symbols": [
+          "Delta",
+          "g",
+          "mu",
+          "rel",
+          "s",
+          "t",
+          "v",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "srel",
+        "number": 0.9,
+        "exact": "9/10",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「s_rel」不在白名单：s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2｜chain：data_error(unknown_symbol): 符号「s_rel」不在白名单：s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「s_rel」不在白名单：s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S14",
+      "step_no": 14,
+      "title": "求每段位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "一个完整 0.6 s 间隔内 b 的位移 d1=v1Δt-Rational(1,2)μgΔt²=2×0.6-0.5×5×0.6²=0.3 m，方向向右。",
+      "equation": {
+        "latex": "d_1 - v_1 Delta_t + (1/2) mu g Delta_t^2",
+        "sympy": "d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+        "symbols": [
+          "Delta",
+          "d",
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "d1",
+        "number": 0.3,
+        "exact": "3/10",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「d_1」不在白名单：d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2｜chain：data_error(unknown_symbol): 符号「d_1」不在白名单：d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「d_1」不在白名单：d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S15",
+      "step_no": 15,
+      "title": "判断完整间隔数",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "每完整间隔 b 向右移动 0.3 m。10 个完整间隔后位置 x=10×0.3=3.0 m，仍在传送带上；离 M 点还差 L-3.0=0.3 m，故第 11 个间隔开始后在到达 M 时即离开传送带。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "确定离开前经过 10 个完整间隔，并在第 11 个间隔内离开"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S16",
+      "step_no": 16,
+      "title": "列剩余距离方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "第 11 个间隔从 x=3.0 m、向右速度 v1=2 m/s 开始，设经 t_e 到 M。由 v1t_e-Rational(1,2)μg t_e² 等于剩余距离 0.3 m 列方程。",
+      "equation": {
+        "latex": "v_1 t_e - (1/2) mu g t_e^2 - (L - 10 d_1)",
+        "sympy": "v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)",
+        "symbols": [
+          "L",
+          "d",
+          "e",
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_1」不在白名单：v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S17",
+      "step_no": 17,
+      "title": "取舍到达时间",
+      "point_id": null,
+      "kind": "discussion",
+      "statement": "方程化简为 2t_e-2.5t_e²=0.3，即 25t_e²-20t_e+3=0，两根为 0.2 s 和 0.6 s；b 先向右越过 M 离开传送带，故取较小根 t_e=0.2 s。",
+      "equation": {
+        "latex": "25 t_e^2 - 20 t_e + 3",
+        "sympy": "25*t_e**2 - 20*t_e + 3",
+        "symbols": [
+          "e",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "正确舍去 0.6 s，取先到达 M 的 0.2 s"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「t_e」不在白名单：25*t_e**2 - 20*t_e + 3｜chain：data_error(unknown_symbol): 符号「t_e」不在白名单：25*t_e**2 - 20*t_e + 3",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「t_e」不在白名单：25*t_e**2 - 20*t_e + 3",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S18",
+      "step_no": 18,
+      "title": "求末段相对滑程",
+      "point_id": null,
+      "kind": "value",
+      "statement": "在 t_e=0.2 s 内，b 相对传送带的滑行距离 s_e=(v1+v0)t_e-Rational(1,2)μg t_e²=3×0.2-0.5×5×0.2²=0.5 m。",
+      "equation": {
+        "latex": "s_e - (v_1+v0) t_e + (1/2) mu g t_e^2",
+        "sympy": "s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2",
+        "symbols": [
+          "e",
+          "g",
+          "mu",
+          "s",
+          "t",
+          "v",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "se",
+        "number": 0.5,
+        "exact": "1/2",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「s_e」不在白名单：s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2｜chain：data_error(unknown_symbol): 符号「s_e」不在白名单：s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「s_e」不在白名单：s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S19",
+      "step_no": 19,
+      "title": "求总摩擦热",
+      "point_id": null,
+      "kind": "value",
+      "statement": "传送带对 b 的滑动摩擦力大小 f=μm_b g=10 N。10 个完整间隔的发热 Q1=10 f s_rel=10×10×0.9 J=90 J；末段发热 Q2=f s_e=10×0.5 J=5 J；总热量 Q=Q1+Q2=95 J。",
+      "equation": {
+        "latex": "Q - mu m_b g (10 s_rel + s_e)",
+        "sympy": "Q - mu*m_b*g*(10*s_rel + s_e)",
+        "symbols": [
+          "Q",
+          "b",
+          "e",
+          "g",
+          "m",
+          "mu",
+          "rel",
+          "s"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "Q",
+        "number": 95.0,
+        "exact": "95",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*(10*s_rel + s_e)｜chain：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*(10*s_rel + s_e)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*(10*s_rel + s_e)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 19,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

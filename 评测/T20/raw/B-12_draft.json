@@ -1,0 +1,197 @@
+{
+  "givens": [
+    {
+      "symbol": "m",
+      "value": 0.2,
+      "unit": "kg",
+      "text": "滑块质量 m＝0.2 kg"
+    },
+    {
+      "symbol": "M",
+      "value": 0.6,
+      "unit": "kg",
+      "text": "滑杆质量 M＝0.6 kg"
+    },
+    {
+      "symbol": "v0",
+      "value": 10,
+      "unit": "m/s",
+      "text": "滑块初速度 v₀＝10 m/s"
+    },
+    {
+      "symbol": "f",
+      "value": 1,
+      "unit": "N",
+      "text": "滑块向上滑动时受到的摩擦力 f＝1 N"
+    },
+    {
+      "symbol": "l",
+      "value": 1.2,
+      "unit": "m",
+      "text": "A、B 间距离 l＝1.2 m"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "重力加速度 g＝10 m/s²"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "N1＝8 N，N2＝5 N",
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "v1＝8 m/s",
+      "steps": [
+        5,
+        6
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "h＝0.2 m",
+      "steps": [
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "静止时整体平衡",
+      "kind": "equation",
+      "stmt": "滑块静止时，把滑块和滑杆看成一个整体，竖直方向受总重力和桌面支持力平衡。",
+      "eq": "N1 - (m+M)*g",
+      "value": null,
+      "score": 1,
+      "point": "写出静止时整体竖直平衡方程 N1=(M+m)g"
+    },
+    {
+      "no": 2,
+      "title": "求静止支持力",
+      "kind": "value",
+      "stmt": "代入 m、M、g，得 N1=8 N。",
+      "eq": "N1 - (m+M)*g",
+      "value": {
+        "symbol": "N1",
+        "number": 8,
+        "exact": "8",
+        "unit": "N"
+      },
+      "score": 1,
+      "point": "正确算出 N1=8 N"
+    },
+    {
+      "no": 3,
+      "title": "滑动时隔离滑杆",
+      "kind": "equation",
+      "stmt": "滑块向上滑动时，滑块受到的滑动摩擦力向下，滑杆受到的摩擦力向上；滑杆仍静止，对其竖直方向列平衡方程 N2+f=Mg。",
+      "eq": "N2 + f - M*g",
+      "value": null,
+      "score": 1,
+      "point": "正确判断滑杆所受摩擦力向上，并列出 N2+f=Mg"
+    },
+    {
+      "no": 4,
+      "title": "求滑动支持力",
+      "kind": "value",
+      "stmt": "代入 f=1 N、M=0.6 kg、g=10 m/s²，得 N2=5 N。",
+      "eq": "N2 + f - M*g",
+      "value": {
+        "symbol": "N2",
+        "number": 5,
+        "exact": "5",
+        "unit": "N"
+      },
+      "score": 1,
+      "point": "正确算出 N2=5 N"
+    },
+    {
+      "no": 5,
+      "title": "A到B用动能定理",
+      "kind": "equation",
+      "stmt": "滑块从 A 到 B 过程中，重力和摩擦力均做负功，由动能定理列式。",
+      "eq": "Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2 + m*g*l + f*l",
+      "value": null,
+      "score": 2,
+      "point": "写出含重力做功和摩擦力做功的动能定理方程"
+    },
+    {
+      "no": 6,
+      "title": "求碰撞前速度",
+      "kind": "value",
+      "stmt": "代入 m=0.2 kg、v0=10 m/s、g=10 m/s²、l=1.2 m、f=1 N，解得滑块碰撞前速度大小 v1=8 m/s，方向向上。",
+      "eq": "v1 - 8",
+      "value": {
+        "symbol": "v1",
+        "number": 8,
+        "exact": "8",
+        "unit": "m/s"
+      },
+      "score": 2,
+      "point": "正确求出 v1=8 m/s"
+    },
+    {
+      "no": 7,
+      "title": "碰撞瞬间动量守恒",
+      "kind": "equation",
+      "stmt": "碰撞时间极短，滑块与滑杆组成的系统在竖直方向动量近似守恒；碰后完全非弹性，二者共同速度为 v。",
+      "eq": "m*v1 - (m+M)*v",
+      "value": null,
+      "score": 2,
+      "point": "写出完全非弹性碰撞的动量守恒方程 m v1=(m+M)v"
+    },
+    {
+      "no": 8,
+      "title": "求碰后共同速度",
+      "kind": "value",
+      "stmt": "代入 m=0.2 kg、M=0.6 kg、v1=8 m/s，得碰后共同速度 v=2 m/s。",
+      "eq": "m*v1 - (m+M)*v",
+      "value": {
+        "symbol": "v",
+        "number": 2,
+        "exact": "2",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确算出碰后共同速度 v=2 m/s"
+    },
+    {
+      "no": 9,
+      "title": "碰后上升最大高度",
+      "kind": "equation",
+      "stmt": "碰后整体离开桌面，只受重力作用；到达最高点时速度为零，由机械能守恒或运动学公式列最大高度方程。",
+      "eq": "Rational(1,2)*(m+M)*v**2 - (m+M)*g*h",
+      "value": null,
+      "score": 2,
+      "point": "写出 1/2(M+m)v²=(M+m)gh"
+    },
+    {
+      "no": 10,
+      "title": "求最大高度",
+      "kind": "value",
+      "stmt": "代入 v=2 m/s、g=10 m/s²，得滑杆向上运动的最大高度 h=0.2 m。",
+      "eq": "h - Rational(1,5)",
+      "value": {
+        "symbol": "h",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "正确算出 h=0.2 m"
+    }
+  ]
+}

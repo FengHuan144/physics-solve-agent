@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-10",
+    "question_id": "B-10",
+    "group": "B",
+    "source": "2022 山东卷",
+    "question_no": 16,
+    "full_score": 9,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T20:30:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "某粮库使用额定电压 U＝380 V，内阻 R＝0.25 Ω 的电动机运粮，如图所示，配重和电动机连接小车的缆绳均平行于斜坡，装满粮食的小车以速度 v＝2 m/s 沿斜坡匀速上行，此时电流 I＝40 A，关闭电动机后，小车又沿斜坡上行路程 L 到达卸粮点时，速度恰好为零。卸粮后，给小车一个向下的初速度，小车沿斜坡刚好匀速下行。已知小车质量 m₁＝100 kg，车上粮食质量 m₂＝1 200 kg，配重质量 m₀＝40 kg，取重力加速度 g＝10 m/s²，小车运动时受到的摩擦阻力与车及车上粮食总重力成正比，比例系数为 k，配重始终未接触地面，不计电动机自身机械摩擦损耗及缆绳质量。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "斜坡上的小车（载粮）经缆绳与电动机、配重相连，缆绳平行于斜坡；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "比例系数 k 值。",
+        "score": 5
+      },
+      {
+        "no": "(2)",
+        "text": "上行路程 L 值。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "d222586e8a1b8d71764de3363643f60f0a19ff9b9eff000ff7c4626a00484d83",
+    "input_sha256": "42d4ff76774b76eb6ed179dc79d212cb0141364a55fd0e571316f9282deaa320"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小车与粮食",
+        "mass_symbol": "m1",
+        "note": "车 100 kg、粮 1200 kg；沿斜坡上行，受摩擦阻力 k(m₁+m₂)g"
+      },
+      {
+        "id": "obj2",
+        "name": "配重",
+        "mass_symbol": "M",
+        "note": "质量 m₀＝40 kg，经缆绳与小车相连，始终未触地"
+      },
+      {
+        "id": "obj3",
+        "name": "电动机",
+        "mass_symbol": "M",
+        "note": "额定电压 380 V、内阻 0.25 Ω，工作时电流 40 A"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "Uvolt",
+        "value": 380,
+        "unit": "V",
+        "text": "电动机额定电压 U＝380 V —— 记作 Uvolt"
+      },
+      {
+        "symbol": "Icur",
+        "value": 40,
+        "unit": "A",
+        "text": "工作电流 I＝40 A —— 记作 Icur（I 是 sympy 虚数单位）"
+      },
+      {
+        "symbol": "Rr",
+        "value": 0.25,
+        "unit": "ohm",
+        "text": "电动机内阻 R＝0.25 Ω —— 记作 Rr（R 已被半径占用）"
+      },
+      {
+        "symbol": "v",
+        "value": 2,
+        "unit": "m/s",
+        "text": "装满粮食时匀速上行的速度 v＝2 m/s"
+      },
+      {
+        "symbol": "m1",
+        "value": 100,
+        "unit": "kg",
+        "text": "小车质量 m₁＝100 kg"
+      },
+      {
+        "symbol": "m2",
+        "value": 1200,
+        "unit": "kg",
+        "text": "车上粮食质量 m₂＝1 200 kg"
+      },
+      {
+        "symbol": "M",
+        "value": 40,
+        "unit": "kg",
+        "text": "配重质量 m₀＝40 kg —— 记作 M"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "电动机牵引、满载匀速上行",
+        "start": "电动机工作，电流 40 A",
+        "end": "小车以 2 m/s 匀速上行（卸粮点之前）"
+      },
+      {
+        "no": 2,
+        "name": "关闭电动机后匀减速上行",
+        "start": "关闭电动机、卸粮前",
+        "end": "上行 L 后速度恰为零（到达卸粮点）"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "k",
+        "text": "摩擦阻力比例系数"
+      },
+      {
+        "no": "(2)",
+        "quantity": "L",
+        "text": "关闭电动机后上行的路程"
+      }
+    ],
+    "assumptions": [
+      "缆绳平行于斜坡：绳拉力沿斜面方向，配重拉力 M g 沿斜面向上（配重下行）",
+      "满载匀速上行：T₁＋T₂＝(m₁＋m₂)g sin θ＋k(m₁＋m₂)g",
+      "卸粮后匀速下行（只有车与配重）：m₁g sin θ＝M g＋k m₁ g，由此解出 sin θ 与 k",
+      "关闭电动机后，车、粮、配重由缆绳连成一体、加速度大小相同，可作为整体；合外力为 (m₁＋m₂)g sinθ＋k(m₁＋m₂)g−Mg",
+      "电动机功率分配按 UI＝I²R＋T₁v（不计机械摩擦损耗）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "电动机功率分配 UI = I²R + T₁v",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-10-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "T₁ = 7 400 N，配重 T₂ = 400 N",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-10-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "满载匀速上行沿斜面平衡",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-10-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "卸粮后匀速下行：m₁g sinθ = Mg + k m₁g",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-10-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "联立得 sinθ = 0.5、k = 0.1",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-10-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "关闭电动机后车＋粮＋配重可作为整体",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-10-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "a = F_合/(m₀+m₁+m₂)，再由 v² = 2aL",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-10-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "L = 67/185 m ≈ 0.36 m",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-10-S08"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-10-S01",
+      "step_no": 1,
+      "title": "电动机功率分配 UI = I²R + T₁v",
+      "point_id": "B-10-S01",
+      "kind": "equation",
+      "statement": "电动机输入功率 UI，其中 I²R 为内阻发热、T₁v 为牵引功率：UI＝I²R＋T₁v。",
+      "equation": {
+        "latex": "U I = I^{2} R_{r} + F_{T} v",
+        "sympy": "Uvolt*Icur - Icur**2*Rr - FT*v",
+        "symbols": [
+          "FT",
+          "Icur",
+          "Rr",
+          "Uvolt",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（FT=7400、Icur=40、Rr=0.25、Uvolt=380、v=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "V·A＝W；A²·Ω＝W；N·m/s＝W",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 I²R 项（把输入功率全当机械功率）本步 0 分；写成 UI＝I²R＋T₁ 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-10-S02",
+      "step_no": 2,
+      "title": "T₁ = 7 400 N，配重 T₂ = 400 N",
+      "point_id": "B-10-S02",
+      "kind": "value",
+      "statement": "T₁＝(UI−I²R)/v＝(15 200−400)/2＝7 400 N；配重拉力 T₂＝Mg＝400 N。",
+      "equation": {
+        "latex": "F_{T} = \\frac{U I - I^{2} R_{r}}{v}",
+        "sympy": "FT - 7400",
+        "symbols": [
+          "FT"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "FT",
+        "number": 7400.0,
+        "exact": "7400",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（FT=7400）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "W/(m/s)＝N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏配重拉力本步 0 分；T₁ 计算时把 v 取成 1 m/s 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-10-S03",
+      "step_no": 3,
+      "title": "满载匀速上行沿斜面平衡",
+      "point_id": "B-10-S03",
+      "kind": "equation",
+      "statement": "满载匀速上行，沿斜面方向合力为零：T₁＋T₂＝(m₁＋m₂)g sin θ＋k(m₁＋m₂)g。",
+      "equation": {
+        "latex": "F_{T} + M g = (m_{1} + m_{2}) g \\sin\\theta + k (m_{1} + m_{2}) g",
+        "sympy": "FT + M*g - (m1 + m2)*g*sin(theta) - k*(m1 + m2)*g",
+        "symbols": [
+          "FT",
+          "M",
+          "g",
+          "k",
+          "m1",
+          "m2",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（FT=7400、M=40、g=10、k=0.1、m1=100、m2=1200、theta=0.523599）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 k 项或漏配重拉力本步 0 分；把 (m₁+m₂)g 写成 (m₁+m₀)g 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-10-S04",
+      "step_no": 4,
+      "title": "卸粮后匀速下行：m₁g sinθ = Mg + k m₁g",
+      "point_id": "B-10-S04",
+      "kind": "equation",
+      "statement": "卸粮后只有车与配重，匀速下行：m₁g sin θ＝M g＋k m₁ g。",
+      "equation": {
+        "latex": "m_{1} g \\sin\\theta = M g + k m_{1} g",
+        "sympy": "m1*g*sin(theta) - M*g - k*m1*g",
+        "symbols": [
+          "M",
+          "g",
+          "k",
+          "m1",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=40、g=10、k=0.1、m1=100、theta=0.523599）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 m₂ 留在下行式里本步 0 分；漏 k 项本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-10-S05",
+      "step_no": 5,
+      "title": "联立得 sinθ = 0.5、k = 0.1",
+      "point_id": "B-10-S05",
+      "kind": "value",
+      "statement": "两式联立：由下行式得 sin θ＝M/m₁＋k＝0.4＋k；代入上行式解得 k＝0.1、sin θ＝0.5。",
+      "equation": {
+        "latex": "k = \\frac{1}{10}",
+        "sympy": "k - Rational(1,10)",
+        "symbols": [
+          "k"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "k",
+        "number": 0.1,
+        "exact": "1/10",
+        "unit": "1",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（k=0.1）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只用上行式（缺方程）本步 0 分；k 取 0.2 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-10-S06",
+      "step_no": 6,
+      "title": "关闭电动机后车＋粮＋配重可作为整体",
+      "point_id": "B-10-S06",
+      "kind": "judgment",
+      "statement": "关闭电动机后，车、粮、配重由缆绳连成一体，沿斜面方向的加速度大小相同，可作为整体；合外力为 (m₁＋m₂)g sin θ＋k(m₁＋m₂)g−M g。",
+      "equation": null,
+      "criterion": {
+        "expr": "Fnet",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "关闭电动机后三者由缆绳相连、加速度相同，可作整体；合外力沿斜面向下为正：(m₁＋m₂)g sinθ＋k(m₁＋m₂)g−Mg。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-04",
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏配重（把系统当成只有车与粮）本步 0 分；k 项符号取反本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-10-S07",
+      "step_no": 7,
+      "title": "a = F_合/(m₀+m₁+m₂)，再由 v² = 2aL",
+      "point_id": "B-10-S07",
+      "kind": "equation",
+      "statement": "对整体：F_合＝(m₁＋m₂)g sinθ＋k(m₁＋m₂)g−Mg＝7 400 N，总质量 m₀＋m₁＋m₂＝1 340 kg，a＝7 400/1 340＝370/67 m/s²；再由 v²＝2aL 求 L。",
+      "equation": {
+        "latex": "a = \\frac{(m_{1} + m_{2}) g \\sin\\theta + k (m_{1} + m_{2}) g - M g}{M + m_{1} + m_{2}}",
+        "sympy": "(m1 + m2)*g*sin(theta) + k*(m1 + m2)*g - M*g - (M + m1 + m2)*a",
+        "symbols": [
+          "M",
+          "a",
+          "g",
+          "k",
+          "m1",
+          "m2",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "a",
+        "number": 5.522388059701493,
+        "exact": "370/67",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=40、a=5.52239、g=10、k=0.1、m1=100、m2=1200、theta=0.523599）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N/kg＝m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "合外力除以 (m₁+m₂) 而漏配重质量本步 0 分；用动能定理但漏 k 项本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-10-S08",
+      "step_no": 8,
+      "title": "L = 67/185 m ≈ 0.36 m",
+      "point_id": "B-10-S08",
+      "kind": "discussion",
+      "statement": "L＝v²/(2a)＝4/(2×370/67)＝67/185 m≈0.36 m。",
+      "equation": {
+        "latex": "L = \\frac{v^{2}}{2 a}",
+        "sympy": "L - v**2/(2*a)",
+        "symbols": [
+          "L",
+          "a",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "L",
+        "number": 0.3621621621621622,
+        "exact": "67/185",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=0.362162、a=5.52239、v=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "(m/s)²/(m/s²)＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 0.36 不写单位 m 本步 0 分；写成 67/370 m（漏 2 倍）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-10-S01",
+        "step_id": "B-10-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-10-S02",
+        "step_id": "B-10-S02",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-10-S03",
+        "step_id": "B-10-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-10-S04",
+        "step_id": "B-10-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-10-S05",
+        "step_id": "B-10-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-10-S06",
+        "step_id": "B-10-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-10-S07",
+        "step_id": "B-10-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-10-S08",
+        "step_id": "B-10-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 9,
+    "score_total": 9,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：电动机功率分配 + 两次匀速平衡 + 关闭电动机后整体法；L1 逐式回代，9/9 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

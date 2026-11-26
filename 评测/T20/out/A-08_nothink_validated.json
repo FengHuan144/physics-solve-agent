@@ -1,0 +1,1401 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-08",
+    "question_id": "A-08",
+    "group": "A",
+    "source": "2024 贵州卷",
+    "question_no": 15,
+    "full_score": 19,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T17:04:21+08:00",
+    "latency_ms": 11842,
+    "tokens": {
+      "in": 1161,
+      "out": 3612
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，半径为 R＝1.8 m 的四分之一光滑圆轨道固定在竖直平面内，其末端与水平地面 PM 相切于 P 点，PM 的长度 d＝2.7 m。一长为 L＝3.3 m 的水平传送带以恒定速率 v₀＝1 m/s 逆时针转动，其右端与地面在 M 点无缝对接。物块 a 从圆轨道顶端由静止释放，沿轨道下滑至 P 点，再向左做直线运动至 M 点与静止的物块 b 发生弹性正碰，碰撞时间极短。碰撞后 b 向左运动到达传送带的左端 N 时，瞬间给 b 一水平向右的冲量 I，其大小为 6 N·s。以后每隔 Δt＝0.6 s 给 b 一相同的瞬时冲量 I，直到 b 离开传送带。已知 a 的质量为 mₐ＝1 kg，b 的质量为 m_b＝2 kg，它们均可视为质点。a、b 与地面及传送带间的动摩擦因数均为 μ＝0.5，取重力加速度大小 g＝10 m/s²。求：(1)a 运动到圆轨道底端时轨道对它的支持力大小；(2)b 从 M 运动到 N 的时间；(3)b 从 N 运动到 M 的过程中与传送带摩擦产生的热量。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "四分之一圆轨道（半径 R）与水平地面相切于 P、PM 段、传送带 MN；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "a 运动到圆轨道底端时轨道对它的支持力大小。",
+        "score": 5
+      },
+      {
+        "no": "(2)",
+        "text": "b 从 M 运动到 N 的时间。",
+        "score": 6
+      },
+      {
+        "no": "(3)",
+        "text": "b 从 N 运动到 M 的过程中与传送带摩擦产生的热量。",
+        "score": 8
+      }
+    ],
+    "stem_sha256": "d69523ffab7de084651bbb78b2ebd6a28e98fed8ab128001c2ed1b1b82eacfe2",
+    "input_sha256": "d95eeb99464c5f2081398c833176e5b988f74f1b644d0fd4faf359b8d7d2df91"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "物块 a",
+        "mass_symbol": "m1",
+        "note": "从圆轨道顶端静止释放，视为质点，质量 1 kg"
+      },
+      {
+        "id": "obj2",
+        "name": "物块 b",
+        "mass_symbol": "m2",
+        "note": "原静止于 M 点，视为质点，质量 2 kg"
+      },
+      {
+        "id": "obj3",
+        "name": "传送带",
+        "mass_symbol": "Mbelt",
+        "note": "长 3.3 m，以 1 m/s 逆时针（上表面向左）匀速转动"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": 1.8,
+        "unit": "m",
+        "text": "轨道半径 R＝1.8 m"
+      },
+      {
+        "symbol": "d",
+        "value": 2.7,
+        "unit": "m",
+        "text": "PM 的长度 d＝2.7 m"
+      },
+      {
+        "symbol": "L",
+        "value": 3.3,
+        "unit": "m",
+        "text": "传送带长度 L＝3.3 m"
+      },
+      {
+        "symbol": "v0",
+        "value": 1.0,
+        "unit": "m/s",
+        "text": "传送带速率 v₀＝1 m/s"
+      },
+      {
+        "symbol": "I",
+        "value": 6.0,
+        "unit": "N*s",
+        "text": "冲量 I＝6 N·s"
+      },
+      {
+        "symbol": "dt",
+        "value": 0.6,
+        "unit": "s",
+        "text": "冲量间隔 Δt＝0.6 s"
+      },
+      {
+        "symbol": "ma",
+        "value": 1.0,
+        "unit": "kg",
+        "text": "a 的质量 mₐ＝1 kg"
+      },
+      {
+        "symbol": "mb",
+        "value": 2.0,
+        "unit": "kg",
+        "text": "b 的质量 m_b＝2 kg"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.5,
+        "unit": "1",
+        "text": "动摩擦因数 μ＝0.5"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "Nf",
+        "text": "圆轨道底端轨道对 a 的支持力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "t",
+        "text": "b 从 M 到 N 的时间"
+      },
+      {
+        "no": "(3)",
+        "quantity": "Qheat",
+        "text": "b 从 N 到 M 与传送带摩擦产生的热量"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "a下滑机械能守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "求P点速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求轨道支持力",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "a碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "弹性碰撞求b速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "求b碰后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "求M到N时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "b到N时速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "第一次冲量后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "第一次向右运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "第一次向左返回",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "第二次冲量后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "第二次向右运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "第二次向左返回",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 15,
+      "title": "第三次冲量后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 16,
+      "title": "第三次向右运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 17,
+      "title": "第三次向左返回",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 18,
+      "title": "第四次冲量后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 19,
+      "title": "第四次向右运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 20,
+      "title": "第四次向左返回",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 21,
+      "title": "第五次冲量后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 22,
+      "title": "第五次向右运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 23,
+      "title": "求摩擦生热",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-08-S01",
+      "step_no": 1,
+      "title": "a下滑机械能守恒",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "a 从圆轨道顶端由静止滑到 P 点，只有重力做功，机械能守恒。",
+      "equation": {
+        "latex": "m_a g R - m_a v_P^(2/2)",
+        "sympy": "m_a*g*R - m_a*v_P**Rational(2,2)",
+        "symbols": [
+          "P",
+          "R",
+          "a",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - m_a*v_P**Rational(2,2)｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - m_a*v_P**Rational(2,2)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - m_a*v_P**Rational(2,2)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S02",
+      "step_no": 2,
+      "title": "求P点速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由机械能守恒得 v_P＝√(2gR)，代入数据得 v_P＝6 m/s。",
+      "equation": {
+        "latex": "v_P^2 - 2 g R",
+        "sympy": "v_P**2 - 2*g*R",
+        "symbols": [
+          "P",
+          "R",
+          "g",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vP",
+        "number": 6.0,
+        "exact": "6",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P**2 - 2*g*R｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P**2 - 2*g*R",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_P」不在白名单：v_P**2 - 2*g*R",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S03",
+      "step_no": 3,
+      "title": "求轨道支持力",
+      "point_id": null,
+      "kind": "value",
+      "statement": "在 P 点，轨道对 a 的支持力与重力合力提供向心力：F_N－m_a g＝m_a v_P²/R，得 F_N＝30 N。",
+      "equation": {
+        "latex": "F_N - m_a g - m_a v_P^2/R",
+        "sympy": "F_N - m_a*g - m_a*v_P**2/R",
+        "symbols": [
+          "F",
+          "N",
+          "P",
+          "R",
+          "a",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "FN",
+        "number": 30.0,
+        "exact": "30",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「F_N」不在白名单：F_N - m_a*g - m_a*v_P**2/R｜chain：data_error(unknown_symbol): 符号「F_N」不在白名单：F_N - m_a*g - m_a*v_P**2/R",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「F_N」不在白名单：F_N - m_a*g - m_a*v_P**2/R",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S04",
+      "step_no": 4,
+      "title": "a碰前速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "a 从 P 到 M 做匀减速运动，加速度大小 a＝μg＝5 m/s²，PM＝2.7 m，由 v_M²＝v_P²－2a d 得 v_M＝3 m/s。",
+      "equation": {
+        "latex": "v_M^2 - v_P^2 + 2 mu g d",
+        "sympy": "v_M**2 - v_P**2 + 2*mu*g*d",
+        "symbols": [
+          "M",
+          "P",
+          "d",
+          "g",
+          "mu",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vM",
+        "number": 3.0,
+        "exact": "3",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_M」不在白名单：v_M**2 - v_P**2 + 2*mu*g*d｜chain：data_error(unknown_symbol): 符号「v_M」不在白名单：v_M**2 - v_P**2 + 2*mu*g*d",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_M」不在白名单：v_M**2 - v_P**2 + 2*mu*g*d",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S05",
+      "step_no": 5,
+      "title": "弹性碰撞求b速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "a、b 发生弹性正碰，动量守恒且动能守恒，碰后 b 的速度 v_b＝2m_a v_M/(m_a＋m_b)。",
+      "equation": {
+        "latex": "m_a v_M - m_a v_a2 - m_b v_b + (m_a v_M^(2/2) - m_a v_a2^(2/2) - m_b v_b^(2/2))",
+        "sympy": "m_a*v_M - m_a*v_a2 - m_b*v_b + (m_a*v_M**Rational(2,2) - m_a*v_a2**Rational(2,2) - m_b*v_b**Rational(2,2))",
+        "symbols": [
+          "M",
+          "a",
+          "a2",
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*v_M - m_a*v_a2 - m_b*v_b + (m_a*v_M**Rational(2,2) - m_a*v_a2**Rational(2,2) - m_b*v_b**Rational(2,2))｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*v_M - m_a*v_a2 - m_b*v_b + (m_a*v_M**Rational(2,2) - m_a*v_a2**Rational(2,2) - m_b*v_b**Rational(2,2))",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*v_M - m_a*v_a2 - m_b*v_b + (m_a*v_M**Rational(2,2) - m_a*v_a2**Rational(2,2) - m_b*v_b**Rational(2,2))",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S06",
+      "step_no": 6,
+      "title": "求b碰后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 m_a＝1 kg、m_b＝2 kg、v_M＝3 m/s，得 v_b＝2 m/s，方向向左。",
+      "equation": {
+        "latex": "v_b - 2 m_a v_M/(m_a + m_b)",
+        "sympy": "v_b - 2*m_a*v_M/(m_a + m_b)",
+        "symbols": [
+          "M",
+          "a",
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vb",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - 2*m_a*v_M/(m_a + m_b)｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - 2*m_a*v_M/(m_a + m_b)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - 2*m_a*v_M/(m_a + m_b)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S07",
+      "step_no": 7,
+      "title": "求M到N时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "b 从 M 到 N 做匀减速运动，加速度大小 μg＝5 m/s²，MN＝d＝2.7 m，由 d＝v_b t－½μg t² 得 t＝0.6 s（另一解 1.8 s 不合题意舍去）。",
+      "equation": {
+        "latex": "d - v_b t + mu g t^(2/2)",
+        "sympy": "d - v_b*t + mu*g*t**Rational(2,2)",
+        "symbols": [
+          "b",
+          "d",
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t",
+        "number": 0.6,
+        "exact": "3/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：d - v_b*t + mu*g*t**Rational(2,2)｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：d - v_b*t + mu*g*t**Rational(2,2)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_b」不在白名单：d - v_b*t + mu*g*t**Rational(2,2)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S08",
+      "step_no": 8,
+      "title": "b到N时速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "b 到 N 时速度 v_N＝v_b－μg t＝2－5×0.6＝－1 m/s，即速度大小为 1 m/s，方向向左。",
+      "equation": {
+        "latex": "v_N - v_b + mu g t",
+        "sympy": "v_N - v_b + mu*g*t",
+        "symbols": [
+          "N",
+          "b",
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vN",
+        "number": -1.0,
+        "exact": "-1",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_N」不在白名单：v_N - v_b + mu*g*t｜chain：data_error(unknown_symbol): 符号「v_N」不在白名单：v_N - v_b + mu*g*t",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_N」不在白名单：v_N - v_b + mu*g*t",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S09",
+      "step_no": 9,
+      "title": "第一次冲量后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "在 N 点给 b 水平向右的冲量 I＝6 N·s，由 I＝m_b Δv 得速度增加 3 m/s，冲量后速度 v₁＝－1＋3＝2 m/s，方向向右。",
+      "equation": {
+        "latex": "v_1 - v_N - I/m_b",
+        "sympy": "v_1 - v_N - I/m_b",
+        "symbols": [
+          "N",
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - v_N - I/m_b｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - v_N - I/m_b",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - v_N - I/m_b",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S10",
+      "step_no": 10,
+      "title": "第一次向右运动",
+      "point_id": null,
+      "kind": "value",
+      "statement": "b 向右运动，传送带向左运动，相对速度向右，摩擦力向左，加速度大小 5 m/s²；速度减为零用时 0.4 s，位移 0.4 m＜L，未离开传送带。",
+      "equation": {
+        "latex": "v_1 - mu g t_1",
+        "sympy": "v_1 - mu*g*t_1",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t1",
+        "number": 0.4,
+        "exact": "2/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*t_1｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*t_1",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*t_1",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S11",
+      "step_no": 11,
+      "title": "第一次向左返回",
+      "point_id": null,
+      "kind": "value",
+      "statement": "速度减为零后，传送带向左运动，b 相对传送带向右，摩擦力向左，b 向左加速，加速度大小 5 m/s²；经 0.4 s 速度达 2 m/s 向左，位移 0.4 m，回到 N 点。",
+      "equation": {
+        "latex": "v_2 + mu g t_2",
+        "sympy": "v_2 + mu*g*t_2",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v2",
+        "number": -2.0,
+        "exact": "-2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_2」不在白名单：v_2 + mu*g*t_2｜chain：data_error(unknown_symbol): 符号「v_2」不在白名单：v_2 + mu*g*t_2",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_2」不在白名单：v_2 + mu*g*t_2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S12",
+      "step_no": 12,
+      "title": "第二次冲量后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "回到 N 点时速度 2 m/s 向左，再给同样冲量，速度变为 1 m/s 向右。",
+      "equation": {
+        "latex": "v_3 - v_2 - I/m_b",
+        "sympy": "v_3 - v_2 - I/m_b",
+        "symbols": [
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v3",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - v_2 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - v_2 - I/m_b",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - v_2 - I/m_b",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S13",
+      "step_no": 13,
+      "title": "第二次向右运动",
+      "point_id": null,
+      "kind": "value",
+      "statement": "b 以 1 m/s 向右运动，加速度大小 5 m/s²，经 0.2 s 速度减为零，位移 0.1 m＜L，未离开传送带。",
+      "equation": {
+        "latex": "v_3 - mu g t_3",
+        "sympy": "v_3 - mu*g*t_3",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t3",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - mu*g*t_3｜chain：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - mu*g*t_3",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - mu*g*t_3",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S14",
+      "step_no": 14,
+      "title": "第二次向左返回",
+      "point_id": null,
+      "kind": "value",
+      "statement": "速度减为零后向左加速，经 0.2 s 速度达 1 m/s 向左，位移 0.1 m，回到 N 点。",
+      "equation": {
+        "latex": "v_4 + mu g t_4",
+        "sympy": "v_4 + mu*g*t_4",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v4",
+        "number": -1.0,
+        "exact": "-1",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_4」不在白名单：v_4 + mu*g*t_4｜chain：data_error(unknown_symbol): 符号「v_4」不在白名单：v_4 + mu*g*t_4",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_4」不在白名单：v_4 + mu*g*t_4",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S15",
+      "step_no": 15,
+      "title": "第三次冲量后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "回到 N 点时速度 1 m/s 向左，再给冲量，速度变为 2 m/s 向右。",
+      "equation": {
+        "latex": "v_5 - v_4 - I/m_b",
+        "sympy": "v_5 - v_4 - I/m_b",
+        "symbols": [
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v5",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - v_4 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - v_4 - I/m_b",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - v_4 - I/m_b",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S16",
+      "step_no": 16,
+      "title": "第三次向右运动",
+      "point_id": null,
+      "kind": "value",
+      "statement": "b 以 2 m/s 向右运动，加速度大小 5 m/s²，经 0.4 s 速度减为零，位移 0.4 m＜L，未离开传送带。",
+      "equation": {
+        "latex": "v_5 - mu g t_5",
+        "sympy": "v_5 - mu*g*t_5",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t5",
+        "number": 0.4,
+        "exact": "2/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - mu*g*t_5｜chain：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - mu*g*t_5",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - mu*g*t_5",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S17",
+      "step_no": 17,
+      "title": "第三次向左返回",
+      "point_id": null,
+      "kind": "value",
+      "statement": "速度减为零后向左加速，经 0.4 s 速度达 2 m/s 向左，位移 0.4 m，回到 N 点。",
+      "equation": {
+        "latex": "v_6 + mu g t_6",
+        "sympy": "v_6 + mu*g*t_6",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v6",
+        "number": -2.0,
+        "exact": "-2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_6」不在白名单：v_6 + mu*g*t_6｜chain：data_error(unknown_symbol): 符号「v_6」不在白名单：v_6 + mu*g*t_6",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_6」不在白名单：v_6 + mu*g*t_6",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S18",
+      "step_no": 18,
+      "title": "第四次冲量后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "回到 N 点时速度 2 m/s 向左，再给冲量，速度变为 1 m/s 向右。",
+      "equation": {
+        "latex": "v_7 - v_6 - I/m_b",
+        "sympy": "v_7 - v_6 - I/m_b",
+        "symbols": [
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v7",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - v_6 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - v_6 - I/m_b",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - v_6 - I/m_b",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S19",
+      "step_no": 19,
+      "title": "第四次向右运动",
+      "point_id": null,
+      "kind": "value",
+      "statement": "b 以 1 m/s 向右运动，加速度大小 5 m/s²，经 0.2 s 速度减为零，位移 0.1 m＜L，未离开传送带。",
+      "equation": {
+        "latex": "v_7 - mu g t_7",
+        "sympy": "v_7 - mu*g*t_7",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t7",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - mu*g*t_7｜chain：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - mu*g*t_7",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - mu*g*t_7",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S20",
+      "step_no": 20,
+      "title": "第四次向左返回",
+      "point_id": null,
+      "kind": "value",
+      "statement": "速度减为零后向左加速，经 0.2 s 速度达 1 m/s 向左，位移 0.1 m，回到 N 点。",
+      "equation": {
+        "latex": "v_8 + mu g t_8",
+        "sympy": "v_8 + mu*g*t_8",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v8",
+        "number": -1.0,
+        "exact": "-1",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_8」不在白名单：v_8 + mu*g*t_8｜chain：data_error(unknown_symbol): 符号「v_8」不在白名单：v_8 + mu*g*t_8",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_8」不在白名单：v_8 + mu*g*t_8",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S21",
+      "step_no": 21,
+      "title": "第五次冲量后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "回到 N 点时速度 1 m/s 向左，再给冲量，速度变为 2 m/s 向右。",
+      "equation": {
+        "latex": "v_9 - v_8 - I/m_b",
+        "sympy": "v_9 - v_8 - I/m_b",
+        "symbols": [
+          "b",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v9",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - v_8 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - v_8 - I/m_b",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - v_8 - I/m_b",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S22",
+      "step_no": 22,
+      "title": "第五次向右运动",
+      "point_id": null,
+      "kind": "value",
+      "statement": "b 以 2 m/s 向右运动，加速度大小 5 m/s²，经 0.4 s 速度减为零，位移 0.4 m＜L，未离开传送带。",
+      "equation": {
+        "latex": "v_9 - mu g t_9",
+        "sympy": "v_9 - mu*g*t_9",
+        "symbols": [
+          "g",
+          "mu",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t9",
+        "number": 0.4,
+        "exact": "2/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - mu*g*t_9｜chain：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - mu*g*t_9",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - mu*g*t_9",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-08-S23",
+      "step_no": 23,
+      "title": "求摩擦生热",
+      "point_id": null,
+      "kind": "value",
+      "statement": "每次 b 在传送带上往返，相对传送带的路程为 2s（s 为单程位移），摩擦力大小 μ m_b g＝10 N；五次往返单程位移依次为 0.4、0.4、0.1、0.1、0.4、0.4、0.1、0.1、0.4、0.4 m，总相对路程 2×2.4＝4.8 m，故 Q＝10×4.8＝48 J。",
+      "equation": {
+        "latex": "Q - mu m_b g 2 (2 (2/5) + 2 (1/10) + 2 (2/5) + 2 (1/10) + 2 (2/5))",
+        "sympy": "Q - mu*m_b*g*2*(2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5))",
+        "symbols": [
+          "Q",
+          "b",
+          "g",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "Q",
+        "number": 48.0,
+        "exact": "48",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*2*(2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5))｜chain：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*2*(2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5))",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*2*(2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5))",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 19,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

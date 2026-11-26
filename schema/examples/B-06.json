@@ -1,0 +1,671 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-06",
+    "question_id": "B-06",
+    "group": "B",
+    "source": "2024 福建卷",
+    "question_no": 14,
+    "full_score": 14,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T20:05:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "我国古代劳动人民创造了璀璨的农耕文明。图(a)为《天工开物》中描绘的利用耕牛整理田地的场景，简化的物理模型如图(b)所示，人站立的农具视为与水平地面平行的木板，两条绳子相互平行且垂直于木板边缘。已知绳子与水平地面夹角 θ 为 25.5°，sin 25.5°＝0.43，cos 25.5°＝0.90。当每条绳子拉力 F 的大小为 250 N 时，人与木板沿直线匀速前进，在 15 s 内前进了 20 m，求此过程中：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "图(a)：《天工开物》农耕场景（情境图，不含解题数据）；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      },
+      {
+        "fig_no": 2,
+        "caption": "图(b)：木板、两条平行绳与水平面成 θ＝25.5°；原文无图题，θ 与两绳平行已由文字给出",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "地面对木板的阻力大小。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "两条绳子拉力所做的总功。",
+        "score": 5
+      },
+      {
+        "no": "(3)",
+        "text": "两条绳子拉力的总功率。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "0f97e36528a455b872ab2cda93b87ad5deb89b431102a2206f3cf0bbc3ab42d8",
+    "input_sha256": "2ac5a44507c10a493395c8e8e2476540a2cf4aea5c9b01cc779f2af7dc039647"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "人与木板",
+        "mass_symbol": "m",
+        "note": "作为整体沿直线匀速前进；受地面阻力 f"
+      },
+      {
+        "id": "obj2",
+        "name": "两条绳",
+        "mass_symbol": "m",
+        "note": "相互平行、垂直于木板边缘，与水平面成 25.5°，每条拉力 250 N"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "F",
+        "value": 250,
+        "unit": "N",
+        "text": "每条绳子拉力 F＝250 N（两条共 2F）"
+      },
+      {
+        "symbol": "x",
+        "value": 20,
+        "unit": "m",
+        "text": "15 s 内前进了 20 m —— 位移记作 x"
+      },
+      {
+        "symbol": "t",
+        "value": 15,
+        "unit": "s",
+        "text": "所用时间 t＝15 s"
+      },
+      {
+        "symbol": "theta",
+        "value": 25.5,
+        "unit": "deg",
+        "text": "绳与水平地面夹角 θ＝25.5°（cos 25.5°＝0.90、sin 25.5°＝0.43）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "匀速直线前进",
+        "start": "两绳各以 250 N 拉木板",
+        "end": "15 s 内前进 20 m"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "f",
+        "text": "地面对木板的阻力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "W",
+        "text": "两绳拉力做的总功"
+      },
+      {
+        "no": "(3)",
+        "quantity": "P",
+        "text": "两绳拉力的总功率"
+      }
+    ],
+    "assumptions": [
+      "匀速前进 ⇒ 水平方向合力为零；竖直方向的支持力与重力不参与本题求解",
+      "两绳平行且各与水平面成 25.5°，水平分量各为 F cos 25.5°、共 2F cos 25.5°",
+      "功按定义式算：W＝2F·x·cos 25.5°（位移沿水平方向，取拉力在位移方向上的投影）",
+      "第 (3) 问求 15 s 内的平均功率 P＝W/t；t 取 15 s（不是 20 s），位移取 20 m（不是 15 m）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "匀速前进 ⇒ 水平方向合力为零",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-06-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "2F cos25.5° = f",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-06-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "f = 450 N",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-06-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "W = 2F·x·cos25.5°",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-06-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "W = 9.0×10³ J",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-06-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "所求为 15 s 内的平均功率",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-06-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "P = W/t = 9.0×10³/15",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-06-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "P = 600 W",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-06-S08"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-06-S01",
+      "step_no": 1,
+      "title": "匀速前进 ⇒ 水平方向合力为零",
+      "point_id": "B-06-S01",
+      "kind": "judgment",
+      "statement": "人与木板沿直线匀速前进，加速度为零；水平方向只有两绳拉力的水平分量与地面阻力，二者等大反向。",
+      "equation": null,
+      "criterion": {
+        "expr": "Fnet",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "匀速前进 ⇒ 水平方向合力为零：两绳拉力的水平分量之和等于地面阻力。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Fnet，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把匀速当作有加速度本步 0 分；只写「平衡」未指明水平方向本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-06-S02",
+      "step_no": 2,
+      "title": "2F cos25.5° = f",
+      "point_id": "B-06-S02",
+      "kind": "equation",
+      "statement": "水平方向：两条绳的水平分量之和等于阻力，2F cos 25.5°＝f，即 2×250×0.90＝450 N。",
+      "equation": {
+        "latex": "2 F \\cos 25.5° = f",
+        "sympy": "2*F*Rational(9,10) - f",
+        "symbols": [
+          "F",
+          "f"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F=250、f=450）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏系数 2（按单绳算）本步 0 分；用 sin25.5° 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-06-S03",
+      "step_no": 3,
+      "title": "f = 450 N",
+      "point_id": "B-06-S03",
+      "kind": "discussion",
+      "statement": "地面对木板的阻力大小为 450 N（方向与前进方向相反）。",
+      "equation": {
+        "latex": "f = 450",
+        "sympy": "f - 450",
+        "symbols": [
+          "f"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "f",
+        "number": 450.0,
+        "exact": "450",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（f=450）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 450 不写单位 N 本步 0 分；写成 225 N（单绳）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-06-S04",
+      "step_no": 4,
+      "title": "W = 2F·x·cos25.5°",
+      "point_id": "B-06-S04",
+      "kind": "equation",
+      "statement": "两绳拉力做的总功：W＝2F·x·cos 25.5°（位移沿水平方向，取拉力在位移方向的投影），即 2×250×20×0.90。",
+      "equation": {
+        "latex": "W = 2 F x \\cos 25.5°",
+        "sympy": "W - 2*F*x*Rational(9,10)",
+        "symbols": [
+          "F",
+          "W",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F=250、W=9000、x=20）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N·m＝J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏位移投影直接写 W＝2Fx 本步 0 分；只算一根绳本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-06-S05",
+      "step_no": 5,
+      "title": "W = 9.0×10³ J",
+      "point_id": "B-06-S05",
+      "kind": "discussion",
+      "statement": "W＝450×20 J＝9.0×10³ J。",
+      "equation": {
+        "latex": "W = 9000",
+        "sympy": "W - 9000",
+        "symbols": [
+          "W"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "W",
+        "number": 9000.0,
+        "exact": "9000",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（W=9000）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "数量级错（9.0×10² 或 9.0×10⁴）本步 0 分；只写 9000 不写单位 J 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-06-S06",
+      "step_no": 6,
+      "title": "所求为 15 s 内的平均功率",
+      "point_id": "B-06-S06",
+      "kind": "judgment",
+      "statement": "题目问「此过程中」的功率，即 15 s 内的平均功率，用 P＝W/t；不是某一时刻的瞬时功率 P＝Fv（这里的 v 是平均速度，含义需说明）。",
+      "equation": null,
+      "criterion": {
+        "expr": "P",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "「此过程中」的功率指 15 s 内的平均功率，用 P＝W/t 求；若用 P＝Fv，v 必须说明是平均速度。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "W（功率 P）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 t 取成 20 s（或把位移取成 15 m）本步 0 分；只写 P＝Fv 未说明 v 的含义本步 0 分；本步只判是否辨识为平均功率，列式分在 S07（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-06-S07",
+      "step_no": 7,
+      "title": "P = W/t = 9.0×10³/15",
+      "point_id": "B-06-S07",
+      "kind": "equation",
+      "statement": "平均功率 P＝W/t＝9.0×10³/15 W。",
+      "equation": {
+        "latex": "P = \\frac{W}{t}",
+        "sympy": "P - W/t",
+        "symbols": [
+          "P",
+          "W",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（P=600、W=9000、t=15）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J/s＝W",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "时间取 20 s 或位移取 15 m 本步 0 分；用 (1) 的 f 代替 2F 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-06-S08",
+      "step_no": 8,
+      "title": "P = 600 W",
+      "point_id": "B-06-S08",
+      "kind": "discussion",
+      "statement": "P＝600 W。",
+      "equation": {
+        "latex": "P = 600",
+        "sympy": "P - 600",
+        "symbols": [
+          "P"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "P",
+        "number": 600.0,
+        "exact": "600",
+        "unit": "W",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（P=600）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "W",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 600 不写单位 W 本步 0 分；写成 60 W（数量级错）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-06-S01",
+        "step_id": "B-06-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-06-S02",
+        "step_id": "B-06-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-06-S03",
+        "step_id": "B-06-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-06-S04",
+        "step_id": "B-06-S04",
+        "score_awarded": 3,
+        "score_possible": 3,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-06-S05",
+        "step_id": "B-06-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-06-S06",
+        "step_id": "B-06-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-06-S07",
+        "step_id": "B-06-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-06-S08",
+        "step_id": "B-06-S08",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 14,
+    "score_total": 14,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：水平方向平衡 + 功的定义 + 平均功率；L1 逐式回代，14/14 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

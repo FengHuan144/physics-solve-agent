@@ -1,0 +1,20 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-04.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-04_validated.json
+
+对象：A-04（题 A-04，9 步）
+L1  pass 4 / fail 0 / na 5 / skipped 0    判定通过率 100.0%    na 比例 55.6%
+L2  pass 4 / fail 0 / na 5 / skipped 0    判定通过率 100.0%    na 比例 55.6%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-04-S03 [L1] per_step：data_error(unknown_symbol): 符号「x1」不在白名单：x1 - Rational(1,2)*a*t1**2｜chain：data_error(unknown_symbol): 符号「x1」不在白名单：x1 - Rational(1,2)*a*t1**2
+  - A-04-S03 [L2] data_error(unknown_symbol): 符号「x1」不在白名单：x1 - Rational(1,2)*a*t1**2
+  - A-04-S04 [L1] per_step：data_error(unknown_symbol): 符号「x1」不在白名单：x - x1 - v*(T - t1)｜chain：data_error(unknown_symbol): 符号「x1」不在白名单：x - x1 - v*(T - t1)
+  - A-04-S04 [L2] data_error(unknown_symbol): 符号「x1」不在白名单：x - x1 - v*(T - t1)
+  - A-04-S05 [L1] per_step：data_error(unknown_symbol): 符号「v_s」不在白名单：T + x/v_s - t2｜chain：data_error(unknown_symbol): 符号「v_s」不在白名单：T + x/v_s - t2
+  - A-04-S05 [L2] data_error(unknown_symbol): 符号「v_s」不在白名单：T + x/v_s - t2
+  - A-04-S07 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：s - v*(T - t1)｜chain：data_error(unknown_symbol): 符号「s」不在白名单：s - v*(T - t1)
+  - A-04-S07 [L2] data_error(unknown_symbol): 符号「s」不在白名单：s - v*(T - t1)
+  - A-04-S08 [L1] per_step：data_error(unknown_symbol): 符号「x1」不在白名单：x - x1 - s｜chain：data_error(unknown_symbol): 符号「x1」不在白名单：x - x1 - s
+  - A-04-S08 [L2] data_error(unknown_symbol): 符号「x1」不在白名单：x - x1 - s
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\A-04_validated.json

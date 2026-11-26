@@ -1,0 +1,23 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-06.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-06_validated.json
+
+对象：A-06（题 A-06，11 步）
+L1  pass 4 / fail 0 / na 7 / skipped 0    判定通过率 100.0%    na 比例 63.6%
+L2  pass 4 / fail 1 / na 6 / skipped 0    判定通过率 80.0%    na 比例 54.5%
+整题层状态：{"L1": "na", "L2": "fail", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-06-S03 [L1] per_step：data_error(unknown_symbol): 符号「l」不在白名单：v0*t1 - Rational(1,2)*mu*g*t1**2 - Rational(7,6)*l｜chain：data_error(unknown_symbol): 符号「l」不在白名单：v0*t1 - Rational(1,2)*mu*g*t1**2 - Rational(7,6)*l
+  - A-06-S03 [L2] data_error(unknown_symbol): 符号「l」不在白名单：v0*t1 - Rational(1,2)*mu*g*t1**2 - Rational(7,6)*l
+  - A-06-S05 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-06-S05 [L2] data_error(empty): sympy 串为空
+  - A-06-S06 [L1] per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1
+  - A-06-S06 [L2] data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1
+  - A-06-S07 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：s - l/2 + l/6｜chain：data_error(unknown_symbol): 符号「s」不在白名单：s - l/2 + l/6
+  - A-06-S07 [L2] data_error(unknown_symbol): 符号「s」不在白名单：s - l/2 + l/6
+  - A-06-S08 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：t2 - s/v_b｜chain：data_error(unknown_symbol): 符号「s」不在白名单：t2 - s/v_b
+  - A-06-S08 [L2] data_error(unknown_symbol): 符号「s」不在白名单：t2 - s/v_b
+  - A-06-S10 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-06-S10 [L2] data_error(empty): sympy 串为空
+失败：
+  x A-06-S01 [L2/E-12] 加减项量纲不一致：a1 为 m/s^2；f 为 kg·m/s^2；-g*m*mu 为 kg·m/s^2
+check 契约校验：0 处违约
+已写：评测\T20\out\A-06_validated.json

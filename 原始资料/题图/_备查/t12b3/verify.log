@@ -1,0 +1,31 @@
+### python 原型/_build.py
+[ok] 单题工作台.html
+     题目 7 道：A-02, A-08, A-10, B-02, B-09, B-12, B-20
+     步骤 66 步 · 错误码 21 条
+     缺图（灰框态）：A-08, A-10, B-12
+     体积 157 KB
+
+### images 检查
+A-02 {"2": "../原始资料/题图/A-02_图2.png"}
+B-09 {"1": "../原始资料/题图/B-09_图1.png"}
+
+### python 原型/_selftest.py
+PASS  file:// 打开，控制台 0 报错
+PASS  7 题可切换，书写块数 = steps 长度   · 7 题
+PASS  点 A-08-S03 式子 → 内联批改槽
+PASS  叉号压在式子上（宽随式子变化）   · wrap=66 cross=78
+PASS  叉宽随式子长短变化   · 78 vs 434
+PASS  同一式子刷新 3 次角度一致   · ['1.8', '1.8', '1.8']
+PASS  批注楷体红色 rotate(-1.5deg) 且字号更小   · "Kaiti SC", KaiTi, STKai rgb(192, 57, 43) matrix(0.999657, -0.0261769, 0.0261769, 0.999657, 0, 0) 14/15
+PASS  式子已美化（无 Rational / **）
+PASS  美化后仍保留 raw 原值   · 10 条 raw
+PASS  判断步（equation=null）：无式子单元，叉打在 statement 上   · A-02-S01 equation单元=0 批改槽=1 叉宽=758/文字宽=746
+PASS  刷新后仍在 → 可擦掉   · 2 → 1
+PASS  记录结构 = §4.3，条数 = 页面计数   · ['at', 'note', 'part', 'reason_code', 'step_id'] n=1 页面=1
+PASS  页面上找不到「扣 N 分」字样
+PASS  B-20 图区显示真题原图（图甲/图乙）+ caption   · 真图2 缺图0 caption2
+PASS  A-08 图区显示 figures[0].caption
+PASS  断网可用（无任何外部请求）
+PASS  900px 左栏变抽屉、无横向溢出   · 溢出0px 收起时maxHeight=0px 可展开=True
+
+合计 17 条，通过 17，未通过 0

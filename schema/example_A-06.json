@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.0",
+  "meta": {
+    "answer_id": "A-06-R1",
+    "question_id": "A-06",
+    "group": "A",
+    "source": "2024 新课标卷",
+    "question_no": 25,
+    "full_score": 14,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T00:56:00+08:00",
+    "latency_ms": 0,
+    "tokens": {"in": 0, "out": 0},
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一长度 l＝1.0 m 的均匀薄板初始时静止在一光滑平台上，薄板的右端与平台的边缘 O 对齐。薄板上的一小物块从薄板的左端以某一初速度向右滑动，当薄板运动的距离 Δl＝l/6 时，物块从薄板右端水平飞出；当物块落到地面时，薄板中心恰好运动到 O 点。已知物块与薄板的质量相等，它们之间的动摩擦因数 μ＝0.3，重力加速度大小 g＝10 m/s²。求 (1)物块初速度大小及其在薄板上运动的时间；(2)平台距地面的高度。",
+    "stem_sha256": "2077f0e8504a29a79c3bf4274bd1a9d5aced6c8e4fdd0017b6283c47cbbc2a16",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "原文无图题；题干文字已给全几何关系，缺图可解（配图仅用于展示，不作解题输入）",
+        "caption_source": "none",
+        "is_required": false
+      }
+    ],
+    "subquestions": [
+      {"no": "(1)", "text": "求物块初速度大小及其在薄板上运动的时间。", "score": 10},
+      {"no": "(2)", "text": "求平台距地面的高度。", "score": 4}
+    ]
+  },
+  "situation": {
+    "objects": [
+      {"id": "obj1", "name": "物块", "mass_symbol": "m", "note": "小物块，视为质点，从薄板左端以初速度向右滑动"},
+      {"id": "obj2", "name": "薄板", "mass_symbol": "M", "note": "长 L=1.0 m 的均匀薄板，置于光滑平台，质量与物块相等"}
+    ],
+    "given": [
+      {"symbol": "L", "value": 1.0, "unit": "m", "text": "薄板长度 l＝1.0 m（符号归一到 L）"},
+      {"symbol": "s2", "value": null, "unit": "m", "text": "物块飞出时薄板运动的距离 Δl＝L/6（符号归一到 s2）"},
+      {"symbol": "mu", "value": 0.3, "unit": "1", "text": "物块与薄板间的动摩擦因数 μ＝0.3"},
+      {"symbol": "M", "value": null, "unit": "kg", "text": "薄板质量与物块质量相等，M＝m（非数值条件，故 value 为空）"},
+      {"symbol": "g", "value": 10, "unit": "m/s^2", "text": "重力加速度大小 g＝10 m/s²"}
+    ],
+    "process_segments": [
+      {"no": 1, "name": "相对滑动", "start": "物块从薄板左端以初速度滑上薄板", "end": "物块从薄板右端水平飞出（此时板已前进 L/6）"},
+      {"no": 2, "name": "物块平抛", "start": "物块飞出瞬间", "end": "物块落到地面"},
+      {"no": 3, "name": "薄板匀速", "start": "物块飞出瞬间", "end": "薄板中心恰好运动到 O 点"}
+    ],
+    "targets": [
+      {"no": "(1)", "quantity": "v0", "text": "求物块初速度大小"},
+      {"no": "(1)", "quantity": "t", "text": "求物块在薄板上运动的时间"},
+      {"no": "(2)", "quantity": "h", "text": "求平台距地面的高度"}
+    ],
+    "assumptions": [
+      "薄板均匀，其中心在板长中点（原文「均匀薄板」）",
+      "平台光滑，物块飞出前薄板只受物块给的摩擦力",
+      "物块可视为质点，忽略空气阻力",
+      "正方向取水平向右（+x）"
+    ]
+  },
+  "outline": [
+    {"step_no": 1, "title": "判定板块间为滑动摩擦", "depends_on": [], "expanded": true, "point_hint": "A-06-S01"},
+    {"step_no": 2, "title": "对物块列牛顿第二定律求 a1", "depends_on": [1], "expanded": true, "point_hint": "A-06-S02"},
+    {"step_no": 3, "title": "对薄板列牛顿第二定律求 a2", "depends_on": [1], "expanded": true, "point_hint": "A-06-S03"},
+    {"step_no": 4, "title": "由板位移求滑行时间 t", "depends_on": [2, 3], "expanded": true, "point_hint": "A-06-S04"},
+    {"step_no": 5, "title": "写物块对地位移关系", "depends_on": [2], "expanded": true, "point_hint": "A-06-S05"},
+    {"step_no": 6, "title": "解出初速度 v0", "depends_on": [4, 5], "expanded": true, "point_hint": "A-06-S06"},
+    {"step_no": 7, "title": "判定飞出后板匀速、物块平抛", "depends_on": [1], "expanded": true, "point_hint": "A-06-S07"},
+    {"step_no": 8, "title": "求飞出瞬间板速 v2", "depends_on": [3, 4], "expanded": true, "point_hint": "A-06-S08"},
+    {"step_no": 9, "title": "用等时性求平抛时间 t2", "depends_on": [7, 8], "expanded": true, "point_hint": "A-06-S09"},
+    {"step_no": 10, "title": "由竖直分运动求 h", "depends_on": [9], "expanded": true, "point_hint": "A-06-S10"}
+  ],
+  "steps": [
+    {
+      "step_id": "A-06-S01",
+      "step_no": 1,
+      "title": "判定板块间为滑动摩擦",
+      "point_id": "A-06-S01",
+      "kind": "judgment",
+      "statement": "物块相对薄板向右滑动，二者间为滑动摩擦，大小 f＝μmg；同一对摩擦力使物块匀减速、薄板匀加速。",
+      "equation": {
+        "latex": "f = \\mu m g",
+        "sympy": "f - mu*m*g",
+        "symbols": ["f", "mu", "m", "g"],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": ["L-05"],
+      "checks": [
+        {"layer": "L4", "status": "pass", "detail": "题目给出 μ 与接触面；薄板在光滑平台上，水平方向只受物块给的摩擦力", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S02",
+      "step_no": 2,
+      "title": "对物块列牛顿第二定律求 a1",
+      "point_id": "A-06-S02",
+      "kind": "equation",
+      "statement": "对物块，水平方向只受摩擦力，μmg＝ma₁，得 a₁＝3 m/s²（方向与运动反向）。",
+      "equation": {
+        "latex": "\\mu m g = m a_1",
+        "sympy": "mu*m*g - m*a1",
+        "symbols": ["mu", "m", "g", "a1"],
+        "parse_status": "ok"
+      },
+      "value": {"symbol": "a1", "number": 3.0, "exact": "mu*g", "unit": "m/s^2", "direction": null, "sig_figs": null},
+      "law_ids": ["L-04", "L-05"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "代入 μ=0.3、g=10、a1=3：两边同为 3m，回代残差 0", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "两边量纲均为 kg·m/s²", "error_code": null},
+        {"layer": "L4", "status": "pass", "detail": "对象只取物块，不含板受到的反作用力", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S03",
+      "step_no": 3,
+      "title": "对薄板列牛顿第二定律求 a2",
+      "point_id": "A-06-S03",
+      "kind": "equation",
+      "statement": "对薄板，水平方向只受物块给的摩擦力，μmg＝Ma₂；因 M＝m，故 a₂＝3 m/s²，与 a₁ 等大。",
+      "equation": {
+        "latex": "\\mu m g = M a_2",
+        "sympy": "mu*m*g - M*a2",
+        "symbols": ["mu", "m", "g", "M", "a2"],
+        "parse_status": "ok"
+      },
+      "value": {"symbol": "a2", "number": 3.0, "exact": "mu*m*g/M", "unit": "m/s^2", "direction": null, "sig_figs": null},
+      "law_ids": ["L-04", "L-05"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "代入 M=m、a2=3：两边同为 3m，回代残差 0", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "两边量纲均为 kg·m/s²", "error_code": null},
+        {"layer": "L4", "status": "pass", "detail": "摩擦力取物块施于板的同向摩擦力；平台光滑，地面无摩擦", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S04",
+      "step_no": 4,
+      "title": "由板位移求滑行时间 t",
+      "point_id": "A-06-S04",
+      "kind": "value",
+      "statement": "薄板由静止做匀加速，位移 s₂＝½a₂t²，题给 s₂＝L/6，解得 t＝1/3 s（本步即求 t，只列式不解不给分）。",
+      "equation": {
+        "latex": "\\frac{1}{2} a_2 t^2 = \\frac{L}{6}",
+        "sympy": "Rational(1,2)*a2*t**2 - L/6",
+        "symbols": ["a2", "t", "L"],
+        "parse_status": "ok"
+      },
+      "value": {"symbol": "t", "number": 0.3333, "exact": "1/3", "unit": "s", "direction": null, "sig_figs": 2},
+      "law_ids": ["L-01"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "代入 a2=3、t=1/3、L=1：1/6−1/6=0", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "左边 m/s²·s²=m，右边 m，量纲一致", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S05",
+      "step_no": 5,
+      "title": "写物块对地位移关系",
+      "point_id": "A-06-S05",
+      "kind": "equation",
+      "statement": "物块对地位移为 L＋s₂（即 7L/6，不是 L），等于 v₀t−½a₁t²；物块相对板的位移恰为板长 L。",
+      "equation": {
+        "latex": "v_0 t - \\frac{1}{2} a_1 t^2 = L + s_2",
+        "sympy": "v0*t - Rational(1,2)*a1*t**2 - L - s2",
+        "symbols": ["v0", "t", "a1", "L", "s2"],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": ["L-01"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "代入 v0=4、t=1/3、a1=3、L=1、s2=1/6：4/3−1/6−1−1/6=0", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "各项均为 m", "error_code": null},
+        {"layer": "L4", "status": "pass", "detail": "位移基准取对地：物块从板左端走到右端共 L，板同时前进 s₂，故为 L+s₂；写成 L 或 L−s₂ 都错", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S06",
+      "step_no": 6,
+      "title": "解出初速度 v0",
+      "point_id": "A-06-S06",
+      "kind": "discussion",
+      "statement": "由第 4、5 步联立解得 v₀＝4 m/s，方向水平向右；只有一解，无须舍根。",
+      "equation": {
+        "latex": "v_0 = 4",
+        "sympy": "v0 - 4",
+        "symbols": ["v0"],
+        "parse_status": "ok"
+      },
+      "value": {"symbol": "v0", "number": 4.0, "exact": "4", "unit": "m/s", "direction": "+x", "sig_figs": 1},
+      "law_ids": ["L-01"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "代回第 5 步：4·(1/3)−1.5·(1/9)=7/6，与 L+s₂ 一致", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "m/s", "error_code": null},
+        {"layer": "L4", "status": "pass", "detail": "方向与所设正方向 +x 一致；数值为正，无须取负根", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S07",
+      "step_no": 7,
+      "title": "判定飞出后板匀速、物块平抛",
+      "point_id": "A-06-S07",
+      "kind": "judgment",
+      "statement": "物块飞出后与板不再接触，板水平方向合外力为零，做匀速直线运动；物块只受重力，做平抛运动。",
+      "equation": {
+        "latex": "F_{net} = 0",
+        "sympy": "Fnet - 0",
+        "symbols": ["Fnet"],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": ["L-04"],
+      "checks": [
+        {"layer": "L4", "status": "pass", "detail": "判据为「分离后无水平外力」；平台光滑，板不再受摩擦，故 a=0", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S08",
+      "step_no": 8,
+      "title": "求飞出瞬间板速 v2",
+      "point_id": "A-06-S08",
+      "kind": "value",
+      "statement": "板在前 t＝1/3 s 内匀加速，飞出瞬间速度 v₂＝a₂t＝1 m/s。",
+      "equation": {
+        "latex": "v_2 = a_2 t",
+        "sympy": "v2 - a2*t",
+        "symbols": ["v2", "a2", "t"],
+        "parse_status": "ok"
+      },
+      "value": {"symbol": "v2", "number": 1.0, "exact": "1", "unit": "m/s", "direction": "+x", "sig_figs": 1},
+      "law_ids": ["L-01"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "3·(1/3)=1，回代残差 0", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "m/s²·s=m/s", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S09",
+      "step_no": 9,
+      "title": "用等时性求平抛时间 t2",
+      "point_id": "A-06-S09",
+      "kind": "equation",
+      "statement": "飞出瞬间板中心距 O 为 L/2−s₂（不是 L/2，也不是从 L/3 起算）；板匀速走到 O 的用时与物块平抛时间相等，得 t₂＝1/3 s。",
+      "equation": {
+        "latex": "\\frac{L}{2} - s_2 = v_2 t_2",
+        "sympy": "L/2 - s2 - v2*t2",
+        "symbols": ["L", "s2", "v2", "t2"],
+        "parse_status": "ok"
+      },
+      "value": {"symbol": "t2", "number": 0.3333, "exact": "1/3", "unit": "s", "direction": null, "sig_figs": 2},
+      "law_ids": ["L-01"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "1/2−1/6−1·(1/3)=0", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "各项均为 m", "error_code": null},
+        {"layer": "L4", "status": "pass", "detail": "中心起点按「右端与 O 对齐」取 L/2，再减已前进的 s₂；等时性与「物块落地时板中心到 O」的条件一致", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-06-S10",
+      "step_no": 10,
+      "title": "由竖直分运动求 h",
+      "point_id": "A-06-S10",
+      "kind": "discussion",
+      "statement": "平抛竖直方向为自由落体，h＝½g t₂²＝5/9 m。",
+      "equation": {
+        "latex": "h = \\frac{1}{2} g t_2^2",
+        "sympy": "h - Rational(1,2)*g*t2**2",
+        "symbols": ["h", "g", "t2"],
+        "parse_status": "ok"
+      },
+      "value": {"symbol": "h", "number": 0.5556, "exact": "5/9", "unit": "m", "direction": null, "sig_figs": 2},
+      "law_ids": ["L-02"],
+      "checks": [
+        {"layer": "L1", "status": "pass", "detail": "5/9−0.5·10·(1/9)=0", "error_code": null},
+        {"layer": "L2", "status": "pass", "detail": "m/s²·s²=m", "error_code": null}
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {"point_id": "A-06-S01", "step_id": "A-06-S01", "score_awarded": 1, "score_possible": 1, "hit": true, "note": ""},
+      {"point_id": "A-06-S02", "step_id": "A-06-S02", "score_awarded": 2, "score_possible": 2, "hit": true, "note": ""},
+      {"point_id": "A-06-S03", "step_id": "A-06-S03", "score_awarded": 2, "score_possible": 2, "hit": true, "note": ""},
+      {"point_id": "A-06-S04", "step_id": "A-06-S04", "score_awarded": 1, "score_possible": 1, "hit": true, "note": ""},
+      {"point_id": "A-06-S05", "step_id": "A-06-S05", "score_awarded": 3, "score_possible": 3, "hit": true, "note": ""},
+      {"point_id": "A-06-S06", "step_id": "A-06-S06", "score_awarded": 1, "score_possible": 1, "hit": true, "note": ""},
+      {"point_id": "A-06-S07", "step_id": "A-06-S07", "score_awarded": 1, "score_possible": 1, "hit": true, "note": ""},
+      {"point_id": "A-06-S08", "step_id": "A-06-S08", "score_awarded": 1, "score_possible": 1, "hit": true, "note": ""},
+      {"point_id": "A-06-S09", "step_id": "A-06-S09", "score_awarded": 1, "score_possible": 1, "hit": true, "note": ""},
+      {"point_id": "A-06-S10", "step_id": "A-06-S10", "score_awarded": 1, "score_possible": 1, "hit": true, "note": ""}
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 14,
+    "score_total": 14,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {"L1": "pass", "L2": "pass", "L3": "na", "L4": "pass"},
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：L1-L4 全过，14/14 采分点满分，未触碰归零点；题型先验为高（三过程），仅用于排序不进阈值"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

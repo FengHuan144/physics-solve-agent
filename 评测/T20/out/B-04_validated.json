@@ -1,0 +1,630 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-04",
+    "question_id": "B-04",
+    "group": "B",
+    "source": "2024 新课标卷",
+    "question_no": 24,
+    "full_score": 10,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:43:01+08:00",
+    "latency_ms": 40949,
+    "tokens": {
+      "in": 1062,
+      "out": 8799
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "将重物从高层楼房的窗外运到地面时，为安全起见，要求下降过程中重物与楼墙保持一定的距离。如图，一种简单的操作方法是一人在高处控制一端系在重物上的绳子 P，另一人在地面控制另一根一端系在重物上的绳子 Q，二人配合可使重物缓慢竖直下降。若重物的质量 m＝42 kg，重力加速度大小 g＝10 m/s²。当 P 绳与竖直方向的夹角 α＝37° 时，Q 绳与竖直方向的夹角 β＝53°。(sin 37°＝0.6)",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "重物由高处的 P 绳与地面的 Q 绳共同悬吊，两绳与竖直方向夹角分别为 37°、53°；原文无图题，两绳方位需图才能唯一确定（依赖图＝是），工作区暂无该题图文件",
+        "caption_source": "none",
+        "is_required": true,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "此时 P、Q 绳中拉力的大小。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "若开始竖直下降时重物距地面的高度 h＝10 m，求在重物下降到地面的过程中，两根绳子拉力对重物做的总功。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "78fc099f9105da91c3d347e52ecb2b9ffa5451f8eb200b16228ffa1423ada089",
+    "input_sha256": "1d8b9585614b185982ca60e5877015be25f0d60912dcbda03f662c8a12c2016d"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "重物",
+        "mass_symbol": "m",
+        "note": "质量 42 kg，缓慢竖直下降，任一时刻处于平衡"
+      },
+      {
+        "id": "obj2",
+        "name": "P 绳",
+        "mass_symbol": "m",
+        "note": "高处的人控制，与竖直方向夹角 α＝37°，拉力 F1"
+      },
+      {
+        "id": "obj3",
+        "name": "Q 绳",
+        "mass_symbol": "m",
+        "note": "地面的人控制，与竖直方向夹角 β＝53°，拉力 F2"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": 42.0,
+        "unit": "kg",
+        "text": "重物质量 m＝42 kg"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度大小 g＝10 m/s²"
+      },
+      {
+        "symbol": "angA",
+        "value": 37.0,
+        "unit": "1",
+        "text": "P绳与竖直方向夹角 α＝37°"
+      },
+      {
+        "symbol": "angB",
+        "value": 53.0,
+        "unit": "1",
+        "text": "Q绳与竖直方向夹角 β＝53°"
+      },
+      {
+        "symbol": "sin37",
+        "value": 0.6,
+        "unit": "1",
+        "text": "题给 sin37°＝0.6，由此得 cos37°＝0.8，sin53°＝0.8，cos53°＝0.6"
+      },
+      {
+        "symbol": "h",
+        "value": 10.0,
+        "unit": "m",
+        "text": "开始下降时重物距地面高度 h＝10 m"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "F1",
+        "text": "P 绳拉力"
+      },
+      {
+        "no": "(1)",
+        "quantity": "F2",
+        "text": "Q 绳拉力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "W",
+        "text": "两绳拉力对重物做的总功"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "确定平衡状态",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "水平方向平衡",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "竖直方向平衡",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "解两绳拉力",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "判断重力做功",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "列重力做功式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "算重力做功",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "判断动能变化",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "列动能定理式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "算拉力总功",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-04-S01",
+      "step_no": 1,
+      "title": "确定平衡状态",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "选重物为研究对象；因重物缓慢竖直下降，每一时刻速度变化可忽略，处于平衡状态，受重力、P绳拉力和Q绳拉力。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "指出缓慢下降对应平衡状态，受力分析正确。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S02",
+      "step_no": 2,
+      "title": "水平方向平衡",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "对重物在水平方向列平衡方程：P绳拉力水平分量与Q绳拉力水平分量大小相等、方向相反。",
+      "equation": {
+        "latex": "P (3/5) - Q (4/5)",
+        "sympy": "F1*Rational(3,5) - F2*Rational(4,5)",
+        "symbols": [
+          "P",
+          "Q"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 F1, F2｜chain：全题联立后仍含自由符号 F2（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S03",
+      "step_no": 3,
+      "title": "竖直方向平衡",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "对重物在竖直方向列平衡方程：两绳拉力的竖直向上分量之和等于重力。",
+      "equation": {
+        "latex": "P (4/5) + Q (3/5) - m g",
+        "sympy": "F1*Rational(4,5) + F2*Rational(3,5) - m*g",
+        "symbols": [
+          "P",
+          "Q",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 F1, F2｜chain：全题联立后仍含自由符号 F2（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S04",
+      "step_no": 4,
+      "title": "解两绳拉力",
+      "point_id": null,
+      "kind": "value",
+      "statement": "联立两平衡方程，由水平方程得 Q＝3P/4，代入竖直方程解得 P＝336 N，Q＝252 N。",
+      "equation": {
+        "latex": "P (4/5) + (P (3/4)) (3/5) - m g",
+        "sympy": "F1*Rational(4,5) + (F1*Rational(3,4))*Rational(3,5) - m*g",
+        "symbols": [
+          "P",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "F1",
+        "number": 336.0,
+        "exact": null,
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 F1=336，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2；值单位 N 与符号 F1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S05",
+      "step_no": 5,
+      "title": "判断重力做功",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "重物下降过程中位移竖直向下，重力也竖直向下，重力对重物做正功。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "判断出重力对重物做正功，为计算重力功作准备。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S06",
+      "step_no": 6,
+      "title": "列重力做功式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "重力做功等于重力乘以下降高度：W_G＝mgh。",
+      "equation": {
+        "latex": "W_G - m g h",
+        "sympy": "Wg - m*g*h",
+        "symbols": [
+          "G",
+          "W",
+          "g",
+          "h",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 Wg，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S07",
+      "step_no": 7,
+      "title": "算重力做功",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 m＝42 kg、g＝10 m/s²、h＝10 m，得 W_G＝4200 J。",
+      "equation": {
+        "latex": "W_G - 42 10 10",
+        "sympy": "Wg - 42*10*10",
+        "symbols": [
+          "G",
+          "W"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "Wg",
+        "number": 4200.0,
+        "exact": null,
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 Wg=4200，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2；值单位 J 与符号 Wg 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S08",
+      "step_no": 8,
+      "title": "判断动能变化",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "重物缓慢下降到地面，初、末速度均可视为零，动能变化量为零。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "指出缓慢下降过程中动能变化量为零。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S09",
+      "step_no": 9,
+      "title": "列动能定理式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "对重物应用动能定理：重力做功W_G与两根绳子拉力对重物做的总功W_T的代数和等于动能变化量零。",
+      "equation": {
+        "latex": "W_G + W_T",
+        "sympy": "Wg + W",
+        "symbols": [
+          "G",
+          "T",
+          "W"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 W，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-04-S10",
+      "step_no": 10,
+      "title": "算拉力总功",
+      "point_id": null,
+      "kind": "value",
+      "statement": "把W_G＝4200 J代入W_G＋W_T＝0，得W_T＝-4200 J；负号表示两根绳子拉力对重物做负功。",
+      "equation": {
+        "latex": "W_T + 4200",
+        "sympy": "W + 4200",
+        "symbols": [
+          "T",
+          "W"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "W",
+        "number": -4200.0,
+        "exact": null,
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 W=-4200，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2；值单位 J 与符号 W 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 10,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

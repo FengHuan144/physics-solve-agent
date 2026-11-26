@@ -1,0 +1,110 @@
+{
+  "qid": "B-01",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-01-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        3.0
+      ],
+      "by": [
+        "B-01-S01",
+        "B-01-S02"
+      ],
+      "basis": "无锚点：B-01-S01、B-01-S02 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-01-S02",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-01-S06"
+      ],
+      "basis": "L1/L2 全 pass：B-01-S06；方程 v1 - d/t1 - a*t1*Rational(1,2)",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-01-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-01-S03",
+        "B-01-S04",
+        "B-01-S05",
+        "B-01-S06"
+      ],
+      "basis": "无锚点：B-01-S03、B-01-S04、B-01-S05、B-01-S06 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-01-S04",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "B-01-S07",
+        "B-01-S08"
+      ],
+      "basis": "L1/L2 全 pass：B-01-S07、B-01-S08；方程 x - v1**2*Rational(1,2)/a",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-01-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-01-S09",
+        "B-01-S10"
+      ],
+      "basis": "无锚点：口径要求『位置判断：停止点距 1 号锥筒 3.00 m，落在 4 号锥筒（2.7 m）与 5 号锥筒（3.6 m）之间』，承载步 B-01-S10 的 statement 写『第4号相对1号距离为3d＝2.7 m，第5号相对1号距离为4d＝3.6 m；因 2.7 m≤3.00125 m<3.6 』，无式子可复核（2-gram 覆盖 38%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-01-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-01-S10"
+      ],
+      "basis": "无锚点：口径要求『最远经过 4 号锥筒』，承载步 B-01-S10 的 statement 写『第4号相对1号距离为3d＝2.7 m，第5号相对1号距离为4d＝3.6 m；因 2.7 m≤3.00125 m<3.6 』，无式子可复核（2-gram 覆盖 100%）",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "hit": 2,
+    "miss": 0,
+    "na": 4,
+    "score": 3.0,
+    "score_total": 10.0,
+    "judged_rate": "2/6",
+    "hit_rate": "2/2"
+  },
+  "na_reasons": {
+    "无锚点": 4
+  }
+}

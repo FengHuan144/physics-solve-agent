@@ -1,0 +1,192 @@
+{
+  "qid": "A-03",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "A-03-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-03-S01"
+      ],
+      "basis": "欠定：A-03-S01 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S02",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-03-S02"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：m*v0 - m*v1p - M*v2p",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-03-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-03-S03"
+      ],
+      "basis": "欠定：A-03-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-03-S04"
+      ],
+      "basis": "欠定：A-03-S04 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "无锚点：全题 14 步无一步有式子锚点或与口径对得上（已逐题检索）",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-03-S06",
+        "A-03-S07"
+      ],
+      "basis": "欠定：A-03-S06、A-03-S07 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-03-S08"
+      ],
+      "basis": "欠定：A-03-S08 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S08",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-03-S06"
+      ],
+      "basis": "欠定：A-03-S06 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S09",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-03-S09"
+      ],
+      "basis": "白名单外符号：A-03-S09 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S10",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-03-S09"
+      ],
+      "basis": "白名单外符号：A-03-S09 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S11",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-03-S10",
+        "A-03-S11",
+        "A-03-S12",
+        "A-03-S13"
+      ],
+      "basis": "无锚点：A-03-S10、A-03-S11、A-03-S12、A-03-S13 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-03-S12",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-03-S14"
+      ],
+      "basis": "无锚点：口径要求『判据：累计 20l > 19l ⇒ 碰撞 4 次』，承载步 A-03-S14 的 statement 写『管长为 20l，下端坐标为 20l。第 5 次碰撞若发生应在 y＝21l＞20l，且在圆盘到达下端前相对位移尚未再次为零』，无式子可复核（2-gram 覆盖 29%）",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "hit": 1,
+    "miss": 0,
+    "na": 11,
+    "score": 2.0,
+    "score_total": 20.0,
+    "judged_rate": "1/12",
+    "hit_rate": "1/1"
+  },
+  "na_reasons": {
+    "欠定": 6,
+    "无锚点": 3,
+    "白名单外符号": 2
+  }
+}

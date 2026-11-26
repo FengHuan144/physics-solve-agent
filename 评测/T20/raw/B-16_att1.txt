@@ -1,0 +1,127 @@
+{
+  "givens": [
+    {"symbol": "mu", "value": null, "unit": "1", "text": "题干给出：斜面的动摩擦因数 μ"},
+    {"symbol": "theta", "value": null, "unit": "rad", "text": "题干给出：斜面倾角 θ"},
+    {"symbol": "L", "value": null, "unit": "m", "text": "题干给出：斜面长 L，按图取 AD 段总长为 L"},
+    {"symbol": "m", "value": null, "unit": "kg", "text": "题干给出：物块质量 m"},
+    {"symbol": "v", "value": null, "unit": "m/s", "text": "题干给出：B 点达到的最大速度 v"},
+    {"symbol": "g", "value": null, "unit": "m/s^2", "text": "题干给出：重力加速度 g"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "x = v^2/[2g(sinθ+μcosθ)]", "steps": [1, 2, 3]},
+    {"no": "(2)", "result": "P = mgv(sinθ+μcosθ)", "steps": [4, 5, 6]},
+    {"no": "(3)", "result": "E1/E2 = sinθ/(sinθ+μcosθ)", "steps": [7, 8, 9, 10, 11]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "判断CD段运动",
+      "kind": "judgment",
+      "stmt": "关闭电动机后，物块沿斜面向上运动，重力的沿斜面分力和滑动摩擦力都沿斜面向下，物块做匀减速运动，到 D 点时速度恰好为零。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "判断 CD 段做匀减速直线运动且末速度为零"
+    },
+    {
+      "no": 2,
+      "title": "列CD段运动方程",
+      "kind": "equation",
+      "stmt": "CD 段加速度大小 a = g(sinθ+μcosθ)，由 v^2 = 2ax 列方程。",
+      "eq": "v**2 - 2*g*(sin(theta)+mu*cos(theta))*x",
+      "value": null,
+      "score": 1,
+      "point": "写出 CD 段速度、加速度与位移的关系式"
+    },
+    {
+      "no": 3,
+      "title": "求CD段长度x",
+      "kind": "value",
+      "stmt": "由 CD 段运动方程解得 x = v^2/[2g(sinθ+μcosθ)]。",
+      "eq": "x - v**2/(2*g*(sin(theta)+mu*cos(theta)))",
+      "value": {"symbol": "x", "number": null, "exact": "v**2/(2*g*(sin(theta)+mu*cos(theta)))", "unit": "m"},
+      "score": 2,
+      "point": "得到 CD 段长度 x 的表达式"
+    },
+    {
+      "no": 4,
+      "title": "判断BC段受力",
+      "kind": "judgment",
+      "stmt": "BC 段物块匀速运动，电动机牵引力与重力沿斜面分力和滑动摩擦力平衡。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "判断 BC 段牵引力与阻力平衡"
+    },
+    {
+      "no": 5,
+      "title": "列功率平衡方程",
+      "kind": "equation",
+      "stmt": "平衡时牵引力 F = mg(sinθ+μcosθ)，输出功率 P = Fv。",
+      "eq": "P - m*g*v*(sin(theta)+mu*cos(theta))",
+      "value": null,
+      "score": 1,
+      "point": "写出 BC 段电动机输出功率表达式"
+    },
+    {
+      "no": 6,
+      "title": "求BC段输出功率",
+      "kind": "value",
+      "stmt": "由 P = Fv 得 P = mgv(sinθ+μcosθ)。",
+      "eq": "P - m*g*v*(sin(theta)+mu*cos(theta))",
+      "value": {"symbol": "P", "number": null, "exact": "m*g*v*(sin(theta)+mu*cos(theta))", "unit": "W"},
+      "score": 2,
+      "point": "得到 BC 段电动机输出功率 P"
+    },
+    {
+      "no": 7,
+      "title": "判断全过程能量",
+      "kind": "judgment",
+      "stmt": "全过程从 A 到 D，初、末速度均为零；物块沿斜面上升 AD = L，机械能增加量只表现为重力势能增加。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "明确全过程机械能增加量等于重力势能增加量"
+    },
+    {
+      "no": 8,
+      "title": "求机械能增加量",
+      "kind": "equation",
+      "stmt": "物块上升高度为 Lsinθ，因此机械能增加量 E1 = mgLsinθ。",
+      "eq": "E1 - m*g*L*sin(theta)",
+      "value": null,
+      "score": 1,
+      "point": "写出 E1 的表达式"
+    },
+    {
+      "no": 9,
+      "title": "说明能量转化",
+      "kind": "judgment",
+      "stmt": "忽略电动机内阻等损耗，电动机消耗的电能转化为物块增加的机械能和全过程克服摩擦力产生的内能；全过程总路程为 L。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "说明电能、机械能与摩擦内能之间的转化关系"
+    },
+    {
+      "no": 10,
+      "title": "列电能守恒方程",
+      "kind": "equation",
+      "stmt": "全过程摩擦生热 Q = μmgLcosθ，由能量守恒得 E2 = E1 + Q = mgL(sinθ+μcosθ)。",
+      "eq": "E2 - m*g*L*(sin(theta)+mu*cos(theta))",
+      "value": null,
+      "score": 1,
+      "point": "写出 E2 的表达式"
+    },
+    {
+      "no": 11,
+      "title": "求机械能与电能比",
+      "kind": "value",
+      "stmt": "E1 = mgLsinθ，E2 = mgL(sinθ+μcosθ)，故比值为 sinθ/(sinθ+μcosθ)。",
+      "eq": "k - sin(theta)/(sin(theta)+mu*cos(theta))",
+      "value": {"symbol": "k", "number": null, "exact": "sin(theta)/(sin(theta)+mu*cos(theta))", "unit": "1"},
+      "score": 2,
+      "point": "得到 E1 与 E2 的比值"
+    }
+  ]
+}

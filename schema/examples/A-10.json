@@ -1,0 +1,732 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-10",
+    "question_id": "A-10",
+    "group": "A",
+    "source": "2023 北京卷",
+    "question_no": 20,
+    "full_score": 12,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T13:25:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "螺旋星系中有大量的恒星和星际物质，主要分布在半径为 R 的球体内，球体外仅有极少的恒星。球体内物质总质量为 M，可认为均匀分布，球体内外的所有恒星都绕星系中心做匀速圆周运动，恒星到星系中心的距离为 r，引力常量为 G。(1)求 r>R 区域的恒星做匀速圆周运动的速度大小 v 与 r 的关系；(2)根据电荷均匀分布的球壳内试探电荷所受库仑力的合力为零，利用库仑力与万有引力的表达式的相似性和相关力学知识，求 r≤R 区域的恒星做匀速圆周运动的速度大小 v 与 r 的关系；(3)科学家根据实测数据，得到此螺旋星系中不同位置的恒星做匀速圆周运动的速度大小 v 随 r 的变化关系图像，如图所示，根据在 r>R 范围内的恒星速度大小几乎不变，科学家预言螺旋星系周围(r>R)存在一种特殊物质，称之为暗物质。暗物质与通常的物质有引力相互作用，并遵循万有引力定律，求 r=nR 内暗物质的质量 M′。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "第 (3) 问的 v–r 曲线示意：r<R 段随 r 上升、r>R 段近似水平；原文无图题，关键事实（r>R 速度几乎不变）已在文字中给出",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "求 r>R 区域恒星匀速圆周运动的速度大小 v 与 r 的关系。",
+        "score": 3
+      },
+      {
+        "no": "(2)",
+        "text": "求 r≤R 区域恒星匀速圆周运动的速度大小 v 与 r 的关系。",
+        "score": 4
+      },
+      {
+        "no": "(3)",
+        "text": "求 r=nR 内暗物质的质量 M′。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "76cfc568bff1bfc6325879faa6bb3919092a0a4a34d53cbf5ae977aeebd65394",
+    "input_sha256": "92efa697a1e43b3b579d042bfa20d148ef1894e92159cb9dd042fad9465e1641"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "螺旋星系球体内的物质",
+        "mass_symbol": "M",
+        "note": "半径 R 的球体内总质量 M，均匀分布；球体外恒星极少，忽略其引力"
+      },
+      {
+        "id": "obj2",
+        "name": "恒星（试探质点）",
+        "mass_symbol": "m",
+        "note": "质量 m，绕星系中心做匀速圆周运动，轨道半径 r"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": null,
+        "unit": "m",
+        "text": "物质主要分布在半径为 R 的球体内（符号量）"
+      },
+      {
+        "symbol": "M",
+        "value": null,
+        "unit": "kg",
+        "text": "球体内物质总质量为 M，可认为均匀分布"
+      },
+      {
+        "symbol": "r",
+        "value": null,
+        "unit": "m",
+        "text": "恒星到星系中心的距离 r（符号量）"
+      },
+      {
+        "symbol": "Gc",
+        "value": null,
+        "unit": "m^3/kg/s^2",
+        "text": "引力常量为 G —— 按 T09 归一为 Gc（避免与重力 G 撞名），题给符号无值"
+      },
+      {
+        "symbol": "n",
+        "value": null,
+        "unit": "1",
+        "text": "第 (3) 问的 r=nR 中的比值 n（符号量，n>1）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "球外 r>R：平方反比",
+        "start": "恒星在 r>R 处做圆周运动",
+        "end": "得 v＝√(GcM/r)，随 r 增大而减小",
+        "segment_id": "SEG-01",
+        "boundary_reference": "以星系中心为原点、r 从 R 起算（只取 r>R）；只用向心力式，不设势能零点"
+      },
+      {
+        "no": 2,
+        "name": "球内 r≤R：质量随 r³ 增长",
+        "start": "恒星在 r≤R 处",
+        "end": "得 v＝r√(GcM/R³)，随 r 增大而增大",
+        "segment_id": "SEG-02",
+        "boundary_reference": "以星系中心为原点、r 从 0 起算（只取 r≤R）；球内质量按半径 r 的球体计"
+      },
+      {
+        "no": 3,
+        "name": "r=nR 处与暗物质",
+        "start": "实测 r>R 速度几乎不变",
+        "end": "得 M′＝(n−1)M",
+        "segment_id": "SEG-03",
+        "boundary_reference": "以 r＝R 处的速率 v₀ 为同一参照；n>1，nR 处含暗物质"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v",
+        "text": "球外速度与 r 的关系"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v",
+        "text": "球内速度与 r 的关系"
+      },
+      {
+        "no": "(3)",
+        "quantity": "Mp",
+        "text": "r=nR 内的暗物质质量"
+      }
+    ],
+    "assumptions": [
+      "球体内物质均匀分布 —— 半径 r 处球内质量 M₀＝M r³/R³，不是 M，也不是按 r² 的面积比",
+      "球体外「仅有极少的恒星」：r>R 处只计入球内总质量 M，球壳对内部恒星的引力为零",
+      "第 (3) 问「r>R 范围内速度几乎不变」是实测事实，r＝R 与 r＝nR 处取同一速率 v₀；这不是由 GcM/r 推出的递减关系",
+      "暗物质只提供引力、同样遵循万有引力定律；恒星做匀速圆周运动，向心力全部由引力提供",
+      "符号 v 指「该处速率」，球内与球外是两个分支（S02 与 S05 各记本段表达式）；第 (3) 问另记边缘速率为 v₀",
+      "引力常量写 Gc（T09 规定）；本题全符号，无一个数值"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "球外：引力提供向心力",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-10-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "球外 v = √(GM/r)",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-10-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "球内质量按体积比 M0 = Mr³/R³",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-10-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "球内：代入 M0 后 v²=GMr²/R³",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-10-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "球内 v = r√(GM/R³)",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-10-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "两处取同一 v0",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-10-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "两处列式并联立",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "A-10-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "M′ = (n−1)M",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "A-10-S08"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-10-S01",
+      "step_no": 1,
+      "title": "球外：引力提供向心力",
+      "point_id": "A-10-S01",
+      "kind": "equation",
+      "statement": "r>R 时恒星受到的引力只由球内总质量 M 提供：GcMm/r²＝mv²/r。",
+      "equation": {
+        "latex": "\\frac{Gc M m}{r^{2}} = \\frac{m v^{2}}{r}",
+        "sympy": "Gc*M*m/r**2 - m*v**2/r",
+        "symbols": [
+          "Gc",
+          "M",
+          "m",
+          "r",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-07",
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Gc、M、m、r、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边均为 N（kg·m/s²）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "球外只看球内质量（球壳定理）；r 是恒星到中心的距离，写成 R 是本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-10-S02",
+      "step_no": 2,
+      "title": "球外 v = √(GM/r)",
+      "point_id": "A-10-S02",
+      "kind": "value",
+      "statement": "约去 m、两边乘 r：v²＝GcM/r，取正根 v＝√(GcM/r)。球外速度随 r 增大而减小。",
+      "equation": {
+        "latex": "v = \\sqrt{\\frac{Gc M}{r}}",
+        "sympy": "v**2 - Gc*M/r",
+        "symbols": [
+          "Gc",
+          "M",
+          "r",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v",
+        "number": null,
+        "exact": "sqrt(Gc*M/r)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-07"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Gc、M、r、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "左边 m²/s²；右边 m³/(kg·s²)·kg/m＝m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "取正根（速率）；写成 √(GM/R) 即把 r 换成 R，根号内写成 GM/r² 也是本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-10-S03",
+      "step_no": 3,
+      "title": "球内质量按体积比 M0 = Mr³/R³",
+      "point_id": "A-10-S03",
+      "kind": "value",
+      "statement": "均匀分布 ⇒ 半径 r 的球内质量 M₀ 与体积成正比：M₀/M＝(r/R)³，即 M₀＝Mr³/R³（随 r³ 增长）。",
+      "equation": {
+        "latex": "M_{0} = M \\frac{r^{3}}{R^{3}}",
+        "sympy": "M0 - M*r**3/R**3",
+        "symbols": [
+          "M",
+          "M0",
+          "R",
+          "r"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "M0",
+        "number": null,
+        "exact": "M*r^3/R^3",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-07"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、M0、R、r 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 M₀ 写成 M（认为球内质量与 r 无关）或写成 Mr²/R²（按面积比）都是本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-10-S04",
+      "step_no": 4,
+      "title": "球内：代入 M0 后 v²=GMr²/R³",
+      "point_id": "A-10-S04",
+      "kind": "equation",
+      "statement": "球内引力由 M₀ 提供：GcM₀m/r²＝mv²/r；代入 M₀＝Mr³/R³ 得 v²＝GcMr²/R³。",
+      "equation": {
+        "latex": "\\frac{Gc M_{0} m}{r^{2}} = \\frac{m v^{2}}{r}",
+        "sympy": "Gc*M0*m/r**2 - m*v**2/r",
+        "symbols": [
+          "Gc",
+          "M0",
+          "m",
+          "r",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": null,
+      "law_ids": [
+        "L-07",
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Gc、M0、m、r、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边均为 N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "M₀ 中的 r³ 与分母 r² 约成一次 r；用 r>R 的式子直接代入会得 v∝1/√r，与「球内速度随 r 增大」相反",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-10-S05",
+      "step_no": 5,
+      "title": "球内 v = r√(GM/R³)",
+      "point_id": "A-10-S05",
+      "kind": "value",
+      "statement": "v＝r√(GcM/R³)：与 r 成正比；r＝R 处与球外表达式连续（同为 √(GcM/R)）。",
+      "equation": {
+        "latex": "v = r \\sqrt{\\frac{Gc M}{R^{3}}}",
+        "sympy": "v**2 - r**2*Gc*M/R**3",
+        "symbols": [
+          "Gc",
+          "M",
+          "R",
+          "r",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "v",
+        "number": null,
+        "exact": "r*sqrt(Gc*M/R^3)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-07"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Gc、M、R、r、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏掉 r 的一次方会写成 √(GM/R³)（量纲已是 m/s²，不是 m/s）；写成 v∝1/√r 也是本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-10-S06",
+      "step_no": 6,
+      "title": "两处取同一 v0",
+      "point_id": "A-10-S06",
+      "kind": "judgment",
+      "statement": "r＝R 处由球外表达式得 v₀²＝GcM/R；实测「r>R 范围内速度几乎不变」，故 r＝nR 处速率也记作同一 v₀，可对两处分别写「引力＝向心」并联立。",
+      "equation": null,
+      "criterion": {
+        "expr": "v0**2*R - Gc*M",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "r＝R 处由球外表达式得 v₀²＝GcM/R；实测 r>R 速度几乎不变，故 r＝nR 处取同一 v₀。"
+      },
+      "segment_id": "SEG-03",
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "sqrt(Gc*M/R)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-07"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Gc、M、R、v0，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²·m＝m³/s²；右边 m³/(kg·s²)·kg 同量纲",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "这是实测事实，不是牛顿引力的推论：按 GcM/r，r>R 的速度应随 r 减小。S07 两式共用同一个 v₀，就是这一步判定的落地；未说明两处同 v₀（另设未知量又无方程）本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-10-S07",
+      "step_no": 7,
+      "title": "两处列式并联立",
+      "point_id": "A-10-S07",
+      "kind": "equation",
+      "statement": "R 处：GcM/R²＝v₀²/R；nR 处（含暗物质）：Gc(M＋M′)/(nR)²＝v₀²/(nR)。两式各为零，相除即可消去 v₀。",
+      "equation": {
+        "latex": "\\frac{Gc M}{R^{2}} - \\frac{v_{0}^{2}}{R} + \\frac{Gc (M + M_{p})}{(n R)^{2}} - \\frac{v_{0}^{2}}{n R} = 0",
+        "sympy": "(Gc*M/R**2 - v0**2/R) + (Gc*(M + Mp)/(n*R)**2 - v0**2/(n*R))",
+        "symbols": [
+          "Gc",
+          "M",
+          "Mp",
+          "R",
+          "n",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": null,
+      "law_ids": [
+        "L-07"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Gc、M、Mp、R、n、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "四项均为 N/kg＝m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两式同列时 equation 记残差和（和为零）；两式各自为零见判分口径。只写一处、nR 处漏 M 只写 M′，都是本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-10-S08",
+      "step_no": 8,
+      "title": "M′ = (n−1)M",
+      "point_id": "A-10-S08",
+      "kind": "value",
+      "statement": "两式相除：(M＋M′)/M＝n²·(R/nR)＝n，故 M′＝(n−1)M —— 只与 n 有关，与 r 的具体值无关。",
+      "equation": {
+        "latex": "M_{p} = (n - 1) M",
+        "sympy": "Mp - (n-1)*M",
+        "symbols": [
+          "M",
+          "Mp",
+          "n"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": {
+        "symbol": "Mp",
+        "number": null,
+        "exact": "(n-1)*M",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-07"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、Mp、n 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 (n²−1)M 是把 (nR)² 与 nR 混用；写成 nM 是漏减球内原有质量 M；结果含 Gc 或 v₀ 未消尽也是 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-10-S01",
+        "step_id": "A-10-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-10-S02",
+        "step_id": "A-10-S02",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-10-S03",
+        "step_id": "A-10-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-10-S04",
+        "step_id": "A-10-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-10-S05",
+        "step_id": "A-10-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-10-S06",
+        "step_id": "A-10-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-10-S07",
+        "step_id": "A-10-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-10-S08",
+        "step_id": "A-10-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 12,
+    "score_total": 12,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号 + 球内质量分布 + 暗物质；L1 全步 na，L2 逐式手判；12/12 满分，未触归零点"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

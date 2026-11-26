@@ -1,0 +1,544 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-08",
+    "question_id": "B-08",
+    "group": "B",
+    "source": "2023 全国甲卷",
+    "question_no": 24,
+    "full_score": 12,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T20:15:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，光滑水平桌面上有一轻质弹簧，其一端固定在墙上。用质量为 m 的小球压弹簧的另一端，使弹簧的弹性势能为 E_p。释放后，小球在弹簧作用下从静止开始在桌面上运动，与弹簧分离后，从桌面水平飞出。小球与水平地面碰撞后瞬间，其平行于地面的速度分量与碰撞前瞬间相等；垂直于地面的速度分量大小变为碰撞前瞬间的 4/5。小球与地面碰撞后，弹起的最大高度为 h。重力加速度大小为 g，忽略空气阻力。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "墙上弹簧、桌面、小球平抛与地面反弹；原文无图题，过程与几何量已由文字给出",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "小球离开桌面时的速度大小。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "小球第一次落地点距桌面上其飞出点的水平距离。",
+        "score": 8
+      }
+    ],
+    "stem_sha256": "7975dfceb6843e0f694906354be5d1a637cdad0e414ca707e46ad9e9e76ef06a",
+    "input_sha256": "c0306934641ae958392663cbaa1bd2f154f6f498e05b3090a0f14af079a8f21b"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球",
+        "mass_symbol": "m",
+        "note": "质量 m；被弹簧弹出后平抛，落地反弹"
+      },
+      {
+        "id": "obj2",
+        "name": "轻质弹簧",
+        "mass_symbol": "m",
+        "note": "一端固定于墙，初始弹性势能 E_p，全部转化为小球动能"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "小球质量 m（符号量）"
+      },
+      {
+        "symbol": "Ep",
+        "value": null,
+        "unit": "J",
+        "text": "弹簧初始弹性势能 E_p（符号量）"
+      },
+      {
+        "symbol": "h",
+        "value": null,
+        "unit": "m",
+        "text": "碰撞后弹起的最大高度 h（符号量）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g（符号量）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "弹簧弹射（桌面段）",
+        "start": "压紧弹簧、小球静止",
+        "end": "弹簧恢复原长，小球以 v 水平飞出"
+      },
+      {
+        "no": 2,
+        "name": "平抛与反弹",
+        "start": "小球自桌面水平飞出",
+        "end": "落地反弹至最大高度 h（水平分速度不变、竖直分量变 4/5）"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v",
+        "text": "离开桌面时的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "x",
+        "text": "第一次落地点到飞出点的水平距离"
+      }
+    ],
+    "assumptions": [
+      "桌面光滑：弹簧弹性势能全部转化为小球动能，无摩擦损失",
+      "离开桌面后只受重力：水平分速度不变，竖直方向自由落体",
+      "落地反弹只改变竖直分速度（变为碰前的 4/5），水平分速度不变；反弹高度只由竖直分量决定",
+      "竖直分速度记 vdown（碰前）、vup（反弹后），白名单无 vy/vy′ 记号"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "E_p = ½mv²",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-08-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "v = √(2E_p/m)",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-08-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "反弹高度只由竖直分量决定",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-08-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "h = v_y′²/(2g) 反解 v_y",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-08-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "平抛：x = vt、v_y = gt",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-08-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "x = (5/2)√(hE_p/(mg))",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-08-S06"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-08-S01",
+      "step_no": 1,
+      "title": "E_p = ½mv²",
+      "point_id": "B-08-S01",
+      "kind": "equation",
+      "statement": "桌面光滑，弹簧的弹性势能全部转化为小球动能：E_p＝½mv²（不再另加 mgh，桌面水平）。",
+      "equation": {
+        "latex": "E_{p} = \\frac{1}{2} m v^{2}",
+        "sympy": "Ep - Rational(1,2)*m*v**2",
+        "symbols": [
+          "Ep",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Ep、m、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 ½ 本步 0 分；把弹簧做的功另加 mgh 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-08-S02",
+      "step_no": 2,
+      "title": "v = √(2E_p/m)",
+      "point_id": "B-08-S02",
+      "kind": "discussion",
+      "statement": "v＝√(2E_p/m)。",
+      "equation": {
+        "latex": "v = \\sqrt{\\frac{2 E_{p}}{m}}",
+        "sympy": "v**2 - 2*Ep/m",
+        "symbols": [
+          "Ep",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": null,
+        "exact": "sqrt(2*Ep/m)",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Ep、m、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "根号内写成 E_p/m（漏 2）本步 0 分；结果含未消去的量本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-08-S03",
+      "step_no": 3,
+      "title": "反弹高度只由竖直分量决定",
+      "point_id": "B-08-S03",
+      "kind": "judgment",
+      "statement": "碰后水平分速度不变、竖直分量变为碰前的 4/5；反弹的最大高度只由反弹后的竖直分量决定，与水平分量无关。",
+      "equation": null,
+      "criterion": {
+        "expr": "vup",
+        "expected": "Rational(4,5)*vdown",
+        "comparator": "eq",
+        "text": "碰后竖直分量变为碰前的 4/5（vup＝4vdown/5），水平分量不变；反弹高度 h 只由 vup 决定。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 vdown、vup，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 4/5 用到水平分量本步 0 分；认为反弹高度由合速度决定本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-08-S04",
+      "step_no": 4,
+      "title": "h = v_y′²/(2g) 反解 v_y",
+      "point_id": "B-08-S04",
+      "kind": "equation",
+      "statement": "反弹段：h＝vup²/(2g)，而 vup＝(4/5)vdown，故 vdown＝(5/4)√(2gh)。",
+      "equation": {
+        "latex": "h = \\frac{v_{up}^{2}}{2 g}",
+        "sympy": "vdown - Rational(5,4)*sqrt(2*g*h)",
+        "symbols": [
+          "g",
+          "h",
+          "vdown"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：g、h、vdown 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 (4/5) 系数（把 vup 当作 vdown）本步 0 分；写成 h＝vup/g 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-08-S05",
+      "step_no": 5,
+      "title": "平抛：x = vt、v_y = gt",
+      "point_id": "B-08-S05",
+      "kind": "equation",
+      "statement": "平抛段：水平 x＝vt，竖直 vdown＝gt；消去 t 得 x＝v·vdown/g。",
+      "equation": {
+        "latex": "x = v \\frac{v_{down}}{g}",
+        "sympy": "x - v*vdown/g",
+        "symbols": [
+          "g",
+          "v",
+          "vdown",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-02",
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：g、v、vdown、x 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s·(m/s)/(m/s²)＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏竖直方向求 t 本步 0 分；t 直接取 √(2h/g)（用反弹高度）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-08-S06",
+      "step_no": 6,
+      "title": "x = (5/2)√(hE_p/(mg))",
+      "point_id": "B-08-S06",
+      "kind": "discussion",
+      "statement": "代入 v＝√(2E_p/m)、vdown＝(5/4)√(2gh)：x＝(5/2)√(hE_p/(mg))。",
+      "equation": {
+        "latex": "x = \\frac{5}{2} \\sqrt{\\frac{h E_{p}}{m g}}",
+        "sympy": "x - Rational(5,2)*sqrt(h*Ep/(m*g))",
+        "symbols": [
+          "Ep",
+          "g",
+          "h",
+          "m",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": null,
+        "exact": "5*sqrt(h*Ep/(m*g))/2",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Ep、g、h、m、x 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "系数错（5/4 或 5）本步 0 分；根号内漏 m 本步 0 分；（5/4)√(2hE_p/(mg)) 与正解差 √2 倍，同样 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-08-S01",
+        "step_id": "B-08-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-08-S02",
+        "step_id": "B-08-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-08-S03",
+        "step_id": "B-08-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-08-S04",
+        "step_id": "B-08-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-08-S05",
+        "step_id": "B-08-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-08-S06",
+        "step_id": "B-08-S06",
+        "score_awarded": 3,
+        "score_possible": 3,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 12,
+    "score_total": 12,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号 + 弹簧势能转动能 + 平抛 + 反弹竖直分量衰减；L1 全步 na"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

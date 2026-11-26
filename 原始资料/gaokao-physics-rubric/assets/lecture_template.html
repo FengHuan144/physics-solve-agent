@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<style>
+  :root{--ink:#1b1a18;--sub:#6b6b68;--red:#a6392e;--blue:#1f3a5f;--line:#ddd6c8;--cream:#fbf8f1;--dark:#1c1b19;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#fff;color:var(--ink);
+       font-family:"Songti SC","Noto Serif CJK SC",Georgia,serif;line-height:1.75;font-size:15px}
+  .wrap{max-width:900px;margin:0 auto;padding:56px 40px 80px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:8px}
+  h1{font-size:30px;margin:0 0 10px;letter-spacing:.02em}
+  .meta{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:12.5px;color:var(--sub);letter-spacing:.04em}
+  h2{font-size:20px;margin:52px 0 14px;padding-left:12px;border-left:4px solid var(--red);line-height:1.4}
+  h2 .num{font-family:Arial,sans-serif;color:var(--red);margin-right:10px;font-size:15px;vertical-align:2px}
+  table{width:100%;border-collapse:collapse;font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;margin:14px 0}
+  th{background:var(--blue);color:#fff;font-weight:600;text-align:left;padding:9px 10px;border:1px solid var(--blue)}
+  td{padding:9px 10px;border:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:var(--cream)}
+  .c{text-align:center}
+  .score{color:var(--red);font-weight:700;font-family:Arial,sans-serif;text-align:center}
+  .note{background:var(--cream);border-left:3px solid var(--line);padding:14px 18px;margin:16px 0;
+        font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;color:#3a3936}
+  .note b{color:var(--red)}
+  .card{border-top:1px solid var(--line);padding-top:26px;margin-top:34px;page-break-inside:avoid}
+  .tags{font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:11.5px;color:var(--sub);margin:0 0 14px}
+  .tags span{display:inline-block;border:1px solid var(--line);border-radius:2px;padding:2px 8px;margin-right:6px}
+  .formula{background:var(--dark);color:#f2ede3;border-radius:6px;padding:16px 20px;margin:16px 0;
+           font-family:"Times New Roman",Georgia,serif;font-size:15.5px;line-height:2.1}
+  .formula b{color:#f5c98a;font-weight:600}
+  .formula .ln{color:#9d9689;font-family:Arial,sans-serif;font-size:12px;margin-right:10px}
+  .bar{display:flex;height:28px;margin:12px 0 2px;border-radius:2px;overflow:hidden;
+       font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:11.5px;color:#fff}
+  .bar div{display:flex;align-items:center;justify-content:center;line-height:1;letter-spacing:.02em}
+  .view{border-left:3px solid var(--red);padding:2px 0 2px 16px;margin:18px 0;font-size:14px;color:#33322f}
+  footer{margin-top:60px;border-top:1px solid var(--line);padding-top:16px;
+         font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:11.5px;color:var(--sub);line-height:1.9}
+  @media print{body{font-size:10.5pt}.wrap{padding:0}h2{page-break-after:avoid}.card{page-break-inside:avoid}
+    @page{margin:12mm}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>{{TITLE}}</h1>
+  <p class="meta">{{N}} 套卷 · {{Q}} 题 · {{TOTAL}} 分 · {{POINTS}} 个采分点　｜　编制 {{DATE}}</p>
+</header>
+
+<p class="note"><b>先说明一件事：</b>高考评分细则（评卷用）从不公开，公开的只有参考答案。下表的采分点是按“官方答案的分步结构＋教辅解析标注的分步分值＋按步给分规则”反推的，每题合计与卷面分值一致，单步分值允许 ±2 分误差。<b>稳定的是“哪些式子给分”，不是分值的绝对数。</b></p>
+
+<h2><span class="num">00</span>题目一览</h2>
+<table>
+  <thead><tr><th class="c" style="width:6%">#</th><th style="width:20%">卷别·题号</th><th class="c" style="width:8%">分值</th>
+  <th style="width:28%">物理模型</th><th style="width:24%">核心方法</th><th class="c" style="width:8%">采分点</th><th class="c" style="width:6%">难度</th></tr></thead>
+  <tbody>
+    <!-- 每题一行 -->
+    <tr><td class="c">1</td><td>2024 全国甲卷 24</td><td class="c">12</td><td>救护车匀加速＋声波追及</td><td>运动学、追及时间方程</td><td class="c">6</td><td class="c">★★☆</td></tr>
+  </tbody>
+</table>
+
+<h2><span class="num">01</span>2024 全国甲卷 · 第 24 题<span style="font-family:Arial;font-size:14px;color:var(--red);margin-left:10px">12 分</span></h2>
+<div class="card">
+  <p class="tags"><span>匀加速直线</span><span>声波传播</span><span>追及相遇</span><span>时间方程</span></p>
+
+  <p><b>情境速览：</b>{{题干压缩改写，200 字内，含全部已知量}}</p>
+
+  <div class="formula">
+    <div><span class="ln">①</span>v = at₁ <b>⇒ v = 20 m/s</b></div>
+    <div><span class="ln">②</span>x₁ = ½at₁² = 100 m</div>
+    <div><span class="ln">③</span>t₃ + x/340 = 41　（x = 100 + 20(t₃−10)）</div>
+    <div><span class="ln">④</span><b>x = 680 m</b></div>
+  </div>
+
+  <div class="bar">
+    <div style="flex:4;background:#4a6fa5">(1) 4</div>
+    <div style="flex:8;background:#a6392e">(2) 8</div>
+  </div>
+
+  <table>
+    <thead><tr><th class="c" style="width:8%">步</th><th style="width:52%">采分点：必须出现的式子或判断</th>
+    <th class="c" style="width:8%">分值</th><th style="width:32%">判分口径</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td>v = at₁</td><td class="score">2</td><td>只写 20 m/s 无公式给 1 分</td></tr>
+      <tr><td class="c">2</td><td>v = 20 m/s（含单位）</td><td class="score">2</td><td>无单位扣 1 分</td></tr>
+    </tbody>
+  </table>
+
+  <p class="view"><b>阅卷视角：</b>{{本题分水岭在哪、典型学生能拿几分、最常见断点。250 字内。}}</p>
+</div>
+
+<h2><span class="num">0X</span>这些采分点其实只有五类</h2>
+<table>
+  <thead><tr><th style="width:18%">采分类别</th><th style="width:40%">阅卷人实际在找什么</th>
+  <th class="c" style="width:20%">代表采分点（题-步）</th><th style="width:22%">写在哪里得分</th></tr></thead>
+  <tbody>
+    <tr><td>① 状态判断</td><td>“共速时势能最大”“恢复原长时速度最大”——判断句本身有分</td><td class="c">P2-6、P5-9</td><td>解答第一行，独立成句</td></tr>
+    <tr><td>② 原始方程</td><td>动量守恒、能量守恒、动能定理的原式，一条一行</td><td class="c">P1-3、P6-2</td><td>每条方程单独一行并编号</td></tr>
+    <tr><td>③ 过程量</td><td>中间必须算出的量：碰前速度、位移、时间、质量比</td><td class="c">P3-1、P4-3</td><td>紧跟方程，标注“解得”</td></tr>
+    <tr><td>④ 结果规范</td><td>数值＋单位、矢量方向、多解取舍</td><td class="c">P2-12、P4-6</td><td>与结果同一行写全</td></tr>
+    <tr><td>⑤ 临界与范围</td><td>不等式、取值范围、临界条件</td><td class="c">P1-6、P5-9</td><td>单独一段，写明“当…时”</td></tr>
+  </tbody>
+</table>
+
+<footer>
+  <p><b>答案来源：</b>{{逐题列出核对来源与卷别适用范围，标 A/B 级}}。</p>
+  <p><b>版权说明：</b>本文档不复制试卷原文，题干为压缩改写，解答为重新推导，采分点按分步结构反推整理，仅供教学与教研使用。</p>
+  <p>编制 {{DATE}}　·　{{N}} 套卷 / {{Q}} 题 / {{TOTAL}} 分 / {{POINTS}} 个采分点</p>
+</footer>
+
+</div>
+</body>
+</html>

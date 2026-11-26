@@ -1,0 +1,729 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-16",
+    "question_id": "B-16",
+    "group": "B",
+    "source": "2024 江苏卷",
+    "question_no": 15,
+    "full_score": 12,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T21:20:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图所示，粗糙斜面的动摩擦因数为 μ，倾角为 θ，斜面长为 L。一个质量为 m 的物块，在电动机作用下，从 A 点由静止加速至 B 点时达到最大速度 v，之后做匀速运动至 C 点，关闭电动机，从 C 点又恰好到达最高点 D，重力加速度为 g。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "粗糙斜面（倾角 θ、长 L）上 A→B→C→D 四点次序，物块经电动机牵引沿斜面上行；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "CD 段长 x。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "BC 段电动机的输出功率 P。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "全过程物块增加的机械能 E₁ 和电动机消耗的总电能 E₂ 的比值。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "6891a395676090891012553a4285521716fff1e60c1c8a767e5e647f9c1f82de",
+    "input_sha256": "8f0763c578c7e071710d64d1708af7d93840e42fb831348dd9e6fc01391e4fa5"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "物块",
+        "mass_symbol": "m",
+        "note": "沿粗糙斜面上行，与斜面动摩擦因数 μ"
+      },
+      {
+        "id": "obj2",
+        "name": "电动机",
+        "mass_symbol": "m",
+        "note": "通过牵引力对物块做功；BC 段匀速、输出功率恒定"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "mu",
+        "value": null,
+        "unit": "1",
+        "text": "斜面动摩擦因数 μ（符号量）"
+      },
+      {
+        "symbol": "theta",
+        "value": null,
+        "unit": "deg",
+        "text": "斜面倾角 θ（符号量）"
+      },
+      {
+        "symbol": "L",
+        "value": null,
+        "unit": "m",
+        "text": "斜面长 L（符号量）"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "物块质量 m（符号量）"
+      },
+      {
+        "symbol": "v",
+        "value": null,
+        "unit": "m/s",
+        "text": "B 点达到的最大速度 v（符号量）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g（符号量）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "AB 段：牵引加速至最大速度",
+        "start": "A 点由静止",
+        "end": "B 点，速度达 v（加速度降为零）"
+      },
+      {
+        "no": 2,
+        "name": "BC 段：匀速运动",
+        "start": "B 点（速度 v）",
+        "end": "C 点，速度仍为 v"
+      },
+      {
+        "no": 3,
+        "name": "CD 段：关闭电动机后减速",
+        "start": "C 点（速度 v），电动机已关闭",
+        "end": "D 点，速度恰为零（最高点）"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "x",
+        "text": "CD 段长度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "P",
+        "text": "BC 段电动机输出功率"
+      },
+      {
+        "no": "(3)",
+        "quantity": "Efin",
+        "text": "全过程物块增加的机械能 E₁"
+      },
+      {
+        "no": "(3)",
+        "quantity": "W",
+        "text": "电动机消耗的总电能 E₂"
+      }
+    ],
+    "assumptions": [
+      "B 点「达到最大速度」＝牵引力刚降为与阻力相等，此后匀速；故 BC 段牵引力 F＝mg sinθ＋μmg cosθ",
+      "CD 段电动机已关闭，只受重力分量与摩擦力，二者同向（沿斜面向下），减速至 D 点恰好为零",
+      "全过程物块沿斜面上升 L，机械能增量只有重力势能部分 E₁＝mgL sinθ（动能初末均为零）",
+      "电动机消耗的总电能＝物块机械能增量＋摩擦生热，即 E₂＝E₁＋μmg cosθ·L"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "CD 段上滑列牛顿第二定律",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-16-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "由 0−v²=−2ax 求 CD 段长",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-16-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "BC 段匀速、牵引力与阻力平衡",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-16-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "功率定义式 P = Fv",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-16-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "结果只用 m、g、v、θ、μ 表示",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-16-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "机械能增量 E₁ = mgL sinθ",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-16-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "总电能＝机械能增量＋摩擦生热",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-16-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "比值 = sinθ/(sinθ+μcosθ)",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-16-S08"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-16-S01",
+      "step_no": 1,
+      "title": "CD 段上滑列牛顿第二定律",
+      "point_id": "B-16-S01",
+      "kind": "equation",
+      "statement": "CD 段关闭电动机后向上滑行，重力沿斜面分量与摩擦力同向（都沿斜面向下）：mg sinθ＋μmg cosθ＝ma。",
+      "equation": {
+        "latex": "m g \\sin\\theta + \\mu m g \\cos\\theta = m a",
+        "sympy": "m*g*sin(theta) + mu*m*g*cos(theta) - m*a",
+        "symbols": [
+          "a",
+          "g",
+          "m",
+          "mu",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：a、g、m、mu、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "摩擦项符号取反本步 0 分；漏 cosθ 本步 0 分（摩擦力按正压力 μmg cosθ 计）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-16-S02",
+      "step_no": 2,
+      "title": "由 0−v²=−2ax 求 CD 段长",
+      "point_id": "B-16-S02",
+      "kind": "equation",
+      "statement": "CD 段末速为零：0−v²＝−2ax，代入 a 得 x＝v²/[2g(sinθ＋μcosθ)]。",
+      "equation": {
+        "latex": "0 - v^{2} = -2 a x",
+        "sympy": "-v**2 + 2*a*x",
+        "symbols": [
+          "a",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": null,
+        "exact": "v**2/(2*g*(sin(theta)+mu*cos(theta)))",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01",
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：a、v、x 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用 ½mv²＝mgx sinθ（漏摩擦）本步 0 分；漏负号但长度取正不扣分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-16-S03",
+      "step_no": 3,
+      "title": "BC 段匀速、牵引力与阻力平衡",
+      "point_id": "B-16-S03",
+      "kind": "equation",
+      "statement": "BC 段匀速，牵引力与沿斜面的阻力平衡：F＝mg sinθ＋μmg cosθ（不再含 ma）。",
+      "equation": {
+        "latex": "F = m g \\sin\\theta + \\mu m g \\cos\\theta",
+        "sympy": "F - m*g*sin(theta) - mu*m*g*cos(theta)",
+        "symbols": [
+          "F",
+          "g",
+          "m",
+          "mu",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：F、g、m、mu、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把牵引力写成 ma 本步 0 分；漏摩擦项本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-16-S04",
+      "step_no": 4,
+      "title": "功率定义式 P = Fv",
+      "point_id": "B-16-S04",
+      "kind": "equation",
+      "statement": "BC 段牵引力恒定、速度恒为 v，输出功率用定义式 P＝Fv 计（F 取上一步的平衡值）。",
+      "equation": {
+        "latex": "P = F v",
+        "sympy": "P - F*v",
+        "symbols": [
+          "F",
+          "P",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：F、P、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N·m/s＝W",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "F 只含重力分量本步 0 分；漏 v 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-16-S05",
+      "step_no": 5,
+      "title": "结果只用 m、g、v、θ、μ 表示",
+      "point_id": "B-16-S05",
+      "kind": "discussion",
+      "statement": "把 F 代入 P＝Fv，得 P＝mgv(sinθ＋μcosθ)：式中只剩 m、g、v、θ、μ，不含中间量 a、x。",
+      "equation": {
+        "latex": "P = m g v (\\sin\\theta + \\mu \\cos\\theta)",
+        "sympy": "P - m*g*v*(sin(theta) + mu*cos(theta))",
+        "symbols": [
+          "P",
+          "g",
+          "m",
+          "mu",
+          "theta",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "P",
+        "number": null,
+        "exact": "m*g*v*(sin(theta)+mu*cos(theta))",
+        "unit": "W",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：P、g、m、mu、theta、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "W：kg·(m/s²)·(m/s)＝kg·m²/s³＝W",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "结果含中间量本步 0 分；把 P 当作平均功率本步 0 分（BC 段匀速，瞬时值＝平均值）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-16-S06",
+      "step_no": 6,
+      "title": "机械能增量 E₁ = mgL sinθ",
+      "point_id": "B-16-S06",
+      "kind": "equation",
+      "statement": "全过程物块沿斜面上升 L，初末动能均为零，机械能增量只有重力势能部分：E₁＝mgL sinθ。",
+      "equation": {
+        "latex": "E_{1} = m g L \\sin\\theta",
+        "sympy": "Efin - m*g*L*sin(theta)",
+        "symbols": [
+          "Efin",
+          "L",
+          "g",
+          "m",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "Efin",
+        "number": null,
+        "exact": "m*g*L*sin(theta)",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08",
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Efin、L、g、m、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J：kg·(m/s²)·m＝J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 sinθ（写成 mgL）本步 0 分；用 ½mv² 表示 E₁ 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-16-S07",
+      "step_no": 7,
+      "title": "总电能＝机械能增量＋摩擦生热",
+      "point_id": "B-16-S07",
+      "kind": "equation",
+      "statement": "电动机消耗的总电能一部分变成物块的机械能、一部分在斜面摩擦中变成内能：E₂＝E₁＋μmg cosθ·L。",
+      "equation": {
+        "latex": "E_{2} = E_{1} + \\mu m g L \\cos\\theta",
+        "sympy": "W - Efin - mu*m*g*L*cos(theta)",
+        "symbols": [
+          "Efin",
+          "L",
+          "W",
+          "g",
+          "m",
+          "mu",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "W",
+        "number": null,
+        "exact": "m*g*L*(sin(theta)+mu*cos(theta))",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Efin、L、W、g、m、mu、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏摩擦生热项（写成 E₂＝E₁）本步 0 分；E₂ 按电动机输出功计而不含内耗不扣分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-16-S08",
+      "step_no": 8,
+      "title": "比值 = sinθ/(sinθ+μcosθ)",
+      "point_id": "B-16-S08",
+      "kind": "discussion",
+      "statement": "E₁/E₂＝mgL sinθ/[mgL sinθ＋μmgL cosθ]＝sinθ/(sinθ＋μcosθ)，mgL 整体约去。化简只许对分子分母同除同一个量：同除 cosθ 得 tanθ/(μ＋tanθ)，与上式等价。判例：把分母的 μcosθ 当成 μ 直接消掉、把该式化简成 1/(1＋μ)，最终式虽对但这一步化简错，按 process_flaw 记 —— 分母里的 cosθ 与 sinθ 不是同一个量，不能与分子的 sinθ 对消。",
+      "equation": {
+        "latex": "\\frac{E_{1}}{E_{2}} = \\frac{\\sin\\theta}{\\sin\\theta + \\mu \\cos\\theta}",
+        "sympy": "Efin*(sin(theta) + mu*cos(theta)) - W*sin(theta)",
+        "symbols": [
+          "Efin",
+          "W",
+          "mu",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Efin、W、mu、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲（J/J）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "结果未约简（含 L、m、g）本步 0 分；写成倒数 E₂/E₁ 本步 0 分；化简成 1/(1＋μ) 或 tanθ/(1＋μtanθ) 本步 0 分（分子分母没有同除同一个量）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-16-S01",
+        "step_id": "B-16-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-16-S02",
+        "step_id": "B-16-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-16-S03",
+        "step_id": "B-16-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-16-S04",
+        "step_id": "B-16-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-16-S05",
+        "step_id": "B-16-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-16-S06",
+        "step_id": "B-16-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-16-S07",
+        "step_id": "B-16-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-16-S08",
+        "step_id": "B-16-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 12,
+    "score_total": 12,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：含摩擦斜面三段＋功率定义式 P＝Fv＋电能—机械能—内能账；全符号题 L1 全步 na，L2 逐式手判；12/12 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

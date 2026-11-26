@@ -1,0 +1,640 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-01",
+    "question_id": "A-01",
+    "group": "A",
+    "source": "2021 全国甲卷",
+    "question_no": 24,
+    "full_score": 12,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:05:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一倾角为 θ 的光滑斜面上有 50 个减速带（图中未完全画出），相邻减速带间的距离均为 d，减速带的宽度远小于 d；一质量为 m 的无动力小车（可视为质点）从距第一个减速带 L 处由静止释放。已知小车通过减速带损失的机械能与到达减速带时的速度有关。观察发现，小车通过第 30 个减速带后，在相邻减速带间的平均速度均相同。小车通过第 50 个减速带后立刻进入与斜面光滑连接的水平地面，继续滑行距离 s 后停下。已知小车与地面间的动摩擦因数为 μ，重力加速度大小为 g。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "倾角 θ 的斜面上等间距 d 排列的减速带（宽远小于 d），小车自距第一带 L 处释放；原文无图题，图只示意排列，不作为读数来源",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "小车通过第 30 个减速带后，经过每一个减速带时损失的机械能。",
+        "score": 3
+      },
+      {
+        "no": "(2)",
+        "text": "小车通过前 30 个减速带的过程中在每一个减速带上平均损失的机械能。",
+        "score": 6
+      },
+      {
+        "no": "(3)",
+        "text": "若小车在前 30 个减速带上平均每一个损失的机械能大于之后每一个减速带上损失的机械能，L 应满足什么条件？",
+        "score": 3
+      }
+    ],
+    "stem_sha256": "2230b45ad7652a1b6f3c6947c703597b3702e8e850638f3dabe32ae08ceeffb6",
+    "input_sha256": "e9d59266b7bbce1d9a680000a4c955db004214aa6452d20c14ec79eb60609259"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "无动力小车",
+        "mass_symbol": "m",
+        "note": "质量 m，视为质点；自距第一带 L 处静止释放，只在斜面与水平面上运动"
+      },
+      {
+        "id": "obj2",
+        "name": "减速带",
+        "mass_symbol": "m",
+        "note": "斜面上共 50 个，等间距 d，宽度远小于 d；过带时损失机械能，不改变运动方向"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "theta",
+        "value": null,
+        "unit": "rad",
+        "text": "斜面倾角 θ（符号量）"
+      },
+      {
+        "symbol": "d",
+        "value": null,
+        "unit": "m",
+        "text": "相邻减速带间的距离均为 d（符号量）"
+      },
+      {
+        "symbol": "L",
+        "value": null,
+        "unit": "m",
+        "text": "小车从距第一个减速带 L 处由静止释放（符号量）"
+      },
+      {
+        "symbol": "s1",
+        "value": null,
+        "unit": "m",
+        "text": "过第 50 带后进入水平地面，继续滑行距离 s 后停下 —— 本档把原文的 s 记作 s1（s 不在符号白名单）"
+      },
+      {
+        "symbol": "mu",
+        "value": null,
+        "unit": "1",
+        "text": "小车与地面间的动摩擦因数 μ（符号量）"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "小车质量 m（符号量）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度大小 g（符号量）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "斜面下滑（第 1 带至第 30 带）",
+        "start": "小车自距第 1 带 L 处静止释放",
+        "end": "通过第 30 个减速带，此后相邻带间平均速度均相同"
+      },
+      {
+        "no": 2,
+        "name": "第 31～50 带（速度序列重复段）",
+        "start": "通过第 30 带后",
+        "end": "通过第 50 带，立刻进入水平地面"
+      },
+      {
+        "no": 3,
+        "name": "水平地面滑行",
+        "start": "过第 50 带进入水平地面",
+        "end": "滑行 s 后停下"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "W",
+        "text": "第 30 带后每过一次带损失的机械能"
+      },
+      {
+        "no": "(2)",
+        "quantity": "Qheat",
+        "text": "前 30 带上平均每次损失的机械能"
+      },
+      {
+        "no": "(3)",
+        "quantity": "L",
+        "text": "满足「前 30 带平均损失更大」的 L 范围"
+      }
+    ],
+    "assumptions": [
+      "斜面光滑：斜面上只有重力做功，机械能损失全部发生在减速带上，带宽远小于 d 故过带位移可忽略",
+      "第 30 带后各段平均速度相同且段长同为 d ⇒ 每段用时相同、两端速度各自重复 ⇒ 每带损失相同（与速度大小无关）",
+      "本题不给任何数值，L1 全步 na；不假设 g、θ 的具体值来凑回代",
+      "符号迁移：ΔE 记作 W、ΔE₀ 记作 Qheat、原文 s 记作 s1 —— 白名单无这三个记号，未新登记（见回执 §需上报）",
+      "第 50 带与水平面之间没有第 51 段：斜面总长按 L＋49d 计"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "判定第 30 带后每带损失相同",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-01-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "每带损失 ΔE = mgd sinθ",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-01-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "全程动能定理",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-01-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "ΔE₀ 是前 30 带总损失除以 30",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-01-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "解出 ΔE₀",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-01-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "判据：ΔE₀ > ΔE",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "A-01-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "解不等式得 L > d + μs/sinθ",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "A-01-S07"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-01-S01",
+      "step_no": 1,
+      "title": "判定第 30 带后每带损失相同",
+      "point_id": "A-01-S01",
+      "kind": "judgment",
+      "statement": "第 30 个减速带之后，相邻减速带间的平均速度均相同；各段长度同为 d，故每段用时相同，「到达带时」与「过带后」的速度序列各自重复。每段速度变化相同 ⇒ 每过一次带损失的机械能相同。",
+      "equation": null,
+      "criterion": {
+        "expr": "vavg",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "由「相邻段平均速度相同、段长相同」推得每段用时相同、两端速度各自重复，故每带损失相同 —— 判的是速度序列重复，不是「速度相同」四个字。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s（平均速度 v̄）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写「速度相同」未推出每段损失相同仍给分（口径）；完全不提则后续全错，故本步单列 1 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-01-S02",
+      "step_no": 2,
+      "title": "每带损失 ΔE = mgd sinθ",
+      "point_id": "A-01-S02",
+      "kind": "equation",
+      "statement": "第 30 带后各段速度序列重复，故每段动能变化为零；该段重力势能减少 mgd sinθ 全部在过带时损失：W＝mgd sinθ（W 即原文 ΔE）。",
+      "equation": {
+        "latex": "\\Delta E = m g d \\sin\\theta",
+        "sympy": "W - m*g*d*sin(theta)",
+        "symbols": [
+          "W",
+          "d",
+          "g",
+          "m",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "W",
+        "number": null,
+        "exact": "m*g*d*sin(theta)",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：W、d、g、m、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s²·m＝J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 sinθ、写成 mgd 或 mgL 不得分；无说明给 1 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-01-S03",
+      "step_no": 3,
+      "title": "全程动能定理",
+      "point_id": "A-01-S03",
+      "kind": "equation",
+      "statement": "从释放到水平面停下列全程动能定理：重力做正功 mg(L＋49d)sinθ，前 30 带损失 30ΔE₀、后 20 带损失 20ΔE，水平段摩擦做负功 −μmgs；初、末动能均为零。",
+      "equation": {
+        "latex": "m g (L + 49 d) \\sin\\theta - 30 \\Delta E_{0} - 20 \\Delta E - \\mu m g s = 0",
+        "sympy": "m*g*(L+49*d)*sin(theta) - 30*Qheat - 20*W - mu*m*g*s1",
+        "symbols": [
+          "L",
+          "Qheat",
+          "W",
+          "d",
+          "g",
+          "m",
+          "mu",
+          "s1",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、Qheat、W、d、g、m、mu、s1、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "位移写 50d 扣 1（第 50 带之后就是水平面，没有第 51 段）；漏 20ΔE 扣 2；末动能 0 项移项等价给分。本档 Qheat＝ΔE₀、W＝ΔE",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-01-S04",
+      "step_no": 4,
+      "title": "ΔE₀ 是前 30 带总损失除以 30",
+      "point_id": "A-01-S04",
+      "kind": "judgment",
+      "statement": "前 30 个减速带上的总损失除以 30 才是「平均每一个」的损失 ΔE₀；除以 50 会把后 20 带也算进来，是整题归零高发点。",
+      "equation": null,
+      "criterion": {
+        "expr": "30*Qheat",
+        "expected": "m*g*(L+29*d)*sin(theta) - mu*m*g*s1",
+        "comparator": "eq",
+        "text": "ΔE₀ 的定义是前 30 个减速带上的总损失除以 30 —— 30ΔE₀＝mg(L＋29d)sinθ−μmgs，不是除以 50。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 L、Qheat、d、g、m、mu、s1、theta，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "除以 50 不得分（E-01 整题归零高发点）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-01-S05",
+      "step_no": 5,
+      "title": "解出 ΔE₀",
+      "point_id": "A-01-S05",
+      "kind": "equation",
+      "statement": "把 20ΔE＝20mgd sinθ 移项：30ΔE₀＝mg(L＋49d−20d)sinθ−μmgs＝mg(L＋29d)sinθ−μmgs，故 ΔE₀＝[mg(L＋29d)sinθ−μmgs]/30。",
+      "equation": {
+        "latex": "\\Delta E_{0} = \\frac{m g (L + 29 d) \\sin\\theta - \\mu m g s}{30}",
+        "sympy": "30*Qheat - (m*g*(L+29*d)*sin(theta) - mu*m*g*s1)",
+        "symbols": [
+          "L",
+          "Qheat",
+          "d",
+          "g",
+          "m",
+          "mu",
+          "s1",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "Qheat",
+        "number": null,
+        "exact": "(m*g*(L+29*d)*sin(theta)-mu*m*g*s1)/30",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、Qheat、d、g、m、mu、s1、theta 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "等价形式（先由水平段 −μmgs＝0−½mv₁² 求 v₁ 再回代）给满分；只列式未解出给 1 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-01-S06",
+      "step_no": 6,
+      "title": "判据：ΔE₀ > ΔE",
+      "point_id": "A-01-S06",
+      "kind": "critical",
+      "statement": "「前 30 个减速带上平均每一个损失的机械能大于之后每一个减速带上损失的机械能」即 ΔE₀＞ΔE；这是第 (3) 问的不等式起点，本身不给 L 的范围。",
+      "equation": null,
+      "criterion": {
+        "expr": "Qheat",
+        "expected": "W",
+        "comparator": "gt",
+        "text": "前 30 带的平均损失 ΔE₀ 大于之后每带的损失 ΔE，即 ΔE₀＞ΔE；用文字「平均损失更大」表述亦可。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Qheat、W，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用文字「平均损失更大」表述亦可（口径）；本步只判不等号方向，不要求解出 L",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-01-S07",
+      "step_no": 7,
+      "title": "解不等式得 L > d + μs/sinθ",
+      "point_id": "A-01-S07",
+      "kind": "critical",
+      "statement": "把 ΔE₀、ΔE 代入 ΔE₀＞ΔE，约去 mg：L＋29d−μs/sinθ＞30d ⇒ L＞d＋μs/sinθ。",
+      "equation": null,
+      "criterion": {
+        "expr": "L",
+        "expected": "d + mu*s1/sin(theta)",
+        "comparator": "gt",
+        "text": "ΔE₀＞ΔE 等价于 mg(L＋29d)sinθ−μmgs＞30mgd sinθ，约去 mg sinθ 得 L＞d＋μs/sinθ。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 L、d、mu、s1、theta，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m（d 与 μs/sinθ 均为长度）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "不等号方向错扣 1；量纲不对不得分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-01-S01",
+        "step_id": "A-01-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-01-S02",
+        "step_id": "A-01-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-01-S03",
+        "step_id": "A-01-S03",
+        "score_awarded": 3,
+        "score_possible": 3,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-01-S04",
+        "step_id": "A-01-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-01-S05",
+        "step_id": "A-01-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-01-S06",
+        "step_id": "A-01-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-01-S07",
+        "step_id": "A-01-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 12,
+    "score_total": 12,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号 + 50 带分段 + 不等式；L1 全步 na，L2 逐式手判；12/12 满分，未触归零点"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

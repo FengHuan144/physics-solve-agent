@@ -1,0 +1,812 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-17",
+    "question_id": "B-17",
+    "group": "B",
+    "source": "2023 湖北卷",
+    "question_no": 14,
+    "full_score": 15,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T21:35:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图为某游戏装置原理示意图。水平桌面上固定一半圆形竖直挡板，其半径为 2R、内表面光滑，挡板的两端 A、B 在桌面边缘，B 与半径为 R 的固定光滑圆弧轨道 CDE 在同一竖直平面内，过 C 点的轨道半径与竖直方向的夹角为 60°。小物块以某一水平初速度由 A 点切入挡板内侧，从 B 点飞出桌面后，在 C 点沿圆弧切线方向进入轨道 CDE 内侧，并恰好能到达轨道的最高点 D。小物块与桌面之间的动摩擦因数为 1/(2π)，重力加速度大小为 g，忽略空气阻力，小物块可视为质点。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "桌面上半径 2R 的半圆竖直挡板（两端 A、B 在桌面边缘）、B 与半径 R 的圆弧轨道 CDE 的相对方位、过 C 点半径与竖直方向夹 60° 的参照方向；原文无图题",
+        "caption_source": "none",
+        "is_required": true,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "小物块到达 D 点的速度大小。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "B 和 D 两点间的高度差。",
+        "score": 6
+      },
+      {
+        "no": "(3)",
+        "text": "小物块在 A 点的初速度大小。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "f7cd5e5370531ca265931a4edb4232789297c217ce7de05a4da3c8cbd0dd6d68",
+    "input_sha256": "736140f800a8d1b0a38a1b256b9827d84c3358e8a74ddcc244389d4f552aa340"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小物块",
+        "mass_symbol": "m",
+        "note": "可视为质点；沿挡板内侧滑行时与桌面摩擦，圆弧轨道光滑"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": null,
+        "unit": "m",
+        "text": "圆弧轨道 CDE 半径 R（符号量）；半圆挡板半径为 2R"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.15915494309189535,
+        "unit": "1",
+        "text": "动摩擦因数 μ＝1/(2π)（题给数值）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g（符号量）"
+      },
+      {
+        "symbol": "theta",
+        "value": 60,
+        "unit": "deg",
+        "text": "过 C 点的轨道半径与竖直方向夹 60°；cos60°＝1/2 直接写进方程，不立角度符号"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "A→B 沿半圆挡板内侧滑行",
+        "start": "A 点以水平初速 v_A 切入",
+        "end": "B 点飞出桌面（速度 v_B）"
+      },
+      {
+        "no": 2,
+        "name": "B→C 平抛",
+        "start": "B 点水平飞出",
+        "end": "C 点沿切线进入圆弧（速度 v_C）"
+      },
+      {
+        "no": 3,
+        "name": "C→D 沿圆弧上升",
+        "start": "C 点（速度 v_C）",
+        "end": "最高点 D（速度 v_D，恰好通过）"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v",
+        "text": "D 点速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "H",
+        "text": "B 与 D 的高度差"
+      },
+      {
+        "no": "(3)",
+        "quantity": "v1",
+        "text": "A 点初速度大小"
+      }
+    ],
+    "assumptions": [
+      "挡板内表面光滑，但小物块在桌面上滑行，摩擦路程取半圆周长 π(2R)＝2πR（不是位移 4R）",
+      "「恰好能到达最高点 D」＝D 点轨道弹力为零，只有重力提供向心力（绳模型，非杆模型）",
+      "在 C 点沿切线进入：切线方向与水平方向夹 60°，故水平分速度 v_B＝v_C cos 60°（平抛水平分速不变）",
+      "B 点与 A 点同在桌面边缘、B 与 C 之间是平抛；H_BD 的零点取 B 点所在高度"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "最高点恰好通过⇒弹力为零",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-17-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "最高点向心力式求 v_D",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "v_D 只用 g、R 表示",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "沿切线进入⇒水平分速度不变",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "C→D 动能定理求 v_C",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "B→D 动能定理含 H_BD",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "H_BD = 0：B 与 D 等高",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "摩擦路程取半圆周长 2πR",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "A→B 动能定理，μ 代入 1/(2π)",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S09"
+    },
+    {
+      "step_no": 10,
+      "title": "v_A = √(3gR)",
+      "depends_on": [
+        9
+      ],
+      "expanded": true,
+      "point_hint": "B-17-S10"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-17-S01",
+      "step_no": 1,
+      "title": "最高点恰好通过⇒弹力为零",
+      "point_id": "B-17-S01",
+      "kind": "judgment",
+      "statement": "D 为圆轨道最高点且「恰好通过」，含义是轨道对小物块的弹力恰为零，只有重力提供向心力 —— 不是速度为零。",
+      "equation": null,
+      "criterion": {
+        "expr": "contact_force_at_D",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "圆轨道内侧最高点「恰好通过」的临界条件是弹力为零（N＝0），向心力全部由重力提供，此时速度取最小值 √(gR)，不为零。把「恰好通过」理解成速度为零，或认为 D 点弹力向上，都会把临界速度算错。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N（弹力判据，量纲为力）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把「恰好通过」理解为速度为零本步 0 分；认为 D 点弹力向上本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S02",
+      "step_no": 2,
+      "title": "最高点向心力式求 v_D",
+      "point_id": "B-17-S02",
+      "kind": "equation",
+      "statement": "在 D 点由重力提供向心力：mg＝mv_D²/R，解得 v_D＝√(gR)。",
+      "equation": {
+        "latex": "m g = \\frac{m v_{D}^{2}}{R}",
+        "sympy": "m*g - m*v**2/R",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、m、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N：右侧 mv²/R 亦为 N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 mg＝mv²/(2R) 本步 0 分；漏 m 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S03",
+      "step_no": 3,
+      "title": "v_D 只用 g、R 表示",
+      "point_id": "B-17-S03",
+      "kind": "discussion",
+      "statement": "第 (1) 问结果写成 v_D＝√(gR)：式中不含 m，也不含未消去的中间量。",
+      "equation": {
+        "latex": "v_{D} = \\sqrt{g R}",
+        "sympy": "v**2 - g*R",
+        "symbols": [
+          "R",
+          "g",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": null,
+        "exact": "sqrt(g*R)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 v_D＝√(2gR)（按绳模型最高点）本步 0 分；结果含未消去的量本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S04",
+      "step_no": 4,
+      "title": "沿切线进入⇒水平分速度不变",
+      "point_id": "B-17-S04",
+      "kind": "equation",
+      "statement": "C 点沿切线进入：切线方向与水平夹 60°，而平抛的水平分速度始终为 v_B，故 v_B＝v_C cos 60°。",
+      "equation": {
+        "latex": "v_{B} = v_{C} \\cos 60°",
+        "sympy": "vb - vc*Rational(1,2)",
+        "symbols": [
+          "vb",
+          "vc"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：vb、vc 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 60° 当作速度与竖直方向的夹角（用 sin60°）本步 0 分；漏「沿切线」判断本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S05",
+      "step_no": 5,
+      "title": "C→D 动能定理求 v_C",
+      "point_id": "B-17-S05",
+      "kind": "equation",
+      "statement": "C→D 上升的高度为 R＋R cos 60°，由动能定理得 v_C＝2√(gR)。",
+      "equation": {
+        "latex": "-m g (R + R \\cos 60°) = \\frac{1}{2} m v_{D}^{2} - \\frac{1}{2} m v_{C}^{2}",
+        "sympy": "-m*g*(R + R*Rational(1,2)) - (Rational(1,2)*m*v**2 - Rational(1,2)*m*vc**2)",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "v",
+          "vc"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "vc",
+        "number": null,
+        "exact": "2*sqrt(g*R)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、m、v、vc 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "高度差只取 R（漏 R cos 60°）本步 0 分；把 v_D 当作零本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S06",
+      "step_no": 6,
+      "title": "B→D 动能定理含 H_BD",
+      "point_id": "B-17-S06",
+      "kind": "equation",
+      "statement": "从 B 到 D 全程用动能定理（平抛段无机械能损失），重力做功 mgH_BD：mgH_BD＝½mv_D²−½mv_B²。",
+      "equation": {
+        "latex": "m g H_{BD} = \\frac{1}{2} m v_{D}^{2} - \\frac{1}{2} m v_{B}^{2}",
+        "sympy": "m*g*H - (Rational(1,2)*m*v**2 - Rational(1,2)*m*vb**2)",
+        "symbols": [
+          "H",
+          "g",
+          "m",
+          "v",
+          "vb"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：H、g、m、v、vb 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 H_BD 直接当作 R 或 1.5R 本步 0 分；漏写该式仅给结论本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S07",
+      "step_no": 7,
+      "title": "H_BD = 0：B 与 D 等高",
+      "point_id": "B-17-S07",
+      "kind": "discussion",
+      "statement": "代入 v_C＝2√(gR)、v_B＝v_C/2＝√(gR)、v_D＝√(gR)，得 H_BD＝0，即 B 点与 D 点等高。",
+      "equation": {
+        "latex": "H_{BD} = 0",
+        "sympy": "H - 0",
+        "symbols": [
+          "H"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "H",
+        "number": 0.0,
+        "exact": "0",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：H 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "答 R、1.5R 或 2R 本步 0 分；只写 0 未说明「等高」本步给分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S08",
+      "step_no": 8,
+      "title": "摩擦路程取半圆周长 2πR",
+      "point_id": "B-17-S08",
+      "kind": "judgment",
+      "statement": "小物块沿半圆挡板内侧滑行一整段弧，摩擦力的作用路程是半圆周长 π(2R)＝2πR，不是 A、B 之间的直线距离 4R。",
+      "equation": null,
+      "criterion": {
+        "expr": "friction_path",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "摩擦力沿运动方向逐点作用，做功按路程累积：物块贴着半径 2R 的半圆内侧走完半圈，路程为半圆周长 π·2R＝2πR。用位移 4R（A、B 的直线距离）或 2R 计摩擦功都会低估损耗，且只有取 2πR 时 μ＝1/(2π) 才能把摩擦功化成 −mgR。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-05",
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m（路程，量纲同长度）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用位移 4R 或 2R 计算摩擦功本步 0 分；漏「沿内侧滑行一整圈」本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S09",
+      "step_no": 9,
+      "title": "A→B 动能定理，μ 代入 1/(2π)",
+      "point_id": "B-17-S09",
+      "kind": "equation",
+      "statement": "A→B 用动能定理：−μmg·2πR＝½mv_B²−½mv_A²；代入 μ＝1/(2π) 后摩擦功化为 −mgR。",
+      "equation": {
+        "latex": "-\\mu m g \\cdot 2\\pi R = \\frac{1}{2} m v_{B}^{2} - \\frac{1}{2} m v_{A}^{2}",
+        "sympy": "-mu*m*g*2*pi*R - (Rational(1,2)*m*vb**2 - Rational(1,2)*m*v1**2)",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "mu",
+          "v1",
+          "vb"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、m、v1、vb 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "μ 未代入 1/(2π) 本步 0 分；把 v_B 取成 v_C 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-17-S10",
+      "step_no": 10,
+      "title": "v_A = √(3gR)",
+      "point_id": "B-17-S10",
+      "kind": "discussion",
+      "statement": "把摩擦功 −mgR 与 v_B²＝gR 代入，得 ½mv_A²＝½mgR＋mgR＝(3/2)mgR，故 v_A＝√(3gR)。",
+      "equation": {
+        "latex": "v_{A} = \\sqrt{3 g R}",
+        "sympy": "v1**2 - 3*g*R",
+        "symbols": [
+          "R",
+          "g",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v1",
+        "number": null,
+        "exact": "sqrt(3*g*R)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：R、g、v1 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 √(2gR) 或 √(5gR) 本步 0 分；结果含未消去的量本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-17-S01",
+        "step_id": "B-17-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S02",
+        "step_id": "B-17-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S03",
+        "step_id": "B-17-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S04",
+        "step_id": "B-17-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S05",
+        "step_id": "B-17-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S06",
+        "step_id": "B-17-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S07",
+        "step_id": "B-17-S07",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S08",
+        "step_id": "B-17-S08",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S09",
+        "step_id": "B-17-S09",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-17-S10",
+        "step_id": "B-17-S10",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 15,
+    "score_total": 15,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：半圆挡板摩擦滑行＋平抛＋沿切线进圆弧＋最高点临界＋三段动能定理；全符号题 L1 全步 na，L2 逐式手判；15/15 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

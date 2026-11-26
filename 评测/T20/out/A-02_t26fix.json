@@ -1,0 +1,830 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-02",
+    "question_id": "A-02",
+    "group": "A",
+    "source": "2022 全国乙卷",
+    "question_no": 25,
+    "full_score": 20,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:31:22+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 1326,
+      "out": 15555
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图（a），一质量为 m 的物块 A 与轻质弹簧连接，静止在光滑水平面上；物块 B 向 A 运动，t＝0 时与弹簧接触，到 t＝2t₀ 时与弹簧分离，第一次碰撞结束，A、B 的 v-t 图像如图（b）所示。已知从 t＝0 到 t＝t₀ 时间内，物块 A 运动的距离为 0.36v₀t₀。A、B 分离后，A 滑上粗糙斜面，然后滑下，与一直在水平面上运动的 B 再次碰撞，之后 A 再次滑上斜面，达到的最高点与前一次相同。斜面倾角为 θ（sin θ＝0.6），与水平面光滑连接。碰撞过程中弹簧始终处于弹性限度内。求(1)第一次碰撞过程中，弹簧弹性势能的最大值；(2)第一次碰撞过程中，弹簧压缩量的最大值；(3)物块 A 与斜面间的动摩擦因数。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "图 (a)：物块 A 与轻质弹簧相连静置于光滑水平面，物块 B 向其运动；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      },
+      {
+        "fig_no": 2,
+        "caption": "图 (b)：A、B 的 v–t 图（纵轴以 v₀ 为单位）。四处读数（B 碰前 1.2v₀、t₀ 处交于 v₀、2t₀ 处 A 为 2v₀、B 为 0.8v₀）题干文字未给，逐条登记在 provides；原文无图题",
+        "caption_source": "human",
+        "is_required": true,
+        "provides": [
+          {
+            "symbol": "v2",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) 纵轴 t＝0 处 B 的截距",
+            "text": "由图 (b) 纵轴 t＝0 处读出 B 的碰前速度为 1.2v₀（符号读数，无数值）"
+          },
+          {
+            "symbol": "v0",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) t＝t₀ 处 A、B 两线的交点",
+            "text": "由图 (b) 读出 t＝t₀ 时两线交于 v₀，即弹簧压缩最短时两者共速（v₀ 同时是全图的纵轴单位）"
+          },
+          {
+            "symbol": "v1p",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) 纵轴 t＝2t₀ 处 A 的取值",
+            "text": "由图 (b) 读出 t＝2t₀ 时 A 的速度为 2v₀（分离后 A 的速度）"
+          },
+          {
+            "symbol": "v2p",
+            "value": null,
+            "unit": "m/s",
+            "read_from": "图 (b) 纵轴 t＝2t₀ 处 B 的取值",
+            "text": "由图 (b) 读出 t＝2t₀ 时 B 的速度为 0.8v₀（分离后 B 的速度）"
+          }
+        ],
+        "file": "原始资料/题图/A-02_图2.png",
+        "file_sha256": "b1c0ec48120c84c81c69f578ae26b0f413a866c386fdc45be8ef9e0274afa8b5"
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "第一次碰撞过程中弹簧弹性势能的最大值。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "第一次碰撞过程中弹簧压缩量的最大值。",
+        "score": 4
+      },
+      {
+        "no": "(3)",
+        "text": "物块 A 与斜面间的动摩擦因数。",
+        "score": 10
+      }
+    ],
+    "stem_sha256": "5774db62c4e6337d89ba99e2fc6c411b232f404f9a6beb9a82e8ddd449f1b2e9",
+    "input_sha256": "f255f7f327b159f34f6b61f71da87230072d85195e7fee547ca72db3f0e6c77e"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "物块 A",
+        "mass_symbol": "m",
+        "note": "与轻质弹簧连接，静止在光滑水平面上；质量 m"
+      },
+      {
+        "id": "obj2",
+        "name": "物块 B",
+        "mass_symbol": "M",
+        "note": "向 A 运动；题干未给质量，由动量守恒反解 M＝5m"
+      },
+      {
+        "id": "obj3",
+        "name": "轻质弹簧",
+        "mass_symbol": "Mspring",
+        "note": "轻质（质量不计），只提供弹力与弹性势能；始终在弹性限度内"
+      },
+      {
+        "id": "obj4",
+        "name": "粗糙斜面",
+        "mass_symbol": "Mface",
+        "note": "倾角 θ（sinθ＝0.6、cosθ＝0.8），与水平面光滑连接；质量远大于物块，视为固定"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "物块A的质量，题给为m"
+      },
+      {
+        "symbol": "v0",
+        "value": null,
+        "unit": "m/s",
+        "text": "图乙速度坐标的参考量v0"
+      },
+      {
+        "symbol": "t0",
+        "value": null,
+        "unit": "s",
+        "text": "图乙时间坐标的参考量t0"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "Ep",
+        "text": "弹簧弹性势能的最大值"
+      },
+      {
+        "no": "(2)",
+        "quantity": "ds",
+        "text": "弹簧压缩量的最大值"
+      },
+      {
+        "no": "(3)",
+        "quantity": "mu",
+        "text": "A 与斜面间的动摩擦因数"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "读图取关键速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "第一次碰撞动量守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求B的质量",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "判断最大势能状态",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "列能量守恒式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "求最大弹性势能",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "明确最大压缩量",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "质心速度与位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "求B的位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求最大压缩量",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "第二次上滑条件",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "判断碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "第二次碰撞动量守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "第二次碰撞弹性关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 15,
+      "title": "求碰前A速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 16,
+      "title": "第一次上下滑说明",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 17,
+      "title": "列上滑过程方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 18,
+      "title": "列全程能量方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 19,
+      "title": "求动摩擦因数",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-02-S01",
+      "step_no": 1,
+      "title": "读图取关键速度",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "由图乙读出：t=0时B速度为6/5 v0，A静止；t=t0时A、B共速为v0；t=2t0第一次分离时A速度为2v0，B速度为4/5 v0。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能从v-t图读出初末速度及共速时刻的速度"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S02",
+      "step_no": 2,
+      "title": "第一次碰撞动量守恒",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "第一次碰撞到分离过程中，水平方向系统不受外力，动量守恒。设B的质量为M，取向右为正。",
+      "equation": {
+        "latex": "M (6/5) v0 - m 2 v0 - M (4/5) v0",
+        "sympy": "M*Rational(6,5)*v0 - m*2*v0 - M*Rational(4,5)*v0",
+        "symbols": [
+          "M",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S03",
+      "step_no": 3,
+      "title": "求B的质量",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由动量守恒式解得M=5m。",
+      "equation": {
+        "latex": "M - 5 m",
+        "sympy": "M - 5*m",
+        "symbols": [
+          "M",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "M",
+        "number": null,
+        "exact": "5*m",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S04",
+      "step_no": 4,
+      "title": "判断最大势能状态",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "弹簧压缩量最大时A、B速度相等；由图乙知t=t0时二者速度均为v0，此时弹性势能最大。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "指出共速时弹簧压缩量最大、弹性势能最大"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S05",
+      "step_no": 5,
+      "title": "列能量守恒式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从t=0到t=t0，系统机械能守恒，初动能等于共速时总动能与弹簧最大弹性势能之和。",
+      "equation": {
+        "latex": "(1/2) M ((6/5) v0)^2 - (1/2) (M+m) v0^2 - Ep",
+        "sympy": "Rational(1,2)*M*(Rational(6,5)*v0)**2 - Rational(1,2)*(M+m)*v0**2 - Ep",
+        "symbols": [
+          "Ep",
+          "M",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S06",
+      "step_no": 6,
+      "title": "求最大弹性势能",
+      "point_id": null,
+      "kind": "value",
+      "statement": "将M=5m代入能量守恒式，得Ep,max=3/5 m v0^2。",
+      "equation": {
+        "latex": "Ep - (3/5) m v0^2",
+        "sympy": "Ep - Rational(3,5)*m*v0**2",
+        "symbols": [
+          "Ep",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "Ep",
+        "number": null,
+        "exact": "3/5*m*v0^2",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S07",
+      "step_no": 7,
+      "title": "明确最大压缩量",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "t=0时弹簧为原长，到t=t0两者共速时压缩量最大；最大压缩量等于这段时间内B比A多走的距离，即x_max=s_B-s_A。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "明确最大压缩量等于共速前两物块位移差"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S08",
+      "step_no": 8,
+      "title": "质心速度与位移",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "第一次碰撞中质心做匀速运动，初态质心速度为v0，故t=t0时质心位移为v0t0；质心位移又等于A、B位移的加权平均，同时A的位移为9/25 v0t0。",
+      "equation": {
+        "latex": "(m s_A + 5 m s_B)/(6 m) - v0 t0 + s_A - (9/25) v0 t0",
+        "sympy": "(m*s_A + 5*m*s_B)/(6*m) - v0*t0 + s_A - Rational(9,25)*v0*t0",
+        "symbols": [
+          "A",
+          "B",
+          "m",
+          "s",
+          "t0",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S09",
+      "step_no": 9,
+      "title": "求B的位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入s_A=9/25 v0t0，解得s_B=141/125 v0t0。",
+      "equation": {
+        "latex": "s_B - (141/125) v0 t0",
+        "sympy": "s_B - Rational(141,125)*v0*t0",
+        "symbols": [
+          "B",
+          "s",
+          "t0",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "sB",
+        "number": null,
+        "exact": "141/125*v0*t0",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S10",
+      "step_no": 10,
+      "title": "求最大压缩量",
+      "point_id": null,
+      "kind": "value",
+      "statement": "于是x_max=s_B-s_A=(141/125-9/25)v0t0=96/125 v0t0。",
+      "equation": {
+        "latex": "x - (96/125) v0 t0",
+        "sympy": "x - Rational(96,125)*v0*t0",
+        "symbols": [
+          "t0",
+          "v0",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "x",
+        "number": null,
+        "exact": "96/125*v0*t0",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S11",
+      "step_no": 11,
+      "title": "第二次上滑条件",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "斜面、倾角及摩擦因数均不变；A第二次上滑的最高点与第一次相同，说明第二次碰后A沿斜面向上的初速度大小仍为2v0。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "由最高点相同判断第二次碰后A速度大小仍为2v0"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S12",
+      "step_no": 12,
+      "title": "判断碰前速度",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "第一次分离后B以4/5 v0匀速运动，所以第二次碰撞前B速度仍为4/5 v0；A从斜面滑下后的速度方向水平向左。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "明确第二次碰前A、B速度方向及B的速度大小"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S13",
+      "step_no": 13,
+      "title": "第二次碰撞动量守恒",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "设第二次碰前A速度大小为w，方向向左；碰后B速度为u_B。水平方向动量守恒。",
+      "equation": {
+        "latex": "m (-w) + 5 m (4/5) v0 - m 2 v0 - 5 m u_B",
+        "sympy": "m*(-w) + 5*m*Rational(4,5)*v0 - m*2*v0 - 5*m*u_B",
+        "symbols": [
+          "B",
+          "m",
+          "u",
+          "v0",
+          "w"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S14",
+      "step_no": 14,
+      "title": "第二次碰撞弹性关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "弹簧碰撞为弹性碰撞，碰后A、B相对速度与碰前等大反向，即2v0-u_B=w+4/5 v0。",
+      "equation": {
+        "latex": "2 v0 - u_B - w - (4/5) v0",
+        "sympy": "2*v0 - u_B - w - Rational(4,5)*v0",
+        "symbols": [
+          "B",
+          "u",
+          "v0",
+          "w"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S15",
+      "step_no": 15,
+      "title": "求碰前A速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "联立第二次碰撞的动量守恒式和弹性关系，得w=v0，即A第一次滑下后速度大小为v0。",
+      "equation": {
+        "latex": "w - v0",
+        "sympy": "w - v0",
+        "symbols": [
+          "v0",
+          "w"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "w",
+        "number": null,
+        "exact": "v0",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S16",
+      "step_no": 16,
+      "title": "第一次上下滑说明",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "A第一次以2v0滑上斜面，再滑回底端时速度大小为v0；从滑上到滑回底端，重力总功为零，摩擦力做负功。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "明确第一次上滑初速度和滑回速度，并判断重力总功为零"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S17",
+      "step_no": 17,
+      "title": "列上滑过程方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "设第一次沿斜面上升距离为L。对第一次上滑过程应用动能定理，重力沿斜面分量和摩擦力均做负功。",
+      "equation": {
+        "latex": "(1/2) m (2 v0)^2 - m g L (3/5) - mu m g L (4/5)",
+        "sympy": "Rational(1,2)*m*(2*v0)**2 - m*g*L*Rational(3,5) - mu*m*g*L*Rational(4,5)",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "mu",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S18",
+      "step_no": 18,
+      "title": "列全程能量方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从第一次滑上斜面到再次滑回底端，动能由1/2m(2v0)^2变为1/2m v0^2，摩擦力做负功共2μmgLcosθ。",
+      "equation": {
+        "latex": "(1/2) m (2 v0)^2 - (1/2) m v0^2 - 2 mu m g L (4/5)",
+        "sympy": "Rational(1,2)*m*(2*v0)**2 - Rational(1,2)*m*v0**2 - 2*mu*m*g*L*Rational(4,5)",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "mu",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-02-S19",
+      "step_no": 19,
+      "title": "求动摩擦因数",
+      "point_id": null,
+      "kind": "value",
+      "statement": "联立上滑方程和全程能量方程，消去gL，解得μ=9/20。",
+      "equation": {
+        "latex": "mu - (9/20)",
+        "sympy": "mu - Rational(9,20)",
+        "symbols": [
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "mu",
+        "number": 0.45,
+        "exact": "9/20",
+        "unit": "1",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 20,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

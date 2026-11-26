@@ -1,0 +1,62 @@
+[
+  {
+    "qid": "B-20",
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "max_tokens": 40000,
+    "prompt_chars": 1954,
+    "figures": [
+      "原始资料/题图/B-20_图甲.png",
+      "原始资料/题图/B-20_图乙.png"
+    ],
+    "created_at": "2026-11-26T16:22:45+08:00",
+    "ok": true,
+    "attempts": 1,
+    "parse_error": "",
+    "finish_reason": "stop",
+    "tokens_in": 3045,
+    "tokens_out": 19445,
+    "reasoning_tokens": 17158,
+    "cost_cny": 0.1361,
+    "extra_params": {},
+    "elapsed_s": 104.8,
+    "n_steps": 13,
+    "n_gold": 10,
+    "step_ratio": 1.3,
+    "issues": [
+      "givens.symbol 去下划线归一：'N_Q' → 'NQ'",
+      "givens.symbol 去下划线归一：'F_c' → 'Fc'",
+      "givens.symbol 去下划线归一：'a_c' → 'ac'",
+      "givens.symbol 去下划线归一：'F_8' → 'F8'",
+      "givens.symbol 去下划线归一：'a_8' → 'a8'"
+    ],
+    "score_audit": [
+      {
+        "no": "(1)",
+        "n_steps": 3,
+        "sum_score": 4.0,
+        "paper_score": 4,
+        "delta": 0.0
+      },
+      {
+        "no": "(2)(ⅰ)",
+        "n_steps": 4,
+        "sum_score": 4.0,
+        "paper_score": 4,
+        "delta": 0.0
+      },
+      {
+        "no": "(2)(ⅱ)",
+        "n_steps": 6,
+        "sum_score": 6.0,
+        "paper_score": 6,
+        "delta": 0.0
+      }
+    ],
+    "schema_rc": 0,
+    "n_e": 0,
+    "n_w": 6,
+    "e_lines": [],
+    "layers": "{\"L1\": \"na\", \"L2\": \"na\", \"L3\": \"na\", \"L4\": \"na\"}"
+  }
+]

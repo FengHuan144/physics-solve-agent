@@ -1,0 +1,2546 @@
+{
+ "meta": {
+  "built_at": "2026-11-25T17:52:00+08:00",
+  "gold_steps": 66,
+  "model_steps": 101,
+  "script": "评测/对齐/_build_t20align.py",
+  "order": [
+   "B-20",
+   "A-08",
+   "A-02",
+   "B-02",
+   "B-09",
+   "A-10",
+   "B-12"
+  ]
+ },
+ "items": [
+  {
+   "qid": "B-20",
+   "gold_steps": 10,
+   "model_steps": 17,
+   "steps": [
+    {
+     "step_id": "B-20-S01",
+     "step_no": 1,
+     "kind": "judgment",
+     "gist": "判 Q 点弹力只能向下",
+     "class": "primary",
+     "point_id": "B-20-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "轨道对物块的弹力 N 只能向下",
+     "note": "金标补了「若弹力向上则早已脱离轨道」的反证，模型只给结论"
+    },
+    {
+     "step_id": "B-20-S02",
+     "step_no": 2,
+     "kind": "equation",
+     "gist": "列 Q 点向心方程 N+mg=mv²/R",
+     "class": "primary",
+     "point_id": "B-20-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "N+mg=mv^2/R",
+     "note": ""
+    },
+    {
+     "step_id": "B-20-S03",
+     "step_no": 3,
+     "kind": "equation",
+     "gist": "代 N=3mg，得 v²=4gR",
+     "class": "split",
+     "point_id": "B-20-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "3mg+mg=mv^2/R",
+     "note": "金标 S02 把代入并进同一步，模型拆出 S03"
+    },
+    {
+     "step_id": "B-20-S04",
+     "step_no": 4,
+     "kind": "value",
+     "gist": "求 v=4 m/s",
+     "class": "primary",
+     "point_id": "B-20-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "v=sqrt(4gR)=4 m/s",
+     "note": ""
+    },
+    {
+     "step_id": "B-20-S05",
+     "step_no": 5,
+     "kind": "judgment",
+     "gist": "判低段共速、折点临界、此后相对滑动",
+     "class": "primary",
+     "point_id": "B-20-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "折点 F=4 N、a=2 m/s^2 为刚要相对滑动的临界点",
+     "note": "同句还读出折点 a=2 m/s²，金标 S04 只登记 F=4 N（额外读数，见说明 §4）"
+    },
+    {
+     "step_id": "B-20-S06",
+     "step_no": 6,
+     "kind": "value",
+     "gist": "由折点求 M+m=2 kg",
+     "class": "split",
+     "point_id": "B-20-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "M+m=2 kg",
+     "note": "金标由 k₁=1/(M+m)=0.5 求，模型改走折点 (4 N, 2 m/s²)，同值不同路"
+    },
+    {
+     "step_id": "B-20-S07",
+     "step_no": 7,
+     "kind": "value",
+     "gist": "高段对轨道列式，由斜率 1/M=1 得 M=1 kg",
+     "class": "primary",
+     "point_id": "B-20-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "斜率 Δa/ΔF=1/M=(6-2)/(8-4)=1，故 M=1 kg",
+     "note": "斜率读数与金标 k₂=1 同义；该步同时含金标 S05 三条读数里的一条"
+    },
+    {
+     "step_id": "B-20-S08",
+     "step_no": 8,
+     "kind": "value",
+     "gist": "m=1 kg",
+     "class": "split",
+     "point_id": "B-20-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 m=1 kg",
+     "note": ""
+    },
+    {
+     "step_id": "B-20-S09",
+     "step_no": 9,
+     "kind": "value",
+     "gist": "折点代入求 μ=0.2",
+     "class": "split",
+     "point_id": "B-20-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 μ=0.2",
+     "note": "金标由截距 b₂=−2 求，模型由折点代入，同值不同路"
+    },
+    {
+     "step_id": "B-20-S10",
+     "step_no": 10,
+     "kind": "judgment",
+     "gist": "判 F=8 N 已滑动，并给轨道 6、物块 2",
+     "class": "primary",
+     "point_id": "B-20-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "a2",
+       "model": "a_1",
+       "why": "轨道加速度"
+      },
+      {
+       "gold": "a1",
+       "model": "a_2",
+       "why": "物块加速度"
+      }
+     ],
+     "inline_only": true,
+     "equiv_form": false,
+     "evidence": "a_1=(F-μmg)/M=6 m/s^2",
+     "note": "符号互换：金标 a2=轨道、a1=物块，模型 a_1=轨道、a_2=物块；6 与 2 都只在叙述里，无 value 对象（§8 已实测）"
+    },
+    {
+     "step_id": "B-20-S11",
+     "step_no": 11,
+     "kind": "equation",
+     "gist": "相对加速度定 L=2t²",
+     "class": "primary",
+     "point_id": "B-20-S08",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "a2",
+       "model": "a_1",
+       "why": "轨道加速度"
+      },
+      {
+       "gold": "a1",
+       "model": "a_2",
+       "why": "物块加速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "L=1/2(a_1-a_2)t^2=2t^2",
+     "note": "走相对加速度，没踩口径里「整体直接用 v²=2aL」的否决项"
+    },
+    {
+     "step_id": "B-20-S12",
+     "step_no": 12,
+     "kind": "equation",
+     "gist": "P 点速度 6t 与 2t",
+     "class": "split",
+     "point_id": "B-20-S08",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "轨道速度 V_P=6t，物块速度 v_P=2t",
+     "note": ""
+    },
+    {
+     "step_id": "B-20-S13",
+     "step_no": 13,
+     "kind": "judgment",
+     "gist": "判水平动量守恒与机械能守恒适用",
+     "class": "split",
+     "point_id": "B-20-S09",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "系统水平动量守恒",
+     "note": "金标把守恒判断并进 S09 的式子，模型单列一句"
+    },
+    {
+     "step_id": "B-20-S14",
+     "step_no": 14,
+     "kind": "equation",
+     "gist": "列动量守恒 V_Q+7=8t",
+     "class": "split",
+     "point_id": "B-20-S09",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "V_Q+7=6t+2t=8t",
+     "note": ""
+    },
+    {
+     "step_id": "B-20-S15",
+     "step_no": 15,
+     "kind": "equation",
+     "gist": "列机械能守恒式",
+     "class": "split",
+     "point_id": "B-20-S09",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "1/2(V_P^2+v_P^2)=1/2(V_Q^2+7^2)+mg·2R",
+     "note": ""
+    },
+    {
+     "step_id": "B-20-S16",
+     "step_no": 16,
+     "kind": "discussion",
+     "gist": "解二次方程，按相对速度方向舍 19/6 s",
+     "class": "split",
+     "point_id": "B-20-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "u_rel 应沿切线向左，即 u_rel>0，故舍去 t=19/6 s",
+     "note": "金标舍根用 v轨′≈18.3>7（物块比轨道慢、相对后退），模型用相对速度方向；判据不同、结论同"
+    },
+    {
+     "step_id": "B-20-S17",
+     "step_no": 17,
+     "kind": "value",
+     "gist": "L=4.5 m",
+     "class": "primary",
+     "point_id": "B-20-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "L=2×(3/2)^2=9/2 m=4.5 m",
+     "note": ""
+    }
+   ],
+   "points": [
+    {
+     "point_id": "B-20-S01",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-20-S01"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S02",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-20-S02",
+      "B-20-S03"
+     ],
+     "note": "按点聚合可判：方程段 + 代入段",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S03",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-20-S04"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S04",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-20-S05"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S05",
+     "score": 2,
+     "home": "none",
+     "by": [],
+     "note": "",
+     "closest": "B-20-S07：图乙高段斜率 Δa/ΔF=1/M=(6-2)/(8-4)=1",
+     "gap": "三条读数只命中 k₂=1 一条；k₁=1/(M+m)=0.5 与 b₂=−2 m/s² 在 17 步里都没出现，模型改由折点 (4 N, 2 m/s²) 求 M+m、由折点代入求 μ。按 §7.3 不硬挂"
+    },
+    {
+     "point_id": "B-20-S06",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-20-S07",
+      "B-20-S06",
+      "B-20-S08",
+      "B-20-S09"
+     ],
+     "note": "四个量拆成四步。表口径「只解出部分量本步 0 分」——任何单步都判 0，必须按点聚合到 M、m、μ 三个量齐全；M=1 落 S07（与金标 value 同量同值）",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S07",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-20-S10"
+     ],
+     "note": "6 与 2 均 inline，无 value 对象",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S08",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-20-S11",
+      "B-20-S12"
+     ],
+     "note": "L=2t² 与 P 点两速度拆开",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S09",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-20-S13",
+      "B-20-S14",
+      "B-20-S15"
+     ],
+     "note": "守恒判断 + 动量式 + 能量式，三步全是 split。口径要求说明 7 m/s 是水平分速度：S14 用「Q 点相对速度沿切线向左 ⇒ 对地速度也向左」交代了方向，等价于说清 Q 点速度水平",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-20-S10",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-20-S17",
+      "B-20-S16"
+     ],
+     "note": "舍根论证与 L 值分开",
+     "closest": null,
+     "gap": null
+    }
+   ],
+   "judgment": {
+    "new_points": [],
+    "none_points": [
+     {
+      "point_id": "B-20-S05",
+      "closest": "B-20-S07：图乙高段斜率 Δa/ΔF=1/M=(6-2)/(8-4)=1",
+      "gap": "三条读数只命中 k₂=1 一条；k₁=1/(M+m)=0.5 与 b₂=−2 m/s² 在 17 步里都没出现，模型改由折点 (4 N, 2 m/s²) 求 M+m、由折点代入求 μ。按 §7.3 不硬挂"
+     }
+    ]
+   }
+  },
+  {
+   "qid": "A-08",
+   "gold_steps": 11,
+   "model_steps": 19,
+   "steps": [
+    {
+     "step_id": "A-08-S01",
+     "step_no": 1,
+     "kind": "equation",
+     "gist": "圆轨道下滑列机械能守恒",
+     "class": "split",
+     "point_id": "A-08-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "只有重力做功，机械能守恒",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S02",
+     "step_no": 2,
+     "kind": "value",
+     "gist": "v_P=6 m/s",
+     "class": "primary",
+     "point_id": "A-08-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v1",
+       "model": "vP",
+       "why": "碰前速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "v_P=sqrt(2gR)=6 m/s",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S03",
+     "step_no": 3,
+     "kind": "equation",
+     "gist": "P 点径向方程 N−m g=mv²/R",
+     "class": "primary",
+     "point_id": "A-08-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "轨道支持力 N 与重力 m_a g 的合力提供向心力",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S04",
+     "step_no": 4,
+     "kind": "value",
+     "gist": "N=30 N",
+     "class": "primary",
+     "point_id": "A-08-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "Nf",
+       "model": "N",
+       "why": "支持力"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "N=m_a g+2m_a g=3m_a g=30 N",
+     "note": "金标另用牛顿第三定律给出对轨道压力同为 30 N；模型未提第三定律"
+    },
+    {
+     "step_id": "A-08-S05",
+     "step_no": 5,
+     "kind": "value",
+     "gist": "碰前 v_Ma=3 m/s",
+     "class": "primary",
+     "point_id": "A-08-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v2",
+       "model": "vMa",
+       "why": "a 碰前速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "v_Ma=3 m/s，方向向左",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S06",
+     "step_no": 6,
+     "kind": "value",
+     "gist": "弹性正碰求 v_b=2 m/s",
+     "class": "primary",
+     "point_id": "A-08-S05",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v2p",
+       "model": "vb",
+       "why": "b 碰后速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "v_b=2m_a u_a/(m_a+m_b)=2 m/s",
+     "note": "金标同句还算了 a 反弹 1 m/s，模型未算（不单列采分点）；口径的『按完全非弹性取共速』一票否决项未踩"
+    },
+    {
+     "step_id": "A-08-S07",
+     "step_no": 7,
+     "kind": "judgment",
+     "gist": "判带向左、b 相对带向左、摩擦力向右",
+     "class": "primary",
+     "point_id": "A-08-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "相对带向左运动，故所受滑动摩擦力向右",
+     "note": "只判方向，未给 a_b=5；数值在 S08 里 inline"
+    },
+    {
+     "step_id": "A-08-S08",
+     "step_no": 8,
+     "kind": "value",
+     "gist": "a=−5 m/s²、t1=0.2 s",
+     "class": "split",
+     "point_id": "A-08-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": true,
+     "equiv_form": false,
+     "evidence": "b 在传送带上的加速度为 -μg=-5 m/s²",
+     "note": "金标 S06 的 a_b=5 在此步 inline 出现且符号为负（取左为正）；同一步又给金标 S07 的 t1=0.2 s——一步两用，见说明 §3"
+    },
+    {
+     "step_id": "A-08-S09",
+     "step_no": 9,
+     "kind": "value",
+     "gist": "s1=0.3 m",
+     "class": "split",
+     "point_id": "A-08-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "s1=(v_b+v0)t1/2=0.3 m",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S10",
+     "step_no": 10,
+     "kind": "value",
+     "gist": "t=3.2 s",
+     "class": "primary",
+     "point_id": "A-08-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "t",
+       "model": "ttotal",
+       "why": "M→N 总时间"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "t=t1+(L-s1)/v0=0.2+3.0/1=3.2 s",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S11",
+     "step_no": 11,
+     "kind": "value",
+     "gist": "冲量后 v1=2 m/s 向右",
+     "class": "primary",
+     "point_id": "A-08-S08",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v2b",
+       "model": "v1",
+       "why": "冲量后 b 的速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 v1=2 m/s，方向向右",
+     "note": "模型用 v1 记冲量后速度（2），与金标 v1（碰前 6）同名不同物——符号冲突，已列说明 §3"
+    },
+    {
+     "step_id": "A-08-S12",
+     "step_no": 12,
+     "kind": "equation",
+     "gist": "判 Δt=0.6 s 与冲量间隔同步",
+     "class": "primary",
+     "point_id": "A-08-S09",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": true,
+     "equiv_form": false,
+     "evidence": "经过一个间隔 Δt 时 v=2-5×0.6=-1 m/s，刚好等于带速",
+     "note": "金标 dt=0.6 s 是 value 字段；模型只在式子里写 0.6，无 value 对象（§8 已实测）"
+    },
+    {
+     "step_id": "A-08-S13",
+     "step_no": 13,
+     "kind": "value",
+     "gist": "每段相对滑程 0.9 m",
+     "class": "split",
+     "point_id": "A-08-S11",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "s_rel=(v1+v0)Δt-Rational(1,2)μgΔt²=(2+1)×0.6-0.5×5×0.6²=0.9 m",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S14",
+     "step_no": 14,
+     "kind": "value",
+     "gist": "每段位移 0.3 m",
+     "class": "split",
+     "point_id": "A-08-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "d1=v1Δt-Rational(1,2)μgΔt²=2×0.6-0.5×5×0.6²=0.3 m",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S15",
+     "step_no": 15,
+     "kind": "judgment",
+     "gist": "判 10 个整间隔、余 0.3 m",
+     "class": "split",
+     "point_id": "A-08-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "10 个完整间隔后位置 x=10×0.3=3.0 m，仍在传送带上",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S16",
+     "step_no": 16,
+     "kind": "equation",
+     "gist": "列末段剩余距离方程",
+     "class": "split",
+     "point_id": "A-08-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由 v1t_e-Rational(1,2)μg t_e² 等于剩余距离 0.3 m 列方程",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S17",
+     "step_no": 17,
+     "kind": "discussion",
+     "gist": "解两根取 t_e=0.2 s",
+     "class": "split",
+     "point_id": "A-08-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "两根为 0.2 s 和 0.6 s；b 先向右越过 M 离开传送带，故取较小根 t_e=0.2 s",
+     "note": ""
+    },
+    {
+     "step_id": "A-08-S18",
+     "step_no": 18,
+     "kind": "value",
+     "gist": "末段相对滑程 0.5 m",
+     "class": "split",
+     "point_id": "A-08-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "s_e=(v1+v0)t_e-Rational(1,2)μg t_e²=3×0.2-0.5×5×0.2²=0.5 m",
+     "note": "此值同时被金标 S11 引用（9.5 m 的末段），S11 的 by 里也列本步"
+    },
+    {
+     "step_id": "A-08-S19",
+     "step_no": 19,
+     "kind": "value",
+     "gist": "Q=95 J",
+     "class": "primary",
+     "point_id": "A-08-S11",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "Qheat",
+       "model": "Q",
+       "why": "摩擦生热"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "总热量 Q=Q1+Q2=95 J",
+     "note": ""
+    }
+   ],
+   "points": [
+    {
+     "point_id": "A-08-S01",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-08-S02",
+      "A-08-S01"
+     ],
+     "note": "值 + 守恒式两步",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S02",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-08-S03"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S03",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-08-S04"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S04",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-08-S05"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S05",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-08-S06"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S06",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "A-08-S07",
+      "A-08-S08",
+      "A-08-S09",
+      "A-08-S10"
+     ],
+     "note": "按表口径本点要「判方向 + a_b=5 + 先减速后共速（t₁、x₁、匀速段）」，四件分散在四步；a_b=5 只在 S08 里 inline 且带负号，S07 只判方向",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S07",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "A-08-S10",
+      "A-08-S09",
+      "A-08-S08"
+     ],
+     "note": "t、s1、t1 三步，按点聚合",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S08",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-08-S11"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S09",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-08-S12",
+      "A-08-S13",
+      "A-08-S14"
+     ],
+     "note": "按表口径本点要「Δt=0.6 + 对地位移 0.3 向右 + 相对路程 0.9」，三步分别给；拆开看任何单步都不足，合起来齐",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S10",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-08-S14",
+      "A-08-S15",
+      "A-08-S16",
+      "A-08-S17",
+      "A-08-S18"
+     ],
+     "note": "周期净位移、整周期数、剩余距离、舍根、末段滑程五步",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-08-S11",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-08-S19",
+      "A-08-S13",
+      "A-08-S18"
+     ],
+     "note": "9.5 m 由 S13（10×0.9）与 S18（0.5）拼出，Q 在 S19",
+     "closest": null,
+     "gap": null
+    }
+   ],
+   "judgment": {
+    "new_points": [],
+    "none_points": []
+   }
+  },
+  {
+   "qid": "A-02",
+   "gold_steps": 15,
+   "model_steps": 19,
+   "steps": [
+    {
+     "step_id": "A-02-S01",
+     "step_no": 1,
+     "kind": "judgment",
+     "gist": "读 v–t 图三个时刻的读数",
+     "class": "primary",
+     "point_id": "A-02-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由图乙读出：t=0时B速度为6/5 v0，A静止",
+     "note": "一句读了 t=0、t0、2t0 三个时刻；金标 S01 只登记前两条，2t0 的两条分别支撑 S09、S10（见说明 §3）"
+    },
+    {
+     "step_id": "A-02-S02",
+     "step_no": 2,
+     "kind": "equation",
+     "gist": "第一次碰撞前后水平动量守恒",
+     "class": "primary",
+     "point_id": "A-02-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": true,
+     "evidence": "水平方向系统不受外力，动量守恒",
+     "note": "[等价形式] 金标写压缩最短共速的 M·1.2v₀=(M+m)v₀；模型写碰后分离的 M·1.2v₀=m·2v₀+M·0.8v₀。两式同解 M=5m，但不是同一物理时刻、字面不等价——照字面匹配会判 0（见说明 §5）"
+    },
+    {
+     "step_id": "A-02-S03",
+     "step_no": 3,
+     "kind": "value",
+     "gist": "M=5m",
+     "class": "primary",
+     "point_id": "A-02-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由动量守恒式解得M=5m",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S04",
+     "step_no": 4,
+     "kind": "judgment",
+     "gist": "判压缩最大时二者共速",
+     "class": "split",
+     "point_id": "A-02-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "弹簧压缩量最大时A、B速度相等",
+     "note": "金标 S04 的标题是「动能损失＝最大弹性势能」，判定句在 S04 里，模型把它单列成一步"
+    },
+    {
+     "step_id": "A-02-S05",
+     "step_no": 5,
+     "kind": "equation",
+     "gist": "列初动能＝共速动能＋Ep",
+     "class": "primary",
+     "point_id": "A-02-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "初动能等于共速时总动能与弹簧最大弹性势能之和",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S06",
+     "step_no": 6,
+     "kind": "value",
+     "gist": "Ep=3/5 m v0²",
+     "class": "primary",
+     "point_id": "A-02-S05",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得Ep,max=3/5 m v0^2",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S07",
+     "step_no": 7,
+     "kind": "judgment",
+     "gist": "判最大压缩量＝s_B−s_A",
+     "class": "split",
+     "point_id": "A-02-S08",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "即x_max=s_B-s_A",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S08",
+     "step_no": 8,
+     "kind": "equation",
+     "gist": "质心匀速式＋s_A=9/25 v0t0",
+     "class": "primary",
+     "point_id": "A-02-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "故t=t0时质心位移为v0t0",
+     "note": "金标 S06 与 S07 登记同一方程 m·s_A+5m·s_B=6m·v₀t₀（一处作判据、一处作计算），本步的方程同时是两点的证据。按 §5.1 字面这是「真合并」，但标 merged 会撞 §10.2 断言（S07 另有 S09 独立给值，home 只能是 1:n）——按断言优先标 primary(S06)+复用，见卡面缺口 #1"
+    },
+    {
+     "step_id": "A-02-S09",
+     "step_no": 9,
+     "kind": "value",
+     "gist": "s_B=141/125 v0t0",
+     "class": "primary",
+     "point_id": "A-02-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "解得s_B=141/125 v0t0",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S10",
+     "step_no": 10,
+     "kind": "value",
+     "gist": "x_max=96/125 v0t0",
+     "class": "primary",
+     "point_id": "A-02-S08",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "x_max=s_B-s_A=(141/125-9/25)v0t0=96/125 v0t0",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S11",
+     "step_no": 11,
+     "kind": "judgment",
+     "gist": "由最高点相同判第二次碰后 A 仍 2v0",
+     "class": "primary",
+     "point_id": "A-02-S09",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "说明第二次碰后A沿斜面向上的初速度大小仍为2v0",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S12",
+     "step_no": 12,
+     "kind": "judgment",
+     "gist": "判碰前 B=4/5v0、A 向左",
+     "class": "split",
+     "point_id": "A-02-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "第二次碰撞前B速度仍为4/5 v0",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S13",
+     "step_no": 13,
+     "kind": "equation",
+     "gist": "第二次碰撞动量守恒（A 反向取负）",
+     "class": "primary",
+     "point_id": "A-02-S10",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "M",
+       "model": "5m",
+       "why": "已代入 M=5m"
+      },
+      {
+       "gold": "v1",
+       "model": "w",
+       "why": "A 第二次碰前速度"
+      },
+      {
+       "gold": "v2p",
+       "model": "u_B",
+       "why": "B 第二次碰后速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "设第二次碰前A速度大小为w，方向向左；碰后B速度为u_B",
+     "note": ""
+    },
+    {
+     "step_id": "A-02-S14",
+     "step_no": 14,
+     "kind": "equation",
+     "gist": "用相对速度等大反向替代动能守恒",
+     "class": "primary",
+     "point_id": "A-02-S11",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": true,
+     "evidence": "碰后A、B相对速度与碰前等大反向",
+     "note": "[等价形式] 金标写动能守恒式（含 ½Mv² 四项）；模型写一维弹性碰撞的等价比（相对速度反向），没有出现任何 ½mv² 项。物理等价，字面命中不了——照字面匹配会判 0"
+    },
+    {
+     "step_id": "A-02-S15",
+     "step_no": 15,
+     "kind": "value",
+     "gist": "解出 w=v0",
+     "class": "primary",
+     "point_id": "A-02-S12",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得w=v0",
+     "note": "金标 S12 要求「并说明另一解不合题意」；按表口径「只给一个解且未说明，给 1 分」，本步仍拿满，不扣"
+    },
+    {
+     "step_id": "A-02-S16",
+     "step_no": 16,
+     "kind": "judgment",
+     "gist": "复述滑回速度 v0、声明重力总功为零",
+     "class": "meta",
+     "point_id": null,
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "从滑上到滑回底端，重力总功为零，摩擦力做负功",
+     "note": "不含独立可判事实：前半复述 S15 结论，后半是 S17/S18 的做功依据"
+    },
+    {
+     "step_id": "A-02-S17",
+     "step_no": 17,
+     "kind": "equation",
+     "gist": "上滑动能定理式",
+     "class": "primary",
+     "point_id": "A-02-S13",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "对第一次上滑过程应用动能定理",
+     "note": "式含 L 与 μ 两个未知量，靠 S17/S18 联立消 gL"
+    },
+    {
+     "step_id": "A-02-S18",
+     "step_no": 18,
+     "kind": "equation",
+     "gist": "全程能量式（上滑＋下滑合并）",
+     "class": "primary",
+     "point_id": "A-02-S14",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": true,
+     "evidence": "摩擦力做负功共2μmgLcosθ",
+     "note": "[等价形式] 金标的下滑式是 mgLsinθ−μmgLcosθ=½mv₀²；模型只写全程式，没有出现「mgLsinθ 正项」。口径说「与上滑式符号相反是采分关键」，本步恰好看不到这个符号结构"
+    },
+    {
+     "step_id": "A-02-S19",
+     "step_no": 19,
+     "kind": "value",
+     "gist": "μ=9/20=0.45",
+     "class": "primary",
+     "point_id": "A-02-S15",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "解得μ=9/20",
+     "note": ""
+    }
+   ],
+   "points": [
+    {
+     "point_id": "A-02-S01",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-02-S01"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S02",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-02-S02"
+     ],
+     "note": "路径不同（碰后 vs 共速），同解 M=5m",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S03",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-02-S03"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S04",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "A-02-S04",
+      "A-02-S05"
+     ],
+     "note": "判定句 + 能量式",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S05",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-02-S06"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S06",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-02-S08"
+     ],
+     "note": "模型没有「面积」二字，但写了「质心匀速」——表口径承认这条替代判据；未提「相对简谐」，可能是 2 分里只拿 1",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S07",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "A-02-S09",
+      "A-02-S08"
+     ],
+     "note": "方程在 S08（该步 class 标在 S06 上，同一方程被两点登记），值在 S09",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S08",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "A-02-S10",
+      "A-02-S07"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S09",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-02-S11"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S10",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-02-S12",
+      "A-02-S13"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S11",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-02-S14"
+     ],
+     "note": "等价比替代动能式，见 step note",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S12",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-02-S15"
+     ],
+     "note": "舍根论证缺失，1 分里可能只拿一半",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S13",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-02-S17"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S14",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-02-S18"
+     ],
+     "note": "全程式等价，非同一式",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-02-S15",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-02-S19"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    }
+   ],
+   "judgment": {
+    "new_points": [],
+    "none_points": []
+   }
+  },
+  {
+   "qid": "B-02",
+   "gold_steps": 6,
+   "model_steps": 12,
+   "steps": [
+    {
+     "step_id": "B-02-S01",
+     "step_no": 1,
+     "kind": "judgment",
+     "gist": "判最高点速度为零、取正方向",
+     "class": "split",
+     "point_id": "B-02-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "在最高点瞬时速度为零",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S02",
+     "step_no": 2,
+     "kind": "equation",
+     "gist": "列 v0−gt=0",
+     "class": "split",
+     "point_id": "B-02-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "从抛出到最高点有 v0 - g t = 0",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S03",
+     "step_no": 3,
+     "kind": "value",
+     "gist": "v0=gt",
+     "class": "primary",
+     "point_id": "B-02-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "解得 v0 = g t",
+     "note": "与 S02 同一式子换形，但补出了金标 value 字段要的 v0=gt，判 split 不判 dup"
+    },
+    {
+     "step_id": "B-02-S04",
+     "step_no": 4,
+     "kind": "judgment",
+     "gist": "判炸裂瞬间动量守恒、初动量为零",
+     "class": "split",
+     "point_id": "B-02-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "炸裂过程动量守恒；最高点爆炸前总动量为零",
+     "note": "金标限定「只对水平方向」；模型先说「炸裂过程动量守恒」（未限定方向），S05 才限定水平"
+    },
+    {
+     "step_id": "B-02-S05",
+     "step_no": 5,
+     "kind": "equation",
+     "gist": "水平动量守恒式 2mv+m vBx=0",
+     "class": "split",
+     "point_id": "B-02-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "水平方向动量守恒：2m v + m vBx = 0",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S06",
+     "step_no": 6,
+     "kind": "value",
+     "gist": "vB=2v",
+     "class": "primary",
+     "point_id": "B-02-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v2",
+       "model": "vB",
+       "why": "B 的速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "故B的速度大小为 vB = 2v",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S07",
+     "step_no": 7,
+     "kind": "judgment",
+     "gist": "判二者下落时间相同",
+     "class": "split",
+     "point_id": "B-02-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "二者在竖直方向的运动相同，落地时间相同",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S08",
+     "step_no": 8,
+     "kind": "equation",
+     "gist": "H=½g t²",
+     "class": "split",
+     "point_id": "B-02-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "最高点相对地面的高度 H = 1/2 g t^2",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S09",
+     "step_no": 9,
+     "kind": "value",
+     "gist": "T=t",
+     "class": "primary",
+     "point_id": "B-02-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "t2",
+       "model": "T",
+       "why": "下落时间"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "代入H=1/2gt^2得T=t",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S10",
+     "step_no": 10,
+     "kind": "value",
+     "gist": "x_A=v t",
+     "class": "split",
+     "point_id": "B-02-S05",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "下落的水平位移 xA = vT = v t",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S11",
+     "step_no": 11,
+     "kind": "value",
+     "gist": "x_B=2v t",
+     "class": "split",
+     "point_id": "B-02-S05",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "下落的水平位移 xB = 2vT = 2v t",
+     "note": ""
+    },
+    {
+     "step_id": "B-02-S12",
+     "step_no": 12,
+     "kind": "value",
+     "gist": "d=3vt",
+     "class": "primary",
+     "point_id": "B-02-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "距离 d = xA + xB = 3v t",
+     "note": "「两侧相加」在「位于最高点正下方的两侧」里"
+    }
+   ],
+   "points": [
+    {
+     "point_id": "B-02-S01",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-02-S03",
+      "B-02-S02",
+      "B-02-S01"
+     ],
+     "note": "三步：判定、方程、解",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-02-S02",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-02-S04",
+      "B-02-S05"
+     ],
+     "note": "S04 未限定方向，只有 S05 限定水平；金标「竖直方向成对抵消」的论证缺失",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-02-S03",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-02-S06",
+      "B-02-S05"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-02-S04",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-02-S09",
+      "B-02-S07",
+      "B-02-S08"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-02-S05",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-02-S10",
+      "B-02-S11"
+     ],
+     "note": "模型没写合并式 s₁+s₂=(v+v₂)t，只分别给 x_A、x_B",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-02-S06",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "B-02-S12"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    }
+   ],
+   "judgment": {
+    "new_points": [],
+    "none_points": []
+   }
+  },
+  {
+   "qid": "B-09",
+   "gold_steps": 7,
+   "model_steps": 12,
+   "steps": [
+    {
+     "step_id": "B-09-S01",
+     "step_no": 1,
+     "kind": "value",
+     "gist": "由速度位移关系求 v1=0.3",
+     "class": "primary",
+     "point_id": "B-09-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由速度—位移关系 v1^2-v0^2=-2μg s1 求 v1",
+     "note": "模型把 a=μg 直接写进式里，没有独立的 a=μg 步（金标 S01 单独 2 分）"
+    },
+    {
+     "step_id": "B-09-S02",
+     "step_no": 2,
+     "kind": "value",
+     "gist": "等质量正碰求乙 v2=0.2",
+     "class": "primary",
+     "point_id": "B-09-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v1p",
+       "model": "v_after",
+       "why": "甲碰后速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "有 m v1=m v_after+m v2，解得乙碰后速度 v2",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S03",
+     "step_no": 3,
+     "kind": "value",
+     "gist": "求乙滑行距离 0.02 m",
+     "class": "split",
+     "point_id": "B-09-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "从碰后到速度减为零的最大滑行距离 L 满足 0-v2^2=-2μgL",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S04",
+     "step_no": 4,
+     "kind": "judgment",
+     "gist": "判 L=s2，刚好到达边框 a",
+     "class": "primary",
+     "point_id": "B-09-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "故乙速度恰减到零时刚好到达边框a，能够滑动到边框a",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S05",
+     "step_no": 5,
+     "kind": "equation",
+     "gist": "列 a=μg",
+     "class": "primary",
+     "point_id": "B-09-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由牛顿第二定律得 a=μg",
+     "note": "金标强调甲、乙相同；模型只对甲写，乙在 S03 里另写「加速度大小为 μg」"
+    },
+    {
+     "step_id": "B-09-S06",
+     "step_no": 6,
+     "kind": "value",
+     "gist": "a=1 m/s²",
+     "class": "split",
+     "point_id": "B-09-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 a=1 m/s^2",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S07",
+     "step_no": 7,
+     "kind": "equation",
+     "gist": "碰前段 v0−v1=a t1",
+     "class": "split",
+     "point_id": "B-09-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由 v0-v1=a t1 列式",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S08",
+     "step_no": 8,
+     "kind": "value",
+     "gist": "t1=0.1 s",
+     "class": "primary",
+     "point_id": "B-09-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 t1=0.1 s",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S09",
+     "step_no": 9,
+     "kind": "equation",
+     "gist": "碰后段 v_after−a t2=0",
+     "class": "split",
+     "point_id": "B-09-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由 v_after-a t2=0 列式",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S10",
+     "step_no": 10,
+     "kind": "value",
+     "gist": "t2=0.1 s",
+     "class": "split",
+     "point_id": "B-09-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 t2=0.1 s",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S11",
+     "step_no": 11,
+     "kind": "equation",
+     "gist": "T=t1+t2",
+     "class": "split",
+     "point_id": "B-09-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "总时间等于碰前运动时间与碰后运动时间之和，即 T=t1+t2",
+     "note": ""
+    },
+    {
+     "step_id": "B-09-S12",
+     "step_no": 12,
+     "kind": "value",
+     "gist": "T=0.2 s",
+     "class": "primary",
+     "point_id": "B-09-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 T=0.2 s",
+     "note": ""
+    }
+   ],
+   "points": [
+    {
+     "point_id": "B-09-S01",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-09-S05",
+      "B-09-S06",
+      "B-09-S03"
+     ],
+     "note": "表口径「只对甲或只对乙列式给 1 分」：模型对甲在 S05 列式，对乙在 S03 里写「加速度大小为 μg」，两边都有，可拿满；值 a=1 在 S06",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-09-S02",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-09-S01"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-09-S03",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "B-09-S02"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-09-S04",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-09-S04",
+      "B-09-S03"
+     ],
+     "note": "算距离 + 比边框",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-09-S05",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-09-S07",
+      "B-09-S09",
+      "B-09-S11"
+     ],
+     "note": "模型没写「甲分两段」这句判定，而用碰前段（S07）、碰后段（S09）、总时间＝两段之和（S11）把结构显式化——结构隐含型，见卡面缺口 §2",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-09-S06",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-09-S08",
+      "B-09-S07"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-09-S07",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-09-S12",
+      "B-09-S10",
+      "B-09-S09",
+      "B-09-S11"
+     ],
+     "note": "四步拼出总时间",
+     "closest": null,
+     "gap": null
+    }
+   ],
+   "judgment": {
+    "new_points": [],
+    "none_points": []
+   }
+  },
+  {
+   "qid": "A-10",
+   "gold_steps": 8,
+   "model_steps": 12,
+   "steps": [
+    {
+     "step_id": "A-10-S01",
+     "step_no": 1,
+     "kind": "judgment",
+     "gist": "判球外等效于中心集中质量",
+     "class": "split",
+     "point_id": "A-10-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "球内物质对球外恒星的引力等效于全部质量 M 集中在星系中心",
+     "note": "即金标 S01「引力只由球内总质量 M 提供」的依据"
+    },
+    {
+     "step_id": "A-10-S02",
+     "step_no": 2,
+     "kind": "equation",
+     "gist": "列 GMm/r²=mv²/r",
+     "class": "primary",
+     "point_id": "A-10-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "Gc",
+       "model": "G",
+       "why": "引力常量，全题统一改名"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "r>R 处万有引力提供向心力，列方程 GMm/r^2=mv^2/r",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S03",
+     "step_no": 3,
+     "kind": "equation",
+     "gist": "v=√(GM/r)",
+     "class": "primary",
+     "point_id": "A-10-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "Gc",
+       "model": "G",
+       "why": "引力常量"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 v^2=GM/r，因此 v=sqrt(GM/r)",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S04",
+     "step_no": 4,
+     "kind": "judgment",
+     "gist": "M(r)=M r³/R³",
+     "class": "primary",
+     "point_id": "A-10-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "M0",
+       "model": "M(r)",
+       "why": "半径 r 内的质量"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "M(r)=M*r^3/R^3",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S05",
+     "step_no": 5,
+     "kind": "equation",
+     "gist": "球内向心方程（用 M(r)）",
+     "class": "primary",
+     "point_id": "A-10-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "M0",
+       "model": "M(r)",
+       "why": "半径 r 内的质量"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "列向心力方程 G*M(r)*m/r^2=mv^2/r",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S06",
+     "step_no": 6,
+     "kind": "equation",
+     "gist": "得 v²=GMr²/R³ 与 v=r√(GM/R³)",
+     "class": "primary",
+     "point_id": "A-10-S05",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 v^2=GM*r^2/R^3，即 v=r*sqrt(GM/R^3)",
+     "note": "同一步也给出金标 S04 的代入结果，S04 记 1:n"
+    },
+    {
+     "step_id": "A-10-S07",
+     "step_no": 7,
+     "kind": "judgment",
+     "gist": "判 r>R 速度几乎不变，取 v(nR)≈v(R)",
+     "class": "primary",
+     "point_id": "A-10-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "r>R 区域恒星速度大小几乎不变，因此取 v(nR)≈v(R)",
+     "note": "金标 S06 还含 v₀²=GcM/R；模型把它放在 S08"
+    },
+    {
+     "step_id": "A-10-S08",
+     "step_no": 8,
+     "kind": "equation",
+     "gist": "v_R²=GM/R",
+     "class": "split",
+     "point_id": "A-10-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v0",
+       "model": "v_R",
+       "why": "R 处速率"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 v_R^2=GM/R",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S09",
+     "step_no": 9,
+     "kind": "judgment",
+     "gist": "判 nR 内含暗物质，等效质量 M+M′",
+     "class": "split",
+     "point_id": "A-10-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "等效中心总质量为 M+M′",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S10",
+     "step_no": 10,
+     "kind": "equation",
+     "gist": "nR 处列向心力",
+     "class": "split",
+     "point_id": "A-10-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "v0",
+       "model": "v_n",
+       "why": "nR 处速率"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "对 r=nR 处恒星列万有引力提供向心力",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S11",
+     "step_no": 11,
+     "kind": "equation",
+     "gist": "联立恒速条件",
+     "class": "primary",
+     "point_id": "A-10-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "由 v_n≈v_R 且 v_R^2=GM/R，代入得 G(M+M′)/(nR)=GM/R",
+     "note": ""
+    },
+    {
+     "step_id": "A-10-S12",
+     "step_no": 12,
+     "kind": "equation",
+     "gist": "M′=(n−1)M",
+     "class": "primary",
+     "point_id": "A-10-S08",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "(n-1)M",
+     "note": ""
+    }
+   ],
+   "points": [
+    {
+     "point_id": "A-10-S01",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-10-S02",
+      "A-10-S01"
+     ],
+     "note": "球壳定理 + 方程",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-10-S02",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-10-S03"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-10-S03",
+     "score": 2,
+     "home": "1:1",
+     "by": [
+      "A-10-S04"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-10-S04",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "A-10-S05",
+      "A-10-S06"
+     ],
+     "note": "方程 + 代入结果",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-10-S05",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-10-S06"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-10-S06",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-10-S07",
+      "A-10-S08"
+     ],
+     "note": "恒速判断 + v₀ 关系",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-10-S07",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "A-10-S11",
+      "A-10-S10",
+      "A-10-S09",
+      "A-10-S08"
+     ],
+     "note": "表口径「只写一处方程 0 分」：R 处方程在 S08（v_R²=GM/R，即两边除 R），nR 处在 S10，联立在 S11，三步齐才给满",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "A-10-S08",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "A-10-S12"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    }
+   ],
+   "judgment": {
+    "new_points": [],
+    "none_points": []
+   }
+  },
+  {
+   "qid": "B-12",
+   "gold_steps": 9,
+   "model_steps": 10,
+   "steps": [
+    {
+     "step_id": "B-12-S01",
+     "step_no": 1,
+     "kind": "equation",
+     "gist": "整体法列 N1=(m+M)g",
+     "class": "primary",
+     "point_id": "B-12-S01",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "把滑块和滑杆看成一个整体",
+     "note": "同一步的方程也是金标 S02 的式子，S02 的 by 里也列本步"
+    },
+    {
+     "step_id": "B-12-S02",
+     "step_no": 2,
+     "kind": "value",
+     "gist": "N1=8 N",
+     "class": "primary",
+     "point_id": "B-12-S02",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 N1=8 N",
+     "note": "equation 字段照抄 S01，若只看该字段会误判 dup；实为取值步"
+    },
+    {
+     "step_id": "B-12-S03",
+     "step_no": 3,
+     "kind": "equation",
+     "gist": "判杆受摩擦力向上、隔离杆列式",
+     "class": "primary",
+     "point_id": "B-12-S03",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "滑杆受到的摩擦力向上；滑杆仍静止，对其竖直方向列平衡方程 N2+f=Mg",
+     "note": ""
+    },
+    {
+     "step_id": "B-12-S04",
+     "step_no": 4,
+     "kind": "value",
+     "gist": "N2=5 N",
+     "class": "primary",
+     "point_id": "B-12-S04",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得 N2=5 N",
+     "note": ""
+    },
+    {
+     "step_id": "B-12-S05",
+     "step_no": 5,
+     "kind": "equation",
+     "gist": "A→B 动能定理式",
+     "class": "primary",
+     "point_id": "B-12-S05",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "重力和摩擦力均做负功，由动能定理列式",
+     "note": "S05/S06 对应金标「列式 2 分 + 结果 1 分」两步"
+    },
+    {
+     "step_id": "B-12-S06",
+     "step_no": 6,
+     "kind": "value",
+     "gist": "v1=8 m/s",
+     "class": "primary",
+     "point_id": "B-12-S06",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "解得滑块碰撞前速度大小 v1=8 m/s，方向向上",
+     "note": "金标 S05 的 value 字段也登记 v1=8，本步同时是 S05、S06 的证据（金标侧重复，见卡面缺口 §1）"
+    },
+    {
+     "step_id": "B-12-S07",
+     "step_no": 7,
+     "kind": "equation",
+     "gist": "完全非弹性碰撞动量守恒",
+     "class": "split",
+     "point_id": "B-12-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "系统在竖直方向动量近似守恒；碰后完全非弹性",
+     "note": "用 v 记共同速度，没踩口径里的「把碰后速度写成 v₁」一票否决项"
+    },
+    {
+     "step_id": "B-12-S08",
+     "step_no": 8,
+     "kind": "value",
+     "gist": "v=2 m/s",
+     "class": "primary",
+     "point_id": "B-12-S07",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [
+      {
+       "gold": "vc",
+       "model": "v",
+       "why": "碰后共同速度"
+      }
+     ],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得碰后共同速度 v=2 m/s",
+     "note": ""
+    },
+    {
+     "step_id": "B-12-S09",
+     "step_no": 9,
+     "kind": "equation",
+     "gist": "列 ½(m+M)v²=(m+M)gh",
+     "class": "primary",
+     "point_id": "B-12-S08",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": true,
+     "evidence": "由机械能守恒或运动学公式列最大高度方程",
+     "note": "[等价形式] 金标写 v_c²=2gh；模型写 ½(m+M)v²=(m+M)gh，约去质量后同式（§6.2 两边同除，最轻的一种）"
+    },
+    {
+     "step_id": "B-12-S10",
+     "step_no": 10,
+     "kind": "value",
+     "gist": "h=0.2 m",
+     "class": "primary",
+     "point_id": "B-12-S09",
+     "point_ids": null,
+     "dup_of": null,
+     "alias": [],
+     "inline_only": false,
+     "equiv_form": false,
+     "evidence": "得滑杆向上运动的最大高度 h=0.2 m",
+     "note": ""
+    }
+   ],
+   "points": [
+    {
+     "point_id": "B-12-S01",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-12-S01"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S02",
+     "score": 1,
+     "home": "1:n",
+     "by": [
+      "B-12-S02",
+      "B-12-S01"
+     ],
+     "note": "方程在 S01、值在 S02",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S03",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-12-S03"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S04",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-12-S04"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S05",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-12-S05",
+      "B-12-S06"
+     ],
+     "note": "金标 S05 的 value 也记 v1=8，与 S06 重复；模型 S06 同时是两点证据",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S06",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-12-S06"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S07",
+     "score": 2,
+     "home": "1:n",
+     "by": [
+      "B-12-S08",
+      "B-12-S07"
+     ],
+     "note": "方程 + 值",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S08",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-12-S09"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    },
+    {
+     "point_id": "B-12-S09",
+     "score": 1,
+     "home": "1:1",
+     "by": [
+      "B-12-S10"
+     ],
+     "note": "",
+     "closest": null,
+     "gap": null
+    }
+   ],
+   "judgment": {
+    "new_points": [],
+    "none_points": []
+   }
+  }
+ ]
+}

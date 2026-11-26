@@ -1,0 +1,28 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-20_app22386b29.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-20_app22386b29_validated.json
+
+对象：B-20（题 B-20，13 步）
+L1  pass 3 / fail 0 / na 10 / skipped 0    判定通过率 100.0%    na 比例 76.9%
+L2  pass 3 / fail 0 / na 10 / skipped 0    判定通过率 100.0%    na 比例 76.9%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-20-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-20-S01 [L2] data_error(empty): sympy 串为空
+  - B-20-S04 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-20-S04 [L2] data_error(empty): sympy 串为空
+  - B-20-S05 [L1] per_step：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-(M+m)*a_c｜chain：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-(M+m)*a_c
+  - B-20-S05 [L2] data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-(M+m)*a_c
+  - B-20-S06 [L1] per_step：data_error(unknown_symbol): 符号「a_8」不在白名单：(a_8-a_c)*M-(F_8-F_c)｜chain：data_error(unknown_symbol): 符号「a_8」不在白名单：(a_8-a_c)*M-(F_8-F_c)
+  - B-20-S06 [L2] data_error(unknown_symbol): 符号「a_8」不在白名单：(a_8-a_c)*M-(F_8-F_c)
+  - B-20-S07 [L1] per_step：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-mu*m*g-M*a_c｜chain：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-mu*m*g-M*a_c
+  - B-20-S07 [L2] data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-mu*m*g-M*a_c
+  - B-20-S08 [L1] per_step：data_error(unknown_symbol): 符号「a_m」不在白名单：a_m-mu*g+a_M-(F-mu*m*g)/M｜chain：data_error(unknown_symbol): 符号「a_m」不在白名单：a_m-mu*g+a_M-(F-mu*m*g)/M
+  - B-20-S08 [L2] data_error(unknown_symbol): 符号「a_m」不在白名单：a_m-mu*g+a_M-(F-mu*m*g)/M
+  - B-20-S09 [L1] per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2
+  - B-20-S09 [L2] data_error(unknown_symbol): 符号「v_P」不在白名单：v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2
+  - B-20-S10 [L1] per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：m*v_P+M*V_P-m*v_Q-M*V_Q｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：m*v_P+M*V_P-m*v_Q-M*V_Q
+  - B-20-S10 [L2] data_error(unknown_symbol): 符号「v_P」不在白名单：m*v_P+M*V_P-m*v_Q-M*V_Q
+  - B-20-S11 [L1] per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R
+  - B-20-S11 [L2] data_error(unknown_symbol): 符号「v_P」不在白名单：Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\B-20_app22386b29_validated.json

@@ -1,0 +1,181 @@
+{
+  "qid": "A-05",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "A-05-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        3.0
+      ],
+      "by": [
+        "A-05-S01",
+        "A-05-S02",
+        "A-05-S03"
+      ],
+      "basis": "无锚点：A-05-S01、A-05-S02、A-05-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S02",
+      "credit": "hit",
+      "score": 3.0,
+      "score_range": [
+        3.0,
+        3.0
+      ],
+      "by": [
+        "A-05-S04"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：Rational(1,2)*m*v0**2 - Rational(1,2)*m*(v0/3)**2 - 2*m*g*R",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-05-S03",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-05-S05"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：v0**2 - Rational(9,2)*g*R",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-05-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-05-S06"
+      ],
+      "basis": "欠定：A-05-S06 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-05-S07"
+      ],
+      "basis": "欠定：A-05-S07 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-05-S09"
+      ],
+      "basis": "slot_collision：槽位 M 在题内被赋 2 个不同值",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-05-S08",
+        "A-05-S09"
+      ],
+      "basis": "slot_collision：槽位 M 在题内被赋 2 个不同值",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S08",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-05-S10"
+      ],
+      "basis": "slot_collision：槽位 M 在题内被赋 2 个不同值",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S09",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-05-S09"
+      ],
+      "basis": "slot_collision：槽位 M 在题内被赋 2 个不同值",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S10",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-05-S11",
+        "A-05-S12"
+      ],
+      "basis": "merged_step：A-05-S11 命中数据缺陷——拆成两条：m*v1 = m*u + M*V；E0 + 1/2*m*v1**2 = 1/2*m*u**2 + 1/2*M*V**2",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-05-S11",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-05-S13"
+      ],
+      "basis": "slot_collision：槽位 M 在题内被赋 2 个不同值",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "hit": 2,
+    "miss": 0,
+    "na": 9,
+    "score": 4.0,
+    "score_total": 20.0,
+    "judged_rate": "2/11",
+    "hit_rate": "2/2"
+  },
+  "na_reasons": {
+    "无锚点": 1,
+    "欠定": 2,
+    "slot_collision": 5,
+    "merged_step": 1
+  }
+}

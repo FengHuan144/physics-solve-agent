@@ -1,0 +1,35 @@
+{
+  "qid": "A-02",
+  "tag": "_t26fix",
+  "draft": "A-02_draft.json",
+  "call": "A-02_call.json",
+  "cm": {
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "latency_ms": 0,
+    "tokens_in": 1326,
+    "tokens_out": 15555
+  },
+  "n_steps": 19,
+  "n_gold": 15,
+  "n_eq": 13,
+  "issues": [
+    "givens.symbol 去下划线归一：'v_B0/v0' → 'vB0/v0'",
+    "givens.symbol 仍不合规，已丢弃：'v_B0/v0'",
+    "givens.symbol 去下划线归一：'v_A(t0)/v0' → 'vA(t0)/v0'",
+    "givens.symbol 仍不合规，已丢弃：'v_A(t0)/v0'",
+    "givens.symbol 去下划线归一：'v_A(2t0)/v0' → 'vA(2t0)/v0'",
+    "givens.symbol 仍不合规，已丢弃：'v_A(2t0)/v0'",
+    "givens.symbol 去下划线归一：'v_B(2t0)/v0' → 'vB(2t0)/v0'",
+    "givens.symbol 仍不合规，已丢弃：'v_B(2t0)/v0'",
+    "givens.symbol 去下划线归一：'s_A(t0)' → 'sA(t0)'",
+    "givens.symbol 仍不合规，已丢弃：'s_A(t0)'",
+    "givens.symbol 仍不合规，已丢弃：'sinθ'",
+    "givens.symbol 仍不合规，已丢弃：'cosθ'"
+  ],
+  "n_e": 0,
+  "n_w": 6,
+  "e_lines": [],
+  "chained": true,
+  "note": "离线重转：未调用 API，cm 取自 raw/A-02_call.json"
+}

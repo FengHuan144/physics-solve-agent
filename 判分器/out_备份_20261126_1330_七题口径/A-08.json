@@ -1,0 +1,182 @@
+{
+  "qid": "A-08",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "A-08-S01",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S01",
+        "A-08-S02"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S01、A-08-S02；方程 m1*g*R - Rational(1,2)*m1*v1**2",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S02",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S03"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S03；方程 Nf - m1*g - m1*v1**2/R",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S03",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-08-S04"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S04；方程 Nf - 3*m1*g",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S04",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S05"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S05；方程 v2**2 - v1**2 + 2*mu*g*d",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S05",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S06"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S06；方程 v2p*(m1+m2) - 2*m1*v2",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-08-S07",
+        "A-08-S08"
+      ],
+      "basis": "无锚点：A-08-S07、A-08-S08 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S07",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-08-S09",
+        "A-08-S10"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S09、A-08-S10；方程 s1 - Rational(1,2)*(v2p+v0)*t1",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S08",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S11"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S11；方程 Iimp - m2*(v2b + v0)",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S09",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S12",
+        "A-08-S13",
+        "A-08-S14"
+      ],
+      "basis": "L1/L2 全 pass：A-08-S12、A-08-S13、A-08-S14；方程 v2b - mu*g*dt + v0",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-08-S10",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S15",
+        "A-08-S16"
+      ],
+      "basis": "白名单外符号：A-08-S15、A-08-S16 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S11",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-08-S18",
+        "A-08-S19"
+      ],
+      "basis": "白名单外符号：A-08-S18、A-08-S19 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "hit": 8,
+    "miss": 0,
+    "na": 3,
+    "score": 14.0,
+    "score_total": 19.0,
+    "judged_rate": "8/11",
+    "hit_rate": "8/8"
+  },
+  "na_reasons": {
+    "无锚点": 1,
+    "白名单外符号": 2
+  }
+}

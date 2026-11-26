@@ -1,0 +1,969 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-03",
+    "question_id": "A-03",
+    "group": "A",
+    "source": "2023 全国乙卷",
+    "question_no": 25,
+    "full_score": 20,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:10:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一竖直固定的长直圆管内有一质量为 M 的静止薄圆盘，圆盘与管的上端口距离为 l，圆管长度为 20l。一质量为 m＝M/3 的小球从管的上端口由静止下落，并撞在圆盘中心，圆盘向下滑动，所受滑动摩擦力与其所受重力大小相等。小球在管内运动时与管壁不接触，圆盘始终水平，小球与圆盘发生的碰撞均为弹性碰撞且碰撞时间极短。不计空气阻力，重力加速度大小为 g。求",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "竖直长直圆管（长 20l）内有薄圆盘，盘距上端口 l，小球自端口静止下落；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "第一次碰撞后瞬间小球和圆盘的速度大小。",
+        "score": 7
+      },
+      {
+        "no": "(2)",
+        "text": "在第一次碰撞到第二次碰撞之间，小球与圆盘间的最远距离。",
+        "score": 6
+      },
+      {
+        "no": "(3)",
+        "text": "圆盘在管内运动过程中，小球与圆盘碰撞的次数。",
+        "score": 7
+      }
+    ],
+    "stem_sha256": "cb08cc4ea765b996bb700b450f4d23f9b1d798fba7de1f37e638d372c70f4188",
+    "input_sha256": "8780dd2dda2af8676e1f651e8ecb92dc8a1c50794ca2f0fa59e5ed47a41e4571"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球",
+        "mass_symbol": "m",
+        "note": "质量 m＝M/3，自管口静止下落；与盘弹性碰撞，碰后做竖直上抛/下落"
+      },
+      {
+        "id": "obj2",
+        "name": "薄圆盘",
+        "mass_symbol": "M",
+        "note": "质量 M，初始静止于端口下 l 处；所受滑动摩擦力与重力等大，碰后匀速下滑"
+      },
+      {
+        "id": "obj3",
+        "name": "长直圆管",
+        "mass_symbol": "M",
+        "note": "竖直固定，长 20l；只提供约束，不参与动量交换"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "M",
+        "value": null,
+        "unit": "kg",
+        "text": "薄圆盘质量 M（符号量）"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "小球质量 m＝M/3（比值给定，无具体数值）"
+      },
+      {
+        "symbol": "L",
+        "value": null,
+        "unit": "m",
+        "text": "圆盘与管的上端口距离为 l，圆管长度为 20l —— 本档把 l 记作 L，管长即 20L"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度大小 g（符号量）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "自由下落",
+        "start": "小球自管口由静止下落",
+        "end": "小球到达盘面（速度 v₀＝√(2gL)）"
+      },
+      {
+        "no": 2,
+        "name": "第一次弹性碰撞",
+        "start": "球与盘接触的瞬间",
+        "end": "碰后球以 v₀/2 向上、盘以 v₀/2 向下"
+      },
+      {
+        "no": 3,
+        "name": "碰后相对运动至第二次碰撞",
+        "start": "第一次碰后瞬间",
+        "end": "球先上抛、回落到碰点后再追 l，追上盘（第二次碰撞）"
+      },
+      {
+        "no": 4,
+        "name": "后续碰撞与盘下滑",
+        "start": "第二次碰后",
+        "end": "盘到达管下端，共发生 4 次碰撞"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v2p",
+        "text": "第一次碰后小球与圆盘的速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "ds",
+        "text": "第一次到第二次碰撞之间球与盘的最远距离"
+      },
+      {
+        "no": "(3)",
+        "quantity": "n",
+        "text": "盘在管内运动过程中球与盘碰撞的次数"
+      }
+    ],
+    "assumptions": [
+      "取竖直向下为正方向；球碰后速度为负表示反弹向上",
+      "盘所受滑动摩擦力与重力等大反向 ⇒ 盘碰后匀速下滑（这是「盘匀速、球匀变速」的成立前提）",
+      "碰撞均为弹性碰撞且时间极短：每次碰中动量与动能同时守恒，位置不变",
+      "球在管内不与管壁接触，盘始终水平，两者只沿竖直方向运动（一维）",
+      "符号迁移：原文 l 记作 L（管长 20L）；v₁′/v₂′ 记作 v1p/v2p 且按「最近一次碰撞后」复用；n 借用为间隔序号（见回执 §需上报）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "自由下落求碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-03-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "碰撞动量守恒",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "弹性碰撞动能守恒",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "代入 m＝M/3 得两者速度大小",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "判定共速时相距最远",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "由速度相等求共速时刻",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "求两者位移：球回到碰点、盘下落 l",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "最远距离 = l",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "第二次碰前速度：球 3v₀/2、盘 v₀/2",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S09"
+    },
+    {
+      "step_no": 10,
+      "title": "第二次碰后：球静止、盘 v₀",
+      "depends_on": [
+        9
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S10"
+    },
+    {
+      "step_no": 11,
+      "title": "相邻两次碰撞间盘的位移规律 x_n = 2nl",
+      "depends_on": [
+        10
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S11"
+    },
+    {
+      "step_no": 12,
+      "title": "累计 21l > 20l，故只碰 4 次",
+      "depends_on": [
+        11
+      ],
+      "expanded": true,
+      "point_hint": "A-03-S12"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-03-S01",
+      "step_no": 1,
+      "title": "自由下落求碰前速度",
+      "point_id": "A-03-S01",
+      "kind": "equation",
+      "statement": "小球自管口静止下落 L 到盘面，只有重力做功：v₀²＝2gL，得 v₀＝√(2gL)。",
+      "equation": {
+        "latex": "v_{0}^{2} = 2 g L",
+        "sympy": "v0**2 - 2*g*L",
+        "symbols": [
+          "L",
+          "g",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "sqrt(2*g*L)",
+        "unit": "m/s",
+        "direction": "-y",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、g、v0 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "直接写 √(2gl) 也给（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S02",
+      "step_no": 2,
+      "title": "碰撞动量守恒",
+      "point_id": "A-03-S02",
+      "kind": "equation",
+      "statement": "取竖直向下为正：碰前球速 v₀、盘静止；碰后球 v₁′、盘 v₂′，m v₀＝m v₁′＋M v₂′。",
+      "equation": {
+        "latex": "m v_{0} = m v_{1p} + M v_{2p}",
+        "sympy": "m*v0 - m*v1p - M*v2p",
+        "symbols": [
+          "M",
+          "m",
+          "v0",
+          "v1p",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m、v0、v1p、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "未规定正方向但符号自洽不扣（口径）；向下为正，故 v₁′ 解出为负表示球反弹向上",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S03",
+      "step_no": 3,
+      "title": "弹性碰撞动能守恒",
+      "point_id": "A-03-S03",
+      "kind": "equation",
+      "statement": "碰撞时间极短、弹性碰撞：½mv₀²＝½mv₁′²＋½Mv₂′²（写「机械能守恒」同等）。",
+      "equation": {
+        "latex": "\\frac{1}{2} m v_{0}^{2} = \\frac{1}{2} m v_{1p}^{2} + \\frac{1}{2} M v_{2p}^{2}",
+        "sympy": "Rational(1,2)*m*v0**2 - Rational(1,2)*m*v1p**2 - Rational(1,2)*M*v2p**2",
+        "symbols": [
+          "M",
+          "m",
+          "v0",
+          "v1p",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：M、m、v0、v1p、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两式联立才能定两个未知量；只列动量式不足以定速度",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S04",
+      "step_no": 4,
+      "title": "代入 m＝M/3 得两者速度大小",
+      "point_id": "A-03-S04",
+      "kind": "value",
+      "statement": "m＝M/3 代入一动一静弹性碰撞结果：v₁′＝(m−M)/(m＋M)·v₀＝−v₀/2（向上），v₂′＝2m/(m＋M)·v₀＝v₀/2（向下），大小均为 √(2gl)/2。",
+      "equation": {
+        "latex": "v_{2p} = \\frac{v_{0}}{2}",
+        "sympy": "v2p - v0/2",
+        "symbols": [
+          "v0",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v2p",
+        "number": null,
+        "exact": "v0/2",
+        "unit": "m/s",
+        "direction": "-y",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：v0、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只求一个、或漏「大小」而带负号未说明，给 1 分（口径）；v₁′＝−v₀/2 由同一组式子给出",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S05",
+      "step_no": 5,
+      "title": "判定共速时相距最远",
+      "point_id": "A-03-S05",
+      "kind": "judgment",
+      "statement": "碰后盘匀速下滑、球先向上后向下做匀变速运动；两者速度相等（同向同速）的瞬间相对速度为零，间距由增大转为减小，故此刻相距最远。",
+      "equation": null,
+      "criterion": {
+        "expr": "v1",
+        "expected": "v2",
+        "comparator": "eq",
+        "text": "间距最大 ⇔ 两者速度相同（同向同速）：此前球相对盘向上、间距增大，此后球速超过盘、间距减小。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 v1、v2，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只说速度相等未说明最远条件给 1 分（口径）；这是第 (2) 问最关键的判断",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S06",
+      "step_no": 6,
+      "title": "由速度相等求共速时刻",
+      "point_id": "A-03-S06",
+      "kind": "equation",
+      "statement": "碰后球速 v₁′＋gt、盘速 v₂′（匀速）；令二者相等：−v₀/2＋gt＝v₀/2，得 t＝v₀/g＝√(2gl)/g。",
+      "equation": {
+        "latex": "v_{1p} + g t = v_{2p}",
+        "sympy": "v1p + g*t - v2p",
+        "symbols": [
+          "g",
+          "t",
+          "v1p",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01",
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：g、t、v1p、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用相对速度 2·(v₀/2) 求解亦可（口径）；盘受摩擦力与重力等大，故匀速，不加 g t",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S07",
+      "step_no": 7,
+      "title": "求两者位移：球回到碰点、盘下落 l",
+      "point_id": "A-03-S07",
+      "kind": "equation",
+      "statement": "共速时 t＝v₀/g：球位移 s₁＝v₁′t＋½gt²＝−v₀²/(2g)＋v₀²/(2g)＝0（回到碰点）；盘位移 s₂＝v₂′t＝v₀²/(2g)＝l。相对位移 Δs＝s₂−s₁＝l。",
+      "equation": {
+        "latex": "\\Delta s = v_{2p} t - (v_{1p} t + \\frac{1}{2} g t^{2})",
+        "sympy": "ds - (v2p*t - (v1p*t + Rational(1,2)*g*t**2))",
+        "symbols": [
+          "ds",
+          "g",
+          "t",
+          "v1p",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "ds",
+        "number": null,
+        "exact": "v0^2/(2*g)",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：ds、g、t、v1p、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只算盘、漏球位移扣 1；相对位移 v₀²/2g 一次算得 l 亦满分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S08",
+      "step_no": 8,
+      "title": "最远距离 = l",
+      "point_id": "A-03-S08",
+      "kind": "discussion",
+      "statement": "Δs＝v₀²/(2g)＝l，故第一次碰撞到第二次碰撞之间小球与圆盘间的最远距离为 l。",
+      "equation": {
+        "latex": "\\Delta s = L",
+        "sympy": "ds - L",
+        "symbols": [
+          "L",
+          "ds"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "ds",
+        "number": null,
+        "exact": "L",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、ds 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "结果不等于 l 本步 0 分；写成 2l、l/2 这类未取到 l 的中间量不得分；距离为标量，未注明方向不扣（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S09",
+      "step_no": 9,
+      "title": "第二次碰前速度：球 3v₀/2、盘 v₀/2",
+      "point_id": "A-03-S09",
+      "kind": "equation",
+      "statement": "球回到碰点后继续下落追盘：从共速时刻起再经 t₂＝v₀/g，球速增加 gt₂＝v₀、达 3v₀/2，盘仍 v₀/2；两者速度差 v₁−v₂＝v₀＝g t₂。",
+      "equation": {
+        "latex": "v_{1} - v_{2} = g t_{2}",
+        "sympy": "v1 - v2 - g*t2",
+        "symbols": [
+          "g",
+          "t2",
+          "v1",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：g、t2、v1、v2 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "需体现「球回到碰点后再追 l」（口径）；追及距离 l 与相对加速度 g 也可直接得 t₂＝√(2l/g)",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S10",
+      "step_no": 10,
+      "title": "第二次碰后：球静止、盘 v₀",
+      "point_id": "A-03-S10",
+      "kind": "equation",
+      "statement": "第二次碰撞仍为弹性碰撞（m＝M/3、同向）：碰前球 3v₀/2、盘 v₀/2，碰后球静止、盘以 v₀ 下滑。",
+      "equation": {
+        "latex": "v_{2p} = v_{0}",
+        "sympy": "v2p - v0",
+        "symbols": [
+          "v0",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v2p",
+        "number": null,
+        "exact": "v0",
+        "unit": "m/s",
+        "direction": "-y",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：v0、v2p 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "速度互换结论正确即给满（口径）；此处 v₁′、v₂′ 记第二次碰后的速度（复用同一对符号）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S11",
+      "step_no": 11,
+      "title": "相邻两次碰撞间盘的位移规律 x_n = 2nl",
+      "point_id": "A-03-S11",
+      "kind": "equation",
+      "statement": "每次碰撞后到下次碰撞，两者位移相等：盘匀速、球匀加速，解得相邻两次碰撞间盘的下降量依次为 2l、4l、6l、8l，即第 n 个间隔 x_n＝2nl（n＝1,2,3,4）。",
+      "equation": {
+        "latex": "x_{n} = 2 n L",
+        "sympy": "x - 2*n*L",
+        "symbols": [
+          "L",
+          "n",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": null,
+        "exact": "2*n*L",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12",
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、n、x 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只算到第二次未归纳给 1 分（口径）；n 是间隔序号（1..4），不是 A-10 的半径比 —— 白名单无「序号」符号，借用 n",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-03-S12",
+      "step_no": 12,
+      "title": "累计 21l > 20l，故只碰 4 次",
+      "point_id": "A-03-S12",
+      "kind": "critical",
+      "statement": "盘自端口下 l 处起算：第 1 次碰撞在 l，之后每次再降 2l、4l、6l、8l。前四次碰撞累计 1l＋2l＋4l＋6l＝13l，距下端 7l；第五次需再降 8l＞7l，管内已无空间，故共碰撞 4 次。",
+      "equation": null,
+      "criterion": {
+        "expr": "L + 2*L + 4*L + 6*L + 8*L",
+        "expected": "20*L",
+        "comparator": "gt",
+        "text": "第 5 次碰撞需盘累计下降 l＋2l＋4l＋6l＋8l＝21l，已超过管长 20l，故第 5 次不发生，共碰 4 次。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 L，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用 20l 与管长 20l 直接比较扣 1（盘起始距口 l，第 1 次碰撞已用掉 l）（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-03-S01",
+        "step_id": "A-03-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S02",
+        "step_id": "A-03-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S03",
+        "step_id": "A-03-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S04",
+        "step_id": "A-03-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S05",
+        "step_id": "A-03-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S06",
+        "step_id": "A-03-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S07",
+        "step_id": "A-03-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S08",
+        "step_id": "A-03-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S09",
+        "step_id": "A-03-S09",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S10",
+        "step_id": "A-03-S10",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S11",
+        "step_id": "A-03-S11",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-03-S12",
+        "step_id": "A-03-S12",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 20,
+    "score_total": 20,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号 + 连续弹性碰撞 + 位移归纳与管长判据；L1 全步 na，L2 逐式手判；20/20 满分，未触归零点"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

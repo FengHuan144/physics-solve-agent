@@ -1,0 +1,25 @@
+{
+  "qid": "B-09",
+  "tag": "_t26fix",
+  "draft": "B-09_draft.json",
+  "call": "B-09_call.json",
+  "cm": {
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "latency_ms": 0,
+    "tokens_in": 1279,
+    "tokens_out": 14757
+  },
+  "n_steps": 12,
+  "n_gold": 7,
+  "n_eq": 11,
+  "issues": [
+    "givens.symbol 去下划线归一：'v_after' → 'vafter'",
+    "givens.symbol 仍不合规，已丢弃：'方向'"
+  ],
+  "n_e": 0,
+  "n_w": 3,
+  "e_lines": [],
+  "chained": true,
+  "note": "离线重转：未调用 API，cm 取自 raw/B-09_call.json"
+}

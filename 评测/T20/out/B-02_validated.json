@@ -1,0 +1,735 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-02",
+    "question_id": "B-02",
+    "group": "B",
+    "source": "2025 北京卷",
+    "question_no": 17,
+    "full_score": 9,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T16:46:04+08:00",
+    "latency_ms": 81638,
+    "tokens": {
+      "in": 970,
+      "out": 10372
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "某物体以一定初速度从地面竖直向上抛出，经过时间 t 到达最高点。在最高点该物体炸裂成 A、B 两部分，质量分别为 2m 和 m，其中 A 以速度 v 沿水平方向飞出。重力加速度为 g，不计空气阻力。求：(1)该物体抛出时的初速度大小 v₀；(2)炸裂后瞬间 B 的速度大小 v_B；(3)A、B 落地点之间的距离 d。",
+    "figures": [],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "该物体抛出时的初速度大小 v₀。",
+        "score": 2
+      },
+      {
+        "no": "(2)",
+        "text": "炸裂后瞬间 B 的速度大小 v_B。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "A、B 落地点之间的距离 d。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "dc63eea5037572f030b7e73e68fb38c9f0457c4991d2bb2110631f8d4e49d79c",
+    "input_sha256": "c02a1098f7f0cd8e3e0713337b413da1daca8ea938ce84de9a1b75d4da6e4b3a"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "炸裂前的物体",
+        "mass_symbol": "m",
+        "note": "质量 3m（m 为质量单位）；从地面竖直上抛"
+      },
+      {
+        "id": "obj2",
+        "name": "A 部分",
+        "mass_symbol": "m",
+        "note": "质量 2m；炸裂后沿水平方向飞出，式中以系数 2 体现"
+      },
+      {
+        "id": "obj3",
+        "name": "B 部分",
+        "mass_symbol": "m",
+        "note": "质量 m；炸裂后与 A 反向沿水平方向飞出"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "质量参数 m，题干给出"
+      },
+      {
+        "symbol": "m1",
+        "value": null,
+        "unit": "kg",
+        "text": "A的质量 m_A＝2m，题干给出"
+      },
+      {
+        "symbol": "m2",
+        "value": null,
+        "unit": "kg",
+        "text": "B的质量 m_B＝m，题干给出"
+      },
+      {
+        "symbol": "v",
+        "value": null,
+        "unit": "m/s",
+        "text": "A炸裂后沿水平方向的速度大小 v，题干给出"
+      },
+      {
+        "symbol": "t",
+        "value": null,
+        "unit": "s",
+        "text": "物体上升到最高点的时间 t，题干给出"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g，题干给出"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v0",
+        "text": "抛出时的初速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v2",
+        "text": "炸裂后瞬间 B 的速度大小"
+      },
+      {
+        "no": "(3)",
+        "quantity": "d",
+        "text": "A、B 落地点之间的距离"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "最高点速度为零",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "列竖直速度方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求抛出初速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "判断爆炸动量守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "列水平动量方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "求B速度大小",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "判断下落时间相同",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求最高点高度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "求下落时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求A水平位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "求B水平位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "求落地点间距",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-02-S01",
+      "step_no": 1,
+      "title": "最高点速度为零",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "物体做竖直上抛运动，在最高点瞬时速度为零；取竖直向上为正方向。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "指出最高点速度为零并取向上为正"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S02",
+      "step_no": 2,
+      "title": "列竖直速度方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由匀变速运动速度公式，从抛出到最高点有 v0 - g t = 0。",
+      "equation": {
+        "latex": "v0 - g t",
+        "sympy": "v0 - g*t",
+        "symbols": [
+          "g",
+          "t",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 g, t, v0｜chain：全题联立后仍含自由符号 g, t, v0（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S03",
+      "step_no": 3,
+      "title": "求抛出初速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由 v0 - g t = 0 解得 v0 = g t。",
+      "equation": {
+        "latex": "v0 - g t",
+        "sympy": "v0 - g*t",
+        "symbols": [
+          "g",
+          "t",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "g*t",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 g, t, v0｜chain：全题联立后仍含自由符号 g, t, v0（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s；值单位 m/s 与符号 v0 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S04",
+      "step_no": 4,
+      "title": "判断爆炸动量守恒",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "爆炸时间极短，爆炸力远大于重力，炸裂过程动量守恒；最高点爆炸前总动量为零。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "指出炸裂前后系统动量守恒且初总动量为零"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S05",
+      "step_no": 5,
+      "title": "列水平动量方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取A的速度方向为水平正方向，水平方向动量守恒：2m v + m vBx = 0，其中vBx为B的速度水平分量。",
+      "equation": {
+        "latex": "2 m v + m vBx",
+        "sympy": "2*m*v + m*v2",
+        "symbols": [
+          "m",
+          "v",
+          "vBx"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 m, v, v2｜chain：全题联立后仍含自由符号 m, v, v2（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S06",
+      "step_no": 6,
+      "title": "求B速度大小",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由水平动量守恒得 vBx = -2v；B的竖直分量为零，故B的速度大小为 vB = 2v。",
+      "equation": {
+        "latex": "v_B - 2 v",
+        "sympy": "v2 - 2*v",
+        "symbols": [
+          "B",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v2",
+        "number": null,
+        "exact": "2*v",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 v, v2｜chain：全题联立后仍含自由符号 v, v2（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s；值单位 m/s 与符号 v2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S07",
+      "step_no": 7,
+      "title": "判断下落时间相同",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "爆炸后A、B从最高点下落，竖直方向初速度均为零，二者在竖直方向的运动相同，落地时间相同。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "说明A、B竖直分运动相同且下落时间相同"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S08",
+      "step_no": 8,
+      "title": "求最高点高度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由上升过程，最高点相对地面的高度 H = 1/2 g t^2。",
+      "equation": {
+        "latex": "H - (1/2) g t^2",
+        "sympy": "H - Rational(1,2)*g*t**2",
+        "symbols": [
+          "H",
+          "g",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 H, g, t｜chain：全题联立后仍含自由符号 H, g, t（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S09",
+      "step_no": 9,
+      "title": "求下落时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "下落阶段满足 H = 1/2 g T^2，代入H=1/2gt^2得T=t。",
+      "equation": {
+        "latex": "T - t",
+        "sympy": "T - t",
+        "symbols": [
+          "T",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "T",
+        "number": null,
+        "exact": "t",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 T, t｜chain：全题联立后仍含自由符号 T, t（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 s；值单位 s 与符号 T 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S10",
+      "step_no": 10,
+      "title": "求A水平位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "A从最高点水平抛出，下落的水平位移 xA = vT = v t。",
+      "equation": {
+        "latex": "x_A - v t",
+        "sympy": "s1 - v*t",
+        "symbols": [
+          "A",
+          "t",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "s1",
+        "number": null,
+        "exact": "v*t",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 s1, t, v｜chain：全题联立后仍含自由符号 s1, t, v（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m；值单位 m 与符号 s1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S11",
+      "step_no": 11,
+      "title": "求B水平位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "B以大小2v沿相反方向水平运动，下落的水平位移 xB = 2vT = 2v t。",
+      "equation": {
+        "latex": "x_B - 2 v t",
+        "sympy": "s2 - 2*v*t",
+        "symbols": [
+          "B",
+          "t",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "s2",
+        "number": null,
+        "exact": "2*v*t",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 s2, t, v｜chain：全题联立后仍含自由符号 s2, t, v（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m；值单位 m 与符号 s2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-02-S12",
+      "step_no": 12,
+      "title": "求落地点间距",
+      "point_id": null,
+      "kind": "value",
+      "statement": "A、B落地点位于最高点正下方的两侧，距离 d = xA + xB = 3v t。",
+      "equation": {
+        "latex": "d - 3 v t",
+        "sympy": "d - 3*v*t",
+        "symbols": [
+          "d",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "d",
+        "number": null,
+        "exact": "3*v*t",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：3 未知 / 1 方程（chain 可解，本步不判）含 d, t, v｜chain：全题联立后仍含自由符号 d, t, v（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m；值单位 m 与符号 d 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 9,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "givens": [
+    {
+      "symbol": "R",
+      "value": 0.4,
+      "unit": "m",
+      "text": "轨道半径 R＝0.4 m"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "重力加速度 g＝10 m/s²"
+    },
+    {
+      "symbol": "N_Q",
+      "value": null,
+      "unit": "N",
+      "text": "(1)中 Q 点轨道弹力大小等于 3mg"
+    },
+    {
+      "symbol": "F_0",
+      "value": 0,
+      "unit": "N",
+      "text": "图乙线段起点横坐标，图上读出 F_0＝0 N"
+    },
+    {
+      "symbol": "a_0",
+      "value": 0,
+      "unit": "m/s^2",
+      "text": "图乙线段起点纵坐标，图上读出 a_0＝0 m/s²"
+    },
+    {
+      "symbol": "F_1",
+      "value": 4,
+      "unit": "N",
+      "text": "图乙转折点横坐标，图上读出 F_1＝4 N"
+    },
+    {
+      "symbol": "a_1",
+      "value": 2,
+      "unit": "m/s^2",
+      "text": "图乙转折点纵坐标，图上读出 a_1＝2 m/s²"
+    },
+    {
+      "symbol": "F_2",
+      "value": 8,
+      "unit": "N",
+      "text": "图乙另一点横坐标，图上读出 F_2＝8 N"
+    },
+    {
+      "symbol": "a_2",
+      "value": 6,
+      "unit": "m/s^2",
+      "text": "图乙另一点纵坐标，图上读出 a_2＝6 m/s²"
+    },
+    {
+      "symbol": "F",
+      "value": 8,
+      "unit": "N",
+      "text": "(2)(ⅱ)中施加的水平向左推力 F＝8 N"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "v = 4 m/s",
+      "steps": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "μ = 0.2，m = 1 kg",
+      "steps": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "L = 4.5 m",
+      "steps": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "判断Q点弹力方向",
+      "kind": "judgment",
+      "stmt": "物块在最高点Q做圆周运动，所需向心力大于重力，故轨道对物块的弹力方向向下。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "明确Q点弹力方向向下"
+    },
+    {
+      "no": 2,
+      "title": "列Q点向心力方程",
+      "kind": "equation",
+      "stmt": "在Q点，重力和轨道弹力共同提供向心力，N＝3mg，故 N＋mg＝mv²/R。",
+      "eq": "3*m*g + m*g - m*v**2/R",
+      "value": null,
+      "score": 2,
+      "point": "列出最高点向心力方程并正确代入N＝3mg"
+    },
+    {
+      "no": 3,
+      "title": "求Q点速度",
+      "kind": "value",
+      "stmt": "由4mg＝mv²/R得v²＝4gR，代入R＝0.4 m、g＝10 m/s²，得v＝4 m/s。",
+      "eq": "v**2 - 4*g*R",
+      "value": {
+        "symbol": "v",
+        "number": 4,
+        "exact": "4",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "算出v＝4 m/s"
+    },
+    {
+      "no": 4,
+      "title": "判断滑动临界",
+      "kind": "judgment",
+      "stmt": "图乙转折点对应物块与轨道间的静摩擦力达到最大静摩擦力；F较小时二者无相对滑动，F较大时物块相对轨道滑动。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出转折点为最大静摩擦临界"
+    },
+    {
+      "no": 5,
+      "title": "求动摩擦因数",
+      "kind": "value",
+      "stmt": "临界时物块加速度a＝μg，由图乙转折点a_1＝2 m/s²，得μg＝2，故μ＝0.2。",
+      "eq": "mu*g - 2",
+      "value": {
+        "symbol": "mu",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "1"
+      },
+      "score": 1,
+      "point": "由临界加速度求得μ＝0.2"
+    },
+    {
+      "no": 6,
+      "title": "求总质量",
+      "kind": "value",
+      "stmt": "转折前二者一起加速，整体加速度a＝F/(M＋m)。图乙第一段过(0,0)和(4,2)，斜率1/2，故M＋m＝2 kg。",
+      "eq": "(M+m)*2 - 4",
+      "value": {
+        "symbol": "M_plus_m",
+        "number": 2,
+        "exact": "2",
+        "unit": "kg"
+      },
+      "score": 1,
+      "point": "由转折前整体加速度关系得M＋m＝2 kg"
+    },
+    {
+      "no": 7,
+      "title": "求轨道质量",
+      "kind": "value",
+      "stmt": "转折后发生相对滑动，轨道方程为F－μmg＝Ma，故a-F图线斜率等于1/M。由(4,2)到(8,6)斜率1，得M＝1 kg。",
+      "eq": "M*(6-2) - (8-4)",
+      "value": {
+        "symbol": "M",
+        "number": 1,
+        "exact": "1",
+        "unit": "kg"
+      },
+      "score": 0.5,
+      "point": "由转折后图线斜率求得M＝1 kg"
+    },
+    {
+      "no": 8,
+      "title": "求物块质量",
+      "kind": "value",
+      "stmt": "由M＋m＝2 kg且M＝1 kg，得m＝1 kg。",
+      "eq": "m - 1",
+      "value": {
+        "symbol": "m",
+        "number": 1,
+        "exact": "1",
+        "unit": "kg"
+      },
+      "score": 0.5,
+      "point": "求得m＝1 kg"
+    },
+    {
+      "no": 9,
+      "title": "判断F=8N时滑动",
+      "kind": "judgment",
+      "stmt": "F＝8 N超过临界推力，物块相对轨道滑动；由图乙读出F＝8 N时轨道向左加速度a_M＝6 m/s²。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "判断相对滑动并读出轨道加速度6 m/s²"
+    },
+    {
+      "no": 10,
+      "title": "求相对加速度",
+      "kind": "value",
+      "stmt": "物块受向左滑动摩擦力，a_m＝μg＝2 m/s²；取向左为正，相对加速度a_rel＝a_M－a_m＝4 m/s²。",
+      "eq": "a_rel - (6 - mu*g)",
+      "value": {
+        "symbol": "a_rel",
+        "number": 4,
+        "exact": "4",
+        "unit": "m/s^2"
+      },
+      "score": 0.5,
+      "point": "求得物块相对轨道的加速度4 m/s²"
+    },
+    {
+      "no": 11,
+      "title": "表出P点速度",
+      "kind": "equation",
+      "stmt": "从静止到物块到达P点经历时间t，取向左为正，则物块速度u＝2t，轨道速度U＝6t。",
+      "eq": "u - 2*t + U - 6*t",
+      "value": null,
+      "score": 1,
+      "point": "正确表出到达P点时物块和轨道的速度"
+    },
+    {
+      "no": 12,
+      "title": "列相对位移关系",
+      "kind": "equation",
+      "stmt": "轨道向左位移为(1/2)×6t²，物块向左位移为(1/2)×2t²，物块相对轨道向右运动L，故L＝3t²－t²＝2t²。",
+      "eq": "L - 2*t**2",
+      "value": null,
+      "score": 1,
+      "point": "列水平部分长度与时间的相对位移关系"
+    },
+    {
+      "no": 13,
+      "title": "用水平动量守恒",
+      "kind": "discussion",
+      "stmt": "P到Q过程中系统水平方向无外力，水平动量守恒。Q点物块对地速度大小7 m/s；由Q点相对轨道速度沿切线向左，若物块对地向左为7 m/s，则轨道速度V_Q＝8t－7 m/s。",
+      "eq": "7 + V_Q - 8*t",
+      "value": null,
+      "score": 1,
+      "point": "正确判断物块在Q点对地速度向左并列出动量守恒"
+    },
+    {
+      "no": 14,
+      "title": "列机械能守恒",
+      "kind": "equation",
+      "stmt": "P到Q只有重力做功，系统机械能守恒。取P点为零势能点，有(1/2)(u²＋U²)＝(1/2)(7²＋V_Q²)＋2mgR。",
+      "eq": "Rational(1,2)*(u**2 + U**2) - Rational(1,2)*(7**2 + V_Q**2) - m*g*2*R",
+      "value": null,
+      "score": 1,
+      "point": "列出P到Q的系统机械能守恒方程"
+    },
+    {
+      "no": 15,
+      "title": "解时间并取舍",
+      "kind": "discussion",
+      "stmt": "代入u＝2t、U＝6t、V_Q＝8t－7及m＝1 kg、g＝10 m/s²、R＝0.4 m，得12t²－56t＋57＝0，解得t＝3/2 s或19/6 s。因Q点相对轨道速度须向左，要求t＜7/4 s，故取t＝3/2 s。",
+      "eq": "12*t**2 - 56*t + 57",
+      "value": null,
+      "score": 0.5,
+      "point": "正确解出时间并舍去不合速度方向的一个根"
+    },
+    {
+      "no": 16,
+      "title": "求水平部分长度",
+      "kind": "value",
+      "stmt": "将t＝3/2 s代入L＝2t²，得L＝2×(3/2)²＝9/2 m＝4.5 m。",
+      "eq": "L - 2*(Rational(3,2))**2",
+      "value": {
+        "symbol": "L",
+        "number": 4.5,
+        "exact": "9/2",
+        "unit": "m"
+      },
+      "score": 0.5,
+      "point": "求得L＝9/2 m"
+    }
+  ]
+}

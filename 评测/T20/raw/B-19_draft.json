@@ -1,0 +1,198 @@
+{
+  "givens": [
+    {
+      "symbol": "m",
+      "value": 0.6,
+      "unit": "kg",
+      "text": "篮球质量 m＝0.60 kg"
+    },
+    {
+      "symbol": "h1",
+      "value": 1.8,
+      "unit": "m",
+      "text": "第一次下落高度 h₁＝1.8 m"
+    },
+    {
+      "symbol": "h2",
+      "value": 1.2,
+      "unit": "m",
+      "text": "第一次反弹高度 h₂＝1.2 m"
+    },
+    {
+      "symbol": "h3",
+      "value": 1.5,
+      "unit": "m",
+      "text": "第二次下落并反弹的高度 h₃＝1.5 m"
+    },
+    {
+      "symbol": "t",
+      "value": 0.2,
+      "unit": "s",
+      "text": "拍球作用时间 t＝0.20 s"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "重力加速度 g＝10 m/s²"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "W = 4.5 J",
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "拍球结束瞬间速度 u = 5 m/s",
+      "steps": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "F = 9 N，方向竖直向下",
+      "steps": [
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "求碰撞动能比",
+      "kind": "equation",
+      "stmt": "第一次无拍下落，刚碰地前动能为mgh1，反弹后初动能为mgh2，因此碰撞前后动能比k＝mgh2/(mgh1)＝h2/h1。",
+      "eq": "k*h1 - h2",
+      "value": null,
+      "score": 1,
+      "point": "正确写出碰撞前后动能比 k=h2/h1"
+    },
+    {
+      "no": 2,
+      "title": "全过程用动能定理",
+      "kind": "equation",
+      "stmt": "第二次从开始下落到刚碰地前，初动能为0，重力做功mgh3，拍球做功W，刚碰地前动能为E，由动能定理有W＋mgh3＝E。",
+      "eq": "W + m*g*h3 - E",
+      "value": null,
+      "score": 1,
+      "point": "对第二次下落过程正确列动能定理"
+    },
+    {
+      "no": 3,
+      "title": "利用反弹高度列式",
+      "kind": "equation",
+      "stmt": "第二次碰后动能变为kE，反弹到高度h3，最高点动能为0，故kE＝mgh3。",
+      "eq": "k*E - m*g*h3",
+      "value": null,
+      "score": 1,
+      "point": "用反弹高度和碰撞动能比表示碰后动能"
+    },
+    {
+      "no": 4,
+      "title": "求拍球做功",
+      "kind": "value",
+      "stmt": "联立上面两式消去E，并由k＝h2/h1，得W＝mgh3(h1/h2－1)。代入数据得W＝4.5 J。",
+      "eq": "W - m*g*h3*(h1/h2 - 1)",
+      "value": {
+        "symbol": "W",
+        "number": 4.5,
+        "exact": "9/2",
+        "unit": "J"
+      },
+      "score": 1,
+      "point": "正确解出拍球做功 W=4.5 J"
+    },
+    {
+      "no": 5,
+      "title": "列拍球过程动量定理",
+      "kind": "equation",
+      "stmt": "拍球过程中初速度为0、末速度为u，取向下为正，合外力F＋mg的冲量等于动量变化，故(F＋mg)t＝mu。",
+      "eq": "(F + m*g)*t - m*u",
+      "value": null,
+      "score": 1,
+      "point": "正确列出拍球过程的动量定理"
+    },
+    {
+      "no": 6,
+      "title": "写位移关系",
+      "kind": "equation",
+      "stmt": "拍球过程为初速度为0的匀加速直线运动，平均速度为u/2，故位移s＝ut/2。",
+      "eq": "s - u*t/2",
+      "value": null,
+      "score": 1,
+      "point": "正确写出拍球过程位移与末速度的关系"
+    },
+    {
+      "no": 7,
+      "title": "写功的定义式",
+      "kind": "equation",
+      "stmt": "运动员对篮球的恒力向下，球向下位移，故拍球做功W＝Fs。",
+      "eq": "W - F*s",
+      "value": null,
+      "score": 1,
+      "point": "把拍球做功与恒力、位移联系起来"
+    },
+    {
+      "no": 8,
+      "title": "解出拍后速度",
+      "kind": "value",
+      "stmt": "由动量定理、位移关系和W＝Fs消去F、s，得mu²－mgtu－2W＝0。代入m、g、t、W并取正根，得u＝5 m/s。",
+      "eq": "m*u**2 - m*g*t*u - 2*W",
+      "value": {
+        "symbol": "u",
+        "number": 5,
+        "exact": "5",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确解出拍球结束瞬间速度 u=5 m/s"
+    },
+    {
+      "no": 9,
+      "title": "用牛顿定律求F",
+      "kind": "equation",
+      "stmt": "拍球过程球向下做匀加速运动，加速度a＝u/t；由牛顿第二定律有F＋mg＝ma＝mu/t。",
+      "eq": "F + m*g - m*u/t",
+      "value": null,
+      "score": 2,
+      "point": "正确用牛顿第二定律联系作用力和速度变化"
+    },
+    {
+      "no": 10,
+      "title": "算出作用力大小",
+      "kind": "value",
+      "stmt": "代入m＝0.60 kg、u＝5 m/s、t＝0.20 s、g＝10 m/s²，得F＝mu/t－mg＝9 N。",
+      "eq": "F - (m*u/t - m*g)",
+      "value": {
+        "symbol": "F",
+        "number": 9,
+        "exact": "9",
+        "unit": "N"
+      },
+      "score": 3,
+      "point": "正确算出拍球作用力 F=9 N"
+    },
+    {
+      "no": 11,
+      "title": "说明作用力方向",
+      "kind": "judgment",
+      "stmt": "运动员向下拍球，结果F为正值，方向与向下拍球一致，故作用力竖直向下。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "正确说明作用力方向竖直向下"
+    }
+  ]
+}

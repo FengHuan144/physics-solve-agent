@@ -1,0 +1,791 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-12",
+    "question_id": "B-12",
+    "group": "B",
+    "source": "2022 广东卷",
+    "question_no": 13,
+    "full_score": 11,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T11:30:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "某同学受自动雨伞开伞过程的启发，设计了如图所示的物理模型。竖直放置在水平桌面上的滑杆上套有一个滑块，初始时它们处于静止状态。当滑块从 A 处以初速度 v₀ 为 10 m/s 向上滑动时，受到滑杆的摩擦力 f 为 1 N，滑块滑到 B 处与滑杆发生完全非弹性碰撞，带动滑杆离开桌面一起竖直向上运动。已知滑块的质量 m＝0.2 kg，滑杆的质量 M＝0.6 kg，A、B 间的距离 l＝1.2 m，重力加速度 g 取 10 m/s²，不计空气阻力。求：(1)滑块在静止时和向上滑动的过程中，桌面对滑杆支持力的大小 N₁ 和 N₂；(2)滑块碰撞前瞬间的速度大小 v₁；(3)滑杆向上运动的最大高度 h。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "竖直滑杆与套在其上的滑块，A 在上、B 在下，间距 l；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "桌面对滑杆支持力的大小 N₁ 和 N₂。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "滑块碰撞前瞬间的速度大小 v₁。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "滑杆向上运动的最大高度 h。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "cddb3a8442df9dec75635393acda89bc601491e1ab6fca5c234089e02708588d",
+    "input_sha256": "1cb93db95c0d1edec6b5cdda2847a78823af063cef85ac972d0520b0c5e1a18d"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "滑块",
+        "mass_symbol": "m",
+        "note": "质量 0.2 kg，套在竖直滑杆上，从 A 向上滑动"
+      },
+      {
+        "id": "obj2",
+        "name": "滑杆",
+        "mass_symbol": "M",
+        "note": "质量 0.6 kg，竖直置于桌面，碰前静止"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "v0",
+        "value": 10,
+        "unit": "m/s",
+        "text": "以初速度 v₀ 为 10 m/s 向上滑动"
+      },
+      {
+        "symbol": "f",
+        "value": 1,
+        "unit": "N",
+        "text": "受到滑杆的摩擦力 f 为 1 N"
+      },
+      {
+        "symbol": "m",
+        "value": 0.2,
+        "unit": "kg",
+        "text": "滑块的质量 m＝0.2 kg"
+      },
+      {
+        "symbol": "M",
+        "value": 0.6,
+        "unit": "kg",
+        "text": "滑杆的质量 M＝0.6 kg"
+      },
+      {
+        "symbol": "L",
+        "value": 1.2,
+        "unit": "m",
+        "text": "A、B 间的距离 l＝1.2 m（符号归一到 L）"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g 取 10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "静止",
+        "start": "初始",
+        "end": "滑块开始上滑前",
+        "segment_id": "SEG-01",
+        "boundary_reference": "以初始静止为界；两者加速度均为零，支持力作用面为桌面"
+      },
+      {
+        "no": 2,
+        "name": "滑块上滑、杆不动",
+        "start": "滑块以 10 m/s 从 A 上滑",
+        "end": "滑块到达 B（距 A 为 l）",
+        "segment_id": "SEG-02",
+        "boundary_reference": "以滑块离开 A 点为起点、到达 B 点为终点；位移沿杆向上为正"
+      },
+      {
+        "no": 3,
+        "name": "完全非弹性碰撞",
+        "start": "滑块到 B 与杆相碰",
+        "end": "两者以共同速度一起上移",
+        "segment_id": "SEG-03",
+        "boundary_reference": "以滑块到达 B 点的瞬间为起止；碰前后速度均沿杆向上为正"
+      },
+      {
+        "no": 4,
+        "name": "整体竖直上抛",
+        "start": "碰后瞬间",
+        "end": "到达最高点（离桌 h）",
+        "segment_id": "SEG-04",
+        "boundary_reference": "以碰后共同速度为初态、最高点速度为零为末态；桌面为 h＝0 的参考"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "N1",
+        "text": "静止时桌面对杆的支持力"
+      },
+      {
+        "no": "(1)",
+        "quantity": "N2",
+        "text": "滑块上滑时桌面对杆的支持力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v1",
+        "text": "滑块碰前瞬间速度"
+      },
+      {
+        "no": "(3)",
+        "quantity": "h",
+        "text": "杆向上运动的最大高度"
+      }
+    ],
+    "assumptions": [
+      "滑杆始终竖直，滑块沿杆做直线运动，取竖直向上为正方向",
+      "滑块上滑过程中杆保持静止（题干「带动滑杆离开桌面」发生在碰后）",
+      "不计空气阻力；桌面水平，支持力竖直向上"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "判定静止时可用整体法",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-12-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "整体法求 N1=8 N",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "判定上滑时须隔离杆",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "隔离杆求 N2=5 N",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "对滑块用动能定理求碰前速度",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "解出 v1=8 m/s",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "完全非弹性碰撞求共同速度",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "整体竖直上抛求最大高度",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "解出 h=0.2 m",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "B-12-S09"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-12-S01",
+      "step_no": 1,
+      "title": "判定静止时可用整体法",
+      "point_id": "B-12-S01",
+      "kind": "judgment",
+      "statement": "初始静止，滑块与杆加速度均为零，可把两者作为整体：竖直方向合外力为零。",
+      "equation": null,
+      "criterion": {
+        "expr": "Fnet",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "初始静止，滑块与杆加速度均为零，可作整体：竖直方向合外力为零。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Fnet，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "整体法的前提是两部分加速度相同（此处同为 0）；上滑时该前提被破坏，必须换隔离法",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S02",
+      "step_no": 2,
+      "title": "整体法求 N1=8 N",
+      "point_id": "B-12-S02",
+      "kind": "value",
+      "statement": "整体竖直方向：N₁＝(m＋M)g＝(0.2＋0.6)×10＝8 N。",
+      "equation": {
+        "latex": "N_{1} = (m + M) g",
+        "sympy": "N1 - (m + M)*g",
+        "symbols": [
+          "M",
+          "N1",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "N1",
+        "number": 8.0,
+        "exact": "(m+M)*g",
+        "unit": "N",
+        "direction": "+y",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-03"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=0.6、N1=8、g=10、m=0.2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s²＝N",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S03",
+      "step_no": 3,
+      "title": "判定上滑时须隔离杆",
+      "point_id": "B-12-S03",
+      "kind": "judgment",
+      "statement": "滑块上滑时两者不再具有相同加速度，整体法失效；杆仍静止，须单独隔离杆分析。滑块对杆的摩擦力向上（大小 1 N），故桌面对杆的支持力变小。",
+      "equation": null,
+      "criterion": {
+        "expr": "Fnet",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "滑块对杆的摩擦力向上 1 N，杆仍静止故合力为零；但两者加速度不同，整体法失效，须隔离杆。"
+      },
+      "segment_id": "SEG-02",
+      "value": null,
+      "law_ids": [
+        "L-03",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 Fnet，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "摩擦力方向：滑块相对杆向上运动，杆受的摩擦力向上；杆静止故合力仍为零",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S04",
+      "step_no": 4,
+      "title": "隔离杆求 N2=5 N",
+      "point_id": "B-12-S04",
+      "kind": "value",
+      "statement": "隔离杆：竖直方向 N₂＋f′＝Mg，f′＝1 N 向上，得 N₂＝6−1＝5 N。",
+      "equation": {
+        "latex": "N_{2} = M g - f",
+        "sympy": "N2 - (M*g - f)",
+        "symbols": [
+          "M",
+          "N2",
+          "f",
+          "g"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "N2",
+        "number": 5.0,
+        "exact": "M*g - f",
+        "unit": "N",
+        "direction": "+y",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-03",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=0.6、N2=5、f=1、g=10）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S05",
+      "step_no": 5,
+      "title": "对滑块用动能定理求碰前速度",
+      "point_id": "B-12-S05",
+      "kind": "equation",
+      "statement": "滑块从 A 到 B：重力与摩擦力都做负功，−mgl−fl＝½mv₁²−½mv₀²，代入得 v₁＝8 m/s。",
+      "equation": {
+        "latex": "- m g l - f l = \\frac{1}{2} m v_{1}^{2} - \\frac{1}{2} m v_{0}^{2}",
+        "sympy": "-m*g*L - f*L - (Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2)",
+        "symbols": [
+          "L",
+          "f",
+          "g",
+          "m",
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "v1",
+        "number": 8.0,
+        "exact": "sqrt(v0^2 - 2*(g + f/m)*l)",
+        "unit": "m/s",
+        "direction": "+y",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-08",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=1.2、f=1、g=10、m=0.2、v0=10、v1=8）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两个力都沿运动反方向，功均取负；摩擦力大小恒为 1 N，与正压力无关（题给为定值）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S06",
+      "step_no": 6,
+      "title": "解出 v1=8 m/s",
+      "point_id": "B-12-S06",
+      "kind": "value",
+      "statement": "v₁＝√(100−2×(10＋5)×1.2)＝√64＝8 m/s，方向竖直向上。",
+      "equation": {
+        "latex": "v_{1} = 8",
+        "sympy": "v1 - 8",
+        "symbols": [
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "v1",
+        "number": 8.0,
+        "exact": "8",
+        "unit": "m/s",
+        "direction": "+y",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v1=8）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "开方取正根：滑块仍在向上运动，负根对应「若继续上升再返回」的虚构解",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S07",
+      "step_no": 7,
+      "title": "完全非弹性碰撞求共同速度",
+      "point_id": "B-12-S07",
+      "kind": "equation",
+      "statement": "碰后两者速度相同：mv₁＝(m＋M)v_c，得 v_c＝0.2×8/0.8＝2 m/s。",
+      "equation": {
+        "latex": "m v_{1} = (m + M) v_{c}",
+        "sympy": "m*v1 - (m + M)*vc",
+        "symbols": [
+          "M",
+          "m",
+          "v1",
+          "vc"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": {
+        "symbol": "vc",
+        "number": 2.0,
+        "exact": "m*v1/(m+M)",
+        "unit": "m/s",
+        "direction": "+y",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=0.6、m=0.2、v1=8、vc=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "碰撞时间极短、重力冲量可忽略，故竖直方向动量守恒；碰后一起运动即完全非弹性",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S08",
+      "step_no": 8,
+      "title": "整体竖直上抛求最大高度",
+      "point_id": "B-12-S08",
+      "kind": "equation",
+      "statement": "碰后整体只受重力：v_c²＝2gh，得 h＝4/20＝0.2 m。",
+      "equation": {
+        "latex": "v_{c}^{2} = 2 g h",
+        "sympy": "vc**2 - 2*g*h",
+        "symbols": [
+          "g",
+          "h",
+          "vc"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-04",
+      "value": null,
+      "law_ids": [
+        "L-02",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（g=10、h=0.2、vc=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "上抛到最高点速度为零；用动能定理 −(m+M)gh＝0−½(m+M)v_c² 与本法等价",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-12-S09",
+      "step_no": 9,
+      "title": "解出 h=0.2 m",
+      "point_id": "B-12-S09",
+      "kind": "value",
+      "statement": "h＝v_c²/(2g)＝4/20＝0.2 m。",
+      "equation": {
+        "latex": "h = 0.2",
+        "sympy": "h - Rational(1,5)",
+        "symbols": [
+          "h"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-04",
+      "value": {
+        "symbol": "h",
+        "number": 0.2,
+        "exact": "vc^2/(2*g)",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（h=0.2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-12-S01",
+        "step_id": "B-12-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S02",
+        "step_id": "B-12-S02",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S03",
+        "step_id": "B-12-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S04",
+        "step_id": "B-12-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S05",
+        "step_id": "B-12-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S06",
+        "step_id": "B-12-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S07",
+        "step_id": "B-12-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S08",
+        "step_id": "B-12-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-12-S09",
+        "step_id": "B-12-S09",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 11,
+    "score_total": 11,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：整体法与隔离法切换的两套受力，L1 逐式数值回代、L2 量纲全过，11/11 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

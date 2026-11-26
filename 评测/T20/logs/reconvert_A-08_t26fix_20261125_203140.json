@@ -1,0 +1,26 @@
+{
+  "qid": "A-08",
+  "tag": "_t26fix",
+  "draft": "A-08_draft.json",
+  "call": "A-08_call.json",
+  "cm": {
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "latency_ms": 0,
+    "tokens_in": 1187,
+    "tokens_out": 22525
+  },
+  "n_steps": 19,
+  "n_gold": 11,
+  "n_eq": 17,
+  "issues": [
+    "givens.symbol 去下划线归一：'Delta_t' → 'Deltat'",
+    "givens.symbol 去下划线归一：'m_a' → 'ma'",
+    "givens.symbol 去下划线归一：'m_b' → 'mb'"
+  ],
+  "n_e": 0,
+  "n_w": 15,
+  "e_lines": [],
+  "chained": true,
+  "note": "离线重转：未调用 API，cm 取自 raw/A-08_call.json"
+}

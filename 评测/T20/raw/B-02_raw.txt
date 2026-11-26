@@ -1,0 +1,137 @@
+{
+  "givens": [
+    {"symbol": "m", "value": null, "unit": "kg", "text": "质量参数 m，题干给出"},
+    {"symbol": "m_A", "value": null, "unit": "kg", "text": "A的质量 m_A＝2m，题干给出"},
+    {"symbol": "m_B", "value": null, "unit": "kg", "text": "B的质量 m_B＝m，题干给出"},
+    {"symbol": "v", "value": null, "unit": "m/s", "text": "A炸裂后沿水平方向的速度大小 v，题干给出"},
+    {"symbol": "t", "value": null, "unit": "s", "text": "物体上升到最高点的时间 t，题干给出"},
+    {"symbol": "g", "value": null, "unit": "m/s^2", "text": "重力加速度 g，题干给出"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "v0 = g t", "steps": [1, 2, 3]},
+    {"no": "(2)(ⅰ)", "result": "v_B = 2 v", "steps": [4, 5, 6]},
+    {"no": "(2)(ⅱ)", "result": "d = 3 v t", "steps": [7, 8, 9, 10, 11, 12]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "最高点速度为零",
+      "kind": "judgment",
+      "stmt": "物体做竖直上抛运动，在最高点瞬时速度为零；取竖直向上为正方向。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出最高点速度为零并取向上为正"
+    },
+    {
+      "no": 2,
+      "title": "列竖直速度方程",
+      "kind": "equation",
+      "stmt": "由匀变速运动速度公式，从抛出到最高点有 v0 - g t = 0。",
+      "eq": "v0 - g*t",
+      "value": null,
+      "score": 2,
+      "point": "列出竖直上抛速度关系 v0-gt=0"
+    },
+    {
+      "no": 3,
+      "title": "求抛出初速度",
+      "kind": "value",
+      "stmt": "由 v0 - g t = 0 解得 v0 = g t。",
+      "eq": "v0 - g*t",
+      "value": {"symbol": "v0", "number": null, "exact": "g*t", "unit": "m/s"},
+      "score": 1,
+      "point": "得出初速度大小 v0=gt"
+    },
+    {
+      "no": 4,
+      "title": "判断爆炸动量守恒",
+      "kind": "judgment",
+      "stmt": "爆炸时间极短，爆炸力远大于重力，炸裂过程动量守恒；最高点爆炸前总动量为零。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出炸裂前后系统动量守恒且初总动量为零"
+    },
+    {
+      "no": 5,
+      "title": "列水平动量方程",
+      "kind": "equation",
+      "stmt": "取A的速度方向为水平正方向，水平方向动量守恒：2m v + m vBx = 0，其中vBx为B的速度水平分量。",
+      "eq": "2*m*v + m*vBx",
+      "value": null,
+      "score": 2,
+      "point": "列出水平方向动量守恒方程"
+    },
+    {
+      "no": 6,
+      "title": "求B速度大小",
+      "kind": "value",
+      "stmt": "由水平动量守恒得 vBx = -2v；B的竖直分量为零，故B的速度大小为 vB = 2v。",
+      "eq": "v_B - 2*v",
+      "value": {"symbol": "v_B", "number": null, "exact": "2*v", "unit": "m/s"},
+      "score": 1,
+      "point": "得出B的速度大小 vB=2v"
+    },
+    {
+      "no": 7,
+      "title": "判断下落时间相同",
+      "kind": "judgment",
+      "stmt": "爆炸后A、B从最高点下落，竖直方向初速度均为零，二者在竖直方向的运动相同，落地时间相同。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "说明A、B竖直分运动相同且下落时间相同"
+    },
+    {
+      "no": 8,
+      "title": "求最高点高度",
+      "kind": "equation",
+      "stmt": "由上升过程，最高点相对地面的高度 H = 1/2 g t^2。",
+      "eq": "H - Rational(1,2)*g*t**2",
+      "value": null,
+      "score": 1,
+      "point": "列出最高点高度 H=1/2gt^2"
+    },
+    {
+      "no": 9,
+      "title": "求下落时间",
+      "kind": "value",
+      "stmt": "下落阶段满足 H = 1/2 g T^2，代入H=1/2gt^2得T=t。",
+      "eq": "T - t",
+      "value": {"symbol": "T", "number": null, "exact": "t", "unit": "s"},
+      "score": 1,
+      "point": "得出从最高点到落地时间 T=t"
+    },
+    {
+      "no": 10,
+      "title": "求A水平位移",
+      "kind": "value",
+      "stmt": "A从最高点水平抛出，下落的水平位移 xA = vT = v t。",
+      "eq": "x_A - v*t",
+      "value": {"symbol": "x_A", "number": null, "exact": "v*t", "unit": "m"},
+      "score": 1,
+      "point": "得出A的水平位移 xA=vt"
+    },
+    {
+      "no": 11,
+      "title": "求B水平位移",
+      "kind": "value",
+      "stmt": "B以大小2v沿相反方向水平运动，下落的水平位移 xB = 2vT = 2v t。",
+      "eq": "x_B - 2*v*t",
+      "value": {"symbol": "x_B", "number": null, "exact": "2*v*t", "unit": "m"},
+      "score": 1,
+      "point": "得出B的水平位移 xB=2vt"
+    },
+    {
+      "no": 12,
+      "title": "求落地点间距",
+      "kind": "value",
+      "stmt": "A、B落地点位于最高点正下方的两侧，距离 d = xA + xB = 3v t。",
+      "eq": "d - 3*v*t",
+      "value": {"symbol": "d", "number": null, "exact": "3*v*t", "unit": "m"},
+      "score": 1,
+      "point": "得出落地点间距 d=3vt"
+    }
+  ]
+}

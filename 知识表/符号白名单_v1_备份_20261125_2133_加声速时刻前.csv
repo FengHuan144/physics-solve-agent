@@ -1,0 +1,88 @@
+﻿symbol_id,规范写法,含义,单位_SI,量纲,类型,常见错误写法,首次出现题号,备注
+v,v,速度（末速度或某时刻瞬时速度）,meter/second,[length]/[time],变量,V;υ;v（斜体带撇）,A-01,与 v0 区分；矢量需先定正方向
+v0,v₀,初速度,meter/second,[length]/[time],参数,v_0;V0;v₀（原样入式）,A-01,归一化为 v0，去掉下划线与 Unicode 下标
+vavg,v̄,平均速度,meter/second,[length]/[time],变量,v_avg;v平;\bar{v},A-01,latex 写 v_{avg}，受限子集不含 \bar
+vmid,v_{t/2},中间时刻的瞬时速度,meter/second,[length]/[time],变量,v_t/2;v中,B-01,与中间位置速度 √((v0²+v²)/2) 区分
+a,a,加速度,meter/second**2,[length]/[time]^2,变量,α;a（带矢量箭头）,A-01,带符号量，正方向由解析指定
+a1,a₁,物块（或第一物体）的加速度,meter/second**2,[length]/[time]^2,参数,a_1;a物,A-06,板块题中 a1 指物块
+a2,a₂,薄板（或第二物体）的加速度,meter/second**2,[length]/[time]^2,参数,a_2;a板,A-06,板块题中 a2 指板
+t,t,时间（过程所经历的时间）,second,[time],变量,T（与周期混）,A-01,与周期 T 严格区分
+tau,T,连续相等时间间隔,second,[time],参数,T;Δt;xT,B-01,仅用于 Δx=aT² 类公式，避免与周期 T 撞名
+x,x,对地位移,meter,[length],变量,s;X;x（相对位移）,A-01,与 s1/s2（对地位移分量）、ds（相对位移）区分
+dx,Δx,相邻相等时间内的位移差,meter,[length],变量,Δs;dx（与 dx 微分混）,B-01,纸带/逐差法专用
+g,g,重力加速度,meter/second**2,[length]/[time]^2,常量,G（与重力混）;10（省略单位）,A-01,题给 10 或 9.8，取题给值
+h,h,高度（相对零势能面或下落高度）,meter,[length],变量,H;h（相对另一物体）,A-01,须说明是相对哪个面
+h0,h₀,初态高度（相对零势能面）,meter,[length],参数,h_0;h初,A-05,零势能面须与末态一致
+H,H,最大上升高度,meter,[length],变量,h_max;H（与高度 h 混）,A-02,竖直上抛最高点
+G,G,重力,newton,[mass]*[length]/[time]^2,变量,G（与引力常量混）,A-05,引力常量一律写 Gc
+Gc,G,万有引力常量,meter**3/kilogram/second**2,[length]^3/[mass]/[time]^2,常量,G;γ;6.67e-11（当符号用）,A-10,6.67×10⁻¹¹，为避与重力 G 撞名改记 Gc
+m,m,质量（小质量物体）,kilogram,[mass],参数,M（大小写混用）;m（带下标不归一）,A-01,同题内大小写语义固定
+M,M,另一物体质量 / 中心天体质量,kilogram,[mass],参数,m（与 m 混用）,A-02,A-05 中 M 为球 Q 质量
+m1,m₁,第一物体质量,kilogram,[mass],参数,m_1;mA（题目专用下标）,A-02,题目专用 mA/mB 归一化到 m1/m2
+m2,m₂,第二物体质量,kilogram,[mass],参数,m_2;mB;M（与 M 混）,A-02,同上
+k,k,弹簧劲度系数,newton/meter,[mass]/[time]^2,参数,K;1/k（柔度）,A-02,与开普勒常量 kk 区分
+F,F,力（合力、拉力或牵引力）,newton,[mass]*[length]/[time]^2,变量,f（与摩擦力混）;N,A-01,具体是哪个力须在解析里点明
+F1,F₁,分力1（或物体1所受外力）,newton,[mass]*[length]/[time]^2,变量,F_1;F甲,B-04,三力平衡/合成中的第一个力
+F2,F₂,分力2（或物体2所受外力）,newton,[mass]*[length]/[time]^2,变量,F_2;F乙,B-04,同上
+Fx,F_x,力的水平分量,newton,[mass]*[length]/[time]^2,变量,F_x（与投影式混）;Fx（未分解）,B-04,正交分解后使用
+Fy,F_y,力的竖直分量,newton,[mass]*[length]/[time]^2,变量,F_y（与投影式混）,B-04,正交分解后使用
+Fnet,F合,合外力,newton,[mass]*[length]/[time]^2,变量,F（与某一分力混）,A-06,牛顿第二定律左端专用
+f,f,摩擦力（滑动或静摩擦）,newton,[mass]*[length]/[time]^2,变量,F（与外力混）;f（方向不标）,A-01,方向与相对运动（趋势）方向相反
+fmax,f_max,最大静摩擦力,newton,[mass]*[length]/[time]^2,变量,f（把静摩擦当滑动摩擦）,A-06,只在临界态取此值
+mu,μ,动摩擦因数,dimensionless,1,参数,μ动;u;m（与质量混）,A-01,无量纲，pint 串写 dimensionless
+mu0,μ₀,静摩擦因数,dimensionless,1,参数,μs;μ静;μ（与动摩擦混）,A-06,一般 μ0≥μ，题未给时按 μ0=μ 处理须注明
+Nf,N,支持力 / 正压力,newton,[mass]*[length]/[time]^2,变量,N（sympy 保留名，写 N 会解析失败）,A-06,必须写 Nf；与摩擦力公式的 N 同一量
+theta,θ,倾角（斜面与水平面、或力与 x 轴夹角）,radian,1,参数,θ（原样入式）;α（与 angA 混）,A-01,θ 的定义必须写在解析里
+angA,α,力三角形中 F₁ 所对的角,radian,1,参数,alpha;A（当力用）,B-04,sympy 中 beta 为函数名，故用 angA/angB
+angB,β,力三角形中 F₂ 所对的角,radian,1,参数,beta;b,B-04,同上
+Gp,G∥,重力沿斜面方向的分量,newton,[mass]*[length]/[time]^2,变量,G_x;mg（漏 sinθ）,A-01,=mg sinθ，下滑力
+Gn,G⊥,重力垂直斜面方向的分量,newton,[mass]*[length]/[time]^2,变量,G_y;N（混作支持力）,A-02,=mg cosθ，法向压力来源
+FT,T,绳（杆）的张力,newton,[mass]*[length]/[time]^2,变量,T（与周期混）;F_T,B-10,必须写 FT
+R,R,半径（圆周轨道半径 / 天体自身半径）,meter,[length],参数,r（与轨道半径混）;D/2（未化）,A-05,竖直圆与天体半径均用 R
+r,r,两物体间距离 / 卫星轨道半径,meter,[length],变量,R（与天体半径混）,A-10,有高度时 r=R+h
+r1,r₁,双星1到共同质心的距离,meter,[length],变量,R1;r（取成两星间距）,A-10,双星中 r1+r2=L星距
+r2,r₂,双星2到共同质心的距离,meter,[length],变量,R2;r,A-10,同上
+omega,ω,角速度,radian/second,1/[time],变量,n（转速）;f（频率）,A-05,与转速 n 差 2π
+T,T,周期,second,[time],变量,t（与时间混）;T（与张力混）,A-05,与 t、FT 严格区分
+vb,v_带,传送带速度,meter/second,[length]/[time],参数,v（与物块速度混）,A-08,物块速度用 v/v0
+W,W,功,joule,[mass]*[length]^2/[time]^2,变量,A（功）;W（与重力混）,A-01,正负号由力与位移夹角决定
+P,P,功率,watt,[mass]*[length]^2/[time]^3,变量,p（与动量混）,B-06,平均/瞬时须点明
+Ek,E_k,动能,joule,[mass]*[length]^2/[time]^2,变量,E;k（与劲度混）,A-01,不可写单字母 E（sympy 中为自然常数）
+Ep,E_p,势能（重力势能或弹性势能）,joule,[mass]*[length]^2/[time]^2,变量,E;E_p（未区分重力/弹性）,A-02,用哪一种是关键，须点明
+Epmax,E_pmax,弹簧最大弹性势能,joule,[mass]*[length]^2/[time]^2,变量,Ep（与一般势能混）,A-02,对应最大压缩/伸长态
+Eini,E_初,初态系统总机械能,joule,[mass]*[length]^2/[time]^2,变量,E初;E1（与指数积分函数撞名）,A-05,展开为各项动能+势能之和
+Efin,E_末,末态系统总机械能,joule,[mass]*[length]^2/[time]^2,变量,E末;E2,A-05,同上
+Qheat,Q,摩擦生热（系统内能增量）,joule,[mass]*[length]^2/[time]^2,变量,Q（sympy 保留名，写 Q 会解析失败）,A-08,必须写 Qheat
+ds,Δs_相对,相对位移 / 相对路程,meter,[length],变量,s（对地位移）;L（板长）,A-02,往返时按路程累计，不取位移差
+s1,s₁,物体1的对地位移,meter,[length],变量,x1;S1,A-02,与 ds 区分
+s2,s₂,物体2的对地位移,meter,[length],变量,x2;S2,A-02,与 ds 区分
+d0,d₀,两物体的初始间距,meter,[length],参数,s;Δx;L（与板长混）,A-04,追及问题专用
+L,L,薄板长度 / 相对滑行的最大距离,meter,[length],参数,l;板长L（与角动量混）,A-06,「恰好不滑落」时 ds=L。原文小写 l（板长/杆长）一律归一为大写 L，不许另建 l 条目
+v1,v₁,物体1的速度,meter/second,[length]/[time],变量,v_1;vA,A-03,多体问题须标清是谁
+v2,v₂,物体2的速度,meter/second,[length]/[time],变量,v_2;vB,A-03,同上
+v1p,v₁′,物体1碰撞后的速度,meter/second,[length]/[time],变量,v1';v_1'（撇号不可入 sympy）,A-02,撇号归一化为后缀 p
+v2p,v₂′,物体2碰撞后的速度,meter/second,[length]/[time],变量,v2';v_2',A-02,同上
+vc,v共,共速速度 / 系统质心速度,meter/second,[length]/[time],变量,v（与初速混）;v共速（中文入式）,A-02,弹簧最大压缩时两者速度相等
+vup,v_上,上行经过某位置的速度,meter/second,[length]/[time],变量,v（上下不分）,A-02,对称性判断用
+vdown,v_下,下行经过同一位置的速度,meter/second,[length]/[time],变量,v;v下（中文下标）,A-02,同上
+p,p,动量,kilogram*meter/second,[mass]*[length]/[time],变量,P（与功率混）,A-02,矢量，列式前定正方向
+rho,ρ,天体密度,kilogram/meter**3,[mass]/[length]^3,变量,d;ρ（希腊字符本体）,A-10,latex 中用 ASCII rho，受限子集不含 \rho
+asemi,a,轨道半长轴（圆轨道即半径）,meter,[length],参数,a（与加速度混）;r,A-10,为避与加速度 a 撞名改记 asemi
+kk,k,开普勒常量（GM/4π²）,meter**3/second**2,[length]^3/[time]^2,常量,k（与劲度系数混）,A-10,只对同一中心天体相同
+t2,t′,第二段过程的时间（平抛飞行时间、碰后到共速的时间）,second,[time],变量,t';t_2;t₂;复用 t,A-06,非公式符号：只用于 answer.schema 的过程时间（第二段）。与 t 严格分开：同一过程不许换符号，不同过程不许复用 t。取值可相等（A-06 两段均为 1/3 s），但语义不同
+Iimp,I,冲量,newton*second,[mass]*[length]/[time],变量,I（sympy 保留名，写 I 会解析成虚数单位）,A-08,非公式符号：只出现在题干给定量与 Δv=I/m 的换算。必须写 Iimp；latex 仍写 I
+dt,Δt,相邻两次冲量的时间间隔,second,[time],参数,delta_t;Δt;deltat,A-08,非公式符号：属题干参数，不入公式库；sympy 与 latex 均写 dt
+v2b,v₂b,b 受冲量后的瞬时速度,meter/second,[length]/[time],变量,v_{2b};v2′;v2（复用会与 b 碰后速度冲突）,A-08,非公式符号：与 v2p（b 碰后速度）严格分开，同一题内不得复用
+N1,N₁,桌面对滑杆的支持力（系统静止时）,newton,[mass]*[length]/[time]^2,变量,N_1;N（sympy 保留名）,B-12,非公式符号：与 N2 分属两个状态，同一题内不得复用 Nf
+N2,N₂,桌面对滑杆的支持力（滑块上滑时）,newton,[mass]*[length]/[time]^2,变量,N_2;N（sympy 保留名）,B-12,非公式符号：隔离杆后求得，与 N1 不可混用
+d,d,一段直线段的长度（某两点间距、某段轨道长）,meter,[length],变量,l;d_0;D（大写易与直径混）,A-08,非公式符号：题干给出的几何长度，不入公式库；与 d0（两物体初始间距）区分
+t1,t₁,第一段过程的时间,second,[time],变量,t_1;t（复用会与总时间冲突）,B-09,非公式符号：与 t2 配对（t1 第一段、t2 第二段）；总时间写 t
+M0,M₀,半径 r 的球内物质质量（随 r 变）,kilogram,[mass],非公式符号,M;Msphere;M_sphere,A-10,非公式符号：题内推导式 M₀＝M·r³/R³，不入通用公式库。与 M（球体总质量）严格分开，混写正是 A-10-S03 的 0 分错法
+n,n,r＝nR 中的比值（n＞1）,dimensionless,1,非公式符号,N（大写会被当成力）,A-10,非公式符号：只作下标式记号，不入公式库。白名单此前无「比值」类条目
+Mp,M′,r＝nR 内暗物质的质量,kilogram,[mass],非公式符号,M';M_dark;Mdark,A-10,非公式符号：sympy 禁撇号故写 Mp；答案形如 (n−1)M，与 M、m1/m2 语义均不同
+k1,k₁,a–F 图第一段斜率，即 1/(M+m),1/kilogram,[mass]^-1,非公式符号,k（弹簧劲度系数，量纲 N/m 冲突）,B-20,非公式符号：图读数，不入公式库。与弹簧劲度 k 严格区分
+k2,k₂,a–F 图第二段斜率，即 1/M,1/kilogram,[mass]^-1,非公式符号,k;1/M（写成表达式而非符号）,B-20,非公式符号：图读数，与 k1 分属两段，不可复用
+b2,b₂,a–F 图第二段截距，即 −μmg/M,meter/second**2,[length]/[time]^2,非公式符号,b;a0;mu*g（写成表达式）,B-20,非公式符号：图读数，与 v0（速度）区分；白名单此前无「截距」类
+Uvolt,U,电压（电动机额定电压）,volt,[mass]*[length]^2/([time]^3*[current]),参数,U（语义泛，易与内能混）,B-10,必须写 Uvolt；latex 仍写 U
+Icur,I,电流,ampere,[current],变量,I（sympy 保留名，写 I 会解析成虚数单位）,B-10,必须写 Icur（与 Iimp 同一处理）；latex 仍写 I
+Rr,R_内,电动机内阻,ohm,[mass]*[length]^2/([time]^3*[current]^2),参数,R（与半径混）,B-10,必须写 Rr；R 已被「半径」占用

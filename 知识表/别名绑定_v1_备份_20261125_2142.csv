@@ -1,0 +1,43 @@
+﻿qid,model_symbol,symbol_id,map_type,basis,evidence_step,risk
+A-02,s_A,s1,bind,原文「从 t＝0 到 t＝t₀ 时间内，物块 A 运动的距离为 0.36v₀t₀」；金标 A-02-S07 式 m*s1+5*m*s2-6*m*v0*t1 中 s1 即 A 的对地位移（白名单 s1＝物体1的对地位移）,A-02-S08,
+A-02,s_B,s2,bind,同上式，s2 即 B 的对地位移；模型 S09 由该式解出 s_B=141/125 v₀t₀（白名单 s2＝物体2的对地位移）,A-02-S08,
+A-02,sB,s2,bind,A-02-S09 的 value.symbol，取值即 s_B 的同一结果（去下划线写法）；与 s_B 归一后同形，必须同去一处,A-02-S09,
+A-02,t0,t1,bind,原文「从 t＝0 到 t＝t₀ 时间内」；金标 given 明写「0 到 t₀ 的时间（原文 t₀，按 T09 归一为 t1＝第一段过程时间）」；模型 S08 把 t0 当「时长」用（v0*t0）,A-02-S08,t₀ 在原文里既是时间点又是时长；此处按金标取时长义。若某步把 t0 当时间坐标（如 t=2t₀）会错，本题模型未这样用
+A-02,u_B,v2p,bind,"模型 S13 文本「设……碰后 B 速度为 u_B」；金标 S10 式 M*Rational(4,5)*v0-m*v1-(m*v1p+M*v2p) 中 v2p 即第二次碰后 B 的速度（白名单 v2p＝物体2碰撞后的速度）",A-02-S13,白名单 v2（物体2的速度）也能装，但金标同题用 v2p 区分「碰后」，跟着金标走
+A-02,w,v1,bind,模型 S13 文本「设第二次碰前 A 速度大小为 w」；金标 S10 同式中 v1 即第二次碰前 A 的速度,A-02-S13,w 是大小（正值），金标 v1 在金标式里带方向；模型把方向写在 -w 里，映射本身不改符号
+A-08,m_a,m1,bind,"原文「a 的质量为 mₐ＝1 kg」；金标 given m1=1 kg、其 text 即 mₐ；金标 S01 与模型 S01 同式 m1*g*R-Rational(1,2)*m1*v1**2",A-08-S01,
+A-08,ma,m1,bind,situation.given 的无下划线写法（1.0 kg），与 m_a 归一后同形、同值；不映射则方程侧的 m1 永远没有已知值，全题回代断链,A-08-S01（given 侧同量作 ma）,
+A-08,m_b,m2,bind,原文「b 的质量为 m_b＝2 kg」；金标 given m2=2 kg；模型 S06 弹性正碰式 v_b*(m_a+m_b)-2*m_a*v_Ma 与金标 S05 v2p-2*m1*v2/(m1+m2) 同构,A-08-S06,
+A-08,mb,m2,bind,situation.given 的无下划线写法（2.0 kg）；不映射则 m2 无已知值,A-08-S06（given 侧同量作 mb）,
+A-08,v_P,v1,bind,模型 S02 文本「解得 v_P=sqrt(2gR)=6 m/s」；金标 S01 同式得 v1=6 m/s（白名单 v1＝物体1的速度），值 6.0 与金标一致,A-08-S01,
+A-08,vP,v1,bind,A-08-S02 的 value.symbol（6.0 m/s），与 v_P 归一后同形同值,A-08-S02,
+A-08,v_Ma,v2,bind,模型 S05 文本「v_Ma^2=v_P^2-2μg d 得 v_Ma=3 m/s」；金标 S04 同式 v2**2-v1**2+2*a1*d 得 v2=3 m/s（白名单 v2＝物体2的速度，此处金标用它装 a 的碰前速度）,A-08-S05,
+A-08,vMa,v2,bind,A-08-S05 的 value.symbol（3.0 m/s）,A-08-S05,
+A-08,v_b,v2p,bind,模型 S06 文本「v_b=2m_a u_a/(m_a+m_b)=2 m/s」（b 碰后速度）；金标 S05 用 v2p 记同一量、同值 2 m/s。注意不能按词法归一成白名单的 vb（传动带速度）,A-08-S06,v_b 归一后是 vb，白名单 vb＝传送带速度（本题传送带另记 v0）——这正是本层不用词法归一的原因
+A-08,vb,v2p,bind,A-08-S06 的 value.symbol（2.0 m/s）,A-08-S06,同上：vb 字面在白名单里是「传送带速度」，此处必须按题内绑定覆盖
+A-08,v_1,v2b,bind,模型 S11 文本「由 I=m_b(v1-u) 得 v1=2 m/s，方向向右」（受冲量后 b 的速度）；金标 S08 同式 v2b-(Iimp/m2-v0)，同值 2 m/s,A-08-S11,
+A-08,v1,v2b,bind,A-08-S11 的 value.symbol 写作 v1，但该步值 2 m/s 是冲量后 b 的速度（金标 v2b），不是物体1的速度；不绑则 S11 方程含 v2b、值符号是 v1，永远 na,A-08-S11,最可能判错的一条：v1 在白名单是「物体1的速度」，模型在此复用为 b 的冲量后速度；仅凭 S11 式 I-m_b*(v_1+v0) 与金标 S08 同构、同值才敢绑
+A-08,N,Nf,reserved,N 是 sympy 保留名（数值化函数 N()），units.parse_sympy 必然拒；语义为 P 点轨道支持力 30 N，金标用 Nf；白名单 Nf 的「规范写法」列即 N,A-08-S03,
+A-08,I,Iimp,reserved,I 是 sympy 虚数单位，必然被拒；语义为冲量 6 N·s（given 与 S11），金标 Iimp；白名单 Iimp 规范写法即 I,A-08-S11,
+A-08,Q,Qheat,reserved,Q 是 sympy 假设对象（assumptions），必然被拒；语义为摩擦生热 95 J（S19），金标 Qheat；白名单 Qheat 规范写法即 Q,A-08-S19,
+A-08,Delta_t,dt,bind,原文「每隔 Δt＝0.6 s 给 b 一相同的瞬时冲量」；金标 given dt=0.6 s，S09 用 dt；模型 S12 以 0.6 代入得 -1 m/s 恰等于带速,A-08-S12,
+A-08,Deltat,dt,bind,situation.given 的无下划线写法（0.6 s）；不映射则 dt 无已知值，S12/S13/S14 全部悬空,A-08-S12（given 侧同量作 Deltat）,
+A-08,t_total,t,bind,模型 S10 文本「总时间 t=t1+(L-s1)/v0=3.2 s」；金标 S07 用 t 记同一量、同值 3.2 s（白名单 t＝过程所经历的时间）,A-08-S10,
+A-08,ttotal,t,bind,A-08-S10 的 value.symbol（3.2 s）,A-08-S10,
+A-08,s_rel,ds,bind,模型 S13 文本「每个完整 0.6 s 间隔内，b 相对传送带的滑行距离 s_rel=0.9 m」；金标 S11 用 ds 记相对路程，且其文本「10 个整周期各 0.9 m」与此同量（白名单 ds＝相对位移/相对路程）,A-08-S13,粒度差：金标 ds 是全过程相对路程 9.5 m，模型 s_rel 是单周期 0.9 m。绑定的是一类量、不是同一个数；若后续步把 ds 当总量会串
+A-08,srel,ds,bind,A-08-S13 的 value.symbol（0.9 m）,A-08-S13,同上粒度差
+A-08,d_1,s2,bind,模型 S14 文本「一个完整 0.6 s 间隔内 b 的位移 d1=0.3 m，方向向右」；b 即物体2，白名单 s2＝物体2的对地位移；S16 用它凑 L-10*d_1=0.3 m,A-08-S14,粒度差：s2 在金标语境是全过程位移，模型当分段量用。同题另有 s1 被模型用于 b 的第一段位移（语义错标，只报不修），两者数值同为 0.3，暂不冲突
+A-08,d1,s2,bind,A-08-S14 的 value.symbol（0.3 m）,A-08-S14,同上粒度差
+A-10,G,Gc,bind,原文「引力常量为 G」；模型 given 给 G 的单位是 m^3/kg*s^2，与白名单 Gc 单位逐字相同，而白名单 G 的单位是 newton（重力）；金标 S01 用 Gc 写同一式,A-10-S02,同名不同义：白名单 G＝重力。本题 G 只作引力常量（S02/S05/S10/S11 + given 单位可证），若某步真指重力，这条会错
+A-10,M_r,M0,bind,模型 S05 文本「只有半径 r 内的质量 M(r) 对恒星有净引力」；金标 S03 用 M0 记同一量、同定义（白名单 M0＝半径 r 的球内物质质量，随 r 变）,A-10-S05,
+B-02,v_B,v2,bind,模型 S06 文本「B 的速度大小为 vB=2v」；金标 S03 式 2*m*v-m*v2 中 v2 即 B 的速度（白名单 v2＝物体2的速度）,B-02-S06,
+B-02,vB,v2,bind,B-02-S06 的 value.symbol,B-02-S06,
+B-02,x_A,s1,bind,模型 S10 文本「A 从最高点水平抛出，下落的水平位移 xA=vT=vt」；金标 S05 式 s1+s2-(v+v2)*t 把两段水平位移记为 s1/s2,B-02-S10,
+B-02,xA,s1,bind,B-02-S10 的 value.symbol,B-02-S10,
+B-02,x_B,s2,bind,模型 S11 文本「B 下落的水平位移 xB=2vT=2vt」；金标 S05 用 s2,B-02-S11,
+B-02,xB,s2,bind,B-02-S11 的 value.symbol,B-02-S11,
+B-09,v_after,v1p,bind,模型 S02 文本「甲碰后速度 v_after」、S09「甲碰后速度 v_after=0.1 m/s」；金标 S03 式 m*v1-m*v1p-m*v2 中 v1p 即甲碰后速度，given v1p=0.1 m/s（白名单 v1p＝物体1碰撞后的速度）,B-09-S02,
+B-09,vafter,v1p,bind,situation.given 的无下划线写法（0.1 m/s）；不映射则 v1p 无已知值，S09/S10 悬空,B-09-S09（given 侧同量作 vafter）,
+B-12,l,L,bind,原文「A、B 间的距离 l＝1.2 m」；金标 given 明写「A、B 间的距离 l＝1.2 m（符号归一到 L）」，S05 式用 L,B-12-S05,大小写差不是词法归一（卡 §5 明令）：本题只出现小写 l，没有同名大写 L 与之冲突；若同题两者并存且含义不同，禁止映射
+B-20,N,Nf,reserved,N 是 sympy 保留名，必然被拒；语义为 Q 点轨道对物块的弹力（原文「受到轨道的弹力大小等于 3mg」），白名单 Nf 规范写法即 N；金标 S02 同式,B-20-S02,
+B-20,vQ,v1,bind,given vQ=7.0 m/s＝原文「小物块从 Q 点离开轨道时相对地面的速度大小为 7 m/s」；金标 given v1=7 m/s、S09 用 m*v1（白名单 v1＝物体1的速度，本题物块即物体1）,B-20-S15（given 侧同量作 vQ）,

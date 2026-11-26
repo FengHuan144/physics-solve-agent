@@ -1,0 +1,994 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-08",
+    "question_id": "A-08",
+    "group": "A",
+    "source": "2024 贵州卷",
+    "question_no": 15,
+    "full_score": 19,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T11:30:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，半径为 R＝1.8 m 的四分之一光滑圆轨道固定在竖直平面内，其末端与水平地面 PM 相切于 P 点，PM 的长度 d＝2.7 m。一长为 L＝3.3 m 的水平传送带以恒定速率 v₀＝1 m/s 逆时针转动，其右端与地面在 M 点无缝对接。物块 a 从圆轨道顶端由静止释放，沿轨道下滑至 P 点，再向左做直线运动至 M 点与静止的物块 b 发生弹性正碰，碰撞时间极短。碰撞后 b 向左运动到达传送带的左端 N 时，瞬间给 b 一水平向右的冲量 I，其大小为 6 N·s。以后每隔 Δt＝0.6 s 给 b 一相同的瞬时冲量 I，直到 b 离开传送带。已知 a 的质量为 mₐ＝1 kg，b 的质量为 m_b＝2 kg，它们均可视为质点。a、b 与地面及传送带间的动摩擦因数均为 μ＝0.5，取重力加速度大小 g＝10 m/s²。求：(1)a 运动到圆轨道底端时轨道对它的支持力大小；(2)b 从 M 运动到 N 的时间；(3)b 从 N 运动到 M 的过程中与传送带摩擦产生的热量。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "四分之一圆轨道（半径 R）与水平地面相切于 P、PM 段、传送带 MN；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "a 运动到圆轨道底端时轨道对它的支持力大小。",
+        "score": 5
+      },
+      {
+        "no": "(2)",
+        "text": "b 从 M 运动到 N 的时间。",
+        "score": 6
+      },
+      {
+        "no": "(3)",
+        "text": "b 从 N 运动到 M 的过程中与传送带摩擦产生的热量。",
+        "score": 8
+      }
+    ],
+    "stem_sha256": "d69523ffab7de084651bbb78b2ebd6a28e98fed8ab128001c2ed1b1b82eacfe2",
+    "input_sha256": "d95eeb99464c5f2081398c833176e5b988f74f1b644d0fd4faf359b8d7d2df91"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "物块 a",
+        "mass_symbol": "m1",
+        "note": "从圆轨道顶端静止释放，视为质点，质量 1 kg"
+      },
+      {
+        "id": "obj2",
+        "name": "物块 b",
+        "mass_symbol": "m2",
+        "note": "原静止于 M 点，视为质点，质量 2 kg"
+      },
+      {
+        "id": "obj3",
+        "name": "传送带",
+        "mass_symbol": "Mbelt",
+        "note": "长 3.3 m，以 1 m/s 逆时针（上表面向左）匀速转动"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": 1.8,
+        "unit": "m",
+        "text": "半径为 R＝1.8 m 的四分之一光滑圆轨道"
+      },
+      {
+        "symbol": "d",
+        "value": 2.7,
+        "unit": "m",
+        "text": "PM 的长度 d＝2.7 m"
+      },
+      {
+        "symbol": "L",
+        "value": 3.3,
+        "unit": "m",
+        "text": "一长为 L＝3.3 m 的水平传送带"
+      },
+      {
+        "symbol": "v0",
+        "value": 1,
+        "unit": "m/s",
+        "text": "以恒定速率 v₀＝1 m/s 逆时针转动"
+      },
+      {
+        "symbol": "Iimp",
+        "value": 6,
+        "unit": "N*s",
+        "text": "冲量 I，其大小为 6 N·s"
+      },
+      {
+        "symbol": "dt",
+        "value": 0.6,
+        "unit": "s",
+        "text": "以后每隔 Δt＝0.6 s 给 b 一相同的瞬时冲量"
+      },
+      {
+        "symbol": "m1",
+        "value": 1,
+        "unit": "kg",
+        "text": "a 的质量为 mₐ＝1 kg"
+      },
+      {
+        "symbol": "m2",
+        "value": 2,
+        "unit": "kg",
+        "text": "b 的质量为 m_b＝2 kg"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.5,
+        "unit": "1",
+        "text": "a、b 与地面及传送带间的动摩擦因数均为 μ＝0.5"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "取重力加速度大小 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "a 沿圆轨道下滑",
+        "start": "a 从圆轨道顶端静止释放",
+        "end": "a 到达底端 P",
+        "segment_id": "SEG-01",
+        "boundary_reference": "以圆轨道顶端由静止释放为起点、底端 P 点切线水平为终点；重力势能以地面为零点"
+      },
+      {
+        "no": 2,
+        "name": "a 在 PM 段减速",
+        "start": "a 经过 P 向左运动",
+        "end": "a 到达 M（速度 3 m/s）",
+        "segment_id": "SEG-02",
+        "boundary_reference": "以过 P 点瞬间为起点、到达 M 点为终点；位移沿 P→M 取正"
+      },
+      {
+        "no": 3,
+        "name": "弹性正碰",
+        "start": "a 与静止的 b 在 M 相碰",
+        "end": "碰后 a 反弹、b 向左以 2 m/s 运动",
+        "segment_id": "SEG-03",
+        "boundary_reference": "以碰前瞬间为起点、碰后瞬间为终点；碰撞时间极短按零计，位置取 M 点"
+      },
+      {
+        "no": 4,
+        "name": "b 在传送带上减速后随带匀速",
+        "start": "b 由 M 向左进入传送带",
+        "end": "b 到达 N（先减速到 1 m/s，再匀速）",
+        "segment_id": "SEG-04",
+        "boundary_reference": "以 b 进入 M 点为起点、到达 N 点为终点；速度参照系取传送带上表面（向左 1 m/s）"
+      },
+      {
+        "no": 5,
+        "name": "b 受周期冲量往返",
+        "start": "b 在 N 受向右冲量",
+        "end": "b 由 N 回到 M 并离开传送带",
+        "segment_id": "SEG-05",
+        "boundary_reference": "以 b 在 N 点受第一次冲量为起点、离开 M 点为终点；每次冲量按瞬时计，时间零点取第一次冲量"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "Nf",
+        "text": "圆轨道底端轨道对 a 的支持力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "t",
+        "text": "b 从 M 到 N 的时间"
+      },
+      {
+        "no": "(3)",
+        "quantity": "Qheat",
+        "text": "b 从 N 到 M 与传送带摩擦产生的热量"
+      }
+    ],
+    "assumptions": [
+      "圆轨道光滑，a 下滑过程只有重力做功",
+      "a、b 均可视为质点，碰撞为一维弹性正碰且时间极短，碰中动量与动能同时守恒",
+      "传送带上表面因逆时针转动而向左运动，速率恒为 1 m/s",
+      "水平向左取负方向，向右为正方向（与题目「向左运动」叙述一致）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "圆轨道下滑机械能守恒求 v1",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-08-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "底端沿半径方向列向心力方程",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "解出支持力 Nf=30 N",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "PM 段匀减速求碰前速度 v2",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "弹性正碰求 b 碰后速度",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "判定 b 在带上先减速、加速度大小",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "分段求 b 由 M 到 N 的时间",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "判定冲量后 b 的速度方向与大小",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "求单个冲量周期的时间与相对速度",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S09"
+    },
+    {
+      "step_no": 10,
+      "title": "定出到 M 的剩余距离与末段",
+      "depends_on": [
+        9
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S10"
+    },
+    {
+      "step_no": 11,
+      "title": "摩擦生热 Q=95 J",
+      "depends_on": [
+        10
+      ],
+      "expanded": true,
+      "point_hint": "A-08-S11"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-08-S01",
+      "step_no": 1,
+      "title": "圆轨道下滑机械能守恒求 v1",
+      "point_id": "A-08-S01",
+      "kind": "equation",
+      "statement": "四分之一圆弧半径 R＝1.8 m，a 从顶端静止滑到底端，只有重力做功：m₁gR＝½m₁v₁²，得 v₁＝6 m/s。",
+      "equation": {
+        "latex": "m_{1} g R = \\frac{1}{2} m_{1} v_{1}^{2}",
+        "sympy": "m1*g*R - Rational(1,2)*m1*v1**2",
+        "symbols": [
+          "R",
+          "g",
+          "m1",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": 6.0,
+        "exact": "sqrt(2*g*R)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（R=1.8、g=10、m1=1、v1=6）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边均为 J（kg·m²/s²）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "圆轨道光滑，无摩擦项；正压力全程不做功，故不出现",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S02",
+      "step_no": 2,
+      "title": "底端沿半径方向列向心力方程",
+      "point_id": "A-08-S02",
+      "kind": "equation",
+      "statement": "在最低点 P，支持力与重力的合力提供向心力：N－m₁g＝m₁v₁²/R。",
+      "equation": {
+        "latex": "N_{f} - m_{1} g = m_{1} \\frac{v_{1}^{2}}{R}",
+        "sympy": "Nf - m1*g - m1*v1**2/R",
+        "symbols": [
+          "Nf",
+          "R",
+          "g",
+          "m1",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（Nf=30、R=1.8、g=10、m1=1、v1=6）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N 与 mg 为 N，右边 kg·(m/s)²/m＝N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "圆心在 P 正上方，向心方向为竖直向上，故 N 取正、mg 取负",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S03",
+      "step_no": 3,
+      "title": "解出支持力 Nf=30 N",
+      "point_id": "A-08-S03",
+      "kind": "value",
+      "statement": "代入 v₁＝6 m/s、R＝1.8 m 得 N＝1×10＋1×36/1.8＝30 N；由牛顿第三定律，a 对轨道的压力同为 30 N。",
+      "equation": {
+        "latex": "N_{f} = 30",
+        "sympy": "Nf - 30",
+        "symbols": [
+          "Nf"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "Nf",
+        "number": 30.0,
+        "exact": "m1*g + m1*v1^2/R",
+        "unit": "N",
+        "direction": "+y",
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（Nf=30）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N（kg·m/s²）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S04",
+      "step_no": 4,
+      "title": "PM 段匀减速求碰前速度 v2",
+      "point_id": "A-08-S04",
+      "kind": "equation",
+      "statement": "a 在 PM 段只受摩擦力，a₁＝μg＝5 m/s²；由 v₂²＝v₁²－2a₁d 得 v₂＝3 m/s。",
+      "equation": {
+        "latex": "v_{2}^{2} - v_{1}^{2} + 2 a_{1} d = 0",
+        "sympy": "v2**2 - v1**2 + 2*a1*d",
+        "symbols": [
+          "a1",
+          "d",
+          "v1",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "v2",
+        "number": 3.0,
+        "exact": "sqrt(v1^2 - 2*mu*g*d)",
+        "unit": "m/s",
+        "direction": "-x",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-01",
+        "L-05",
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a1=5、d=2.7、v1=6、v2=3）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "减速度取正、加号在式子中体现为 +2a₁d（移项后变号），方向沿 PM 指向 M",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S05",
+      "step_no": 5,
+      "title": "弹性正碰求 b 碰后速度",
+      "point_id": "A-08-S05",
+      "kind": "equation",
+      "statement": "一维弹性正碰、b 原静止：v_b′＝2m₁v₂/(m₁＋m₂)＝2×1×3/3＝2 m/s（向左）；a 反弹为 1 m/s。",
+      "equation": {
+        "latex": "v_{2p} = \\frac{2 m_{1} v_{2}}{m_{1} + m_{2}}",
+        "sympy": "v2p - 2*m1*v2/(m1+m2)",
+        "symbols": [
+          "m1",
+          "m2",
+          "v2",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": {
+        "symbol": "v2p",
+        "number": 2.0,
+        "exact": "2*m1*v2/(m1+m2)",
+        "unit": "m/s",
+        "direction": "-x",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（m1=1、m2=2、v2=3、v2p=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "一动一静弹性碰撞的碰后速度式；只对 b 应用，a 的碰后速度另行给出但非本步采分点",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S06",
+      "step_no": 6,
+      "title": "判定 b 在带上先减速、加速度大小",
+      "point_id": "A-08-S06",
+      "kind": "value",
+      "statement": "b 以 2 m/s 向左进入向左 1 m/s 的传送带，相对带向左运动，摩擦力向右，a_b＝μg＝5 m/s²，故 b 先减速到与带共速 1 m/s。",
+      "equation": {
+        "latex": "a_{2} = \\mu g",
+        "sympy": "a2 - mu*g",
+        "symbols": [
+          "a2",
+          "g",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-04",
+      "value": {
+        "symbol": "a2",
+        "number": 5.0,
+        "exact": "mu*g",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-05",
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a2=5、g=10、mu=0.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "摩擦力方向按「阻碍相对运动」判定：b 相对带向左 → 摩擦力向右；带速向左不等于 b 与带同向运动",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S07",
+      "step_no": 7,
+      "title": "分段求 b 由 M 到 N 的时间",
+      "point_id": "A-08-S07",
+      "kind": "value",
+      "statement": "减速段 t₁＝(2−1)/5＝0.2 s、位移 s₁＝0.3 m；随带匀速段 t₂＝(3.3−0.3)/1＝3.0 s；合计 t＝3.2 s。",
+      "equation": {
+        "latex": "t = \\frac{v_{2p} - v_{0}}{a_{2}} + \\frac{L - s_{1}}{v_{0}}",
+        "sympy": "t - (v2p-v0)/a2 - (L - (v2p**2-v0**2)/(2*a2))/v0",
+        "symbols": [
+          "L",
+          "a2",
+          "t",
+          "v0",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-04",
+      "value": {
+        "symbol": "t",
+        "number": 3.2,
+        "exact": "1/5 + 3",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=3.3、a2=5、t=3.2、v0=1、v2p=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两段不能合并成一段匀变速：第二段与带共速后不再受摩擦，加速度为 0",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S08",
+      "step_no": 8,
+      "title": "判定冲量后 b 的速度方向与大小",
+      "point_id": "A-08-S08",
+      "kind": "value",
+      "statement": "冲量使 b 获得 Δv＝I/m₂＝3 m/s 向右，而 b 此时正以 1 m/s 随带向左运动，故冲量后速度为 2 m/s 向右（不是 3 m/s）。",
+      "equation": {
+        "latex": "v_{2b} = \\frac{I}{m_{2}} - v_{0}",
+        "sympy": "v2b - (Iimp/m2 - v0)",
+        "symbols": [
+          "Iimp",
+          "m2",
+          "v0",
+          "v2b"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-05",
+      "value": {
+        "symbol": "v2b",
+        "number": 2.0,
+        "exact": "I/m2 - v0",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-11"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（Iimp=6、m2=2、v0=1、v2b=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N·s/kg＝m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "冲量改变的是动量增量，必须叠加冲量前的速度；直接把 Δv 当末速度是本题最大失分点",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S09",
+      "step_no": 9,
+      "title": "求单个冲量周期的时间与相对速度",
+      "point_id": "A-08-S09",
+      "kind": "equation",
+      "statement": "冲量后 b 相对带 3 m/s 向右，摩擦力向左、a＝5 m/s²，经 Δt′＝3/5＝0.6 s 恰好与带共速——与冲量间隔 Δt＝0.6 s 同步，故每次冲量都发生在共速瞬间。",
+      "equation": {
+        "latex": "dt = \\frac{v_{2b} + v_{0}}{a_{2}}",
+        "sympy": "dt - (v2b + v0)/a2",
+        "symbols": [
+          "a2",
+          "dt",
+          "v0",
+          "v2b"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-05",
+      "value": {
+        "symbol": "dt",
+        "number": 0.6,
+        "exact": "3/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-05",
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a2=5、dt=0.6、v0=1、v2b=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "(m/s)/(m/s²)＝s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "相对速度取 (2 − (−1))＝3 m/s；把带速当 0 会得 0.4 s，周期错位后整问失效",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S10",
+      "step_no": 10,
+      "title": "定出到 M 的剩余距离与末段",
+      "point_id": "A-08-S10",
+      "kind": "critical",
+      "statement": "每周期净位移 (2−1)/2×0.6＝0.3 m，10 个周期走 3.0 m，距 M 尚余 3.3−3.0＝0.3 m；第 11 次冲量后再经 0.2 s 到达 M，末段相对路程 0.5 m。",
+      "equation": null,
+      "criterion": {
+        "expr": "L - 10*(v2b - v0)/2*dt",
+        "expected": "s1",
+        "comparator": "eq",
+        "text": "每周期净位移 (2−1)/2×0.6＝0.3 m，10 个周期走 3.0 m，距 M 尚余 3.3−3.0＝0.3 m，与 s₁ 相等。"
+      },
+      "segment_id": "SEG-05",
+      "value": null,
+      "law_ids": [
+        "L-01",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "判据回代成立（L=3.3、dt=0.6、s1=0.3、v0=1、v2b=2，差值 0）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "剩余 0.3 m 与首段位移 s₁ 数值相同但意义不同（一为减速段、一为末段），不可互相替代",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-08-S11",
+      "step_no": 11,
+      "title": "摩擦生热 Q=95 J",
+      "point_id": "A-08-S11",
+      "kind": "equation",
+      "statement": "相对路程：10 个整周期各 0.9 m 共 9.0 m，末段 0.5 m，合计 9.5 m；Q＝μm₂g·s_相对＝0.5×2×10×9.5＝95 J。",
+      "equation": {
+        "latex": "Q = \\mu m_{2} g \\, ds",
+        "sympy": "Qheat - mu*m2*g*ds",
+        "symbols": [
+          "Qheat",
+          "ds",
+          "g",
+          "m2",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-05",
+      "value": {
+        "symbol": "Qheat",
+        "number": 95.0,
+        "exact": "mu*m2*g*ds",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-10"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（Qheat=95、ds=9.5、g=10、m2=2、mu=0.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲×kg×m/s²×m＝J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "摩擦生热用相对路程，不是 b 对地位移（对地位移 3.0 m），也不是传送带位移",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-08-S01",
+        "step_id": "A-08-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S02",
+        "step_id": "A-08-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S03",
+        "step_id": "A-08-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S04",
+        "step_id": "A-08-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S05",
+        "step_id": "A-08-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S06",
+        "step_id": "A-08-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S07",
+        "step_id": "A-08-S07",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S08",
+        "step_id": "A-08-S08",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S09",
+        "step_id": "A-08-S09",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S10",
+        "step_id": "A-08-S10",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-08-S11",
+        "step_id": "A-08-S11",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 19,
+    "score_total": 19,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "pass",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：四过程 + 周期冲量，L1 逐式数值回代、L2 量纲全过，19/19 满分，未触归零点"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

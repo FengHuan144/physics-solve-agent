@@ -1,0 +1,18 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-09_t26fix.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-09_t26fix_validated.json
+
+对象：B-09（题 B-09，12 步）
+L1  pass 8 / fail 0 / na 4 / skipped 0    判定通过率 100.0%    na 比例 33.3%
+L2  pass 8 / fail 0 / na 4 / skipped 0    判定通过率 100.0%    na 比例 33.3%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-09-S02 [L1] per_step：data_error(unknown_symbol): 符号「v_after」不在白名单：m*v1 - m*v_after - m*v2｜chain：data_error(unknown_symbol): 符号「v_after」不在白名单：m*v1 - m*v_after - m*v2
+  - B-09-S02 [L2] data_error(unknown_symbol): 符号「v_after」不在白名单：m*v1 - m*v_after - m*v2
+  - B-09-S04 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-09-S04 [L2] data_error(empty): sympy 串为空
+  - B-09-S09 [L1] per_step：data_error(unknown_symbol): 符号「v_after」不在白名单：v_after - a*t2｜chain：data_error(unknown_symbol): 符号「v_after」不在白名单：v_after - a*t2
+  - B-09-S09 [L2] data_error(unknown_symbol): 符号「v_after」不在白名单：v_after - a*t2
+  - B-09-S10 [L1] per_step：data_error(unknown_symbol): 符号「v_after」不在白名单：t2 - v_after/a｜chain：data_error(unknown_symbol): 符号「v_after」不在白名单：t2 - v_after/a
+  - B-09-S10 [L2] data_error(unknown_symbol): 符号「v_after」不在白名单：t2 - v_after/a
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\B-09_t26fix_validated.json

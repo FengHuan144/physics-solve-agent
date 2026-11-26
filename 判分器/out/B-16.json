@@ -1,0 +1,137 @@
+{
+  "qid": "B-16",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-16-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-16-S01"
+      ],
+      "basis": "无锚点：口径要求『CD 段（关闭电动机后上滑）：mg sinθ + μmg cosθ = ma』，承载步 B-16-S01 的 statement 写『关闭电动机后，物块沿斜面向上运动，重力的沿斜面分力和滑动摩擦力都沿斜面向下，物块做匀减速运动，到 D 点时速度恰好为零。』，无式子可复核（2-gram 覆盖 21%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-16-S02",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-16-S02",
+        "B-16-S03"
+      ],
+      "basis": "欠定：B-16-S02、B-16-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-16-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-16-S04"
+      ],
+      "basis": "无锚点：口径要求『BC 段匀速→牵引力与阻力平衡：F = mg sinθ + μmg cosθ』，承载步 B-16-S04 的 statement 写『BC 段物块匀速运动，电动机牵引力与重力沿斜面分力和滑动摩擦力平衡。』，无式子可复核（2-gram 覆盖 31%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-16-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-16-S05"
+      ],
+      "basis": "欠定：B-16-S05 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-16-S05",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-16-S05",
+        "B-16-S06"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：P - m*g*v*(sin(theta)+mu*cos(theta))",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-16-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-16-S07",
+        "B-16-S08"
+      ],
+      "basis": "无锚点：B-16-S07、B-16-S08 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-16-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-16-S09"
+      ],
+      "basis": "无锚点：口径要求『电动机消耗的总电能 E₂ = E₁ + μmg cosθ·L（机械能增量＋摩擦生热）』，承载步 B-16-S09 的 statement 写『忽略电动机内阻等损耗，电动机消耗的电能转化为物块增加的机械能和全过程克服摩擦力产生的内能；全过程总路程为 L。』，无式子可复核（2-gram 覆盖 31%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-16-S08",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-16-S10",
+        "B-16-S11"
+      ],
+      "basis": "欠定：B-16-S10、B-16-S11 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "hit": 1,
+    "miss": 0,
+    "na": 7,
+    "score": 1.0,
+    "score_total": 12.0,
+    "judged_rate": "1/8",
+    "hit_rate": "1/1"
+  },
+  "na_reasons": {
+    "无锚点": 4,
+    "欠定": 3
+  }
+}

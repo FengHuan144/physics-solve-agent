@@ -1,0 +1,646 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-03",
+    "question_id": "A-03",
+    "group": "A",
+    "source": "2023 全国乙卷",
+    "question_no": 25,
+    "full_score": 20,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:32:45+08:00",
+    "latency_ms": 85855,
+    "tokens": {
+      "in": 1054,
+      "out": 18028
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一竖直固定的长直圆管内有一质量为 M 的静止薄圆盘，圆盘与管的上端口距离为 l，圆管长度为 20l。一质量为 m＝M/3 的小球从管的上端口由静止下落，并撞在圆盘中心，圆盘向下滑动，所受滑动摩擦力与其所受重力大小相等。小球在管内运动时与管壁不接触，圆盘始终水平，小球与圆盘发生的碰撞均为弹性碰撞且碰撞时间极短。不计空气阻力，重力加速度大小为 g。求",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "竖直长直圆管（长 20l）内有薄圆盘，盘距上端口 l，小球自端口静止下落；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "第一次碰撞后瞬间小球和圆盘的速度大小。",
+        "score": 7
+      },
+      {
+        "no": "(2)",
+        "text": "在第一次碰撞到第二次碰撞之间，小球与圆盘间的最远距离。",
+        "score": 6
+      },
+      {
+        "no": "(3)",
+        "text": "圆盘在管内运动过程中，小球与圆盘碰撞的次数。",
+        "score": 7
+      }
+    ],
+    "stem_sha256": "cb08cc4ea765b996bb700b450f4d23f9b1d798fba7de1f37e638d372c70f4188",
+    "input_sha256": "8780dd2dda2af8676e1f651e8ecb92dc8a1c50794ca2f0fa59e5ed47a41e4571"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球",
+        "mass_symbol": "m",
+        "note": "质量 m＝M/3，自管口静止下落；与盘弹性碰撞，碰后做竖直上抛/下落"
+      },
+      {
+        "id": "obj2",
+        "name": "薄圆盘",
+        "mass_symbol": "M",
+        "note": "质量 M，初始静止于端口下 l 处；所受滑动摩擦力与重力等大，碰后匀速下滑"
+      },
+      {
+        "id": "obj3",
+        "name": "长直圆管",
+        "mass_symbol": "M",
+        "note": "竖直固定，长 20l；只提供约束，不参与动量交换"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "l",
+        "value": null,
+        "unit": "m",
+        "text": "圆盘与管的上端口距离为 l"
+      },
+      {
+        "symbol": "L",
+        "value": null,
+        "unit": "m",
+        "text": "圆管长度为 L＝20l"
+      },
+      {
+        "symbol": "M",
+        "value": null,
+        "unit": "kg",
+        "text": "圆盘质量为 M"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "小球质量 m＝M/3"
+      },
+      {
+        "symbol": "f",
+        "value": null,
+        "unit": "N",
+        "text": "圆盘所受滑动摩擦力大小 f＝Mg，方向向上"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度为 g"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v2p",
+        "text": "第一次碰后小球与圆盘的速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "ds",
+        "text": "第一次到第二次碰撞之间球与盘的最远距离"
+      },
+      {
+        "no": "(3)",
+        "quantity": "n",
+        "text": "盘在管内运动过程中球与盘碰撞的次数"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "求碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "列动量守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "列弹性碰撞关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "求第一次碰后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "判碰后运动状态",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "列相对距离式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "最远时速度相等",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求最远距离",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "判相对速度恒定",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求碰撞时间间隔",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "求第n次碰后盘速",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "求两碰间盘位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "列各次碰撞位置",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "判断总碰撞次数",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-03-S01",
+      "step_no": 1,
+      "title": "求碰前速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "小球从管口自由下落距离 l 到圆盘，由机械能守恒求第一次碰前速度 v0。",
+      "equation": {
+        "latex": "m g l - (1/2) m v0^2",
+        "sympy": "m*g*l - Rational(1,2)*m*v0**2",
+        "symbols": [
+          "g",
+          "l",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v0",
+        "number": null,
+        "exact": "sqrt(2*g*l)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S02",
+      "step_no": 2,
+      "title": "列动量守恒",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取竖直向下为正方向。第一次碰撞前圆盘静止，碰撞极短，系统动量守恒。",
+      "equation": {
+        "latex": "m v0 - m vm - M vM",
+        "sympy": "m*v0 - m*vm - M*vM",
+        "symbols": [
+          "M",
+          "m",
+          "v0",
+          "vM",
+          "vm"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S03",
+      "step_no": 3,
+      "title": "列弹性碰撞关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "弹性碰撞恢复系数为 1，碰后相对速度大小等于碰前相对速度大小；取向下为正有 vM-vm=v0。",
+      "equation": {
+        "latex": "vM - vm - v0",
+        "sympy": "vM - vm - v0",
+        "symbols": [
+          "v0",
+          "vM",
+          "vm"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S04",
+      "step_no": 4,
+      "title": "求第一次碰后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "将 M＝3m 代入动量守恒和弹性碰撞关系，得 vm＝-v0/2，vM＝v0/2；速度大小均为 v＝sqrt(gl/2)，小球向上、圆盘向下。",
+      "equation": {
+        "latex": "vm + (1/2) v0",
+        "sympy": "vm + Rational(1,2)*v0",
+        "symbols": [
+          "v0",
+          "vm"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v",
+        "number": null,
+        "exact": "sqrt(g*l/2)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S05",
+      "step_no": 5,
+      "title": "判碰后运动状态",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "第一次碰后，圆盘以 v0/2 向下做匀速运动，小球以 v0/2 向上做竖直上抛运动；圆盘相对小球向下，初相对速度为 v0。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "明确碰后两物体的运动状态和相对运动。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S06",
+      "step_no": 6,
+      "title": "列相对距离式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取第一次碰撞时刻为 t＝0，圆盘在小球下方，二者距离 d＝v0t-1/2gt^2。",
+      "equation": {
+        "latex": "d - v0 t + (1/2) g t^2",
+        "sympy": "d - v0*t + Rational(1,2)*g*t**2",
+        "symbols": [
+          "d",
+          "g",
+          "t",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S07",
+      "step_no": 7,
+      "title": "最远时速度相等",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "间距最大时二者相对速度为零，即 d 对时间导数为零，v0-gt＝0。",
+      "equation": {
+        "latex": "v0 - g t",
+        "sympy": "v0 - g*t",
+        "symbols": [
+          "g",
+          "t",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S08",
+      "step_no": 8,
+      "title": "求最远距离",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 t＝v0/g 得 dmax＝v0^2/(2g)，又 v0^2＝2gl，所以 dmax＝l。",
+      "equation": {
+        "latex": "d - l",
+        "sympy": "d - l",
+        "symbols": [
+          "d",
+          "l"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "d",
+        "number": null,
+        "exact": "l",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S09",
+      "step_no": 9,
+      "title": "判相对速度恒定",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "设第 n 次碰后小球、圆盘速度分别为 un、Vn。由弹性碰撞公式可得 V_{n+1}-u_{n+1}＝Vn-un；第一次碰后 V1-u1＝v0，故每次碰后圆盘相对小球向下速度均为 v0。",
+      "equation": {
+        "latex": "(Vn1 - un1) - (Vn - un)",
+        "sympy": "(Vn1 - un1) - (Vn - un)",
+        "symbols": [
+          "Vn",
+          "Vn1",
+          "un",
+          "un1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S10",
+      "step_no": 10,
+      "title": "求碰撞时间间隔",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "两次碰撞之间圆盘匀速，小球受重力，相对位移再次为零所需时间满足 0＝(Vn-un)Dt-1/2gDt^2，取非零解 Dt＝2v0/g。",
+      "equation": {
+        "latex": "g Dt - 2 v0",
+        "sympy": "g*Dt - 2*v0",
+        "symbols": [
+          "Dt",
+          "g",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S11",
+      "step_no": 11,
+      "title": "求第n次碰后盘速",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由第一次碰后 V1＝v0/2，且每次碰撞后 V 增加 v0/2，得第 n 次碰后圆盘速度 Vn＝n v0/2。",
+      "equation": {
+        "latex": "Vn - n v0/2",
+        "sympy": "Vn - n*v0/2",
+        "symbols": [
+          "Vn",
+          "n",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "Vn",
+        "number": null,
+        "exact": "n*v0/2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S12",
+      "step_no": 12,
+      "title": "求两碰间盘位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "第 n 次到第 n+1 次碰撞间圆盘位移 sn＝VnDt＝(n v0/2)(2v0/g)＝2nl。",
+      "equation": {
+        "latex": "s_n - 2 n l",
+        "sympy": "s_n - 2*n*l",
+        "symbols": [
+          "l",
+          "n",
+          "s"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "sn",
+        "number": null,
+        "exact": "2*n*l",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S13",
+      "step_no": 13,
+      "title": "列各次碰撞位置",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "第一次碰撞在 y1＝l；由 y_{n+1}＝y_n+2nl 依次得 y1＝l，y2＝3l，y3＝7l，y4＝13l，y5＝21l。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "由位移递推得到前几次碰撞的位置。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-03-S14",
+      "step_no": 14,
+      "title": "判断总碰撞次数",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "管长为 20l，下端坐标为 20l。第 5 次碰撞若发生应在 y＝21l＞20l，且在圆盘到达下端前相对位移尚未再次为零，因此圆盘出管前只发生前 4 次碰撞。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "比较第 5 次碰撞位置与管长，得出总碰撞次数为 4。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 20,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

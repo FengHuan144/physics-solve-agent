@@ -1,0 +1,689 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-19",
+    "question_id": "B-19",
+    "group": "B",
+    "source": "2021 全国乙卷",
+    "question_no": 24,
+    "full_score": 12,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T22:00:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "一篮球质量为 m＝0.60 kg，一运动员使其从距地面高度为 h₁＝1.8 m 处由静止自由落下，反弹高度为 h₂＝1.2 m。若使篮球从距地面 h₃＝1.5 m 的高度由静止下落，并在开始下落的同时向下拍球，球落地后反弹的高度也为 1.5 m。假设运动员拍球时对球的作用力为恒力，作用时间为 t＝0.20 s；该篮球每次与地面碰撞前后的动能的比值不变。重力加速度大小取 g＝10 m/s²，不计空气阻力。求：",
+    "figures": [],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "运动员拍球过程中对篮球所做的功。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "运动员拍球时对篮球的作用力的大小。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "8e4d9ef293ac4309d5bd473df67318ae2003da19261d8f58f3a1c65f052438d6",
+    "input_sha256": "5eddd62e8efd7d2202b646b94fd3ba13a88ecb6e728451dece8cc48fff728c6c"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "篮球",
+        "mass_symbol": "m",
+        "note": "质量 0.60 kg；每次与地面碰撞前后的动能比值不变"
+      },
+      {
+        "id": "obj2",
+        "name": "运动员的手",
+        "mass_symbol": "m",
+        "note": "拍球时对球施加竖直向下的恒力 F，作用时间 t＝0.20 s"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": 0.6,
+        "unit": "kg",
+        "text": "篮球质量 m＝0.60 kg"
+      },
+      {
+        "symbol": "h0",
+        "value": 1.8,
+        "unit": "m",
+        "text": "第一次自由落下的高度 h₁＝1.8 m —— 记作 h0"
+      },
+      {
+        "symbol": "h",
+        "value": 1.2,
+        "unit": "m",
+        "text": "第一次的反弹高度 h₂＝1.2 m —— 记作 h"
+      },
+      {
+        "symbol": "H",
+        "value": 1.5,
+        "unit": "m",
+        "text": "拍球的下落高度与反弹高度 h₃＝1.5 m —— 记作 H"
+      },
+      {
+        "symbol": "t",
+        "value": 0.2,
+        "unit": "s",
+        "text": "拍球作用时间 t＝0.20 s"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "第一次自由下落与反弹（定动能比）",
+        "start": "从 h₁＝1.8 m 由静止下落",
+        "end": "反弹到 h₂＝1.2 m 的最高点（速度为零）"
+      },
+      {
+        "no": 2,
+        "name": "拍球下落段（恒力 F 与重力共同作用）",
+        "start": "从 h₃＝1.5 m 由静止下落，同时开始拍球",
+        "end": "拍球结束（作用 t＝0.20 s），此后只受重力"
+      },
+      {
+        "no": 3,
+        "name": "落地与反弹回 1.5 m",
+        "start": "落地瞬间（动能 E_k3）",
+        "end": "反弹回到 h₃＝1.5 m 的最高点（速度为零）"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "W",
+        "text": "拍球过程中运动员对篮球做的功"
+      },
+      {
+        "no": "(2)",
+        "quantity": "F",
+        "text": "拍球时运动员对篮球的作用力"
+      }
+    ],
+    "assumptions": [
+      "「每次与地面碰撞前后的动能比值不变」按同一篮球、同一地面的固有性质处理，比值 k 由第一次的 h₁、h₂ 定出",
+      "自由下落与反弹阶段只受重力：落地动能＝mgh_落，反弹初动能＝mgh_反弹，故 k＝E_碰前/E_碰后＝h₁/h₂",
+      "拍球段球受恒力 F（向下）与重力 mg（向下），做匀加速直线运动，位移 s＝½at²",
+      "拍球结束时球已下降 s，此后到落地只受重力；全过程对球用功能关系 W＋mgh₃＝E_k3",
+      "反弹回 1.5 m 说明落地动能等于 1.5mgh₃；与第一次比较即 E_k3＝k·mgh₃"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "每次碰地前后动能比值不变",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-19-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "由两次高度求动能比 k",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-19-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "落地瞬间动能＝k·mgh₃",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-19-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "功能关系求拍球做功 W",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-19-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "恒力拍球做匀加速直线运动",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-19-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "F + mg = ma",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-19-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "s＝½at² 与 W＝Fs 联立",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-19-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "F＝9 N，−15 N 舍去",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-19-S08"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-19-S01",
+      "step_no": 1,
+      "title": "每次碰地前后动能比值不变",
+      "point_id": "B-19-S01",
+      "kind": "judgment",
+      "statement": "题设「该篮球每次与地面碰撞前后的动能的比值不变」是一条对同一篮球成立的固有性质：可用第一次的 h₁、h₂ 把该比值定出来，再用于拍球那一次。",
+      "equation": null,
+      "criterion": {
+        "expr": "ratio_invariance",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "「每次碰撞前后动能比值不变」是同一篮球对同一地面的固有性质，与下落高度无关：第一次的 h₁＝1.8 m、h₂＝1.2 m 只用来**标定**这个比值，拍球那一次的落地动能再由同一个比值算出 —— 不能把每次的比值各定一个，也不能把它当成速度之比。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲（动能之比）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把比值当作速度比本步 0 分；未说明「同一篮球每次比值不变」本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-19-S02",
+      "step_no": 2,
+      "title": "由两次高度求动能比 k",
+      "point_id": "B-19-S02",
+      "kind": "equation",
+      "statement": "落地动能 mgh₁、反弹初动能 mgh₂，故 k＝E_碰前/E_碰后＝mgh₁/(mgh₂)＝h₁/h₂＝1.8/1.2＝1.5。",
+      "equation": {
+        "latex": "k = \\frac{h_{1}}{h_{2}}",
+        "sympy": "k - h0/h",
+        "symbols": [
+          "h",
+          "h0",
+          "k"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "k",
+        "number": 1.5,
+        "exact": "3/2",
+        "unit": "1",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（h=1.2、h0=1.8、k=1.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲：J/J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "取成 h₂/h₁＝2/3（比值颠倒）本步 0 分；用速度比 √1.5 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-19-S03",
+      "step_no": 3,
+      "title": "落地瞬间动能＝k·mgh₃",
+      "point_id": "B-19-S03",
+      "kind": "equation",
+      "statement": "拍球那次落地动能由同一比值给出：E_k3＝k·mgh₃＝1.5×0.60×10×1.5＝13.5 J。",
+      "equation": {
+        "latex": "E_{k3} = k m g h_{3}",
+        "sympy": "Ek - k*m*g*H",
+        "symbols": [
+          "Ek",
+          "H",
+          "g",
+          "k",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "Ek",
+        "number": 13.5,
+        "exact": "27/2",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（Ek=13.5、H=1.5、g=10、k=1.5、m=0.6）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 k 本步 0 分；把 E_k3 当作反弹后动能本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-19-S04",
+      "step_no": 4,
+      "title": "功能关系求拍球做功 W",
+      "point_id": "B-19-S04",
+      "kind": "discussion",
+      "statement": "从静止下落到落地：拍球的功 W 与重力功 mgh₃ 之和等于落地动能，W＋mgh₃＝E_k3，故 W＝13.5−9.0＝4.5 J。",
+      "equation": {
+        "latex": "W + m g h_{3} = E_{k3}",
+        "sympy": "W + m*g*H - Ek",
+        "symbols": [
+          "Ek",
+          "H",
+          "W",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "W",
+        "number": 4.5,
+        "exact": "9/2",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（Ek=13.5、H=1.5、W=4.5、g=10、m=0.6）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 mgh₃ 项本步 0 分；只写 4.5 不写单位 J 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-19-S05",
+      "step_no": 5,
+      "title": "恒力拍球做匀加速直线运动",
+      "point_id": "B-19-S05",
+      "kind": "judgment",
+      "statement": "拍球过程中球受恒力 F 与重力 mg（同向下），加速度恒定，做初速为零的匀加速直线运动 —— 不是匀速，也不是只在拍球瞬间获得速度。",
+      "equation": null,
+      "criterion": {
+        "expr": "motion_type_under_constant_force",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "拍球时 F 与 mg 都是恒力且同向下，合力恒定，故球做初速为零的匀加速直线运动，位移按 s＝½at² 计、做功按 W＝Fs 计；漏掉重力或把过程当成匀速，都会把 F 算成 ma 或 W/(vt) 之类的错式。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s²（加速度恒定）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把拍球当作匀速本步 0 分；漏重力本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-19-S06",
+      "step_no": 6,
+      "title": "F + mg = ma",
+      "point_id": "B-19-S06",
+      "kind": "equation",
+      "statement": "取向下为正：F＋mg＝ma（F 与重力同向，都向下）。",
+      "equation": {
+        "latex": "F + m g = m a",
+        "sympy": "F + m*g - m*a",
+        "symbols": [
+          "F",
+          "a",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F=9、a=25、g=10、m=0.6）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 F−mg＝ma（重力方向反）本步 0 分；漏 mg 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-19-S07",
+      "step_no": 7,
+      "title": "s＝½at² 与 W＝Fs 联立",
+      "point_id": "B-19-S07",
+      "kind": "equation",
+      "statement": "拍球段位移 s＝½at²，做功 W＝Fs，两式消去 s 与 a 得 W＝F·½at²；代入 W＝4.5 J、t＝0.20 s 与 F＋mg＝ma 联立即可解 F。",
+      "equation": {
+        "latex": "W = F \\cdot \\frac{1}{2} a t^{2}",
+        "sympy": "W - F*Rational(1,2)*a*t**2",
+        "symbols": [
+          "F",
+          "W",
+          "a",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01",
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F=9、W=4.5、a=25、t=0.2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J：N·(m/s²)·s²＝N·m＝J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只列 s 或只列 W 本步给 1 分；把 s 当作 h₃ 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-19-S08",
+      "step_no": 8,
+      "title": "F＝9 N，−15 N 舍去",
+      "point_id": "B-19-S08",
+      "kind": "discussion",
+      "statement": "把 F＝m(a−g) 代入 W＝F·½at² 得 0.6a²−6a−225＝0，两根 a＝25 或 a＝−15 m/s²，负根不合「向下加速」的物理意义舍去，取 a＝25 m/s²，故 F＝0.6×15＝9 N。",
+      "equation": {
+        "latex": "F = 9",
+        "sympy": "F - 9",
+        "symbols": [
+          "F"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "F",
+        "number": 9.0,
+        "exact": "9",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-04",
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F=9）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 9 不写单位 N 本步 0 分；保留 −15 N 未说明舍去本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-19-S01",
+        "step_id": "B-19-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-19-S02",
+        "step_id": "B-19-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-19-S03",
+        "step_id": "B-19-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-19-S04",
+        "step_id": "B-19-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-19-S05",
+        "step_id": "B-19-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-19-S06",
+        "step_id": "B-19-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-19-S07",
+        "step_id": "B-19-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-19-S08",
+        "step_id": "B-19-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 12,
+    "score_total": 12,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：动能比不变＋功能关系求功＋恒力拍球的牛顿第二定律与运动学联立；L1 六步数值回代、两步定性判据；12/12 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

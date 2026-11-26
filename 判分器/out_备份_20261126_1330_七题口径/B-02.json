@@ -1,0 +1,110 @@
+{
+  "qid": "B-02",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-02-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-02-S01",
+        "B-02-S02",
+        "B-02-S03"
+      ],
+      "basis": "无锚点：B-02-S01、B-02-S02、B-02-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-02-S02",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-02-S04"
+      ],
+      "basis": "无锚点：口径要求『最高点炸裂时竖直分速度为零、水平方向不受外力，故仅水平方向动量守恒』，承载步 B-02-S04 的 statement 写『爆炸时间极短，爆炸力远大于重力，炸裂过程动量守恒；最高点爆炸前总动量为零。』，无式子可复核（2-gram 覆盖 26%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-02-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-02-S05",
+        "B-02-S06"
+      ],
+      "basis": "欠定：B-02-S05、B-02-S06 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-02-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-02-S07",
+        "B-02-S08"
+      ],
+      "basis": "无锚点：B-02-S07、B-02-S08 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-02-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-02-S10",
+        "B-02-S11"
+      ],
+      "basis": "欠定：B-02-S10、B-02-S11 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-02-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-02-S12"
+      ],
+      "basis": "欠定：B-02-S12 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "hit": 0,
+    "miss": 0,
+    "na": 6,
+    "score": 0.0,
+    "score_total": 9.0,
+    "judged_rate": "0/6",
+    "hit_rate": null
+  },
+  "na_reasons": {
+    "无锚点": 3,
+    "欠定": 3
+  }
+}

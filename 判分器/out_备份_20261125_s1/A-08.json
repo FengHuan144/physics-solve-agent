@@ -1,0 +1,152 @@
+{
+  "qid": "A-08",
+  "mode": "free",
+  "grader_version": "t25-s1",
+  "points": [
+    {
+      "point_id": "A-08-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S02",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S08",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S09",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S10",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-08-S11",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "未实现",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "hit": 0,
+    "miss": 0,
+    "na": 11,
+    "score": 0.0,
+    "score_total": 19.0,
+    "judged_rate": "0/11",
+    "hit_rate": null
+  },
+  "na_reasons": {
+    "未实现": 11
+  }
+}

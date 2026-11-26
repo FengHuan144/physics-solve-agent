@@ -1,0 +1,923 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-20",
+    "question_id": "B-20",
+    "group": "B",
+    "source": "2024 山东卷",
+    "question_no": 17,
+    "full_score": 14,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T13:30:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图甲所示，质量为 M 的轨道静止在光滑水平面上，轨道水平部分的上表面粗糙，竖直半圆形部分的表面光滑，两部分在 P 点平滑连接，Q 为轨道的最高点。质量为 m 的小物块静置在轨道水平部分上，与水平轨道间的动摩擦因数为 μ，最大静摩擦力等于滑动摩擦力。已知轨道半圆形部分的半径 R＝0.4 m，重力加速度大小 g＝10 m/s²。(1)若轨道固定，小物块以一定的初速度沿轨道运动到 Q 点时，受到轨道的弹力大小等于 3mg，求小物块在 Q 点的速度大小 v；(2)若轨道不固定，给轨道施加水平向左的推力 F，小物块处在轨道水平部分时，轨道的加速度 a 与 F 对应关系如图乙所示。(ⅰ)求 μ 和 m；(ⅱ)初始时，小物块静置在轨道最左端，给轨道施加水平向左的推力 F＝8 N，当小物块到 P 点时撤去 F，小物块从 Q 点离开轨道时相对地面的速度大小为 7 m/s。求轨道水平部分的长度 L。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "图甲：轨道由水平粗糙段与竖直光滑半圆段在 P 点平滑连接，Q 为半圆最高点，小物块静置于水平段左端；原文无图题",
+        "caption_source": "human",
+        "is_required": true,
+        "file": "原始资料/题图/B-20_图甲.png",
+        "file_sha256": "7a37dd806ef878d1156bd770b5a7b9e69efedfc8ee0d388385576a17527797fe"
+      },
+      {
+        "fig_no": 2,
+        "caption": "图乙：轨道加速度 a 随推力 F 变化的折线（两段斜率与一段截距；读数逐条登记在 provides）；原文无图题",
+        "caption_source": "human",
+        "is_required": true,
+        "provides": [
+          {
+            "symbol": "k1",
+            "value": 0.5,
+            "unit": "kg^-1",
+            "read_from": "图乙 F≤4 N 段的斜率",
+            "text": "由图乙第一段（过原点、到 F＝4 N 止）的斜率读出 k₁＝0.5 kg⁻¹，即 1/(M＋m)"
+          },
+          {
+            "symbol": "k2",
+            "value": 1,
+            "unit": "kg^-1",
+            "read_from": "图乙 F>4 N 段的斜率",
+            "text": "由图乙第二段（F>4 N）的斜率读出 k₂＝1 kg⁻¹，即 1/M"
+          },
+          {
+            "symbol": "b2",
+            "value": -2,
+            "unit": "m/s^2",
+            "read_from": "图乙 F>4 N 段的纵轴截距",
+            "text": "由图乙第二段反向延长到 F＝0 的截距读出 b₂＝−2 m/s²，即 −μmg/M；符号为负"
+          }
+        ],
+        "file": "原始资料/题图/B-20_图乙.png",
+        "file_sha256": "bd07f140c0bd5f84e6723275de2191ace7635a9a1ba334ca50dc35f276299eef"
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "轨道固定时，小物块在 Q 点的速度大小 v。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "原文第 (2) 问 (ⅰ)：由图乙求 μ 和 m。",
+        "score": 4
+      },
+      {
+        "no": "(3)",
+        "text": "原文第 (2) 问 (ⅱ)：F＝8 N，物块到 P 时撤去 F，Q 点离开时相对地面 7 m/s，求水平段长度 L。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "38e670b1c0ed53d4a5dce14469cd7f1ed00fc552349304194fe7595c1eb220de",
+    "input_sha256": "e321e934a34129c5571d7fa33bd05344eaf3e05057e835d360e897e5b648ed85"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "轨道",
+        "mass_symbol": "M",
+        "note": "水平段粗糙、半圆段光滑；静止在光滑水平面上，可被水平推力 F 推动"
+      },
+      {
+        "id": "obj2",
+        "name": "小物块",
+        "mass_symbol": "m",
+        "note": "静置在轨道水平段左端；与水平段动摩擦因数 μ，最大静摩擦力等于滑动摩擦力"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": 0.4,
+        "unit": "m",
+        "text": "半圆形部分的半径 R＝0.4 m"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度大小 g＝10 m/s²"
+      },
+      {
+        "symbol": "F",
+        "value": 8,
+        "unit": "N",
+        "text": "第 (2)(ⅱ) 问的推力 F＝8 N（方向水平向左）"
+      },
+      {
+        "symbol": "v1",
+        "value": 7,
+        "unit": "m/s",
+        "text": "小物块从 Q 点离开轨道时相对地面的速度大小 7 m/s（第 (2)(ⅱ) 问）"
+      },
+      {
+        "symbol": "M",
+        "value": null,
+        "unit": "kg",
+        "text": "轨道质量 M（题干只给符号，数值须由图乙解出）"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "小物块质量 m（同上）"
+      },
+      {
+        "symbol": "k1",
+        "value": 0.5,
+        "unit": "kg^-1",
+        "source": "figure",
+        "text": "【图乙读出】F≤4 N 段斜率 0.5 kg⁻¹，即 1/(M＋m)；题干未给（见 fig_no=2 的 provides）"
+      },
+      {
+        "symbol": "k2",
+        "value": 1,
+        "unit": "kg^-1",
+        "source": "figure",
+        "text": "【图乙读出】F>4 N 段斜率 1 kg⁻¹，即 1/M；题干未给（见 fig_no=2 的 provides）"
+      },
+      {
+        "symbol": "b2",
+        "value": -2,
+        "unit": "m/s^2",
+        "source": "figure",
+        "text": "【图乙读出】F>4 N 段截距 −2 m/s²，即 −μmg/M；题干未给（见 fig_no=2 的 provides）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "第 (1) 问：轨道固定、物块过 Q 点（独立情境）",
+        "start": "小物块以一定初速度沿固定的轨道运动",
+        "end": "小物块经过最高点 Q（速度沿水平方向）；不与第 (2) 问的时间序列相连",
+        "segment_id": "SEG-01",
+        "boundary_reference": "第 (1) 问独立情境：轨道固定；Q 点速度沿水平方向，重力势能以水平段为 0"
+      },
+      {
+        "no": 2,
+        "name": "F 作用下的水平段（先整体后相对滑动）",
+        "start": "给小物块静置于左端的轨道施加水平向左的推力 F",
+        "end": "小物块到达 P 点、撤去 F（F≤4 N 时两者相对静止，F>4 N 时相对滑动）",
+        "segment_id": "SEG-02",
+        "boundary_reference": "以物块静置于轨道最左端为起点、物块到达 P 点为终点；水平向左为正"
+      },
+      {
+        "no": 3,
+        "name": "撤去 F 后继续相对滑动",
+        "start": "撤去 F 的瞬间",
+        "end": "小物块到达 Q 点（水平方向动量守恒、机械能守恒）",
+        "segment_id": "SEG-03",
+        "boundary_reference": "以撤去 F 的瞬间为起点、物块经过 Q 点为终点；水平方向动量守恒"
+      },
+      {
+        "no": 4,
+        "name": "过 Q 点离开轨道",
+        "start": "小物块经过 Q 点",
+        "end": "离开轨道，相对地面速度 7 m/s",
+        "segment_id": "SEG-04",
+        "boundary_reference": "以物块经过 Q 点为起点、离开轨道为终点；速度取相对地面"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v",
+        "text": "轨道固定时 Q 点的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "mu",
+        "text": "动摩擦因数"
+      },
+      {
+        "no": "(2)",
+        "quantity": "m",
+        "text": "小物块质量"
+      },
+      {
+        "no": "(3)",
+        "quantity": "L",
+        "text": "轨道水平部分的长度"
+      }
+    ],
+    "assumptions": [
+      "第 (1) 问轨道固定，属独立情境，不与第 (2) 问的时间序列相连",
+      "图乙的三条读数（0.5 kg⁻¹、1 kg⁻¹、−2 m/s²）只存在于图中，题干文字未给；1.2 起逐条登记在 figures[fig_no=2].provides，given 里同符号项标 source=figure，并进 input_sha256",
+      "最大静摩擦力等于滑动摩擦力；F≤4 N 时两者相对静止（共同加速），F>4 N 时发生相对滑动",
+      "取水平向左为正方向；轨道与地面间无摩擦，Q 点弹力指向圆心（竖直向下）",
+      "7 m/s 是离开 Q 瞬间相对地面的速度；Q 点为半圆最高点，该处速度沿水平方向"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "Q 点弹力只能向下",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-20-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "Q 点向心力方程",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "v = 4 m/s",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "图乙的转折点 F=4 N",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-20-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "两段斜率与截距的物理含义",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "M=1 kg、m=1 kg、μ=0.2",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "F=8 N 时两者的加速度",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "到 P 点：相对加速度定 L",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "撤 F 后：动量与机械能守恒",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S09"
+    },
+    {
+      "step_no": 10,
+      "title": "t=1.5 s（舍 3.17 s），L=4.5 m",
+      "depends_on": [
+        9
+      ],
+      "expanded": true,
+      "point_hint": "B-20-S10"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-20-S01",
+      "step_no": 1,
+      "title": "Q 点弹力只能向下",
+      "point_id": "B-20-S01",
+      "kind": "judgment",
+      "statement": "物块在 Q 点速度足够大，轨道对它的弹力只能指向圆心（竖直向下）；若弹力向上，物块早已脱离轨道。故 3mg 与 mg 同向。",
+      "equation": null,
+      "criterion": {
+        "expr": "Nf",
+        "expected": "3*m*g",
+        "comparator": "eq",
+        "text": "Q 点弹力只能指向圆心（竖直向下），故 Nf＝3mg 与 mg 同向；若弹力向上，物块早已脱离轨道。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "判据回代成立（Nf=30、g=10、m=1，差值 0）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "方向判定是第一个采分点：把 3mg 判成向上会得 3mg−mg＝mv²/R，速度变成 2 m/s（本步 0 分）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S02",
+      "step_no": 2,
+      "title": "Q 点向心力方程",
+      "point_id": "B-20-S02",
+      "kind": "equation",
+      "statement": "最高点沿半径方向：N＋mg＝mv²/R，N＝3mg，故 4mg＝mv²/R。",
+      "equation": {
+        "latex": "3 m g + m g = \\frac{m v^{2}}{R}",
+        "sympy": "3*m*g + m*g - m*v**2/R",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（R=0.4、g=10、m=1、v=4）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边均为 N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "重力与弹力同向（都指向圆心），故相加；漏重力项会得 v＝√(3gR)",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S03",
+      "step_no": 3,
+      "title": "v = 4 m/s",
+      "point_id": "B-20-S03",
+      "kind": "value",
+      "statement": "代入 R＝0.4 m、g＝10 m/s²：v²＝4×10×0.4＝16，v＝4 m/s（取正根，速率）。",
+      "equation": {
+        "latex": "v = 4",
+        "sympy": "v - 4",
+        "symbols": [
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v=4）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "答 2 m/s 是 S01 方向判错的结果；只写 4 不写单位 m/s 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S04",
+      "step_no": 4,
+      "title": "图乙的转折点 F=4 N",
+      "point_id": "B-20-S04",
+      "kind": "judgment",
+      "statement": "图乙在 F＝4 N 处折转：F≤4 N 时 a–F 为过原点直线（两者相对静止、共同加速）；F>4 N 后斜率变大（发生相对滑动，只有轨道被加速）。转折点即最大静摩擦力被克服的临界：F＝(M＋m)μg＝4 N。",
+      "equation": null,
+      "criterion": {
+        "expr": "(M + m)*mu*g",
+        "expected": 4,
+        "comparator": "eq",
+        "text": "图乙在 F＝4 N 处折转，折点即最大静摩擦力被克服的临界：F＝(M＋m)μg＝4 N。"
+      },
+      "segment_id": "SEG-02",
+      "value": null,
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "判据回代成立（M=1、g=10、m=1、mu=0.2，差值 0）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·(1)·m/s²＝N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "折点不是「两个读数随便连」，它由 μg 与整体质量决定；未指出 F＝4 N 这个转折，后面两段斜率会用错（E-09）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S05",
+      "step_no": 5,
+      "title": "两段斜率与截距的物理含义",
+      "point_id": "B-20-S05",
+      "kind": "equation",
+      "statement": "整体段 a＝F/(M＋m)，斜率 k₁＝1/(M＋m)＝0.5 kg⁻¹；滑动段 a＝F/M−μmg/M，斜率 k₂＝1/M＝1 kg⁻¹、截距 b₂＝−μmg/M＝−2 m/s²。三条读数均来自图乙。",
+      "equation": {
+        "latex": "k_{1} = \\frac{1}{M + m}",
+        "sympy": "(k1*(M + m) - 1) + (k2*M - 1) + (b2*M + mu*m*g)",
+        "symbols": [
+          "M",
+          "b2",
+          "g",
+          "k1",
+          "k2",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": null,
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=1、b2=-2、g=10、k1=0.5、k2=1、m=1、mu=0.2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "k₁·kg、k₂·kg 无量纲；b₂·M 为 N，与 μmg 同量纲",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "一式含三条读数，equation 记残差和（和为零）；逐条归零见判分口径。截距符号取正会解出负的 μ",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S06",
+      "step_no": 6,
+      "title": "M=1 kg、m=1 kg、μ=0.2",
+      "point_id": "B-20-S06",
+      "kind": "value",
+      "statement": "由 k₂ 得 M＝1 kg；由 k₁ 得 M＋m＝2 kg，故 m＝1 kg；由 b₂ 得 μ＝−b₂M/(mg)＝2×1/(1×10)＝0.2。",
+      "equation": {
+        "latex": "M = 1",
+        "sympy": "(M - 1) + (m - 1) + (mu - Rational(1,5))",
+        "symbols": [
+          "M",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "M",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=1、m=1、mu=0.2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg、kg、无量纲",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "三个结果同出一步，value 单槽只登记 M；m 与 μ 见 statement。m 取 2 kg（与 M 颠倒）本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S07",
+      "step_no": 7,
+      "title": "F=8 N 时两者的加速度",
+      "point_id": "B-20-S07",
+      "kind": "value",
+      "statement": "F＝8 N＞4 N，已相对滑动：轨道 a轨＝(F−μmg)/M＝(8−2)/1＝6 m/s²；物块只受摩擦力，a物＝μg＝2 m/s²（不是 (F−μmg)/m）。",
+      "equation": {
+        "latex": "a_{2} = \\frac{F - \\mu m g}{M}",
+        "sympy": "(a2 - (F - mu*m*g)/M) + (a1 - mu*g)",
+        "symbols": [
+          "F",
+          "M",
+          "a1",
+          "a2",
+          "g",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": {
+        "symbol": "a2",
+        "number": 6.0,
+        "exact": "(F - mu*m*g)/M",
+        "unit": "m/s^2",
+        "direction": "-x",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（F=8、M=1、a1=2、a2=6、g=10、m=1、mu=0.2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "物块的水平力只有轨道给它的摩擦力，故 a物＝μg；把 F 也算到物块上会得 6 m/s²（E-14）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S08",
+      "step_no": 8,
+      "title": "到 P 点：相对加速度定 L",
+      "point_id": "B-20-S08",
+      "kind": "equation",
+      "statement": "两者同向左移，相对加速度 a轨−a物＝4 m/s²，相对位移即水平段长度：L＝½(a轨−a物)t²＝2t²；此时 v物＝a物t＝2t、v轨＝a轨t＝6t。",
+      "equation": {
+        "latex": "L = \\frac{1}{2} (a_{2} - a_{1}) t^{2}",
+        "sympy": "L - Rational(1,2)*(a2 - a1)*t**2",
+        "symbols": [
+          "L",
+          "a1",
+          "a2",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-02",
+      "value": null,
+      "law_ids": [
+        "L-01",
+        "L-04"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=4.5、a1=2、a2=6、t=1.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s²·s²＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用相对加速度，不是任一物体的对地位移；整体直接用 v²＝2aL 会漏掉另一物体的位移（E-03）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S09",
+      "step_no": 9,
+      "title": "撤 F 后：动量与机械能守恒",
+      "point_id": "B-20-S09",
+      "kind": "equation",
+      "statement": "撤去 F 后水平方向无外力：M·6t＋m·2t＝M·v轨′＋m·7；系统机械能守恒：½M(6t)²＋½m(2t)²＝½M·v轨′²＋½m·7²＋mg·2R。",
+      "equation": {
+        "latex": "M a_{2} t + m a_{1} t = M v_{2p} + m v_{1}",
+        "sympy": "(M*a2*t + m*a1*t - M*v2p - m*v1) + (Rational(1,2)*M*(a2*t)**2 + Rational(1,2)*m*(a1*t)**2 - Rational(1,2)*M*v2p**2 - Rational(1,2)*m*v1**2 - m*g*2*R)",
+        "symbols": [
+          "M",
+          "R",
+          "a1",
+          "a2",
+          "g",
+          "m",
+          "t",
+          "v1",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": null,
+      "law_ids": [
+        "L-12",
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=1、R=0.4、a1=2、a2=6、g=10、m=1、t=1.5、v1=7、v2p=5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "动量式 kg·m/s；能量式 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两式同列，equation 记残差和。7 m/s 是离开 Q 瞬间的合速度，Q 点处它沿水平方向；漏 mg·2R 会把 L 算大约 20 m（E-13）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-20-S10",
+      "step_no": 10,
+      "title": "t=1.5 s（舍 3.17 s），L=4.5 m",
+      "point_id": "B-20-S10",
+      "kind": "discussion",
+      "statement": "联立得 12t²−56t＋57＝0，t＝1.5 s 或 19/6 s。取 19/6 时 v轨′≈18.3 m/s＞7 m/s，物块比轨道慢、相对轨道后退，不可能从 Q 点离开，舍去。故 L＝2t²＝4.5 m。",
+      "equation": {
+        "latex": "L = \\frac{9}{2}",
+        "sympy": "(L - Rational(9,2)) + (t - Rational(3,2))",
+        "symbols": [
+          "L",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-03",
+      "value": {
+        "symbol": "L",
+        "number": 4.5,
+        "exact": "9/2",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01",
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=4.5、t=1.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m；s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两根都满足方程，只有 1.5 s 符合「物块从 Q 点离开」的过程；取另一根得 L≈20 m。只写 4.5 不写单位 m 本步 0 分（E-07）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-20-S01",
+        "step_id": "B-20-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S02",
+        "step_id": "B-20-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S03",
+        "step_id": "B-20-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S04",
+        "step_id": "B-20-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S05",
+        "step_id": "B-20-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S06",
+        "step_id": "B-20-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S07",
+        "step_id": "B-20-S07",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S08",
+        "step_id": "B-20-S08",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S09",
+        "step_id": "B-20-S09",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-20-S10",
+        "step_id": "B-20-S10",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 14,
+    "score_total": 14,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "pass",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：含临界（最大静摩擦）与图读数；L1 逐式数值回代、L2 量纲全过，14/14 满分，未触归零点。图读数来源见 figures[fig_no=2].provides 与 given 的 source=figure 标注"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

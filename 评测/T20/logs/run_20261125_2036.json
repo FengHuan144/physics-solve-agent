@@ -1,0 +1,49 @@
+[
+  {
+    "qid": "A-06",
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "max_tokens": 40000,
+    "prompt_chars": 1718,
+    "figures": [],
+    "created_at": "2026-11-25T20:36:55+08:00",
+    "ok": true,
+    "attempts": 1,
+    "parse_error": "",
+    "finish_reason": "stop",
+    "tokens_in": 1033,
+    "tokens_out": 13399,
+    "reasoning_tokens": 11457,
+    "cost_cny": 0.0938,
+    "extra_params": {},
+    "elapsed_s": 62.3,
+    "n_steps": 11,
+    "n_gold": 10,
+    "step_ratio": 1.1,
+    "issues": [
+      "givens.symbol 仍不合规，已丢弃：'μ'",
+      "givens.symbol 仍不合规，已丢弃：'Δl'"
+    ],
+    "score_audit": [
+      {
+        "no": "(1)",
+        "n_steps": 4,
+        "sum_score": 4.0,
+        "paper_score": 10,
+        "delta": -6.0
+      },
+      {
+        "no": "(2)(ⅰ)",
+        "n_steps": 4,
+        "sum_score": 4.0,
+        "paper_score": 4,
+        "delta": 0.0
+      }
+    ],
+    "schema_rc": 0,
+    "n_e": 0,
+    "n_w": 4,
+    "e_lines": [],
+    "layers": "{\"L1\": \"na\", \"L2\": \"fail\", \"L3\": \"na\", \"L4\": \"na\"}"
+  }
+]

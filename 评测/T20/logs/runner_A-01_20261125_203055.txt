@@ -1,0 +1,34 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-01.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-01_validated.json
+
+对象：A-01（题 A-01，12 步）
+L1  pass 0 / fail 0 / na 12 / skipped 0    判定通过率 —    na 比例 100.0%
+L2  pass 0 / fail 0 / na 12 / skipped 0    判定通过率 —    na 比例 100.0%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-01-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-01-S01 [L2] data_error(empty): sympy 串为空
+  - A-01-S02 [L1] per_step：data_error(unknown_symbol): 符号「DeltaE2」不在白名单：DeltaE2 - m*g*d*sin(theta)｜chain：data_error(unknown_symbol): 符号「DeltaE2」不在白名单：DeltaE2 - m*g*d*sin(theta)
+  - A-01-S02 [L2] data_error(unknown_symbol): 符号「DeltaE2」不在白名单：DeltaE2 - m*g*d*sin(theta)
+  - A-01-S03 [L1] per_step：data_error(unknown_symbol): 符号「DeltaE2」不在白名单：DeltaE2 - m*g*d*sin(theta)｜chain：data_error(unknown_symbol): 符号「DeltaE2」不在白名单：DeltaE2 - m*g*d*sin(theta)
+  - A-01-S03 [L2] data_error(unknown_symbol): 符号「DeltaE2」不在白名单：DeltaE2 - m*g*d*sin(theta)
+  - A-01-S04 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：mu*m*g*s - Rational(1,2)*m*v50**2｜chain：data_error(unknown_symbol): 符号「s」不在白名单：mu*m*g*s - Rational(1,2)*m*v50**2
+  - A-01-S04 [L2] data_error(unknown_symbol): 符号「s」不在白名单：mu*m*g*s - Rational(1,2)*m*v50**2
+  - A-01-S05 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-01-S05 [L2] data_error(empty): sympy 串为空
+  - A-01-S06 [L1] per_step：data_error(unknown_symbol): 符号「v30」不在白名单：m*g*(L+29*d)*sin(theta) - Rational(1,2)*m*v30**2 - 30*Ebar｜chain：data_error(unknown_symbol): 符号「v30」不在白名单：m*g*(L+29*d)*sin(theta) - Rational(1,2)*m*v30**2 - 30*Ebar
+  - A-01-S06 [L2] data_error(unknown_symbol): 符号「v30」不在白名单：m*g*(L+29*d)*sin(theta) - Rational(1,2)*m*v30**2 - 30*Ebar
+  - A-01-S07 [L1] per_step：data_error(unknown_symbol): 符号「Ebar」不在白名单：Ebar - m*g*((L+29*d)*sin(theta)-mu*s)/30｜chain：data_error(unknown_symbol): 符号「Ebar」不在白名单：Ebar - m*g*((L+29*d)*sin(theta)-mu*s)/30
+  - A-01-S07 [L2] data_error(unknown_symbol): 符号「Ebar」不在白名单：Ebar - m*g*((L+29*d)*sin(theta)-mu*s)/30
+  - A-01-S08 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-01-S08 [L2] data_error(empty): sympy 串为空
+  - A-01-S09 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：m*g*((L+29*d)*sin(theta)-mu*s)/30 - m*g*d*sin(theta)｜chain：data_error(unknown_symbol): 符号「s」不在白名单：m*g*((L+29*d)*sin(theta)-mu*s)/30 - m*g*d*sin(theta)
+  - A-01-S09 [L2] data_error(unknown_symbol): 符号「s」不在白名单：m*g*((L+29*d)*sin(theta)-mu*s)/30 - m*g*d*sin(theta)
+  - A-01-S10 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：(L-d)*sin(theta)-mu*s｜chain：data_error(unknown_symbol): 符号「s」不在白名单：(L-d)*sin(theta)-mu*s
+  - A-01-S10 [L2] data_error(unknown_symbol): 符号「s」不在白名单：(L-d)*sin(theta)-mu*s
+  - A-01-S11 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：(L-d)*sin(theta)-mu*s｜chain：data_error(unknown_symbol): 符号「s」不在白名单：(L-d)*sin(theta)-mu*s
+  - A-01-S11 [L2] data_error(unknown_symbol): 符号「s」不在白名单：(L-d)*sin(theta)-mu*s
+  - A-01-S12 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-01-S12 [L2] data_error(empty): sympy 串为空
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\A-01_validated.json

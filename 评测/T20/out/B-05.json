@@ -1,0 +1,645 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-05",
+    "question_id": "B-05",
+    "group": "B",
+    "source": "2025 黑吉辽蒙卷",
+    "question_no": 13,
+    "full_score": 10,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:44:15+08:00",
+    "latency_ms": 56506,
+    "tokens": {
+      "in": 1029,
+      "out": 12666
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一雪块从倾角 θ＝37° 的屋顶上的 O 点由静止开始下滑，滑到 A 点后离开屋顶。O、A 间距离 x＝2.5 m，A 点距地面的高度 h＝1.95 m，雪块与屋顶的动摩擦因数 μ＝0.125。不计空气阻力，雪块质量不变，取 sin 37°＝0.6，重力加速度大小 g＝10 m/s²。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "倾角 37° 的屋顶，雪块自 O 点下滑至 A 点后离开，A 距地面 h；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "雪块从 A 点离开屋顶时的速度大小 v₀。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "雪块落地时的速度大小 v₁，及其速度方向与水平方向的夹角 α。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "b87cea864ad8f9fdc7e925a41d55a3b2e688014593f02b15bf17f55937e8205e",
+    "input_sha256": "ebffc27aac2aa98750319fa7c470ee10662727e637509476085fb0fc0510ab8e"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "雪块",
+        "mass_symbol": "m",
+        "note": "质量不变（不融化），视为质点；先沿屋顶下滑、后斜抛"
+      },
+      {
+        "id": "obj2",
+        "name": "屋顶",
+        "mass_symbol": "m",
+        "note": "倾角 37°，O 到 A 长 2.5 m"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "theta",
+        "value": 37.0,
+        "unit": "deg",
+        "text": "屋顶倾角 θ=37°"
+      },
+      {
+        "symbol": "x",
+        "value": 2.5,
+        "unit": "m",
+        "text": "O、A间距离 x=2.5 m"
+      },
+      {
+        "symbol": "h",
+        "value": 1.95,
+        "unit": "m",
+        "text": "A点距地面高度 h=1.95 m"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.125,
+        "unit": "1",
+        "text": "雪块与屋顶动摩擦因数 μ=0.125"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g=10 m/s²"
+      },
+      {
+        "symbol": "sin37",
+        "value": 0.6,
+        "unit": "1",
+        "text": "题干给出 sin37°=0.6，故 cos37°=0.8"
+      },
+      {
+        "symbol": "vO",
+        "value": 0.0,
+        "unit": "m/s",
+        "text": "O点由静止开始下滑，初速度 v_O=0"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v",
+        "text": "离开屋顶时的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v1",
+        "text": "落地速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "angA",
+        "text": "落地速度与水平方向的夹角"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "沿斜面受力分析",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "列沿斜面加速度方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求下滑加速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "列速度位移关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "求A点速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "判断机械能守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "列机械能守恒式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求落地速度大小",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "判断水平分速不变",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求水平分速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "列竖直速度关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "求落地竖直分速",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "列夹角正切关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "求速度方向角",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-05-S01",
+      "step_no": 1,
+      "title": "沿斜面受力分析",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "沿屋顶向下取正；雪块受重力沿斜面向下的分力 mg sinθ 和沿斜面向上的滑动摩擦力 μmg cosθ。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能指出沿斜面方向的重力分力与摩擦力方向关系"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S02",
+      "step_no": 2,
+      "title": "列沿斜面加速度方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由牛顿第二定律并约去质量，得 a = g sinθ - μg cosθ。",
+      "equation": {
+        "latex": "g sin(theta) - mu g cos(theta) - a",
+        "sympy": "g*sin(theta) - mu*g*cos(theta) - a",
+        "symbols": [
+          "a",
+          "g",
+          "mu",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S03",
+      "step_no": 3,
+      "title": "求下滑加速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 θ=37°、μ=0.125、g=10 m/s²，得 a=5 m/s²。",
+      "equation": {
+        "latex": "10 (3/5) - (1/8) 10 (4/5) - a",
+        "sympy": "10*Rational(3,5) - Rational(1,8)*10*Rational(4,5) - a",
+        "symbols": [
+          "a"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "a",
+        "number": 5.0,
+        "exact": "5",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S04",
+      "step_no": 4,
+      "title": "列速度位移关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "O点静止，A点速度满足 v0²=2ax。",
+      "equation": {
+        "latex": "v_0^2 - 2 a x",
+        "sympy": "v_0**2 - 2*a*x",
+        "symbols": [
+          "a",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S05",
+      "step_no": 5,
+      "title": "求A点速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 a=5 m/s²、x=2.5 m，取正根得 v0=5 m/s。",
+      "equation": {
+        "latex": "v_0 - (2 a x)^(1/2)",
+        "sympy": "v_0 - (2*a*x)**Rational(1,2)",
+        "symbols": [
+          "a",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v0",
+        "number": 5.0,
+        "exact": "5",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S06",
+      "step_no": 6,
+      "title": "判断机械能守恒",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "A点离开屋顶后只受重力，机械能守恒；取地面为零势能参考面。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "说明A点到落地点过程机械能守恒及零势能面取法"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S07",
+      "step_no": 7,
+      "title": "列机械能守恒式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由 1/2 m v0² + mgh = 1/2 m v1²。",
+      "equation": {
+        "latex": "(1/2) m v_0^2 + m g h - (1/2) m v_1^2",
+        "sympy": "Rational(1,2)*m*v_0**2 + m*g*h - Rational(1,2)*m*v_1**2",
+        "symbols": [
+          "g",
+          "h",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S08",
+      "step_no": 8,
+      "title": "求落地速度大小",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 v0=5 m/s、h=1.95 m、g=10 m/s²，得 v1=8 m/s。",
+      "equation": {
+        "latex": "v_1 - (v_0^2 + 2 g h)^(1/2)",
+        "sympy": "v_1 - (v_0**2 + 2*g*h)**Rational(1,2)",
+        "symbols": [
+          "g",
+          "h",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": 8.0,
+        "exact": "8",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S09",
+      "step_no": 9,
+      "title": "判断水平分速不变",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "离开A点后水平方向不受力，水平分速度保持不变。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "明确斜抛运动中水平分速度不变"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S10",
+      "step_no": 10,
+      "title": "求水平分速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "离开A点速度沿屋顶向下，与水平方向成37°斜向下，故 vx=v0 cos37°=4 m/s。",
+      "equation": {
+        "latex": "v_x - v_0 (4/5)",
+        "sympy": "v_x - v_0*Rational(4,5)",
+        "symbols": [
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vx",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S11",
+      "step_no": 11,
+      "title": "列竖直速度关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取竖直向下为正，落地竖直分速度满足 vy²=(v0 sin37°)²+2gh。",
+      "equation": {
+        "latex": "v_y^2 - (v_0 (3/5))^2 - 2 g h",
+        "sympy": "v_y**2 - (v_0*Rational(3,5))**2 - 2*g*h",
+        "symbols": [
+          "g",
+          "h",
+          "v",
+          "y"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S12",
+      "step_no": 12,
+      "title": "求落地竖直分速",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 v0=5 m/s、h=1.95 m、g=10 m/s²，得 vy=4√3 m/s。",
+      "equation": {
+        "latex": "v_y - ((v_0 (3/5))^2 + 2 g h)^(1/2)",
+        "sympy": "v_y - ((v_0*Rational(3,5))**2 + 2*g*h)**Rational(1,2)",
+        "symbols": [
+          "g",
+          "h",
+          "v",
+          "y"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "vy",
+        "number": 6.928203230275509,
+        "exact": "4*sqrt(3)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S13",
+      "step_no": 13,
+      "title": "列夹角正切关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "设α为落地速度与水平方向的夹角，则 tanα=vy/vx。",
+      "equation": {
+        "latex": "tan(alpha) - v_y/v_x",
+        "sympy": "tan(alpha) - v_y/v_x",
+        "symbols": [
+          "alpha",
+          "v",
+          "x",
+          "y"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-05-S14",
+      "step_no": 14,
+      "title": "求速度方向角",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 vy/vx=√3，得 α=60°；因竖直分速度向下，速度方向为斜向下与水平方向成60°。",
+      "equation": {
+        "latex": "tan(alpha) - (3/1)^(1/2)",
+        "sympy": "tan(alpha) - Rational(3,1)**Rational(1,2)",
+        "symbols": [
+          "alpha"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "alpha",
+        "number": 60.0,
+        "exact": null,
+        "unit": "deg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 10,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

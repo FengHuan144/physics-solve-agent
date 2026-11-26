@@ -1,0 +1,756 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-09",
+    "question_id": "B-09",
+    "group": "B",
+    "source": "2021 广东卷",
+    "question_no": 13,
+    "full_score": 11,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T16:46:06+08:00",
+    "latency_ms": 116287,
+    "tokens": {
+      "in": 1279,
+      "out": 14757
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "算盘是我国古老的计算工具，中心带孔的相同算珠可在算盘的固定导杆上滑动，使用前算珠需要归零。如图所示，水平放置的算盘中有甲、乙两颗算珠未在归零位置，甲靠边框 b，甲、乙相隔 s₁＝3.5×10⁻² m，乙与边框 a 相隔 s₂＝2.0×10⁻² m，算珠与导杆间的动摩擦因数 μ＝0.1。现用手指将甲以 0.4 m/s 的初速度拨出，甲、乙碰撞后甲的速度大小为 0.1 m/s，方向不变，碰撞时间极短且不计，重力加速度 g 取 10 m/s²。求：(1)通过计算，判断乙算珠能否滑动到边框 a；(2)求甲算珠从拨出到停下所需的时间。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "算盘水平放置，甲、乙两算珠套在同一根导杆上；由边框 b 向 a 依次为 b—甲—乙—a，甲靠 b，甲、乙相隔 s₁，乙与 a 相隔 s₂。放大图为示意，导杆方向以原文「水平」为准；原文无图题",
+        "caption_source": "human",
+        "is_required": true,
+        "file": "原始资料/题图/B-09_图1.png",
+        "file_sha256": "81b3c1d0b3a345521ba1a4f0833e5984d5100e7b811f08dc5c0279c5b99b027d"
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "判断乙算珠能否滑动到边框 a。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "甲算珠从拨出到停下所需的时间。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "0b5ee044eb3cf5df95e3afa044b3db80c3c28ef5c4f4713686c5dd1c91fdd231",
+    "input_sha256": "46d20fc22c750cf2f50da87ee77cc629890ae861cff4cb374b86c95afa96c1db"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "甲算珠",
+        "mass_symbol": "m",
+        "note": "靠边框 b，被拨出后向右运动"
+      },
+      {
+        "id": "obj2",
+        "name": "乙算珠",
+        "mass_symbol": "m",
+        "note": "与甲相隔 s₁，原静止，被碰后向 a 运动"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "s1",
+        "value": 0.035,
+        "unit": "m",
+        "text": "题干给出：甲、乙相隔 s1=3.5×10^-2 m"
+      },
+      {
+        "symbol": "s2",
+        "value": 0.02,
+        "unit": "m",
+        "text": "题干给出：乙与边框a相隔 s2=2.0×10^-2 m"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.1,
+        "unit": "1",
+        "text": "题干给出：动摩擦因数 μ=0.1"
+      },
+      {
+        "symbol": "v0",
+        "value": 0.4,
+        "unit": "m/s",
+        "text": "题干给出：甲被拨出的初速度 v0=0.4 m/s"
+      },
+      {
+        "symbol": "v1p",
+        "value": 0.1,
+        "unit": "m/s",
+        "text": "题干给出：碰撞后甲速度大小 v_after=0.1 m/s，方向不变"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "题干给出：g=10 m/s^2"
+      },
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "题干说明两算珠相同，设每颗算珠质量为 m（碰撞中约去）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "s",
+        "text": "乙能否滑到边框 a"
+      },
+      {
+        "no": "(2)",
+        "quantity": "t",
+        "text": "甲从拨出到停下的时间"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "求甲碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "求乙碰后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求乙滑行距离",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "判断乙到边框a",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "求甲碰前加速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "求加速度大小",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "列碰前时间关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求碰前时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "列碰后时间关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求碰后时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "列总时间关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "求总时间",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-09-S01",
+      "step_no": 1,
+      "title": "求甲碰前速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "设甲与乙碰前瞬间速度为 v1。甲在碰前受滑动摩擦力 μmg 做匀减速，取甲运动方向为正，由速度—位移关系 v1^2-v0^2=-2μg s1 求 v1。",
+      "equation": {
+        "latex": "v1 - sqrt(v0^2 - 2 mu g s1)",
+        "sympy": "v1 - sqrt(v0**2 - 2*mu*g*s1)",
+        "symbols": [
+          "g",
+          "mu",
+          "s1",
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": 0.3,
+        "exact": "3/10",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 v1=0.3，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s；值单位 m/s 与符号 v1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S02",
+      "step_no": 2,
+      "title": "求乙碰后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "两算珠质量相同，碰撞时间极短，沿导杆方向动量守恒；取碰前甲运动方向为正，有 m v1=m v_after+m v2，解得乙碰后速度 v2。",
+      "equation": {
+        "latex": "m v1 - m v_after - m v2",
+        "sympy": "m*v1 - m*v1p - m*v2",
+        "symbols": [
+          "after",
+          "m",
+          "v",
+          "v1",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v2",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 v2=0.2，与本步值一致（相对差 ≤2%）｜chain：全题联立后仍含自由符号 m（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s；值单位 m/s 与符号 v2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S03",
+      "step_no": 3,
+      "title": "求乙滑行距离",
+      "point_id": null,
+      "kind": "value",
+      "statement": "乙碰后受摩擦力做匀减速运动，加速度大小为 μg；从碰后到速度减为零的最大滑行距离 L 满足 0-v2^2=-2μgL，解得 L。",
+      "equation": {
+        "latex": "v2^2 - 2 mu g L",
+        "sympy": "v2**2 - 2*mu*g*L",
+        "symbols": [
+          "L",
+          "g",
+          "mu",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "L",
+        "number": 0.02,
+        "exact": "1/50",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 L=0.02，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m^2/s^2；值单位 m 与符号 L 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S04",
+      "step_no": 4,
+      "title": "判断乙到边框a",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "L=0.02 m，而乙与边框a的间距 s2=2.0×10^-2 m，故乙速度恰减到零时刚好到达边框a，能够滑动到边框a。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "比较 L 与 s2，判断乙能（恰好）到达边框a。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S05",
+      "step_no": 5,
+      "title": "求甲碰前加速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "对甲碰前阶段，滑动摩擦力提供加速度，取运动方向为正，由牛顿第二定律得 a=μg。",
+      "equation": {
+        "latex": "a - mu g",
+        "sympy": "a - mu*g",
+        "symbols": [
+          "a",
+          "g",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 a，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S06",
+      "step_no": 6,
+      "title": "求加速度大小",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 μ=0.1、g=10 m/s^2，得 a=1 m/s^2。",
+      "equation": {
+        "latex": "a - mu g",
+        "sympy": "a - mu*g",
+        "symbols": [
+          "a",
+          "g",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "a",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 a=1，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s^2；值单位 m/s^2 与符号 a 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S07",
+      "step_no": 7,
+      "title": "列碰前时间关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "甲碰前做匀减速直线运动，初速度 v0=0.4 m/s，碰前速度 v1=0.3 m/s，由 v0-v1=a t1 列式。",
+      "equation": {
+        "latex": "v0 - v1 - a t1",
+        "sympy": "v0 - v1 - a*t1",
+        "symbols": [
+          "a",
+          "t1",
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 t1，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S08",
+      "step_no": 8,
+      "title": "求碰前时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 a=1 m/s^2，得 t1=0.1 s。",
+      "equation": {
+        "latex": "t1 - (v0 - v1)/a",
+        "sympy": "t1 - (v0 - v1)/a",
+        "symbols": [
+          "a",
+          "t1",
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t1",
+        "number": 0.1,
+        "exact": "1/10",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 t1=0.1，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 s；值单位 s 与符号 t1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S09",
+      "step_no": 9,
+      "title": "列碰后时间关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "甲碰后速度 v_after=0.1 m/s，方向不变，受摩擦力做匀减速运动到停止，由 v_after-a t2=0 列式。",
+      "equation": {
+        "latex": "v_after - a t2",
+        "sympy": "v1p - a*t2",
+        "symbols": [
+          "a",
+          "after",
+          "t2",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 t2，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S10",
+      "step_no": 10,
+      "title": "求碰后时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 a=1 m/s^2，得 t2=0.1 s。",
+      "equation": {
+        "latex": "t2 - v_after/a",
+        "sympy": "t2 - v1p/a",
+        "symbols": [
+          "a",
+          "after",
+          "t2",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "t2",
+        "number": 0.1,
+        "exact": "1/10",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 t2=0.1，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 s；值单位 s 与符号 t2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S11",
+      "step_no": 11,
+      "title": "列总时间关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "碰撞时间极短且不计，总时间等于碰前运动时间与碰后运动时间之和，即 T=t1+t2。",
+      "equation": {
+        "latex": "T - t1 - t2",
+        "sympy": "T - t1 - t2",
+        "symbols": [
+          "T",
+          "t1",
+          "t2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 T，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-09-S12",
+      "step_no": 12,
+      "title": "求总时间",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 t1=0.1 s、t2=0.1 s，得 T=0.2 s。",
+      "equation": {
+        "latex": "T - t1 - t2",
+        "sympy": "T - t1 - t2",
+        "symbols": [
+          "T",
+          "t1",
+          "t2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "T",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 T=0.2，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 s；值单位 s 与符号 T 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 11,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

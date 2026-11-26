@@ -1,0 +1,261 @@
+{
+  "givens": [
+    {
+      "symbol": "m",
+      "value": 1,
+      "unit": "kg",
+      "text": "物块质量 m＝1 kg"
+    },
+    {
+      "symbol": "v0",
+      "value": 6,
+      "unit": "m/s",
+      "text": "A点初速度 v0＝6 m/s"
+    },
+    {
+      "symbol": "L",
+      "value": 1.6,
+      "unit": "m",
+      "text": "A、B间距离 L＝1.6 m"
+    },
+    {
+      "symbol": "mu",
+      "value": 0.5,
+      "unit": "1",
+      "text": "动摩擦因数 μ＝0.5"
+    },
+    {
+      "symbol": "theta",
+      "value": 37,
+      "unit": "1",
+      "text": "斜面倾角 θ＝37°"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "重力加速度 g＝10 m/s²"
+    },
+    {
+      "symbol": "sin37°",
+      "value": 0.6,
+      "unit": "1",
+      "text": "sin37°＝0.6"
+    },
+    {
+      "symbol": "cos37°",
+      "value": 0.8,
+      "unit": "1",
+      "text": "cos37°＝0.8"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "v_B = 2*sqrt(5) m/s ≈ 4.47 m/s",
+      "steps": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "no": "(2)",
+      "result": "s = 1 m",
+      "steps": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "no": "(3)",
+      "result": "能滑回，回到桌面后还能滑行 x = 0.4 m",
+      "steps": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "列水平方向方程",
+      "kind": "equation",
+      "stmt": "物块在桌面上向右滑动，所受滑动摩擦力大小为 μmg，取减速度大小为 a，由牛顿第二定律列式。",
+      "eq": "mu*m*g-m*a",
+      "value": null,
+      "score": 1,
+      "point": "写出桌面上滑动摩擦力提供减速度的关系。"
+    },
+    {
+      "no": 2,
+      "title": "求桌面减速度",
+      "kind": "value",
+      "stmt": "由 μmg＝ma 得 a＝μg，代入 μ＝0.5、g＝10 m/s²。",
+      "eq": "mu*m*g-m*a",
+      "value": {
+        "symbol": "a",
+        "number": 5,
+        "exact": "5",
+        "unit": "m/s^2"
+      },
+      "score": 1,
+      "point": "正确算出桌面上的减速度大小 a＝5 m/s²。"
+    },
+    {
+      "no": 3,
+      "title": "求B点速度",
+      "kind": "value",
+      "stmt": "从A到B做匀减速直线运动，由 v_B²＝v0²－2aL 代入 v0＝6 m/s、a＝5 m/s²、L＝1.6 m。",
+      "eq": "v_B**2-v0**2+2*a*L",
+      "value": {
+        "symbol": "v_B",
+        "number": 4.472135955,
+        "exact": "2*sqrt(5)",
+        "unit": "m/s"
+      },
+      "score": 2,
+      "point": "正确使用运动学公式并求得 v_B＝2√5 m/s。"
+    },
+    {
+      "no": 4,
+      "title": "列斜面受力方程",
+      "kind": "equation",
+      "stmt": "物块沿斜面向上滑动时，重力沿斜面向下的分力和摩擦力均阻碍上滑，取沿斜面向下为加速度正方向列牛顿第二定律。",
+      "eq": "m*g*sin(theta)+mu*m*g*cos(theta)-m*a_up",
+      "value": null,
+      "score": 1,
+      "point": "正确写出上滑时沿斜面方向的合力表达式。"
+    },
+    {
+      "no": 5,
+      "title": "求上滑减速度",
+      "kind": "value",
+      "stmt": "由 mg sinθ＋μmg cosθ＝ma_up，代入 sin37°＝0.6、cos37°＝0.8、μ＝0.5、g＝10 m/s²。",
+      "eq": "m*g*sin(theta)+mu*m*g*cos(theta)-m*a_up",
+      "value": {
+        "symbol": "a_up",
+        "number": 10,
+        "exact": "10",
+        "unit": "m/s^2"
+      },
+      "score": 1,
+      "point": "正确算出沿斜面上滑的减速度大小 a_up＝10 m/s²。"
+    },
+    {
+      "no": 6,
+      "title": "列上滑运动学式",
+      "kind": "equation",
+      "stmt": "从B点到最高点做匀减速直线运动，末速度为零，设最大上滑距离为 s，由 0²＝v_B²－2a_up s 列式。",
+      "eq": "v_B**2-2*a_up*s",
+      "value": null,
+      "score": 1,
+      "point": "正确写出最大上滑距离与 B 点速度、加速度之间的运动学关系。"
+    },
+    {
+      "no": 7,
+      "title": "求最大上滑距离",
+      "kind": "value",
+      "stmt": "由 s＝v_B²/(2a_up)，代入 v_B²＝20 m²/s²、a_up＝10 m/s²。",
+      "eq": "v_B**2-2*a_up*s",
+      "value": {
+        "symbol": "s",
+        "number": 1,
+        "exact": "1",
+        "unit": "m"
+      },
+      "score": 2,
+      "point": "正确求得沿斜面向上滑行的最大距离 s＝1 m。"
+    },
+    {
+      "no": 8,
+      "title": "判断能否滑回",
+      "kind": "judgment",
+      "stmt": "在最高点，重力沿斜面向下的分力为 mg sin37°＝6 N，最大静摩擦力按 μmg cos37°＝4 N 估算，因 6 N＞4 N，所以物块能由静止开始沿斜面下滑返回。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "通过比较重力沿斜面分力与最大静摩擦力，正确判断物块能滑回。"
+    },
+    {
+      "no": 9,
+      "title": "列下滑受力方程",
+      "kind": "equation",
+      "stmt": "物块下滑时，重力沿斜面向下的分力大于摩擦力，取沿斜面向下为正方向，由牛顿第二定律列式。",
+      "eq": "m*g*sin(theta)-mu*m*g*cos(theta)-m*a_down",
+      "value": null,
+      "score": 1,
+      "point": "正确写出下滑时沿斜面方向的合力与加速度关系。"
+    },
+    {
+      "no": 10,
+      "title": "求下滑加速度",
+      "kind": "value",
+      "stmt": "由 mg sinθ－μmg cosθ＝ma_down，代入已知量得 a_down＝10×0.6－0.5×10×0.8。",
+      "eq": "m*g*sin(theta)-mu*m*g*cos(theta)-m*a_down",
+      "value": {
+        "symbol": "a_down",
+        "number": 2,
+        "exact": "2",
+        "unit": "m/s^2"
+      },
+      "score": 1,
+      "point": "正确算出下滑加速度 a_down＝2 m/s²。"
+    },
+    {
+      "no": 11,
+      "title": "求回到B点速度",
+      "kind": "value",
+      "stmt": "从最高点由静止下滑到B点，位移大小 s＝1 m，由 v_B′²＝2a_down s 求得回到B点时的速度。",
+      "eq": "v_B_prime**2-2*a_down*s",
+      "value": {
+        "symbol": "v_B_prime",
+        "number": 2,
+        "exact": "2",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确求得物块回到B点时的速度 v_B′＝2 m/s。"
+    },
+    {
+      "no": 12,
+      "title": "求桌面滑行距离",
+      "kind": "value",
+      "stmt": "回到桌面后，物块向左滑动，摩擦力提供减速度 μg，由 v_B′²＝2μgx 求还能滑行的距离 x。",
+      "eq": "v_B_prime**2-2*mu*g*x",
+      "value": {
+        "symbol": "x",
+        "number": 0.4,
+        "exact": "2/5",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "正确求得回到桌面后还能滑行的距离 x＝0.4 m。"
+    }
+  ],
+  "objects": [
+    {
+      "name": "物块",
+      "mass_symbol": "m"
+    }
+  ],
+  "sub_scores": [
+    {
+      "no": "(1)",
+      "score": 4
+    },
+    {
+      "no": "(2)",
+      "score": 5
+    },
+    {
+      "no": "(3)",
+      "score": 5
+    }
+  ]
+}

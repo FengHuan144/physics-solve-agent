@@ -1,0 +1,170 @@
+{
+  "givens": [
+    {
+      "symbol": "a",
+      "value": 2,
+      "unit": "m/s^2",
+      "text": "加速度 a＝2 m/s^2"
+    },
+    {
+      "symbol": "t1",
+      "value": 10,
+      "unit": "s",
+      "text": "加速结束时刻 t1＝10 s"
+    },
+    {
+      "symbol": "t2",
+      "value": 41,
+      "unit": "s",
+      "text": "听到最后鸣笛声的时刻 t2＝41 s"
+    },
+    {
+      "symbol": "v_s",
+      "value": 340,
+      "unit": "m/s",
+      "text": "声速 v_s＝340 m/s"
+    },
+    {
+      "symbol": "v_i",
+      "value": 0,
+      "unit": "m/s",
+      "text": "救护车初速度 v_i＝0（由静止开始）"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "v = 20 m/s",
+      "steps": [
+        1,
+        2
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "T = 39 s",
+      "steps": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "x = 680 m",
+      "steps": [
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "匀加速速度公式",
+      "kind": "equation",
+      "stmt": "救护车从静止开始做匀加速运动，到 t1 时刻速度满足 v＝a*t1。",
+      "eq": "v - a*t1",
+      "value": null,
+      "score": 2,
+      "point": "写出初速度为零的匀加速速度公式"
+    },
+    {
+      "no": 2,
+      "title": "求匀速速度",
+      "kind": "value",
+      "stmt": "代入 a＝2 m/s^2、t1＝10 s，得匀速运动速度 v＝20 m/s。",
+      "eq": "v - 2*10",
+      "value": {
+        "symbol": "v",
+        "number": 20,
+        "exact": "20",
+        "unit": "m/s"
+      },
+      "score": 2,
+      "point": "代入数据算出匀速运动速度"
+    },
+    {
+      "no": 3,
+      "title": "求加速阶段位移",
+      "kind": "equation",
+      "stmt": "加速阶段的位移为 x1＝1/2*a*t1^2。",
+      "eq": "x1 - Rational(1,2)*a*t1**2",
+      "value": null,
+      "score": 1,
+      "point": "写出匀加速阶段位移公式"
+    },
+    {
+      "no": 4,
+      "title": "写停止鸣笛位置",
+      "kind": "equation",
+      "stmt": "设停止鸣笛时刻为 T，停止鸣笛位置为 x＝x1+v*(T-t1)。",
+      "eq": "x - x1 - v*(T - t1)",
+      "value": null,
+      "score": 1,
+      "point": "写出匀速阶段位置与停止鸣笛时刻的关系"
+    },
+    {
+      "no": 5,
+      "title": "最后鸣笛声传声",
+      "kind": "equation",
+      "stmt": "最后一声从位置 x 传到出发点需时 x/v_s，故 T+x/v_s＝t2。",
+      "eq": "T + x/v_s - t2",
+      "value": null,
+      "score": 1,
+      "point": "写出最后鸣笛声传播时间的等时关系"
+    },
+    {
+      "no": 6,
+      "title": "求停止鸣笛时刻",
+      "kind": "value",
+      "stmt": "代入已知量并联立，得停止鸣笛时刻 T＝39 s。",
+      "eq": "T + (100 + 20*(T - 10))/340 - 41",
+      "value": {
+        "symbol": "T",
+        "number": 39,
+        "exact": "39",
+        "unit": "s"
+      },
+      "score": 1,
+      "point": "联立方程解出停止鸣笛时刻"
+    },
+    {
+      "no": 7,
+      "title": "列匀速段位移",
+      "kind": "equation",
+      "stmt": "从 t1 到停止鸣笛，匀速运动时间 T-t1，匀速段位移 s＝v*(T-t1)。",
+      "eq": "s - v*(T - t1)",
+      "value": null,
+      "score": 2,
+      "point": "写出匀速运动阶段的位移关系"
+    },
+    {
+      "no": 8,
+      "title": "求总位置",
+      "kind": "equation",
+      "stmt": "停止鸣笛时距出发点的距离 x＝x1+s。",
+      "eq": "x - x1 - s",
+      "value": null,
+      "score": 2,
+      "point": "写出总位移由加速段位移和匀速段位移组成"
+    },
+    {
+      "no": 9,
+      "title": "求停止鸣笛距离",
+      "kind": "value",
+      "stmt": "代入 x1＝100 m、v＝20 m/s、T＝39 s、t1＝10 s，得 x＝680 m。",
+      "eq": "x - (100 + 20*(39 - 10))",
+      "value": {
+        "symbol": "x",
+        "number": 680,
+        "exact": "680",
+        "unit": "m"
+      },
+      "score": 2,
+      "point": "代入数据算出停止鸣笛时救护车距出发处的距离"
+    }
+  ]
+}

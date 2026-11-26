@@ -1,0 +1,204 @@
+{
+  "givens": [
+    {
+      "symbol": "U",
+      "value": 380,
+      "unit": "V",
+      "text": "电动机额定电压 U＝380 V"
+    },
+    {
+      "symbol": "R",
+      "value": 0.25,
+      "unit": "ohm",
+      "text": "电动机内阻 R＝0.25 Ω"
+    },
+    {
+      "symbol": "I",
+      "value": 40,
+      "unit": "A",
+      "text": "正常运粮时电流 I＝40 A"
+    },
+    {
+      "symbol": "v",
+      "value": 2,
+      "unit": "m/s",
+      "text": "装满粮食的小车匀速上行速度 v＝2 m/s"
+    },
+    {
+      "symbol": "m_1",
+      "value": 100,
+      "unit": "kg",
+      "text": "小车质量 m₁＝100 kg"
+    },
+    {
+      "symbol": "m_2",
+      "value": 1200,
+      "unit": "kg",
+      "text": "车上粮食质量 m₂＝1200 kg"
+    },
+    {
+      "symbol": "m_0",
+      "value": 40,
+      "unit": "kg",
+      "text": "配重质量 m₀＝40 kg"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "取重力加速度 g＝10 m/s²"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "k＝1/10",
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "a＝370/67 m/s²，方向沿斜面向下",
+      "steps": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "L＝67/185 m",
+      "steps": [
+        8,
+        9,
+        10
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "求电机牵引力F",
+      "kind": "value",
+      "stmt": "电动机正常工作时，输出机械功率等于输入电功率减内阻热功率，即 Fv＝UI－I²R；代入 U＝380 V、I＝40 A、R＝0.25 Ω、v＝2 m/s，得 F＝7400 N。",
+      "eq": "F*v - U*I + I**2*R",
+      "value": {
+        "symbol": "F",
+        "number": 7400,
+        "exact": "7400",
+        "unit": "N"
+      },
+      "score": 1,
+      "point": "正确运用电动机能量关系求出牵引力 F＝7400 N。"
+    },
+    {
+      "no": 2,
+      "title": "满载上行力平衡",
+      "kind": "equation",
+      "stmt": "设斜面倾角为θ，装满粮食的小车质量 M＝m₁＋m₂＝1300 kg。上行匀速时，电动机牵引力 F 和配重拉力 m₀g 沿斜面向上，重力分力和摩擦力向下，故 F＋m₀g－Mg sinθ－kMg＝0。",
+      "eq": "F + m_0*g - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g",
+      "value": null,
+      "score": 1,
+      "point": "正确列出满载上坡匀速时的沿斜面力平衡方程。"
+    },
+    {
+      "no": 3,
+      "title": "空车下行力平衡",
+      "kind": "equation",
+      "stmt": "卸粮后空车质量 m₁。小车匀速下行时，重力沿斜面的分力与摩擦力和配重拉力平衡，故 m₁g sinθ－m₀g－km₁g＝0。",
+      "eq": "m_1*g*sin(theta) - m_0*g - k*m_1*g",
+      "value": null,
+      "score": 1,
+      "point": "正确列出空车下坡匀速时的力平衡方程。"
+    },
+    {
+      "no": 4,
+      "title": "联立求k",
+      "kind": "value",
+      "stmt": "联立上面两方程，解得 sinθ＝1/2、k＝1/10。",
+      "eq": "k - Rational(1,10)",
+      "value": {
+        "symbol": "k",
+        "number": 0.1,
+        "exact": "1/10",
+        "unit": "1"
+      },
+      "score": 1,
+      "point": "联立方程并正确解得比例系数 k＝1/10。"
+    },
+    {
+      "no": 5,
+      "title": "关闭后系统运动",
+      "kind": "judgment",
+      "stmt": "关闭电动机后，小车与配重仍由缆绳相连，二者速度大小和加速度大小相同；小车继续上行的减速度方向沿斜面向下。取沿斜面向下为正来求该减速度 a。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "明确关闭电动机后系统的连接关系及加速度方向。"
+    },
+    {
+      "no": 6,
+      "title": "系统牛顿第二定律",
+      "kind": "equation",
+      "stmt": "取沿斜面向下为正，满载小车与配重组成的系统受合外力为 (m₁＋m₂)g sinθ＋k(m₁＋m₂)g－m₀g，故 (m₁＋m₂＋m₀)a－(m₁＋m₂)g sinθ－k(m₁＋m₂)g＋m₀g＝0。",
+      "eq": "(m_1+m_2+m_0)*a - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g + m_0*g",
+      "value": null,
+      "score": 2,
+      "point": "正确对小车和配重组成的系统列牛顿第二定律方程。"
+    },
+    {
+      "no": 7,
+      "title": "求减速度a",
+      "kind": "value",
+      "stmt": "代入 m₁＋m₂＝1300 kg、m₀＝40 kg、k＝1/10、sinθ＝1/2、g＝10 m/s²，得 a＝(6500＋1300－400)/1340＝370/67 m/s²，方向沿斜面向下。",
+      "eq": "a - (m_1+m_2)*g*sin(theta)/(m_1+m_2+m_0) - k*(m_1+m_2)*g/(m_1+m_2+m_0) + m_0*g/(m_1+m_2+m_0)",
+      "value": {
+        "symbol": "a",
+        "number": 5.522388059701493,
+        "exact": "370/67",
+        "unit": "m/s^2"
+      },
+      "score": 1,
+      "point": "代入数据正确得到减速度大小 a＝370/67 m/s²。"
+    },
+    {
+      "no": 8,
+      "title": "匀减速到零",
+      "kind": "judgment",
+      "stmt": "关闭电动机后，小车以初速度 v＝2 m/s 沿斜面做匀减速直线运动，到达卸粮点时末速度为零，上行路程为 L。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "判断上行为匀减速运动且末速度为零。"
+    },
+    {
+      "no": 9,
+      "title": "位移与速度关系",
+      "kind": "equation",
+      "stmt": "由匀变速直线运动规律 v²＝2aL，得 v²－2aL＝0。",
+      "eq": "v**2 - 2*a*L",
+      "value": null,
+      "score": 2,
+      "point": "正确列出初速度、减速度和位移的关系式。"
+    },
+    {
+      "no": 10,
+      "title": "求上行路程L",
+      "kind": "value",
+      "stmt": "代入 v＝2 m/s、a＝370/67 m/s²，得 L＝v²/(2a)＝67/185 m。",
+      "eq": "L - v**2/(2*a)",
+      "value": {
+        "symbol": "L",
+        "number": 0.3621621621621622,
+        "exact": "67/185",
+        "unit": "m"
+      },
+      "score": 3,
+      "point": "代入数据正确求出上行路程 L＝67/185 m。"
+    }
+  ]
+}

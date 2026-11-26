@@ -1,0 +1,325 @@
+{
+  "givens": [
+    {
+      "symbol": "m",
+      "value": null,
+      "unit": "kg",
+      "text": "物块A的质量，题给为m"
+    },
+    {
+      "symbol": "v0",
+      "value": null,
+      "unit": "m/s",
+      "text": "图乙速度坐标的参考量v0"
+    },
+    {
+      "symbol": "t0",
+      "value": null,
+      "unit": "s",
+      "text": "图乙时间坐标的参考量t0"
+    },
+    {
+      "symbol": "v_B0/v0",
+      "value": 1.2,
+      "unit": "1",
+      "text": "由图乙读出t=0时B的速度为1.2v0"
+    },
+    {
+      "symbol": "v_A(t0)/v0",
+      "value": 1,
+      "unit": "1",
+      "text": "由图乙读出t=t0时A、B共速为v0"
+    },
+    {
+      "symbol": "v_A(2t0)/v0",
+      "value": 2,
+      "unit": "1",
+      "text": "由图乙读出第一次分离时A的速度为2v0"
+    },
+    {
+      "symbol": "v_B(2t0)/v0",
+      "value": 0.8,
+      "unit": "1",
+      "text": "由图乙读出第一次分离时B的速度为0.8v0"
+    },
+    {
+      "symbol": "s_A(t0)",
+      "value": null,
+      "unit": "m",
+      "text": "题给t=0到t=t0内A的位移为0.36v0t0"
+    },
+    {
+      "symbol": "sinθ",
+      "value": 0.6,
+      "unit": "1",
+      "text": "题给斜面倾角满足sinθ=0.6"
+    },
+    {
+      "symbol": "cosθ",
+      "value": 0.8,
+      "unit": "1",
+      "text": "由sinθ=0.6得cosθ=0.8"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "Ep,max = 3/5 m v0^2",
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "no": "(2)",
+      "result": "x_max = 96/125 v0t0",
+      "steps": [
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "no": "(3)",
+      "result": "μ = 9/20",
+      "steps": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "读图取关键速度",
+      "kind": "judgment",
+      "stmt": "由图乙读出：t=0时B速度为6/5 v0，A静止；t=t0时A、B共速为v0；t=2t0第一次分离时A速度为2v0，B速度为4/5 v0。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "能从v-t图读出初末速度及共速时刻的速度"
+    },
+    {
+      "no": 2,
+      "title": "第一次碰撞动量守恒",
+      "kind": "equation",
+      "stmt": "第一次碰撞到分离过程中，水平方向系统不受外力，动量守恒。设B的质量为M，取向右为正。",
+      "eq": "M*Rational(6,5)*v0 - m*2*v0 - M*Rational(4,5)*v0",
+      "value": null,
+      "score": 1,
+      "point": "列出第一次碰撞前后系统动量守恒方程"
+    },
+    {
+      "no": 3,
+      "title": "求B的质量",
+      "kind": "value",
+      "stmt": "由动量守恒式解得M=5m。",
+      "eq": "M - 5*m",
+      "value": {
+        "symbol": "M",
+        "number": null,
+        "exact": "5*m",
+        "unit": "kg"
+      },
+      "score": 0.5,
+      "point": "正确求出B与A的质量关系"
+    },
+    {
+      "no": 4,
+      "title": "判断最大势能状态",
+      "kind": "judgment",
+      "stmt": "弹簧压缩量最大时A、B速度相等；由图乙知t=t0时二者速度均为v0，此时弹性势能最大。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出共速时弹簧压缩量最大、弹性势能最大"
+    },
+    {
+      "no": 5,
+      "title": "列能量守恒式",
+      "kind": "equation",
+      "stmt": "从t=0到t=t0，系统机械能守恒，初动能等于共速时总动能与弹簧最大弹性势能之和。",
+      "eq": "Rational(1,2)*M*(Rational(6,5)*v0)**2 - Rational(1,2)*(M+m)*v0**2 - Ep",
+      "value": null,
+      "score": 0.5,
+      "point": "列出第一次碰撞中机械能守恒方程"
+    },
+    {
+      "no": 6,
+      "title": "求最大弹性势能",
+      "kind": "value",
+      "stmt": "将M=5m代入能量守恒式，得Ep,max=3/5 m v0^2。",
+      "eq": "Ep - Rational(3,5)*m*v0**2",
+      "value": {
+        "symbol": "Ep",
+        "number": null,
+        "exact": "3/5*m*v0^2",
+        "unit": "J"
+      },
+      "score": 0.5,
+      "point": "正确得到弹簧最大弹性势能"
+    },
+    {
+      "no": 7,
+      "title": "明确最大压缩量",
+      "kind": "judgment",
+      "stmt": "t=0时弹簧为原长，到t=t0两者共速时压缩量最大；最大压缩量等于这段时间内B比A多走的距离，即x_max=s_B-s_A。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "明确最大压缩量等于共速前两物块位移差"
+    },
+    {
+      "no": 8,
+      "title": "质心速度与位移",
+      "kind": "equation",
+      "stmt": "第一次碰撞中质心做匀速运动，初态质心速度为v0，故t=t0时质心位移为v0t0；质心位移又等于A、B位移的加权平均，同时A的位移为9/25 v0t0。",
+      "eq": "(m*s_A + 5*m*s_B)/(6*m) - v0*t0 + s_A - Rational(9,25)*v0*t0",
+      "value": null,
+      "score": 1,
+      "point": "列出质心位移关系并代入A的位移条件"
+    },
+    {
+      "no": 9,
+      "title": "求B的位移",
+      "kind": "value",
+      "stmt": "代入s_A=9/25 v0t0，解得s_B=141/125 v0t0。",
+      "eq": "s_B - Rational(141,125)*v0*t0",
+      "value": {
+        "symbol": "s_B",
+        "number": null,
+        "exact": "141/125*v0*t0",
+        "unit": "m"
+      },
+      "score": 0.5,
+      "point": "正确求出B在0到t0内的位移"
+    },
+    {
+      "no": 10,
+      "title": "求最大压缩量",
+      "kind": "value",
+      "stmt": "于是x_max=s_B-s_A=(141/125-9/25)v0t0=96/125 v0t0。",
+      "eq": "x - Rational(96,125)*v0*t0",
+      "value": {
+        "symbol": "x",
+        "number": null,
+        "exact": "96/125*v0*t0",
+        "unit": "m"
+      },
+      "score": 1.5,
+      "point": "正确得到弹簧最大压缩量"
+    },
+    {
+      "no": 11,
+      "title": "第二次上滑条件",
+      "kind": "judgment",
+      "stmt": "斜面、倾角及摩擦因数均不变；A第二次上滑的最高点与第一次相同，说明第二次碰后A沿斜面向上的初速度大小仍为2v0。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "由最高点相同判断第二次碰后A速度大小仍为2v0"
+    },
+    {
+      "no": 12,
+      "title": "判断碰前速度",
+      "kind": "judgment",
+      "stmt": "第一次分离后B以4/5 v0匀速运动，所以第二次碰撞前B速度仍为4/5 v0；A从斜面滑下后的速度方向水平向左。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "明确第二次碰前A、B速度方向及B的速度大小"
+    },
+    {
+      "no": 13,
+      "title": "第二次碰撞动量守恒",
+      "kind": "equation",
+      "stmt": "设第二次碰前A速度大小为w，方向向左；碰后B速度为u_B。水平方向动量守恒。",
+      "eq": "m*(-w) + 5*m*Rational(4,5)*v0 - m*2*v0 - 5*m*u_B",
+      "value": null,
+      "score": 0.5,
+      "point": "列出第二次碰撞的动量守恒方程"
+    },
+    {
+      "no": 14,
+      "title": "第二次碰撞弹性关系",
+      "kind": "equation",
+      "stmt": "弹簧碰撞为弹性碰撞，碰后A、B相对速度与碰前等大反向，即2v0-u_B=w+4/5 v0。",
+      "eq": "2*v0 - u_B - w - Rational(4,5)*v0",
+      "value": null,
+      "score": 0.5,
+      "point": "列出第二次弹性碰撞的相对速度关系"
+    },
+    {
+      "no": 15,
+      "title": "求碰前A速度",
+      "kind": "value",
+      "stmt": "联立第二次碰撞的动量守恒式和弹性关系，得w=v0，即A第一次滑下后速度大小为v0。",
+      "eq": "w - v0",
+      "value": {
+        "symbol": "w",
+        "number": null,
+        "exact": "v0",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确求出A第一次滑下后速度大小"
+    },
+    {
+      "no": 16,
+      "title": "第一次上下滑说明",
+      "kind": "judgment",
+      "stmt": "A第一次以2v0滑上斜面，再滑回底端时速度大小为v0；从滑上到滑回底端，重力总功为零，摩擦力做负功。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "明确第一次上滑初速度和滑回速度，并判断重力总功为零"
+    },
+    {
+      "no": 17,
+      "title": "列上滑过程方程",
+      "kind": "equation",
+      "stmt": "设第一次沿斜面上升距离为L。对第一次上滑过程应用动能定理，重力沿斜面分量和摩擦力均做负功。",
+      "eq": "Rational(1,2)*m*(2*v0)**2 - m*g*L*Rational(3,5) - mu*m*g*L*Rational(4,5)",
+      "value": null,
+      "score": 0.5,
+      "point": "列出第一次上滑过程的动能定理方程"
+    },
+    {
+      "no": 18,
+      "title": "列全程能量方程",
+      "kind": "equation",
+      "stmt": "从第一次滑上斜面到再次滑回底端，动能由1/2m(2v0)^2变为1/2m v0^2，摩擦力做负功共2μmgLcosθ。",
+      "eq": "Rational(1,2)*m*(2*v0)**2 - Rational(1,2)*m*v0**2 - 2*mu*m*g*L*Rational(4,5)",
+      "value": null,
+      "score": 0.5,
+      "point": "列出第一次上下斜面的能量损失方程"
+    },
+    {
+      "no": 19,
+      "title": "求动摩擦因数",
+      "kind": "value",
+      "stmt": "联立上滑方程和全程能量方程，消去gL，解得μ=9/20。",
+      "eq": "mu - Rational(9,20)",
+      "value": {
+        "symbol": "mu",
+        "number": 0.45,
+        "exact": "9/20",
+        "unit": "1"
+      },
+      "score": 1,
+      "point": "正确求出物块A与斜面间的动摩擦因数"
+    }
+  ]
+}

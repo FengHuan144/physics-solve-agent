@@ -1,0 +1,24 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-07.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-07_validated.json
+
+对象：B-07（题 B-07，11 步）
+L1  pass 0 / fail 0 / na 11 / skipped 0    判定通过率 —    na 比例 100.0%
+L2  pass 4 / fail 0 / na 7 / skipped 0    判定通过率 100.0%    na 比例 63.6%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-07-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-07-S01 [L2] data_error(empty): sympy 串为空
+  - B-07-S04 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-07-S04 [L2] data_error(empty): sympy 串为空
+  - B-07-S07 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-07-S07 [L2] data_error(empty): sympy 串为空
+  - B-07-S08 [L1] per_step：data_error(unknown_symbol): 符号「vp」不在白名单：m*v - 2*m*vp｜chain：data_error(unknown_symbol): 符号「vp」不在白名单：m*v - 2*m*vp
+  - B-07-S08 [L2] data_error(unknown_symbol): 符号「vp」不在白名单：m*v - 2*m*vp
+  - B-07-S09 [L1] per_step：data_error(unknown_symbol): 符号「vp」不在白名单：vp - v/2｜chain：data_error(unknown_symbol): 符号「vp」不在白名单：vp - v/2
+  - B-07-S09 [L2] data_error(unknown_symbol): 符号「vp」不在白名单：vp - v/2
+  - B-07-S10 [L1] per_step：data_error(unknown_symbol): 符号「DeltaE」不在白名单：DeltaE - (Rational(1,2)*m*v**2 - Rational(1,2)*2*m*vp**2)｜chain：data_error(unknown_symbol): 符号「DeltaE」不在白名单：DeltaE - (Rational(1,2)*m*v**2 - Rational(1,2)*2*m*vp**2)
+  - B-07-S10 [L2] data_error(unknown_symbol): 符号「DeltaE」不在白名单：DeltaE - (Rational(1,2)*m*v**2 - Rational(1,2)*2*m*vp**2)
+  - B-07-S11 [L1] per_step：data_error(unknown_symbol): 符号「DeltaE」不在白名单：DeltaE - m*v**Rational(2,4)｜chain：data_error(unknown_symbol): 符号「DeltaE」不在白名单：DeltaE - m*v**Rational(2,4)
+  - B-07-S11 [L2] data_error(unknown_symbol): 符号「DeltaE」不在白名单：DeltaE - m*v**Rational(2,4)
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\B-07_validated.json

@@ -1,0 +1,25 @@
+[模型] deepseek-chat 不在可用列表，继续探测
+[模型] 请求名=deepseek-flash ｜ 可用=['deepseek-flash', 'deepseek-v4-pro']
+[OK] v3/A-06  17.6s  finish=stop  tok=372+2952
+[OK] v3/A-08  60.0s  finish=stop  tok=526+10283
+[OK] v3/A-09  166.7s  finish=stop  tok=454+17233
+[OK] v3/A-10  17.0s  finish=stop  tok=460+2722
+[OK] v3/B-01  16.9s  finish=stop  tok=340+2351
+[OK] v3/B-02  11.0s  finish=stop  tok=309+1820
+[OK] v3/B-03  12.5s  finish=stop  tok=400+2324
+[OK] v3/B-04  35.5s  finish=stop  tok=401+3553
+[OK] v3/B-05  9.4s  finish=stop  tok=368+1858
+[OK] v3/B-06  12.4s  finish=stop  tok=412+1111
+[OK] v3/B-07  35.6s  finish=stop  tok=351+3473
+[OK] v3/B-08  12.1s  finish=stop  tok=370+2046
+[OK] v3/B-09  15.4s  finish=stop  tok=415+2615
+[OK] v3/B-10  61.1s  finish=stop  tok=427+9990
+[OK] v3/B-12  47.7s  finish=stop  tok=422+4313
+[OK] v3/B-13  53.2s  finish=stop  tok=423+5327
+[OK] v3/B-15  362.9s  finish=length  tok=382+32768
+[OK] v3/B-16  59.5s  finish=stop  tok=346+5727
+[OK] v3/B-17  91.3s  finish=stop  tok=422+13601
+[OK] v3/B-18  278.2s  finish=stop  tok=579+29793
+[OK] v3/B-19  15.7s  finish=stop  tok=363+2913
+[OK] v3/B-20  192.3s  finish=stop  tok=521+21781
+[汇总] v3 → {'OK': 22, 'FAIL': 0, 'skip': 0}

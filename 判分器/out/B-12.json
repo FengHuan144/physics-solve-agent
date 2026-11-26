@@ -1,0 +1,147 @@
+{
+  "qid": "B-12",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-12-S01",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-12-S01"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S01；方程 N1 - (m+M)*g",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S02",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-12-S01",
+        "B-12-S02"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S01、B-12-S02；方程 N1 - (m+M)*g",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S03",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-12-S03"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S03；方程 N2 + f - M*g",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S04",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-12-S03",
+        "B-12-S04"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S03、B-12-S04；方程 N2 + f - M*g",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S05",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "B-12-S05"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S05；方程 Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2 + m*g*L + f*L",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S06",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-12-S06"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S06；方程 v1 - 8",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S07",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "B-12-S07",
+        "B-12-S08"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S07、B-12-S08；方程 m*v1 - (m+M)*v",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S08",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-12-S09"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S09；方程 Rational(1,2)*(m+M)*v**2 - (m+M)*g*h",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-12-S09",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-12-S10"
+      ],
+      "basis": "L1/L2 全 pass：B-12-S10；方程 h - Rational(1,5)",
+      "uncertain": false
+    }
+  ],
+  "summary": {
+    "total": 9,
+    "hit": 9,
+    "miss": 0,
+    "na": 0,
+    "score": 11.0,
+    "score_total": 11.0,
+    "judged_rate": "9/9",
+    "hit_rate": "9/9"
+  },
+  "na_reasons": {}
+}

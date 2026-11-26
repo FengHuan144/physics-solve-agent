@@ -1,0 +1,252 @@
+{
+  "givens": [
+    {
+      "symbol": "m",
+      "value": 0.2,
+      "unit": "kg",
+      "text": "滑块质量 m＝0.2 kg"
+    },
+    {
+      "symbol": "M",
+      "value": 0.6,
+      "unit": "kg",
+      "text": "滑杆质量 M＝0.6 kg"
+    },
+    {
+      "symbol": "v0",
+      "value": 10,
+      "unit": "m/s",
+      "text": "滑块在 A 处初速度 v₀＝10 m/s"
+    },
+    {
+      "symbol": "f",
+      "value": 1,
+      "unit": "N",
+      "text": "滑块向上滑动时受滑杆摩擦力 f＝1 N"
+    },
+    {
+      "symbol": "l",
+      "value": 1.2,
+      "unit": "m",
+      "text": "A、B 间距离 l＝1.2 m"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "重力加速度 g＝10 m/s²"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "N₁＝8 N，N₂＝5 N",
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "v₁＝8 m/s",
+      "steps": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "h＝0.2 m",
+      "steps": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "静止整体法",
+      "kind": "judgment",
+      "stmt": "初始时滑块和滑杆都静止，竖直方向无加速度，可把二者作为整体分析桌面的支持力。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "能判断初始静止时可用整体法求桌面的支持力"
+    },
+    {
+      "no": 2,
+      "title": "静止平衡方程",
+      "kind": "equation",
+      "stmt": "对滑块和滑杆整体，在竖直方向受总重力 (M+m)g 向下、桌面支持力 N1 向上，列 N1＝(M+m)g。",
+      "eq": "N1-(M+m)*g",
+      "value": null,
+      "score": 0.5,
+      "point": "列出静止时整体竖直平衡方程"
+    },
+    {
+      "no": 3,
+      "title": "求静止支持力",
+      "kind": "value",
+      "stmt": "代入 m＝0.2 kg、M＝0.6 kg、g＝10 m/s^2，得 N1＝(0.2+0.6)×10＝8 N。",
+      "eq": "N1-(M+m)*g",
+      "value": {
+        "symbol": "N1",
+        "number": 8,
+        "exact": "8",
+        "unit": "N"
+      },
+      "score": 1,
+      "point": "正确求出静止时桌面对滑杆支持力 N1"
+    },
+    {
+      "no": 4,
+      "title": "判断摩擦方向",
+      "kind": "judgment",
+      "stmt": "滑块相对滑杆向上滑动，滑块受到的摩擦力向下，滑杆受到的滑块摩擦力向上；正压力水平，不影响竖直方向。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "能正确判断滑块向上滑动时滑杆所受摩擦力的方向"
+    },
+    {
+      "no": 5,
+      "title": "滑杆竖直平衡",
+      "kind": "equation",
+      "stmt": "滑块向上滑动时滑杆仍静止，对其竖直方向列 N2+f＝Mg。",
+      "eq": "N2+f-M*g",
+      "value": null,
+      "score": 0.5,
+      "point": "列出滑动过程中滑杆竖直方向平衡方程"
+    },
+    {
+      "no": 6,
+      "title": "求滑动时支持力",
+      "kind": "value",
+      "stmt": "代入 f＝1 N、M＝0.6 kg、g＝10 m/s^2，得 N2＝Mg-f＝6-1＝5 N。",
+      "eq": "N2+f-M*g",
+      "value": {
+        "symbol": "N2",
+        "number": 5,
+        "exact": "5",
+        "unit": "N"
+      },
+      "score": 0.5,
+      "point": "正确求出滑块向上滑动过程中桌面对滑杆支持力 N2"
+    },
+    {
+      "no": 7,
+      "title": "上升受力分析",
+      "kind": "judgment",
+      "stmt": "A 到 B 过程中，滑块受重力 mg 和滑动摩擦力 f 均竖直向下，合阻力为 mg+f。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "能判断 A 到 B 过程中滑块所受合力方向及大小关系"
+    },
+    {
+      "no": 8,
+      "title": "列动能定理",
+      "kind": "equation",
+      "stmt": "由动能定理：初动能等于末动能、重力势能增加量 mgl 与克服摩擦力做功 fl 之和。",
+      "eq": "Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+      "value": null,
+      "score": 2,
+      "point": "正确列出滑块从 A 到 B 的动能定理方程"
+    },
+    {
+      "no": 9,
+      "title": "求碰前速度",
+      "kind": "value",
+      "stmt": "代入 v0＝10 m/s、m＝0.2 kg、g＝10 m/s^2、f＝1 N、l＝1.2 m，得 v1^2＝64，取向上速度为正，v1＝8 m/s。",
+      "eq": "Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+      "value": {
+        "symbol": "v1",
+        "number": 8,
+        "exact": "8",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确求出滑块碰撞前瞬间速度 v1"
+    },
+    {
+      "no": 10,
+      "title": "判断碰撞性质",
+      "kind": "judgment",
+      "stmt": "B 处发生完全非弹性碰撞，时间极短，碰撞过程中系统竖直方向动量守恒，碰后滑块与滑杆同速 V。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "能识别完全非弹性碰撞并判断碰撞瞬间动量守恒"
+    },
+    {
+      "no": 11,
+      "title": "碰撞动量守恒",
+      "kind": "equation",
+      "stmt": "取向上为正，碰撞前只有滑块有速度 v1，碰后二者共同速度为 V，列 m v1＝(M+m)V。",
+      "eq": "m*v1-(M+m)*V",
+      "value": null,
+      "score": 1,
+      "point": "正确列出碰撞瞬间系统动量守恒方程"
+    },
+    {
+      "no": 12,
+      "title": "求碰后速度",
+      "kind": "value",
+      "stmt": "代入 m＝0.2 kg、M＝0.6 kg、v1＝8 m/s，得 V＝2 m/s。",
+      "eq": "m*v1-(M+m)*V",
+      "value": {
+        "symbol": "V",
+        "number": 2,
+        "exact": "2",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "正确求出碰后滑块与滑杆的共同速度 V"
+    },
+    {
+      "no": 13,
+      "title": "碰后整体运动",
+      "kind": "judgment",
+      "stmt": "离开桌面后滑块与滑杆无相对滑动，整体只受重力，上升过程做匀减速运动，也可用机械能守恒处理。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "能判断碰后整体只受重力且机械能守恒"
+    },
+    {
+      "no": 14,
+      "title": "整体能量方程",
+      "kind": "equation",
+      "stmt": "以离开桌面处为高度零点，整体初动能全部转化为最高点处的重力势能，列 1/2(M+m)V^2＝(M+m)gh。",
+      "eq": "Rational(1,2)*(M+m)*V**2-(M+m)*g*h",
+      "value": null,
+      "score": 1,
+      "point": "正确列出碰后整体上升过程的能量守恒方程"
+    },
+    {
+      "no": 15,
+      "title": "求最大高度",
+      "kind": "value",
+      "stmt": "代入 V＝2 m/s、g＝10 m/s^2，得 h＝V^2/(2g)＝0.2 m。",
+      "eq": "h-V**2/(2*g)",
+      "value": {
+        "symbol": "h",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "正确求出滑杆向上运动的最大高度 h"
+    }
+  ]
+}

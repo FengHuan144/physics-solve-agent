@@ -1,0 +1,28 @@
+{
+  "givens": [
+    {"symbol": "G", "value": null, "unit": "m^3/(kg*s^2)", "text": "引力常量 G（题意给出）"},
+    {"symbol": "M", "value": null, "unit": "kg", "text": "球体内通常物质总质量 M"},
+    {"symbol": "R", "value": null, "unit": "m", "text": "球体内通常物质分布半径 R"},
+    {"symbol": "n", "value": null, "unit": "1", "text": "所求位置 r=nR 中的 n，且 n>1"},
+    {"symbol": "v_const", "value": null, "unit": "m/s", "text": "图上条件：r>R 区域恒星速度大小几乎不变，故 v(nR)≈v(R)；题面未给出可读的具体纵轴数值，不编造读数"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "v=sqrt(G*M/r)，方向沿圆周切线", "steps": [1, 2, 3]},
+    {"no": "(2)", "result": "v=r*sqrt(G*M/R^3)，方向沿圆周切线", "steps": [4, 5, 6]},
+    {"no": "(3)", "result": "M′=(n-1)*M", "steps": [7, 8, 9, 10, 11, 12]}
+  ],
+  "steps": [
+    {"no": 1, "title": "外部等效质量", "kind": "judgment", "stmt": "r>R 时，由球壳定理，球内物质对球外恒星的引力等效于全部质量 M 集中在星系中心。", "eq": null, "value": null, "score": 1, "point": "正确指出 r>R 时可把球内全部质量 M 等效集中于中心"},
+    {"no": 2, "title": "外部向心力方程", "kind": "equation", "stmt": "设恒星质量为 m，r>R 处万有引力提供向心力，列方程 GMm/r^2=mv^2/r。", "eq": "G*M*m/r**2 - m*v**2/r", "value": null, "score": 2, "point": "正确列出外部恒星的万有引力提供向心力方程"},
+    {"no": 3, "title": "消去m得v(r)", "kind": "equation", "stmt": "消去 m，得 v^2=GM/r，因此 v=sqrt(GM/r)。", "eq": "v**2 - G*M/r", "value": null, "score": 1, "point": "正确得到 r>R 区域 v 与 r 的关系"},
+    {"no": 4, "title": "内部质量分布", "kind": "judgment", "stmt": "r≤R 时，球内物质均匀分布，半径 r 内的通常物质质量为 M(r)=M*r^3/R^3。", "eq": null, "value": null, "score": 1, "point": "正确写出半径 r 内的通常物质质量"},
+    {"no": 5, "title": "内部向心力方程", "kind": "equation", "stmt": "由球壳内引力合力为零，只有半径 r 内的质量 M(r) 对恒星有净引力作用；列向心力方程 G*M(r)*m/r^2=mv^2/r。", "eq": "G*M_r*m/r**2 - m*v**2/r", "value": null, "score": 2, "point": "正确利用球壳内场强为零并列出内部恒星的动力学方程"},
+    {"no": 6, "title": "得内部v(r)", "kind": "equation", "stmt": "代入 M(r)=M*r^3/R^3，消去 m，得 v^2=GM*r^2/R^3，即 v=r*sqrt(GM/R^3)。", "eq": "v**2 - G*M*r**2/R**3", "value": null, "score": 1, "point": "正确得到 r≤R 区域 v 与 r 的关系"},
+    {"no": 7, "title": "读图判断恒速", "kind": "judgment", "stmt": "由题图或题意，r>R 区域恒星速度大小几乎不变，因此取 v(nR)≈v(R)。", "eq": null, "value": null, "score": 1, "point": "识别并可引用 r>R 区域速度近似恒定的图像信息"},
+    {"no": 8, "title": "边界速度关系", "kind": "equation", "stmt": "r=R 处仍由通常物质 M 的引力决定速度，取外部关系在边界处，得 v_R^2=GM/R。", "eq": "v_R**2 - G*M/R", "value": null, "score": 1, "point": "正确写出 r=R 处的速度关系"},
+    {"no": 9, "title": "计入暗物质", "kind": "judgment", "stmt": "r=nR>R 时，半径 nR 内的通常物质总质量仍为 M，另有暗物质质量 M′，因此等效中心总质量为 M+M′。", "eq": null, "value": null, "score": 1, "point": "正确把通常物质与暗物质质量相加作为等效中心质量"},
+    {"no": 10, "title": "r=nR向心力", "kind": "equation", "stmt": "对 r=nR 处恒星列万有引力提供向心力：G(M+M′)m/(nR)^2=m v_n^2/(nR)。", "eq": "G*(M+Mp)*m/(n*R)**2 - m*v_n**2/(n*R)", "value": null, "score": 1, "point": "正确列出 r=nR 处包含暗物质的向心力方程"},
+    {"no": 11, "title": "联立恒速条件", "kind": "equation", "stmt": "由 v_n≈v_R 且 v_R^2=GM/R，代入得 G(M+M′)/(nR)=GM/R。", "eq": "G*(M+Mp)/(n*R) - G*M/R", "value": null, "score": 1, "point": "正确联立恒速条件和边界速度关系"},
+    {"no": 12, "title": "解得暗物质质量", "kind": "equation", "stmt": "由 G(M+M′)/(nR)=GM/R 解得 M′=(n-1)M。", "eq": "Mp - (n-1)*M", "value": null, "score": 1, "point": "正确解出 r=nR 内的暗物质质量 M′"}
+  ]
+}

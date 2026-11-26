@@ -1,0 +1,839 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-20",
+    "question_id": "B-20",
+    "group": "B",
+    "source": "2024 山东卷",
+    "question_no": 17,
+    "full_score": 14,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-26T16:24:30+08:00",
+    "latency_ms": 104766,
+    "tokens": {
+      "in": 3045,
+      "out": 19445
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图甲所示，质量为 M 的轨道静止在光滑水平面上，轨道水平部分的上表面粗糙，竖直半圆形部分的表面光滑，两部分在 P 点平滑连接，Q 为轨道的最高点。质量为 m 的小物块静置在轨道水平部分上，与水平轨道间的动摩擦因数为 μ，最大静摩擦力等于滑动摩擦力。已知轨道半圆形部分的半径 R＝0.4 m，重力加速度大小 g＝10 m/s²。(1)若轨道固定，小物块以一定的初速度沿轨道运动到 Q 点时，受到轨道的弹力大小等于 3mg，求小物块在 Q 点的速度大小 v；(2)若轨道不固定，给轨道施加水平向左的推力 F，小物块处在轨道水平部分时，轨道的加速度 a 与 F 对应关系如图乙所示。(ⅰ)求 μ 和 m；(ⅱ)初始时，小物块静置在轨道最左端，给轨道施加水平向左的推力 F＝8 N，当小物块到 P 点时撤去 F，小物块从 Q 点离开轨道时相对地面的速度大小为 7 m/s。求轨道水平部分的长度 L。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "图甲：轨道由水平粗糙段与竖直光滑半圆段在 P 点平滑连接，Q 为半圆最高点，小物块静置于水平段左端；原文无图题",
+        "caption_source": "human",
+        "is_required": true,
+        "file": "原始资料/题图/B-20_图甲.png",
+        "file_sha256": "7a37dd806ef878d1156bd770b5a7b9e69efedfc8ee0d388385576a17527797fe"
+      },
+      {
+        "fig_no": 2,
+        "caption": "图乙：轨道加速度 a 随推力 F 变化的折线（两段斜率与一段截距；读数逐条登记在 provides）；原文无图题",
+        "caption_source": "human",
+        "is_required": true,
+        "provides": [
+          {
+            "symbol": "k1",
+            "value": 0.5,
+            "unit": "kg^-1",
+            "read_from": "图乙 F≤4 N 段的斜率",
+            "text": "由图乙第一段（过原点、到 F＝4 N 止）的斜率读出 k₁＝0.5 kg⁻¹，即 1/(M＋m)"
+          },
+          {
+            "symbol": "k2",
+            "value": 1,
+            "unit": "kg^-1",
+            "read_from": "图乙 F>4 N 段的斜率",
+            "text": "由图乙第二段（F>4 N）的斜率读出 k₂＝1 kg⁻¹，即 1/M"
+          },
+          {
+            "symbol": "b2",
+            "value": -2,
+            "unit": "m/s^2",
+            "read_from": "图乙 F>4 N 段的纵轴截距",
+            "text": "由图乙第二段反向延长到 F＝0 的截距读出 b₂＝−2 m/s²，即 −μmg/M；符号为负"
+          }
+        ],
+        "file": "原始资料/题图/B-20_图乙.png",
+        "file_sha256": "bd07f140c0bd5f84e6723275de2191ace7635a9a1ba334ca50dc35f276299eef"
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "轨道固定时，小物块在 Q 点的速度大小 v。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "原文第 (2) 问 (ⅰ)：由图乙求 μ 和 m。",
+        "score": 4
+      },
+      {
+        "no": "(3)",
+        "text": "原文第 (2) 问 (ⅱ)：F＝8 N，物块到 P 时撤去 F，Q 点离开时相对地面 7 m/s，求水平段长度 L。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "38e670b1c0ed53d4a5dce14469cd7f1ed00fc552349304194fe7595c1eb220de",
+    "input_sha256": "e321e934a34129c5571d7fa33bd05344eaf3e05057e835d360e897e5b648ed85"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "轨道",
+        "mass_symbol": "M",
+        "note": "水平段粗糙、半圆段光滑；静止在光滑水平面上，可被水平推力 F 推动"
+      },
+      {
+        "id": "obj2",
+        "name": "小物块",
+        "mass_symbol": "m",
+        "note": "静置在轨道水平段左端；与水平段动摩擦因数 μ，最大静摩擦力等于滑动摩擦力"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": 0.4,
+        "unit": "m",
+        "text": "轨道半圆形部分的半径 R＝0.4 m"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      },
+      {
+        "symbol": "NQ",
+        "value": null,
+        "unit": "N",
+        "text": "第(1)问给出 Q 点轨道弹力大小 N_Q＝3mg"
+      },
+      {
+        "symbol": "Fc",
+        "value": 4.0,
+        "unit": "N",
+        "text": "图乙折点读出 F＝4 N"
+      },
+      {
+        "symbol": "ac",
+        "value": 2.0,
+        "unit": "m/s^2",
+        "text": "图乙折点读出 a＝2 m/s²"
+      },
+      {
+        "symbol": "F8",
+        "value": 8.0,
+        "unit": "N",
+        "text": "图乙及第(2)(ⅱ)问中 F＝8 N"
+      },
+      {
+        "symbol": "a8",
+        "value": 6.0,
+        "unit": "m/s^2",
+        "text": "图乙读出 F＝8 N 时 a＝6 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v",
+        "text": "轨道固定时 Q 点的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "mu",
+        "text": "动摩擦因数"
+      },
+      {
+        "no": "(2)",
+        "quantity": "m",
+        "text": "小物块质量"
+      },
+      {
+        "no": "(3)",
+        "quantity": "L",
+        "text": "轨道水平部分的长度"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "判断Q点弹力方向",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "列Q点向心力方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求Q点速度v",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "读图判断运动阶段",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "求总质量M+m",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "由斜率求M",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "求动摩擦因数",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求F=8时两者加速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "写到达P前运动关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "列水平动量守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "列P到Q能量守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "判断方向并舍根",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "求水平部分长度L",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-20-S01",
+      "step_no": 1,
+      "title": "判断Q点弹力方向",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "在最高点Q，小物块所受轨道的弹力只能沿半径向下，它与重力共同提供向心力。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "指出Q点轨道弹力方向向下，明确向心力来源"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S02",
+      "step_no": 2,
+      "title": "列Q点向心力方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取竖直向下为正，轨道弹力 N_Q＝3mg，故向心力方程为 mg＋3mg＝m v²/R。",
+      "equation": {
+        "latex": "m g+3 m g-m v^2/R",
+        "sympy": "m*g+3*m*g-m*v**2/R",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 m, v｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S03",
+      "step_no": 3,
+      "title": "求Q点速度v",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由 4mg＝m v²/R 得 v²＝4gR，代入 g＝10 m/s²、R＝0.4 m，得 v＝4 m/s。",
+      "equation": {
+        "latex": "v^2-4 g R",
+        "sympy": "v**2-4*g*R",
+        "symbols": [
+          "R",
+          "g",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 v=-4、4，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m^2/s^2；值单位 m/s 与符号 v 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S04",
+      "step_no": 4,
+      "title": "读图判断运动阶段",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "由图乙读出折点 F_c＝4 N 时 a_c＝2 m/s²，F_8＝8 N 时 a_8＝6 m/s²；F≤4 N 时物块与轨道相对静止，F>4 N 后两者相对滑动。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "读出图乙关键点并正确判断共同加速与相对滑动的分界"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S05",
+      "step_no": 5,
+      "title": "求总质量M+m",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "F≤4 N 时整体加速度 a＝F/(M＋m)，代入折点 F_c＝4 N、a_c＝2 m/s²，得 M＋m＝2 kg。",
+      "equation": {
+        "latex": "F_c-(M+m) a_c",
+        "sympy": "F_c-(M+m)*a_c",
+        "symbols": [
+          "F",
+          "M",
+          "a",
+          "c",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-(M+m)*a_c｜chain：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-(M+m)*a_c",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-(M+m)*a_c",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S06",
+      "step_no": 6,
+      "title": "由斜率求M",
+      "point_id": null,
+      "kind": "value",
+      "statement": "F>4 N 后对轨道有 F－μmg＝Ma；图线斜率 1/M＝(6－2)/(8－4)＝1，故 M＝1 kg，于是 m＝(M＋m)－M＝1 kg。",
+      "equation": {
+        "latex": "(a_8-a_c) M-(F_8-F_c)",
+        "sympy": "(a_8-a_c)*M-(F_8-F_c)",
+        "symbols": [
+          "F",
+          "M",
+          "a",
+          "c"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "M",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "kg",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「a_8」不在白名单：(a_8-a_c)*M-(F_8-F_c)｜chain：data_error(unknown_symbol): 符号「a_8」不在白名单：(a_8-a_c)*M-(F_8-F_c)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「a_8」不在白名单：(a_8-a_c)*M-(F_8-F_c)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S07",
+      "step_no": 7,
+      "title": "求动摩擦因数",
+      "point_id": null,
+      "kind": "value",
+      "statement": "在折点处对轨道用 F_c－μmg＝Ma_c，代入 M＝m＝1 kg、g＝10 m/s²、F_c＝4 N、a_c＝2 m/s²，得 μ＝0.2。",
+      "equation": {
+        "latex": "F_c-mu m g-M a_c",
+        "sympy": "F_c-mu*m*g-M*a_c",
+        "symbols": [
+          "F",
+          "M",
+          "a",
+          "c",
+          "g",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "mu",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "1",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-mu*m*g-M*a_c｜chain：data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-mu*m*g-M*a_c",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「F_c」不在白名单：F_c-mu*m*g-M*a_c",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S08",
+      "step_no": 8,
+      "title": "求F=8时两者加速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "F＝8 N>4 N，物块受向左摩擦力，a_m＝μg＝2 m/s²；轨道满足 F－μmg＝Ma_M，得 a_M＝6 m/s²。取向左为正。",
+      "equation": {
+        "latex": "a_m-mu g+a_M-(F-mu m g)/M",
+        "sympy": "a_m-mu*g+a_M-(F-mu*m*g)/M",
+        "symbols": [
+          "F",
+          "M",
+          "a",
+          "g",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「a_m」不在白名单：a_m-mu*g+a_M-(F-mu*m*g)/M｜chain：data_error(unknown_symbol): 符号「a_m」不在白名单：a_m-mu*g+a_M-(F-mu*m*g)/M",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「a_m」不在白名单：a_m-mu*g+a_M-(F-mu*m*g)/M",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S09",
+      "step_no": 9,
+      "title": "写到达P前运动关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从静止加速到物块到达P，取向左为正，v_P＝a_m t，V_P＝a_M t；物块相对轨道向右移动 L，故 L＝(1/2)(a_M－a_m)t²。",
+      "equation": {
+        "latex": "v_P-a_m t+V_P-a_M t+L-(1/2) (a_M-a_m) t^2",
+        "sympy": "v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2",
+        "symbols": [
+          "L",
+          "M",
+          "P",
+          "V",
+          "a",
+          "m",
+          "t",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_P」不在白名单：v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S10",
+      "step_no": 10,
+      "title": "列水平动量守恒",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "撤去F后系统水平方向不受外力，P到Q过程水平动量守恒，取向左为正：m v_P＋M V_P＝m v_Q＋M V_Q。",
+      "equation": {
+        "latex": "m v_P+M V_P-m v_Q-M V_Q",
+        "sympy": "m*v_P+M*V_P-m*v_Q-M*V_Q",
+        "symbols": [
+          "M",
+          "P",
+          "Q",
+          "V",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：m*v_P+M*V_P-m*v_Q-M*V_Q｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：m*v_P+M*V_P-m*v_Q-M*V_Q",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_P」不在白名单：m*v_P+M*V_P-m*v_Q-M*V_Q",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S11",
+      "step_no": 11,
+      "title": "列P到Q能量守恒",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "半圆部分光滑，P到Q只有重力做功，物块升高 2R，机械能守恒。",
+      "equation": {
+        "latex": "(1/2) m v_P^2+(1/2) M V_P^2-(1/2) m v_Q^2-(1/2) M V_Q^2-m g 2 R",
+        "sympy": "Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R",
+        "symbols": [
+          "M",
+          "P",
+          "Q",
+          "R",
+          "V",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「v_P」不在白名单：Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S12",
+      "step_no": 12,
+      "title": "判断方向并舍根",
+      "point_id": null,
+      "kind": "discussion",
+      "statement": "物块沿右半圆到达Q时相对轨道速度向左，取左正的 v_Q 应大于 V_Q。已知 |v_Q|＝7 m/s；取 v_Q＝7 m/s 向左，由动量得 V_Q＝8t－7，代入能量得 12t²－56t＋57＝0，根为 t＝3/2 s 或 t＝19/6 s；t＝19/6 s 时 V_Q>v_Q，与相对速度方向矛盾，舍去，故 t＝3/2 s。若取 v_Q＝－7 m/s 则无正根，也舍去。",
+      "equation": {
+        "latex": "12 t^2-56 t+57",
+        "sympy": "12*t**2-56*t+57",
+        "symbols": [
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "正确判断Q点速度方向并舍去不合运动方向的根"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：本步无 value：方程可直接解出 t，但本步没给值，无从比对（chain 再判）｜chain：全题联立后仍含自由符号 t（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "量纲不可判定（含带单位的数值系数，L2 无权判错）：加减项量纲不一致，但含带单位的数值系数（-56*t, 12*t**2），无法判定是模型错还是单位已并入系数：-56*t 为 s；12*t**2 为 s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-20-S13",
+      "step_no": 13,
+      "title": "求水平部分长度L",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由 t＝3/2 s 及 L＝2t²，得 L＝2×(3/2)²＝9/2 m＝4.5 m。",
+      "equation": {
+        "latex": "L-2 ((3/2))^2",
+        "sympy": "L-2*(Rational(3,2))**2",
+        "symbols": [
+          "L"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "L",
+        "number": 4.5,
+        "exact": "9/2",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 L=4.5，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m；值单位 m 与符号 L 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 14,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "qid": "B-10",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-10-S01",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-10-S01"
+      ],
+      "basis": "L1/L2 全 pass：B-10-S01；方程 F*v - Uvolt*Icur + Icur**2*Rr",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-10-S02",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-10-S01"
+      ],
+      "basis": "L1/L2 全 pass：B-10-S01；方程 F*v - Uvolt*Icur + Icur**2*Rr",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-10-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-10-S02"
+      ],
+      "basis": "欠定：B-10-S02 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-10-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-10-S03"
+      ],
+      "basis": "欠定：B-10-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-10-S05",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-10-S04"
+      ],
+      "basis": "L1/L2 全 pass：B-10-S04；方程 k - Rational(1,10)",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-10-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-10-S05"
+      ],
+      "basis": "无锚点：口径要求『关闭电动机后，车＋粮＋配重作为整体：合外力 (m₁+m₂)g sinθ + k(m₁+m₂)g − m₀g』，承载步 B-10-S05 的 statement 写『关闭电动机后，小车与配重仍由缆绳相连，二者速度大小和加速度大小相同；小车继续上行的减速度方向沿斜面向下。取沿斜面向下为正』，无式子可复核（2-gram 覆盖 19%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-10-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-10-S06",
+        "B-10-S07"
+      ],
+      "basis": "欠定：B-10-S06、B-10-S07 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-10-S08",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-10-S10"
+      ],
+      "basis": "L1/L2 全 pass：B-10-S10；方程 L - v**2/(2*a)",
+      "uncertain": false
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "hit": 4,
+    "miss": 0,
+    "na": 4,
+    "score": 4.0,
+    "score_total": 9.0,
+    "judged_rate": "4/8",
+    "hit_rate": "4/4"
+  },
+  "na_reasons": {
+    "欠定": 3,
+    "无锚点": 1
+  }
+}

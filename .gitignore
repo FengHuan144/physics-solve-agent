@@ -1,0 +1,22 @@
+# 运行时产物（每次跑题都会重写，不进仓库）
+临时/
+
+# agent 内部工作数据（记忆、会话缓存）
+.workbuddy/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 本地密钥
+.env
+.env.*
+*.key
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini

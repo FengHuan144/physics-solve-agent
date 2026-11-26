@@ -1,0 +1,165 @@
+{
+  "qid": "A-06",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "A-06-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-06-S01"
+      ],
+      "basis": "merged_step：A-06-S01 命中数据缺陷——拆成三条：f = mu*m*g；a1 = -mu*g；a2 = mu*g",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-06-S02",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-06-S01"
+      ],
+      "basis": "merged_step：A-06-S01 命中数据缺陷——拆成三条：f = mu*m*g；a1 = -mu*g；a2 = mu*g",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-06-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-06-S01"
+      ],
+      "basis": "merged_step：A-06-S01 命中数据缺陷——拆成三条：f = mu*m*g；a1 = -mu*g；a2 = mu*g",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-06-S04",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-06-S02"
+      ],
+      "basis": "L1/L2 全 pass：A-06-S02；方程 Rational(1,2)*3*t1**2 - Rational(1,6)",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-06-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        3.0
+      ],
+      "by": [
+        "A-06-S03"
+      ],
+      "basis": "欠定：A-06-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-06-S06",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-06-S04"
+      ],
+      "basis": "L1/L2 全 pass：A-06-S04；方程 v0*Rational(1,3) - Rational(1,2)*3*(Rational(1,3))**2 - Rational(7,6)",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-06-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-06-S05"
+      ],
+      "basis": "无锚点：口径要求『判定物块飞出后薄板做匀速直线运动、物块做平抛运动』，承载步 A-06-S05 的 statement 写『物块从薄板右端飞出后，薄板在光滑平台上水平方向不再受摩擦力，因此薄板保持匀速直线运动。』，无式子可复核（2-gram 覆盖 50%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-06-S08",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-06-S06"
+      ],
+      "basis": "欠定：A-06-S06 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-06-S09",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-06-S07",
+        "A-06-S08"
+      ],
+      "basis": "L1/L2 全 pass：A-06-S07、A-06-S08；方程 s2 - L/2 + L/6",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-06-S10",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-06-S09",
+        "A-06-S10",
+        "A-06-S11"
+      ],
+      "basis": "无锚点：A-06-S09、A-06-S10、A-06-S11 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "hit": 3,
+    "miss": 0,
+    "na": 7,
+    "score": 3.0,
+    "score_total": 14.0,
+    "judged_rate": "3/10",
+    "hit_rate": "3/3"
+  },
+  "na_reasons": {
+    "merged_step": 3,
+    "欠定": 2,
+    "无锚点": 2
+  }
+}

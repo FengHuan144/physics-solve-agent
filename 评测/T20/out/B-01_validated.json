@@ -1,0 +1,603 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-01",
+    "question_id": "B-01",
+    "group": "B",
+    "source": "2024 广西卷",
+    "question_no": 13,
+    "full_score": 10,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:41:23+08:00",
+    "latency_ms": 50457,
+    "tokens": {
+      "in": 1001,
+      "out": 11808
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，轮滑训练场沿直线等间距地摆放着若干个定位锥筒，锥筒间距 d＝0.9 m，某同学穿着轮滑鞋向右匀减速滑行。现测出他从 1 号锥筒运动到 2 号锥筒用时 t₁＝0.4 s，从 2 号锥筒运动到 3 号锥筒用时 t₂＝0.5 s。求该同学：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "沿直线等间距 d＝0.9 m 摆放的编号锥筒，同学向右匀减速滑行；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "滑行的加速度大小。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "最远能经过几号锥筒。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "7e2bc909a804f9af9265395ef2ab792f80265607e4007b80350bfbf5630d3dc3",
+    "input_sha256": "e6ef327018f144cff9473d5083dadd695d906e5a412c9b56f4d6440fa72c9ea9"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "轮滑同学",
+        "mass_symbol": "m",
+        "note": "向右匀减速滑行，视为质点；质量不参与计算"
+      },
+      {
+        "id": "obj2",
+        "name": "定位锥筒",
+        "mass_symbol": "m",
+        "note": "等间距 d＝0.9 m 沿直线摆放，1 号在最左；编号 n 的锥筒距 1 号 (n−1)d"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "d",
+        "value": 0.9,
+        "unit": "m",
+        "text": "锥筒间距 d＝0.9 m"
+      },
+      {
+        "symbol": "t1",
+        "value": 0.4,
+        "unit": "s",
+        "text": "从1号到2号锥筒用时 t₁＝0.4 s"
+      },
+      {
+        "symbol": "t2",
+        "value": 0.5,
+        "unit": "s",
+        "text": "从2号到3号锥筒用时 t₂＝0.5 s"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "a",
+        "text": "滑行加速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "x",
+        "text": "从 1 号起算的停止距离，并据此判断最远经过几号"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "平均速度对应中点",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "两段平均速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求加速度大小",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "确定1号速度关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "列1号速度方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "算1号锥筒速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "列停止位移方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "算停止前总位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "锥筒位置比较",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "判断最远锥筒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-01-S01",
+      "step_no": 1,
+      "title": "平均速度对应中点",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "匀变速直线运动中，某段时间的平均速度等于该段时间中间时刻的瞬时速度；设1到2、2到3两段的中点速度分别为 v12、v23，两中点时刻相隔 Δt＝t1/2＋t2/2。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "说明平均速度与中间时刻瞬时速度的关系"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S02",
+      "step_no": 2,
+      "title": "两段平均速度",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由平均速度定义列式：v12＝d/t1，v23＝d/t2。",
+      "equation": {
+        "latex": "v12 - d/t1 + v23 - d/t2",
+        "sympy": "v1 - d/t1 + v2 - d/t2",
+        "symbols": [
+          "d",
+          "t1",
+          "t2",
+          "v12",
+          "v23"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 v1, v2｜chain：全题联立后仍含自由符号 v2（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S03",
+      "step_no": 3,
+      "title": "求加速度大小",
+      "point_id": null,
+      "kind": "value",
+      "statement": "先算 v12＝9/4 m/s，v23＝9/5 m/s；两中点速度差为 a·(t1＋t2)/2，故 a＝(v12－v23)/[(t1＋t2)/2]＝1 m/s^2。",
+      "equation": {
+        "latex": "a - (d/t1 - d/t2)/((t1 + t2) (1/2))",
+        "sympy": "a - (d/t1 - d/t2)/((t1 + t2)*Rational(1,2))",
+        "symbols": [
+          "a",
+          "d",
+          "t1",
+          "t2"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "a",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 a=1，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s^2；值单位 m/s^2 与符号 a 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S04",
+      "step_no": 4,
+      "title": "确定1号速度关系",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "第一段中间时刻速度为 v12；该时刻距经过1号锥筒的时间为 t1/2，速度由 v1 减小了 a·t1/2。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "说明用第一段中点速度反求1号锥筒速度"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S05",
+      "step_no": 5,
+      "title": "列1号速度方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由速度公式列式：v1－a·t1/2＝v12，而 v12＝d/t1。",
+      "equation": {
+        "latex": "v1 - d/t1 - a t1 (1/2)",
+        "sympy": "v1 - d/t1 - a*t1*Rational(1,2)",
+        "symbols": [
+          "a",
+          "d",
+          "t1",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 v1，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S06",
+      "step_no": 6,
+      "title": "算1号锥筒速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 a＝1 m/s^2、d＝0.9 m、t1＝0.4 s，得 v1＝49/20 m/s＝2.45 m/s。",
+      "equation": {
+        "latex": "v1 - d/t1 - a t1 (1/2)",
+        "sympy": "v1 - d/t1 - a*t1*Rational(1,2)",
+        "symbols": [
+          "a",
+          "d",
+          "t1",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": 2.45,
+        "exact": "49/20",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 v1=2.45，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m/s；值单位 m/s 与符号 v1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S07",
+      "step_no": 7,
+      "title": "列停止位移方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从1号锥筒到停止，由匀减速运动公式 0－v1²＝－2as，得 s＝v1²/(2a)。",
+      "equation": {
+        "latex": "s - v1^2 (1/2)/a",
+        "sympy": "x - v1**2*Rational(1,2)/a",
+        "symbols": [
+          "a",
+          "s",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 x，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S08",
+      "step_no": 8,
+      "title": "算停止前总位移",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 v1＝49/20 m/s、a＝1 m/s^2，得 s＝2401/800 m＝3.00125 m。",
+      "equation": {
+        "latex": "s - v1^2 (1/2)/a",
+        "sympy": "x - v1**2*Rational(1,2)/a",
+        "symbols": [
+          "a",
+          "s",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "x",
+        "number": 3.00125,
+        "exact": "2401/800",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 x=3.00125，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m；值单位 m 与符号 x 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S09",
+      "step_no": 9,
+      "title": "锥筒位置比较",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "以1号锥筒为起点，经过第n号锥筒需走 (n－1)d，最远经过的锥筒满足 (n－1)d≤s<nd。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "建立锥筒位置与总位移的比较关系"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-01-S10",
+      "step_no": 10,
+      "title": "判断最远锥筒",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "第4号相对1号距离为3d＝2.7 m，第5号相对1号距离为4d＝3.6 m；因 2.7 m≤3.00125 m<3.6 m，所以最远经过4号锥筒。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "比较位移判断最远经过4号锥筒"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 10,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

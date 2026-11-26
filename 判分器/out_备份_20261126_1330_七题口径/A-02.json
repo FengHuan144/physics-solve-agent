@@ -1,0 +1,238 @@
+{
+  "qid": "A-02",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "A-02-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S01"
+      ],
+      "basis": "无锚点：口径要求『从 v-t 图读出 B 初速 1.2v₀、t₀ 时共速 v₀；2t₀ 时分离，A 为 2v₀、B 为 0.8v₀』，承载步 A-02-S01 的 statement 写『由图乙读出：t=0时B速度为6/5 v0，A静止；t=t0时A、B共速为v0；t=2t0第一次分离时A速度为2v0，B速』，无式子可复核（2-gram 覆盖 20%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S02",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-02-S02"
+      ],
+      "basis": "欠定：A-02-S02 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S03",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S03"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：M - 5*m",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-02-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S04",
+        "A-02-S05"
+      ],
+      "basis": "无锚点：A-02-S04、A-02-S05 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S05",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S06"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：Ep - Rational(3,5)*m*v0**2",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-02-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [],
+      "basis": "无锚点：全题 19 步无一步有式子锚点或与口径对得上（已逐题检索）",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S08",
+        "A-02-S09",
+        "A-02-S10"
+      ],
+      "basis": "欠定：A-02-S08、A-02-S09、A-02-S10 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S08",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S10"
+      ],
+      "basis": "欠定：A-02-S10 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S09",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S11",
+        "A-02-S12",
+        "A-02-S13",
+        "A-02-S14",
+        "A-02-S15",
+        "A-02-S16"
+      ],
+      "basis": "无锚点：A-02-S11、A-02-S12、A-02-S13、A-02-S14、A-02-S15、A-02-S16 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S10",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-02-S13"
+      ],
+      "basis": "欠定：A-02-S13 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S11",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-02-S14"
+      ],
+      "basis": "欠定：A-02-S14 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S12",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S14"
+      ],
+      "basis": "欠定：A-02-S14 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S13",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-02-S17",
+        "A-02-S18"
+      ],
+      "basis": "欠定：A-02-S17、A-02-S18 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S14",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S18"
+      ],
+      "basis": "欠定：A-02-S18 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-02-S15",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-02-S19"
+      ],
+      "basis": "L1/L2 全 pass：A-02-S19；方程 mu - Rational(9,20)",
+      "uncertain": false
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "hit": 3,
+    "miss": 0,
+    "na": 12,
+    "score": 3.0,
+    "score_total": 20.0,
+    "judged_rate": "3/15",
+    "hit_rate": "3/3"
+  },
+  "na_reasons": {
+    "无锚点": 4,
+    "欠定": 8
+  }
+}

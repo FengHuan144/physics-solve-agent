@@ -1,0 +1,503 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""draft_to_schema.py — T20 草稿 → Schema 1.2.1 转换器
+
+输入：raw/<qid>_draft.json（模型原样返回的草稿，见 prompt_v1.md）
+输出：out/<qid>.json（可进验证器的 answer JSON）
+
+分工（卡 §2）：模型只负责「怎么解」，字段补齐归代码。
+本文件只补结构字段，**不改模型给的物理内容**；归一不了的一律记 issue，不猜。
+
+用法：
+    python 评测/T20/draft_to_schema.py --qid B-20
+    python 评测/T20/draft_to_schema.py --qid B-20 --fix-law   # 另存 _fixlaw 对照稿
+"""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import json
+import fractions
+import re
+import sys
+from datetime import datetime, timedelta, timezone
+from fractions import Fraction
+from pathlib import Path
+
+import sympy
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+HERE = Path(__file__).resolve().parent            # 评测/T20
+PROJ = HERE.parent.parent                          # 项目根
+EX_DIR = PROJ / "schema" / "examples"
+LAW_CSV = PROJ / "知识表" / "定律适用条件_v1.csv"
+TZ = timezone(timedelta(hours=8))
+
+SCHEMA_VERSION = "1.2.1"
+
+# 与 schema/validate_schema.py 的 SYMPY_FUNCS 逐字一致（符号声明的比对口径）
+SYMPY_FUNCS = {
+    "Rational", "S", "sin", "cos", "tan", "sqrt", "pi", "E", "I",
+    "Abs", "exp", "log", "Symbol", "Integer", "Float",
+}
+
+# 仅在 --fix-law 对照稿里使用：按模型自己的 stmt/title 关键词判定律（不抄金标）
+LAW_KEYWORDS = [
+    ("L-06", ("向心力", "圆周", "半圆", "最高点")),
+    ("L-12", ("动量守恒",)),
+    ("L-11", ("动量定理", "冲量")),
+    ("L-09", ("机械能守恒",)),
+    ("L-10", ("摩擦生热", "功能关系")),
+    ("L-08", ("动能定理", "做功")),
+    ("L-05", ("滑动摩擦", "摩擦力", "动摩擦因数")),
+    ("L-04", ("牛顿第二定律", "加速度", "合力")),
+    ("L-01", ("匀变速", "匀加速", "位移公式")),
+    ("L-03", ("平衡",)),
+]
+
+
+# --------------------------------------------------------------------- 文本归一
+
+_SUP = {"²": "**2", "³": "**3", "⁻¹": "**(-1)", "⁻²": "**(-2)"}
+_UNIT_SUP = {"²": "^2", "³": "^3", "⁻¹": "^-1", "⁻²": "^-2"}
+
+
+def _clean(s: str) -> str:
+    s = str(s)
+    for a, b in (("＝", "="), ("×", "*"), ("÷", "/"), ("－", "-"), ("−", "-"),
+                 ("（", "("), ("）", ")"), ("·", "*"), ("，", ",")):
+        s = s.replace(a, b)
+    for a, b in _SUP.items():
+        s = s.replace(a, b)
+    s = s.replace("\\left", "").replace("\\right", "").replace("\\cdot", "*")
+    s = s.replace("\\times", "*").replace("$$", "").replace("$", "")
+    return s.strip()
+
+
+def _frac_to_div(s: str) -> str:
+    """\\frac{a}{b} → ((a)/(b))；嵌套最多迭代 5 层。"""
+    pat = re.compile(r"\\frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}")
+    for _ in range(5):
+        s2 = pat.sub(r"((\1)/(\2))", s)
+        if s2 == s:
+            break
+        s = s2
+    return s
+
+
+def _dec_to_rational(s: str) -> str:
+    """小数 → Rational(p,q)。R3 明令 sympy 不许出现小数。"""
+    def rep(m):
+        f = Fraction(m.group(0))
+        return "Rational(%d,%d)" % (f.numerator, f.denominator)
+    return re.sub(r"(?<![\w.])\d+\.\d+", rep, s)
+
+
+def _bare_frac(s: str) -> str:
+    """裸数字除法 a/b → Rational(a,b)（R3）。"""
+    return re.sub(r"(?<![\w.)])(\d+)\s*/\s*(\d+)(?![\w.(])",
+                  lambda m: "Rational(%s,%s)" % (m.group(1), m.group(2)), s)
+
+
+def norm_eq(raw) -> tuple[str | None, list[str]]:
+    """模型 eq → 可解析的 sympy 串（含义：该式 = 0）。返回 (expr, issues)。"""
+    issues: list[str] = []
+    if raw is None:
+        return None, issues
+    if not isinstance(raw, str):
+        return None, ["eq 不是字符串：%r" % (raw,)]
+    s = _clean(raw)
+    if not s:
+        return None, ["eq 为空串"]
+    s = _frac_to_div(s)
+    s = s.replace("^", "**").replace("****", "**")
+    s = _dec_to_rational(s)
+    s = _bare_frac(s)
+    if "=" in s:
+        parts = [p.strip() for p in s.split("=") if p.strip()]
+        if len(parts) < 2:
+            return None, ["eq 出现等号但拆不开：%s" % raw]
+        expr = parts[0]
+        for p in parts[1:]:
+            expr = "(%s) - (%s)" % (expr, p)
+        s = expr
+        issues.append("去等号：%s → %s" % (raw, s))
+    if re.search(r"[^\x00-\x7f]", s):
+        return None, ["eq 含非 ASCII 字符（%s），归一不了" % raw]
+    # 必须显式给 locals：sympy 全局命名空间里 N/Q/S/E/I 都是内建对象，
+    # 「N - m_a*g」会走成「函数 - 表达式」→ TypeError（A-08 实测踩到）。
+    names = set(re.findall(r"[A-Za-z][A-Za-z0-9]*", s))
+    loc = {n: sympy.Symbol(n) for n in names if n not in SYMPY_FUNCS}
+    try:
+        e = sympy.sympify(s, locals=loc)
+    except Exception as exc:                      # noqa: BLE001
+        return None, ["eq 解析失败（%s）：%s" % (type(exc).__name__, raw)]
+    if e.free_symbols:
+        fn = {str(x) for x in e.atoms(sympy.Function)}
+        if fn:
+            return None, ["eq 含未定义函数 %s：%s" % (sorted(fn), raw)]
+    return s, issues
+
+
+def syms_of(expr: str) -> list[str]:
+    """与验证器同口径：正则取名字，滤掉 sympy 函数名。"""
+    names = set(re.findall(r"[A-Za-z][A-Za-z0-9]*", expr))
+    return sorted(names - SYMPY_FUNCS)
+
+
+def to_latex(expr: str) -> str:
+    s = re.sub(r"Rational\((\d+),\s*(\d+)\)", r"(\1/\2)", expr)
+    s = s.replace("**", "^").replace("*", " ")
+    s = re.sub(r"\s+", " ", s).strip()
+    return s if len(s) >= 3 else (s + " = 0")
+
+
+_UNIT_MAP = {"m/s2": "m/s^2", "m/s²": "m/s^2", "m/s^2": "m/s^2",
+             "kg⁻¹": "kg^-1", "kg^-1": "kg^-1", "1/s": "1/s",
+             "m/s⁻¹": "m/s", "N": "N", "J": "J", "kg": "kg", "m": "m",
+             "s": "s", "rad/s": "rad/s"}
+
+
+def norm_symbol(s) -> tuple[str, bool]:
+    """模型常用 N_Q / F_1 这类下划线符号；Schema 只允许 [A-Za-z][A-Za-z0-9]*。"""
+    raw = str(s or "").strip()
+    out = raw.replace("_", "")
+    return out, (out != raw)
+
+
+def norm_unit(u) -> str:
+    if u is None:
+        return "1"
+    s = str(u).strip()
+    for a, b in _UNIT_SUP.items():
+        s = s.replace(a, b)
+    s = s.replace("·", "*").replace("²", "^2").replace("³", "^3")
+    if s in _UNIT_MAP:
+        return _UNIT_MAP[s]
+    if not re.fullmatch(r"[A-Za-z0-9/^*.·-]+", s):
+        return re.sub(r"[^A-Za-z0-9/^*.·-]", "", s) or "1"
+    return s
+
+
+def norm_value(v) -> tuple[dict | None, list[str]]:
+    issues: list[str] = []
+    if v is None:
+        return None, issues
+    if not isinstance(v, dict):
+        return None, ["value 不是对象：%r" % (v,)]
+    sym, _chg = norm_symbol(v.get("symbol"))
+    if not re.fullmatch(r"[A-Za-z][A-Za-z0-9]*", sym):
+        issues.append("value.symbol 不合规：%r，已置 null" % sym)
+        return None, issues
+    num = v.get("number")
+    try:
+        num = None if num is None else float(num)
+    except (TypeError, ValueError):
+        issues.append("value.number 非数值：%r" % (v.get("number"),))
+        num = None
+    exact = v.get("exact")
+    if exact is not None:
+        exact = str(exact).strip()
+        if "=" in exact:
+            exact = exact.split("=")[-1].strip()
+        if not re.fullmatch(r"[0-9A-Za-z+\-*/().^_ ]+", exact):
+            issues.append("value.exact 含非法字符：%r，已置 null" % exact)
+            exact = None
+    if num is None and exact is None:
+        issues.append("value 既无 number 也无 exact，已置 null")
+        return None, issues
+    return {"symbol": sym, "number": num, "exact": exact,
+            "unit": norm_unit(v.get("unit")),
+            "direction": v.get("direction") if v.get("direction") in
+            ("+x", "-x", "+y", "-y", "逆时针", "顺时针") else None,
+            "sig_figs": None}, issues
+
+
+# --------------------------------------------------------------------- 定律代填
+
+def _law_ids_for(title: str, stmt: str, kind: str) -> list[str]:
+    text = (title or "") + " " + (stmt or "")
+    hits = [lid for lid, kws in LAW_KEYWORDS if any(k in text for k in kws)]
+    return hits[:2]
+
+
+def _fill_laws(steps: list[dict]) -> list[str]:
+    """只在 --fix-law 对照稿用。equation/critical 步空缺则沿用最近一步的判定。"""
+    log = []
+    last: list[str] = []
+    for s in steps:
+        if s["kind"] in ("equation", "critical") and not s["law_ids"]:
+            s["law_ids"] = list(last)
+            log.append("%s 沿用前步 %s" % (s["step_id"], s["law_ids"]))
+        elif s["law_ids"]:
+            last = list(s["law_ids"])
+    return log
+
+
+# --------------------------------------------------------------------- 主构建
+
+def build(qid: str, draft: dict, gold: dict, call_meta: dict | None) -> tuple[dict, list[str]]:
+    issues: list[str] = []
+    call_meta = call_meta or {}
+    steps_in = draft.get("steps") or []
+    if not steps_in:
+        raise SystemExit("草稿没有 steps")
+    steps_in = sorted(steps_in, key=lambda s: int(s.get("no") or 0))
+
+    doc = {
+        "schema_version": SCHEMA_VERSION,
+        "meta": {},
+        "question": copy.deepcopy(gold["question"]),
+        "situation": {},
+        "outline": [],
+        "steps": [],
+        "grading": {},
+        "validation": {"layers": {"L1": "na", "L2": "na", "L3": "na", "L4": "na"},
+                       "failures": [], "zero_point_hit": False, "rewrite_rounds": 0},
+        "triage": {},
+        "review": {"verdict": "pending", "rejected_steps": [], "reason_codes": [],
+                   "diffs": [], "added_steps": [], "reordered": False},
+    }
+
+    # ---- meta：抄金标，改四处（卡 §4）。mode 只能取 free（enum 无 "model"，见回执）
+    m = copy.deepcopy(gold["meta"])
+    m.update({
+        "mode": "free",
+        "model": call_meta.get("model", "deepseek-flash"),
+        "prompt_version": "p1",
+        "temperature": call_meta.get("temperature", 0.2),
+        "generated_at": datetime.now(TZ).isoformat(timespec="seconds"),
+        "latency_ms": int(call_meta.get("latency_ms") or 0),
+        "tokens": {"in": int(call_meta.get("tokens_in") or 0),
+                   "out": int(call_meta.get("tokens_out") or 0)},
+    })
+    doc["meta"] = m
+
+    # ---- situation
+    objs = copy.deepcopy(gold["situation"]["objects"])
+    targs = copy.deepcopy(gold["situation"]["targets"])
+    given = []
+    for g in draft.get("givens") or []:
+        sym, chg = norm_symbol(g.get("symbol"))
+        if chg:
+            issues.append("givens.symbol 去下划线归一：%r → %r" % (g.get("symbol"), sym))
+        if not re.fullmatch(r"[A-Za-z][A-Za-z0-9]*", sym):
+            issues.append("givens.symbol 仍不合规，已丢弃：%r" % (g.get("symbol"),))
+            continue
+        try:
+            val = None if g.get("value") is None else float(g["value"])
+        except (TypeError, ValueError):
+            issues.append("givens.%s 的 value 非数值，置 null" % sym)
+            val = None
+        given.append({"symbol": sym, "value": val, "unit": norm_unit(g.get("unit")),
+                      "text": str(g.get("text") or "").strip()[:120] or "（模型未写说明）"})
+    if not given:
+        issues.append("模型未给 givens；Schema 要求 given≥1，插入占位行")
+        given = [{"symbol": "g", "value": 10, "unit": "m/s^2",
+                  "text": "[占位] 模型未给已知量清单；g＝10 m/s² 系题干原文"}]
+
+    doc["situation"] = {
+        "objects": objs,
+        "given": given,
+        "process_segments": [{
+            "no": 1,
+            "name": "整题（首跑不分段）",
+            "start": "题设初始状态",
+            "end": "各小问所求量全部求出",
+            "segment_id": "SEG-01",
+            "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围",
+        }],
+        "targets": targs,
+        "assumptions": [],
+    }
+
+    # ---- steps
+    n = 0
+    for s in steps_in:
+        n += 1
+        sid = "%s-S%02d" % (qid, n)
+        kind = str(s.get("kind") or "").strip()
+        if kind not in ("equation", "value", "judgment", "discussion", "critical"):
+            issues.append("%s kind 非法（%r），按 judgment 处理" % (sid, kind))
+            kind = "judgment"
+        eq_raw, eq_issues = norm_eq(s.get("eq"))
+        for it in eq_issues:
+            issues.append("%s %s" % (sid, it))
+        val, v_issues = norm_value(s.get("value"))
+        for it in v_issues:
+            issues.append("%s %s" % (sid, it))
+
+        # kind ↔ equation/criterion 互斥（R15）
+        if kind in ("judgment", "critical"):
+            if eq_raw is not None:
+                issues.append("%s 是 %s 步却给了 eq，已置 null（R15）" % (sid, kind))
+            eq_obj = None
+        elif kind in ("equation", "value") and eq_raw is None:
+            issues.append("%s 是 %s 步但 eq 归一失败（R15 要求非空）" % (sid, kind))
+            eq_obj = None
+        else:
+            eq_obj = {"latex": to_latex(eq_raw), "sympy": eq_raw,
+                      "symbols": syms_of(eq_raw), "parse_status": "ok"}
+
+        crit = None
+        if kind in ("judgment", "critical", "discussion"):
+            txt = str(s.get("point") or s.get("stmt") or "").strip()
+            if len(txt) < 6:
+                txt = (txt + "（模型原文过短）")[:200]
+            crit = {"expr": "True", "expected": None,
+                    "comparator": "qualitative", "text": txt[:200]}
+
+        st = {
+            "step_id": sid,
+            "step_no": n,
+            "title": (str(s.get("title") or "未命名")[:40]),
+            "point_id": None,          # free 模式：待 S5 回填，绝不假装是金标点
+            "kind": kind,
+            "statement": str(s.get("stmt") or "")[:600],
+            "equation": eq_obj,
+            "criterion": crit,
+            "segment_id": "SEG-01",
+            "value": val,
+            "law_ids": [],
+            "checks": [],
+            "confidence": 3,           # 占位常量：Schema 要求 1–5 整数，非模型自评
+            "status": "draft",
+        }
+        if crit is None:
+            st.pop("criterion")        # Schema 里 criterion 不可为 null，只能缺键
+        doc["steps"].append(st)
+        doc["outline"].append({"step_no": n,
+                               "title": (str(s.get("title") or "未命名")[:40]),
+                               "depends_on": [], "expanded": True, "point_hint": None})
+
+    # ---- grading：不给分（谁给分要人工核，卡 §4 与红线 5/6）
+    doc["grading"] = {
+        "point_hits": [],
+        "missing_points": [],
+        "extra_steps": [],
+        "score_awarded": 0,
+        "score_total": gold["meta"]["full_score"],
+        "weighted_rate": 0.0,
+    }
+
+    doc["triage"] = {
+        "level": "yellow",
+        "signals": {"hard_check": "partial", "question_type_prior": "high",
+                    "self_rank": None, "rework_rate": None},
+        "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，"
+                  "按 yellow 走老师快扫；归零点未判",
+    }
+    return doc, issues
+
+
+# --------------------------------------------------------------------- 分值核对
+
+_SUB = str.maketrans("₀₁₂₃₄₅₆₇₈₉", "0123456789")
+
+
+def answer_consistency(draft: dict) -> list[str]:
+    """小问摘要（sub_results.result）与自身 value 步是否自洽。
+
+    存在的理由：build() 不引用 sub_results，摘要写错不会进交付物、也不会被任何
+    现有检查发现——B-12 关思维档就出现过「步骤算出 5 N、摘要写 7 N」。
+    这里只报告，不改判定。
+    """
+    val = {}
+    for st in draft.get("steps") or []:
+        v = st.get("value") or {}
+        num = v.get("number")
+        if num is None and v.get("exact") is not None:
+            try:
+                num = float(v["exact"])
+            except (TypeError, ValueError):
+                num = None
+        if num is None or not v.get("symbol"):
+            continue
+        val[int(st.get("no") or 0)] = (str(v["symbol"]).translate(_SUB).replace("_", ""),
+                                       float(num))
+    out = []
+    for sub in draft.get("sub_results") or []:
+        allowed = {int(x) for x in (sub.get("steps") or [])}
+        want = {k: v for k, v in val.items() if k in allowed}
+        text = str(sub.get("result") or "").translate(_SUB)
+        pat = r"([A-Za-z][A-Za-z0-9]*)\s*[=＝]\s*(-?\d+(?:\.\d+)?(?:/\d+)?)"
+        for sym, raw_num in re.findall(pat, text):
+            sym = sym.replace("_", "")
+            try:                      # 兼容 L=9/2 这种分数写法（B-20 实测踩到假阳性）
+                num = float(fractions.Fraction(raw_num))
+            except (ValueError, ZeroDivisionError):
+                continue
+            hits = [n for (s2, n) in want.values() if s2 == sym]
+            if hits and all(abs(num - h) > 1e-6 for h in hits):
+                out.append("%s 摘要写 %s=%g，步骤算出 %g" % (sub.get("no"), sym, num, hits[0]))
+    return out
+
+
+def score_audit(draft: dict, gold: dict) -> list[dict]:
+    """模型自报分值 vs 题目小问分值 vs 金标步分值（只出数字，不改判定）。"""
+    rows = []
+    subs = draft.get("sub_results") or []
+    step_score = {int(s.get("no") or 0): s.get("score") for s in draft.get("steps") or []}
+    for sub, q in zip(subs, gold["question"]["subquestions"]):
+        nos = [int(x) for x in (sub.get("steps") or [])]
+        s = 0.0
+        for k in nos:
+            v = step_score.get(k)
+            s += float(v) if isinstance(v, (int, float)) else 0.0
+        rows.append({"no": sub.get("no"), "n_steps": len(nos),
+                     "sum_score": s, "paper_score": q["score"],
+                     "delta": round(s - q["score"], 3)})
+    return rows
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--qid", required=True)
+    ap.add_argument("--draft", default=None)
+    ap.add_argument("--out", default=None)
+    ap.add_argument("--fix-law", action="store_true",
+                    help="另存 _fixlaw 对照稿（仅用于证明卡面冲突之外没有别的 E）")
+    ap.add_argument("--meta", default=None, help="run_solve 写的调用元信息 json")
+    args = ap.parse_args()
+
+    qid = args.qid
+    draft_path = Path(args.draft) if args.draft else HERE / "raw" / ("%s_draft.json" % qid)
+    out_path = Path(args.out) if args.out else HERE / "out" / ("%s%s.json" % (
+        qid, "_fixlaw" if args.fix_law else ""))
+    draft = json.loads(draft_path.read_text(encoding="utf-8"))
+    gold = json.loads((EX_DIR / ("%s.json" % qid)).read_text(encoding="utf-8"))
+    cm = json.loads(Path(args.meta).read_text(encoding="utf-8")) if args.meta else {}
+
+    doc, issues = build(qid, draft, gold, cm)
+    if args.fix_law:
+        issues += ["[fixlaw] " + x for x in _fill_laws(doc["steps"])]
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    audit = score_audit(draft, gold)
+    # 2026-11-25 17:18 T00 修：--out 传相对路径时 relative_to(PROJ) 抛 ValueError，
+    # 文件已写出但进程崩溃，自动化流程会误判为失败。
+    try:
+        shown = out_path.relative_to(PROJ)
+    except ValueError:
+        shown = out_path
+    print("[写出] %s（%d 步）" % (shown, len(doc["steps"])))
+    print("[分值] 小问 | 步数 | 模型Σ | 卷面 | 差")
+    for r in audit:
+        print("       %-4s | %2d | %5.1f | %4g | %+g"
+              % (r["no"], r["n_steps"], r["sum_score"], r["paper_score"], r["delta"]))
+    if issues:
+        print("[issue] %d 条：" % len(issues))
+        for x in issues:
+            print("   -", x)
+    else:
+        print("[issue] 0 条")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

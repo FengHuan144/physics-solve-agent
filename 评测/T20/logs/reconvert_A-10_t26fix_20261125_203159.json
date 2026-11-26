@@ -1,0 +1,24 @@
+{
+  "qid": "A-10",
+  "tag": "_t26fix",
+  "draft": "A-10_draft.json",
+  "call": "A-10_call.json",
+  "cm": {
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "latency_ms": 0,
+    "tokens_in": 1121,
+    "tokens_out": 9421
+  },
+  "n_steps": 12,
+  "n_gold": 8,
+  "n_eq": 8,
+  "issues": [
+    "givens.symbol 去下划线归一：'v_const' → 'vconst'"
+  ],
+  "n_e": 0,
+  "n_w": 0,
+  "e_lines": [],
+  "chained": true,
+  "note": "离线重转：未调用 API，cm 取自 raw/A-10_call.json"
+}

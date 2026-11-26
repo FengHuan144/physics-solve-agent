@@ -1,0 +1,876 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-12",
+    "question_id": "B-12",
+    "group": "B",
+    "source": "2022 广东卷",
+    "question_no": 13,
+    "full_score": 11,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T16:58:29+08:00",
+    "latency_ms": 78556,
+    "tokens": {
+      "in": 1083,
+      "out": 10985
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "某同学受自动雨伞开伞过程的启发，设计了如图所示的物理模型。竖直放置在水平桌面上的滑杆上套有一个滑块，初始时它们处于静止状态。当滑块从 A 处以初速度 v₀ 为 10 m/s 向上滑动时，受到滑杆的摩擦力 f 为 1 N，滑块滑到 B 处与滑杆发生完全非弹性碰撞，带动滑杆离开桌面一起竖直向上运动。已知滑块的质量 m＝0.2 kg，滑杆的质量 M＝0.6 kg，A、B 间的距离 l＝1.2 m，重力加速度 g 取 10 m/s²，不计空气阻力。求：(1)滑块在静止时和向上滑动的过程中，桌面对滑杆支持力的大小 N₁ 和 N₂；(2)滑块碰撞前瞬间的速度大小 v₁；(3)滑杆向上运动的最大高度 h。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "竖直滑杆与套在其上的滑块，A 在上、B 在下，间距 l；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "桌面对滑杆支持力的大小 N₁ 和 N₂。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "滑块碰撞前瞬间的速度大小 v₁。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "滑杆向上运动的最大高度 h。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "cddb3a8442df9dec75635393acda89bc601491e1ab6fca5c234089e02708588d",
+    "input_sha256": "1cb93db95c0d1edec6b5cdda2847a78823af063cef85ac972d0520b0c5e1a18d"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "滑块",
+        "mass_symbol": "m",
+        "note": "质量 0.2 kg，套在竖直滑杆上，从 A 向上滑动"
+      },
+      {
+        "id": "obj2",
+        "name": "滑杆",
+        "mass_symbol": "M",
+        "note": "质量 0.6 kg，竖直置于桌面，碰前静止"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": 0.2,
+        "unit": "kg",
+        "text": "滑块质量 m＝0.2 kg"
+      },
+      {
+        "symbol": "M",
+        "value": 0.6,
+        "unit": "kg",
+        "text": "滑杆质量 M＝0.6 kg"
+      },
+      {
+        "symbol": "v0",
+        "value": 10.0,
+        "unit": "m/s",
+        "text": "滑块在 A 处初速度 v₀＝10 m/s"
+      },
+      {
+        "symbol": "f",
+        "value": 1.0,
+        "unit": "N",
+        "text": "滑块向上滑动时受滑杆摩擦力 f＝1 N"
+      },
+      {
+        "symbol": "l",
+        "value": 1.2,
+        "unit": "m",
+        "text": "A、B 间距离 l＝1.2 m"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "N1",
+        "text": "静止时桌面对杆的支持力"
+      },
+      {
+        "no": "(1)",
+        "quantity": "N2",
+        "text": "滑块上滑时桌面对杆的支持力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v1",
+        "text": "滑块碰前瞬间速度"
+      },
+      {
+        "no": "(3)",
+        "quantity": "h",
+        "text": "杆向上运动的最大高度"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "静止整体法",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "静止平衡方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求静止支持力",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "判断摩擦方向",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "滑杆竖直平衡",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "求滑动时支持力",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "上升受力分析",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "列动能定理",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "求碰前速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "判断碰撞性质",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "碰撞动量守恒",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 12,
+      "title": "求碰后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 13,
+      "title": "碰后整体运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 14,
+      "title": "整体能量方程",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 15,
+      "title": "求最大高度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-12-S01",
+      "step_no": 1,
+      "title": "静止整体法",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "初始时滑块和滑杆都静止，竖直方向无加速度，可把二者作为整体分析桌面的支持力。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能判断初始静止时可用整体法求桌面的支持力"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S02",
+      "step_no": 2,
+      "title": "静止平衡方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "对滑块和滑杆整体，在竖直方向受总重力 (M+m)g 向下、桌面支持力 N1 向上，列 N1＝(M+m)g。",
+      "equation": {
+        "latex": "N1-(M+m) g",
+        "sympy": "N1-(M+m)*g",
+        "symbols": [
+          "M",
+          "N1",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 N1，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S03",
+      "step_no": 3,
+      "title": "求静止支持力",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 m＝0.2 kg、M＝0.6 kg、g＝10 m/s^2，得 N1＝(0.2+0.6)×10＝8 N。",
+      "equation": {
+        "latex": "N1-(M+m) g",
+        "sympy": "N1-(M+m)*g",
+        "symbols": [
+          "M",
+          "N1",
+          "g",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "N1",
+        "number": 8.0,
+        "exact": "8",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 N1=8，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2；值单位 N 与符号 N1 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S04",
+      "step_no": 4,
+      "title": "判断摩擦方向",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "滑块相对滑杆向上滑动，滑块受到的摩擦力向下，滑杆受到的滑块摩擦力向上；正压力水平，不影响竖直方向。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能正确判断滑块向上滑动时滑杆所受摩擦力的方向"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S05",
+      "step_no": 5,
+      "title": "滑杆竖直平衡",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "滑块向上滑动时滑杆仍静止，对其竖直方向列 N2+f＝Mg。",
+      "equation": {
+        "latex": "N2+f-M g",
+        "sympy": "N2+f-M*g",
+        "symbols": [
+          "M",
+          "N2",
+          "f",
+          "g"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 N2，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S06",
+      "step_no": 6,
+      "title": "求滑动时支持力",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 f＝1 N、M＝0.6 kg、g＝10 m/s^2，得 N2＝Mg-f＝6-1＝5 N。",
+      "equation": {
+        "latex": "N2+f-M g",
+        "sympy": "N2+f-M*g",
+        "symbols": [
+          "M",
+          "N2",
+          "f",
+          "g"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "N2",
+        "number": 5.0,
+        "exact": "5",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 N2=5，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2；值单位 N 与符号 N2 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S07",
+      "step_no": 7,
+      "title": "上升受力分析",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "A 到 B 过程中，滑块受重力 mg 和滑动摩擦力 f 均竖直向下，合阻力为 mg+f。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能判断 A 到 B 过程中滑块所受合力方向及大小关系"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S08",
+      "step_no": 8,
+      "title": "列动能定理",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由动能定理：初动能等于末动能、重力势能增加量 mgl 与克服摩擦力做功 fl 之和。",
+      "equation": {
+        "latex": "(1/2) m v0^2-(1/2) m v1^2-(m g+f) l",
+        "sympy": "Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+        "symbols": [
+          "f",
+          "g",
+          "l",
+          "m",
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l｜chain：data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S09",
+      "step_no": 9,
+      "title": "求碰前速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 v0＝10 m/s、m＝0.2 kg、g＝10 m/s^2、f＝1 N、l＝1.2 m，得 v1^2＝64，取向上速度为正，v1＝8 m/s。",
+      "equation": {
+        "latex": "(1/2) m v0^2-(1/2) m v1^2-(m g+f) l",
+        "sympy": "Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+        "symbols": [
+          "f",
+          "g",
+          "l",
+          "m",
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v1",
+        "number": 8.0,
+        "exact": "8",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l｜chain：data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「l」不在白名单：Rational(1,2)*m*v0**2-Rational(1,2)*m*v1**2-(m*g+f)*l",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S10",
+      "step_no": 10,
+      "title": "判断碰撞性质",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "B 处发生完全非弹性碰撞，时间极短，碰撞过程中系统竖直方向动量守恒，碰后滑块与滑杆同速 V。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能识别完全非弹性碰撞并判断碰撞瞬间动量守恒"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S11",
+      "step_no": 11,
+      "title": "碰撞动量守恒",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取向上为正，碰撞前只有滑块有速度 v1，碰后二者共同速度为 V，列 m v1＝(M+m)V。",
+      "equation": {
+        "latex": "m v1-(M+m) V",
+        "sympy": "m*v1-(M+m)*V",
+        "symbols": [
+          "M",
+          "V",
+          "m",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「V」不在白名单：m*v1-(M+m)*V｜chain：data_error(unknown_symbol): 符号「V」不在白名单：m*v1-(M+m)*V",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「V」不在白名单：m*v1-(M+m)*V",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S12",
+      "step_no": 12,
+      "title": "求碰后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 m＝0.2 kg、M＝0.6 kg、v1＝8 m/s，得 V＝2 m/s。",
+      "equation": {
+        "latex": "m v1-(M+m) V",
+        "sympy": "m*v1-(M+m)*V",
+        "symbols": [
+          "M",
+          "V",
+          "m",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "V",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「V」不在白名单：m*v1-(M+m)*V｜chain：data_error(unknown_symbol): 符号「V」不在白名单：m*v1-(M+m)*V",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「V」不在白名单：m*v1-(M+m)*V",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S13",
+      "step_no": 13,
+      "title": "碰后整体运动",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "离开桌面后滑块与滑杆无相对滑动，整体只受重力，上升过程做匀减速运动，也可用机械能守恒处理。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "能判断碰后整体只受重力且机械能守恒"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S14",
+      "step_no": 14,
+      "title": "整体能量方程",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "以离开桌面处为高度零点，整体初动能全部转化为最高点处的重力势能，列 1/2(M+m)V^2＝(M+m)gh。",
+      "equation": {
+        "latex": "(1/2) (M+m) V^2-(M+m) g h",
+        "sympy": "Rational(1,2)*(M+m)*V**2-(M+m)*g*h",
+        "symbols": [
+          "M",
+          "V",
+          "g",
+          "h",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「V」不在白名单：Rational(1,2)*(M+m)*V**2-(M+m)*g*h｜chain：data_error(unknown_symbol): 符号「V」不在白名单：Rational(1,2)*(M+m)*V**2-(M+m)*g*h",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「V」不在白名单：Rational(1,2)*(M+m)*V**2-(M+m)*g*h",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-12-S15",
+      "step_no": 15,
+      "title": "求最大高度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 V＝2 m/s、g＝10 m/s^2，得 h＝V^2/(2g)＝0.2 m。",
+      "equation": {
+        "latex": "h-V^2/(2 g)",
+        "sympy": "h-V**2/(2*g)",
+        "symbols": [
+          "V",
+          "g",
+          "h"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "h",
+        "number": 0.2,
+        "exact": "1/5",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(unknown_symbol): 符号「V」不在白名单：h-V**2/(2*g)｜chain：data_error(unknown_symbol): 符号「V」不在白名单：h-V**2/(2*g)",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(unknown_symbol): 符号「V」不在白名单：h-V**2/(2*g)",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 11,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

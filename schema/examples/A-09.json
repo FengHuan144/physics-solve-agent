@@ -1,0 +1,771 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-09",
+    "question_id": "A-09",
+    "group": "A",
+    "source": "2025 安徽卷",
+    "question_no": 14,
+    "full_score": 14,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:35:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，M、N 为固定在竖直平面内同一高度的两根细钉，间距 L＝0.5 m。一根长为 3L 的轻绳一端系在 M 上，另一端竖直悬挂质量 m＝0.1 kg 的小球，小球与水平地面接触但无压力。t＝0 时，小球以水平向右的初速度 v₀＝10 m/s 开始在竖直平面内做圆周运动。小球牵引着绳子绕过 N、M，运动到 M 正下方与 M 相距 L 的位置时，绳子刚好被拉断，小球开始做平抛运动。小球可视为质点，绳子不可伸长，不计空气阻力，重力加速度 g 取 10 m/s²。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "同一高度的两细钉 M、N（间距 L），长 3L 的轻绳系于 M、悬挂小球；原文无图题，绕钉次序与断绳位置已由文字给定",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "绳子被拉断时小球的速度大小，及绳子所受的最大拉力大小。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "小球做平抛运动时抛出点到落地点的水平距离。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "若在 t＝0 时只改变小球的初速度大小，使小球能通过 N 的正上方且绳子不松弛，求初速度的最小值。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "a650e85fce2ae3332cdd790600a6aefc9a83415d2cea4caf6ec838ff7c6460db",
+    "input_sha256": "cedfac1309ca2e5f4bcbfff6d982b0192583068c980a8cff69d1bd76fd026f43"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球",
+        "mass_symbol": "m",
+        "note": "质量 0.1 kg，视为质点；被绳牵引做变半径圆周运动"
+      },
+      {
+        "id": "obj2",
+        "name": "细钉 M、N",
+        "mass_symbol": "m",
+        "note": "同一高度、间距 L＝0.5 m；绳依次绕 M、N、M，半径 3L→2L→L"
+      },
+      {
+        "id": "obj3",
+        "name": "轻绳",
+        "mass_symbol": "m",
+        "note": "长 3L，不可伸长；绕钉处半径突变，拉力提供向心力"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "L",
+        "value": 0.5,
+        "unit": "m",
+        "text": "M、N 间距 L＝0.5 m；绳长 3L"
+      },
+      {
+        "symbol": "m",
+        "value": 0.1,
+        "unit": "kg",
+        "text": "小球质量 m＝0.1 kg"
+      },
+      {
+        "symbol": "v0",
+        "value": 10,
+        "unit": "m/s",
+        "text": "t＝0 时水平向右的初速度 v₀＝10 m/s（第 (3) 问改为待求的 v）"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g 取 10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "绕 M、半径 3L",
+        "start": "t＝0 小球在最低点、绳竖直",
+        "end": "绳碰到 N，绕点变为 N"
+      },
+      {
+        "no": 2,
+        "name": "绕 N、半径 2L",
+        "start": "绳绕 N",
+        "end": "绳再碰到 M，绕点回到 M"
+      },
+      {
+        "no": 3,
+        "name": "绕 M、半径 L，至断绳后平抛",
+        "start": "绳绕 M、半径减为 L",
+        "end": "到达 M 正下方 L 处绳断，小球平抛落地"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v1",
+        "text": "断绳时小球速度大小"
+      },
+      {
+        "no": "(1)",
+        "quantity": "FT",
+        "text": "绳所受最大拉力"
+      },
+      {
+        "no": "(2)",
+        "quantity": "x",
+        "text": "平抛水平距离"
+      },
+      {
+        "no": "(3)",
+        "quantity": "v",
+        "text": "能过 N 正上方且绳不松弛的最小初速度"
+      }
+    ],
+    "assumptions": [
+      "小球初始与地面接触但无压力 ⇒ M 距地面 3L；断绳点在 M 正下方 L 处，距地 2L",
+      "绕钉处半径瞬间由 3L 减为 2L、再减为 L；每次半径突变瞬间速度大小不变（绳不可伸长、无切向冲量）",
+      "断绳前只有重力做功，机械能守恒；断绳后只受重力，平抛",
+      "第 (3) 问的临界位置在 N 正上方（半径 2L），该点距地 3L＋2L＝5L",
+      "第 (3) 问改变的是初速度，另记作 v（v0 仍指第 (1)(2) 问的 10 m/s）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "判定绕钉次序与各段半径",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "A-09-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "初始到断绳点机械能守恒",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "解得 v₁ = 4√5 m/s",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "断绳点沿半径列向心力式",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "平抛：竖直 2L = ½gt²、水平 x = v₁t",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "x = 4 m",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "绳不松弛的临界条件",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "初始到 N 正上方机械能守恒",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S08"
+    },
+    {
+      "step_no": 9,
+      "title": "v = 2√15 m/s",
+      "depends_on": [
+        8
+      ],
+      "expanded": true,
+      "point_hint": "A-09-S09"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-09-S01",
+      "step_no": 1,
+      "title": "判定绕钉次序与各段半径",
+      "point_id": "A-09-S01",
+      "kind": "judgment",
+      "statement": "绳依次绕 M、N、M 转动：第一段绕 M、半径 3L；碰到 N 后绕 N、半径 2L；再碰到 M 后绕 M、半径减为 L。断绳点在 M 正下方与 M 相距 L 处，正是半径 L 的最低点。",
+      "equation": null,
+      "criterion": {
+        "expr": "R",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "绳依次绕 M、N、M，转动半径由 3L 依次减为 2L、L；断绳点在 M 正下方 L 处，是绕 M、半径 L 的最低点，不是 3L 或 2L。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m（半径 R）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把断绳点半径当作 3L 或 2L（未识别第三次绕 M 后半径减为 L），本步 0 分；只说「做圆周运动」未指出半径随绕钉改变，本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S02",
+      "step_no": 2,
+      "title": "初始到断绳点机械能守恒",
+      "point_id": "A-09-S02",
+      "kind": "equation",
+      "statement": "初始小球在地面（速度 v₀、高度 0），断绳点在 M 正下方 L 处、距地 2L：½mv₀²＝mg·2L＋½mv₁²。",
+      "equation": {
+        "latex": "\\frac{1}{2} m v_{0}^{2} = m g \\cdot 2 L + \\frac{1}{2} m v_{1}^{2}",
+        "sympy": "Rational(1,2)*m*v0**2 - m*g*2*L - Rational(1,2)*m*v1**2",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "v0",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=0.5、g=10、m=0.1、v0=10、v1=8.94427）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "高度差取 3L（把断绳点当作地面）或 L，本步 0 分；漏 ½mv₀² 项或把 v₁ 当作 v₀ 代入，本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S03",
+      "step_no": 3,
+      "title": "解得 v₁ = 4√5 m/s",
+      "point_id": "A-09-S03",
+      "kind": "value",
+      "statement": "代入 v₀＝10 m/s、L＝0.5 m：½×0.1×100＝0.1×10×1＋½×0.1×v₁²，得 v₁²＝80，v₁＝4√5 m/s≈8.9 m/s。",
+      "equation": {
+        "latex": "v_{1} = 4 \\sqrt{5}",
+        "sympy": "v1**2 - 80",
+        "symbols": [
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v1",
+        "number": 8.94427190999916,
+        "exact": "4*sqrt(5)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v1=8.94427）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "停在 v₁²＝80 未开方，本步 0 分；只写 4√5 不写单位 m/s，本步 0 分；8.9 m/s 三位有效数字不扣（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S04",
+      "step_no": 4,
+      "title": "断绳点沿半径列向心力式",
+      "point_id": "A-09-S04",
+      "kind": "equation",
+      "statement": "断绳点在最低点，绳拉力与重力合力提供向心力：F_T−mg＝mv₁²/L；代入得 F_T＝17 N，由牛顿第三定律绳所受最大拉力亦为 17 N。",
+      "equation": {
+        "latex": "F_{T} - m g = m \\frac{v_{1}^{2}}{L}",
+        "sympy": "FT - m*g - m*v1**2/L",
+        "symbols": [
+          "FT",
+          "L",
+          "g",
+          "m",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "FT",
+        "number": 17.0,
+        "exact": "17",
+        "unit": "N",
+        "direction": "+y",
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（FT=17、L=0.5、g=10、m=0.1、v1=8.94427）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N−N＝kg·(m/s)²/m＝N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 F_T＝mv₁²/L（漏重力项）或 F_T＋mg＝mv₁²/L（重力方向反）本步 0 分；分母用 3L 或 2L 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S05",
+      "step_no": 5,
+      "title": "平抛：竖直 2L = ½gt²、水平 x = v₁t",
+      "point_id": "A-09-S05",
+      "kind": "equation",
+      "statement": "抛出点距地 2L：竖直方向 2L＝½gt²，水平方向 x＝v₁t；消去 t 得 x＝v₁√(4L/g)。",
+      "equation": {
+        "latex": "x = v_{1} \\sqrt{\\frac{4 L}{g}}",
+        "sympy": "x - v1*sqrt(4*L/g)",
+        "symbols": [
+          "L",
+          "g",
+          "v1",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": 4.0,
+        "exact": "v1*sqrt(4*L/g)",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-02",
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=0.5、g=10、v1=8.94427、x=4）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s·s＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "高度用 3L 或 L（未识别抛出点距地 2L），本步 0 分；水平速度用 v₀＝10 m/s 而非 v₁，本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S06",
+      "step_no": 6,
+      "title": "x = 4 m",
+      "point_id": "A-09-S06",
+      "kind": "discussion",
+      "statement": "代入 v₁＝4√5 m/s、L＝0.5 m、g＝10 m/s²：t＝√0.2 s≈0.447 s，x＝4√5×0.447≈4.0 m。",
+      "equation": {
+        "latex": "x = 4",
+        "sympy": "x - 4",
+        "symbols": [
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（x=4）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 4 不写单位 m，本步 0 分；用 v₀ 代入得 4.5 m 左右、写成 40 m，本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S07",
+      "step_no": 7,
+      "title": "绳不松弛的临界条件",
+      "point_id": "A-09-S07",
+      "kind": "critical",
+      "statement": "恰好通过 N 正上方且绳不松弛：该点半径 2L，重力恰提供向心力 mg＝mv₂²/(2L)，得 v₂²＝2gL。临界位置在 N 正上方，不是 M 正上方或断绳点。",
+      "equation": null,
+      "criterion": {
+        "expr": "m*g",
+        "expected": "m*v2**2/(2*L)",
+        "comparator": "eq",
+        "text": "绳不松弛的临界条件是「重力恰提供向心力」：mg＝mv₂²/(2L)，临界点取 N 正上方、半径 2L。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "判据回代成立（L=0.5、g=10、m=0.1、v2=3.16228，差值 0）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "半径写成 3L 或 L、把临界点判在 M 正上方或断绳点，本步 0 分；只写「恰好不松弛」未给出等式，本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S08",
+      "step_no": 8,
+      "title": "初始到 N 正上方机械能守恒",
+      "point_id": "A-09-S08",
+      "kind": "equation",
+      "statement": "N 正上方距地 5L（M 距地 3L＋半径 2L）：½mv²＝mg·5L＋½mv₂²。",
+      "equation": {
+        "latex": "\\frac{1}{2} m v^{2} = m g \\cdot 5 L + \\frac{1}{2} m v_{2}^{2}",
+        "sympy": "Rational(1,2)*m*v**2 - m*g*5*L - Rational(1,2)*m*v2**2",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "v",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=0.5、g=10、m=0.1、v=7.74597、v2=3.16228）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "高度差取 2L（只算到 N 的高度）或 3L，本步 0 分；把最高点速度当零（漏 ½mv₂² 项），本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "A-09-S09",
+      "step_no": 9,
+      "title": "v = 2√15 m/s",
+      "point_id": "A-09-S09",
+      "kind": "discussion",
+      "statement": "代入 v₂²＝2gL、L＝0.5 m：½×0.1×v²＝0.1×10×2.5＋½×0.1×10，得 v²＝60，v＝2√15 m/s≈7.7 m/s。",
+      "equation": {
+        "latex": "v = 2 \\sqrt{15}",
+        "sympy": "v**2 - 60",
+        "symbols": [
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": 7.745966692414834,
+        "exact": "2*sqrt(15)",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v=7.74597）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 2√15 不写单位 m/s，本步 0 分；v² 误取 20 得 2√5 m/s，本步 0 分；7.75 m/s 两位小数不扣（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "A-09-S01",
+        "step_id": "A-09-S01",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S02",
+        "step_id": "A-09-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S03",
+        "step_id": "A-09-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S04",
+        "step_id": "A-09-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S05",
+        "step_id": "A-09-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S06",
+        "step_id": "A-09-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S07",
+        "step_id": "A-09-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S08",
+        "step_id": "A-09-S08",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "A-09-S09",
+        "step_id": "A-09-S09",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 14,
+    "score_total": 14,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：变半径圆周三段 + 平抛 + 绳不松弛临界；L1 逐式回代，14/14 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

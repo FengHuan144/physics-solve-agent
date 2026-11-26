@@ -1,0 +1,28 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-20_t26fix.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-20_t26fix_validated.json
+
+对象：B-20（题 B-20，17 步）
+L1  pass 4 / fail 0 / na 13 / skipped 0    判定通过率 100.0%    na 比例 76.5%
+L2  pass 6 / fail 0 / na 11 / skipped 0    判定通过率 100.0%    na 比例 64.7%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-20-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-20-S01 [L2] data_error(empty): sympy 串为空
+  - B-20-S02 [L1] per_step：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N+m*g-m*v**2/R｜chain：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N+m*g-m*v**2/R
+  - B-20-S02 [L2] data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N+m*g-m*v**2/R
+  - B-20-S05 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-20-S05 [L2] data_error(empty): sympy 串为空
+  - B-20-S10 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-20-S10 [L2] data_error(empty): sympy 串为空
+  - B-20-S12 [L1] per_step：data_error(unknown_symbol): 符号「V_P」不在白名单：V_P-6*t+v_P-2*t｜chain：data_error(unknown_symbol): 符号「V_P」不在白名单：V_P-6*t+v_P-2*t
+  - B-20-S12 [L2] data_error(unknown_symbol): 符号「V_P」不在白名单：V_P-6*t+v_P-2*t
+  - B-20-S13 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-20-S13 [L2] data_error(empty): sympy 串为空
+  - B-20-S14 [L1] per_step：data_error(unknown_symbol): 符号「V_Q」不在白名单：V_Q+7-8*t｜chain：data_error(unknown_symbol): 符号「V_Q」不在白名单：V_Q+7-8*t
+  - B-20-S14 [L2] data_error(unknown_symbol): 符号「V_Q」不在白名单：V_Q+7-8*t
+  - B-20-S15 [L1] per_step：data_error(unknown_symbol): 符号「V_P」不在白名单：Rational(1,2)*(V_P**2+v_P**2)-Rational(1,2)*(V_Q**2+7**2)-m*g*2*R｜chain：data_error(unknown_symbol): 符号「V_P」不在白名单：Rational(1,2)*(V_P**2+v_P**2)-Rational(1,2)*(V_Q**2+7**2)-m*g*2*R
+  - B-20-S15 [L2] data_error(unknown_symbol): 符号「V_P」不在白名单：Rational(1,2)*(V_P**2+v_P**2)-Rational(1,2)*(V_Q**2+7**2)-m*g*2*R
+  - B-20-S16 [L1] per_step：data_error(unknown_symbol): 符号「u_rel」不在白名单：u_rel-(14-8*t)｜chain：data_error(unknown_symbol): 符号「u_rel」不在白名单：u_rel-(14-8*t)
+  - B-20-S16 [L2] data_error(unknown_symbol): 符号「u_rel」不在白名单：u_rel-(14-8*t)
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\B-20_t26fix_validated.json

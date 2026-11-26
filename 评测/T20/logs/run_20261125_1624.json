@@ -1,0 +1,75 @@
+[
+  {
+    "qid": "B-20",
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "max_tokens": 40000,
+    "prompt_chars": 1954,
+    "figures": [
+      "原始资料/题图/B-20_图甲.png",
+      "原始资料/题图/B-20_图乙.png"
+    ],
+    "created_at": "2026-11-25T16:24:13+08:00",
+    "ok": true,
+    "attempts": 1,
+    "parse_error": "",
+    "finish_reason": "stop",
+    "tokens_in": 3045,
+    "tokens_out": 16256,
+    "elapsed_s": 86.8,
+    "n_steps": 16,
+    "n_gold": 10,
+    "step_ratio": 1.6,
+    "issues": [
+      "givens.symbol 不合规，已丢弃：'N_Q'",
+      "givens.symbol 不合规，已丢弃：'F_0'",
+      "givens.symbol 不合规，已丢弃：'a_0'",
+      "givens.symbol 不合规，已丢弃：'F_1'",
+      "givens.symbol 不合规，已丢弃：'a_1'",
+      "givens.symbol 不合规，已丢弃：'F_2'",
+      "givens.symbol 不合规，已丢弃：'a_2'",
+      "B-20-S06 value.symbol 不合规：'M_plus_m'，已置 null",
+      "B-20-S10 value.symbol 不合规：'a_rel'，已置 null"
+    ],
+    "score_audit": [
+      {
+        "no": "(1)",
+        "n_steps": 3,
+        "sum_score": 4.0,
+        "paper_score": 4,
+        "delta": 0.0
+      },
+      {
+        "no": "(2)(ⅰ)",
+        "n_steps": 5,
+        "sum_score": 4.0,
+        "paper_score": 4,
+        "delta": 0.0
+      },
+      {
+        "no": "(2)(ⅱ)",
+        "n_steps": 8,
+        "sum_score": 6.0,
+        "paper_score": 6,
+        "delta": 0.0
+      }
+    ],
+    "schema_rc": 1,
+    "n_e": 11,
+    "n_w": 0,
+    "e_lines": [
+      "[E] S0         steps/1/criterion: None is not of type 'object'",
+      "[E] S0         steps/2/criterion: None is not of type 'object'",
+      "[E] S0         steps/4/criterion: None is not of type 'object'",
+      "[E] S0         steps/5/criterion: None is not of type 'object'",
+      "[E] S0         steps/6/criterion: None is not of type 'object'",
+      "[E] S0         steps/7/criterion: None is not of type 'object'",
+      "[E] S0         steps/9/criterion: None is not of type 'object'",
+      "[E] S0         steps/10/criterion: None is not of type 'object'",
+      "[E] S0         steps/11/criterion: None is not of type 'object'",
+      "[E] S0         steps/13/criterion: None is not of type 'object'",
+      "[E] S0         steps/15/criterion: None is not of type 'object'"
+    ],
+    "layers": "{\"L1\": \"na\", \"L2\": \"fail\", \"L3\": \"na\", \"L4\": \"na\"}"
+  }
+]

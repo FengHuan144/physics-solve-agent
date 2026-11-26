@@ -1,0 +1,635 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-13",
+    "question_id": "B-13",
+    "group": "B",
+    "source": "2021 河北卷",
+    "question_no": 13,
+    "full_score": 11,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T20:20:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一滑雪道由 AB 和 BC 两段滑道组成，其中 AB 段倾角为 θ，BC 段水平，AB 段和 BC 段由一小段光滑圆弧连接。一个质量为 2 kg 的背包在滑道顶端 A 处由静止滑下，若 1 s 后质量为 48 kg 的滑雪者从顶端以 1.5 m/s 的初速度、3 m/s² 的加速度匀加速追赶，恰好在坡底光滑圆弧的水平处追上背包并立即将其拎起。背包与滑道的动摩擦因数为 μ＝1/12，重力加速度取 g＝10 m/s²，sin θ＝7/25，cos θ＝24/25，忽略空气阻力及拎包过程中滑雪者与背包的重心变化。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "AB 段倾角 θ、BC 段水平，两段以光滑圆弧连接；背包与滑雪者先后自 A 出发；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "滑道 AB 段的长度。",
+        "score": 5
+      },
+      {
+        "no": "(2)",
+        "text": "滑雪者拎起背包时这一瞬间的速度。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "e5fc4d5bf744aeb3a1648ed0d1f1c0bb949d32259061dd474f49011677dfd3fb",
+    "input_sha256": "99d0dfb0438df6488d6ea8d05e4157eaba68fe9930f3859b212ababb06575ad7"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "背包",
+        "mass_symbol": "m",
+        "note": "质量 2 kg，自 A 由静止滑下，a₁＝2 m/s²"
+      },
+      {
+        "id": "obj2",
+        "name": "滑雪者",
+        "mass_symbol": "M",
+        "note": "质量 48 kg，晚 1 s 出发，v₀＝1.5 m/s、a₂＝3 m/s²"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": 2,
+        "unit": "kg",
+        "text": "背包质量 m＝2 kg"
+      },
+      {
+        "symbol": "M",
+        "value": 48,
+        "unit": "kg",
+        "text": "滑雪者质量 M＝48 kg"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.08333333333333333,
+        "unit": "1",
+        "text": "背包与滑道的动摩擦因数 μ＝1/12"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      },
+      {
+        "symbol": "v0",
+        "value": 1.5,
+        "unit": "m/s",
+        "text": "滑雪者初速度 v₀＝1.5 m/s（晚 1 s 出发）"
+      },
+      {
+        "symbol": "a2",
+        "value": 3,
+        "unit": "m/s^2",
+        "text": "滑雪者加速度 a₂＝3 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "背包沿 AB 下滑",
+        "start": "背包在 A 点由静止释放（t＝0）",
+        "end": "到达坡底圆弧处"
+      },
+      {
+        "no": 2,
+        "name": "滑雪者追赶",
+        "start": "t＝1 s 滑雪者自 A 以 1.5 m/s 出发",
+        "end": "在坡底追上背包"
+      },
+      {
+        "no": 3,
+        "name": "拎起背包（瞬间）",
+        "start": "两者在坡底接触",
+        "end": "以共同速度 v 继续运动"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "x",
+        "text": "AB 段长度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v",
+        "text": "拎起瞬间的共同速度"
+      }
+    ],
+    "assumptions": [
+      "sin θ＝7/25、cos θ＝24/25 取题给值；背包下滑时正压力 mg cos θ",
+      "计时起点取背包出发时刻：背包滑行 t，滑雪者滑行 t−1（因晚 1 s 出发）",
+      "追上时两者位移相同（同一段 AB），背包位移 ½a₁t²、滑雪者位移 v₀(t−1)＋½a₂(t−1)²",
+      "拎起瞬间极短，沿滑道方向动量守恒；两者同向运动，速度方向一致"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "背包下滑：a₁ = 2 m/s²",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-13-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "追及条件：两段位移相等",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-13-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "t = 3 s，AB 段长 x = 9 m",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-13-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "拎起瞬间沿滑道方向动量守恒",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-13-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "到坡底速度 v₁ = 6、v₂ = 7.5 m/s",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-13-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "mv₁ + Mv₂ = (M+m)v",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-13-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "v ≈ 7.44 m/s",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-13-S07"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-13-S01",
+      "step_no": 1,
+      "title": "背包下滑：a₁ = 2 m/s²",
+      "point_id": "B-13-S01",
+      "kind": "equation",
+      "statement": "沿 AB：mg sin θ−μmg cos θ＝m a1，即 10×(7/25)−(1/12)×10×(24/25)＝2 m/s²。",
+      "equation": {
+        "latex": "m g \\sin\\theta - \\mu m g \\cos\\theta = m a_{1}",
+        "sympy": "g*Rational(7,25) - mu*g*Rational(24,25) - a1",
+        "symbols": [
+          "a1",
+          "g",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "a1",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a1=2、g=10、mu=0.0833333）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N/kg＝m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "μ 代入 1/12 时漏 cosθ 本步 0 分；sin、cos 配错本步 0 分；方程对即给分，结果错扣 0.5（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-13-S02",
+      "step_no": 2,
+      "title": "追及条件：两段位移相等",
+      "point_id": "B-13-S02",
+      "kind": "equation",
+      "statement": "设背包滑行 t 后追上，滑雪者只滑了 t−1：½a1t²＝v0(t−1)＋½a2(t−1)²。",
+      "equation": {
+        "latex": "\\frac{1}{2} a_{1} t^{2} = v_{0} (t - 1) + \\frac{1}{2} a_{2} (t - 1)^{2}",
+        "sympy": "Rational(1,2)*a1*t**2 - v0*(t - 1) - Rational(1,2)*a2*(t - 1)**2",
+        "symbols": [
+          "a1",
+          "a2",
+          "t",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a1=2、a2=3、t=3、v0=1.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "滑雪者时间也取 t（漏晚 1 s）本步 0 分；漏初速度 v₀ 项本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-13-S03",
+      "step_no": 3,
+      "title": "t = 3 s，AB 段长 x = 9 m",
+      "point_id": "B-13-S03",
+      "kind": "discussion",
+      "statement": "解方程得 t＝3 s（另一根为负舍去），AB 段长 x＝½a1t²＝9 m。",
+      "equation": {
+        "latex": "x = \\frac{1}{2} a_{1} t^{2}",
+        "sympy": "x - Rational(1,2)*a1*t**2",
+        "symbols": [
+          "a1",
+          "t",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": 9.0,
+        "exact": "9",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a1=2、t=3、x=9）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 9 不写单位 m 本步 0 分；t 取 2 s 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-13-S04",
+      "step_no": 4,
+      "title": "拎起瞬间沿滑道方向动量守恒",
+      "point_id": "B-13-S04",
+      "kind": "judgment",
+      "statement": "拎起过程极短，沿滑道方向的摩擦冲量可忽略；背包与滑雪者同向运动，系统沿滑道方向动量守恒。",
+      "equation": null,
+      "criterion": {
+        "expr": "p",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "拎起瞬间极短，沿滑道方向合外力冲量远小于内力冲量、可不计；两者同向，故沿滑道方向动量守恒，不能用弹性碰撞的结论。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s（动量 p）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把拎起当作弹性碰撞本步 0 分；漏「同向」说明本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-13-S05",
+      "step_no": 5,
+      "title": "到坡底速度 v₁ = 6、v₂ = 7.5 m/s",
+      "point_id": "B-13-S05",
+      "kind": "value",
+      "statement": "背包 v1＝a1t＝6 m/s；滑雪者 v2＝v0＋a2(t−1)＝1.5＋3×2＝7.5 m/s。",
+      "equation": {
+        "latex": "v_{1} = a_{1} t",
+        "sympy": "v1 - a1*t",
+        "symbols": [
+          "a1",
+          "t",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v1",
+        "number": 6.0,
+        "exact": "6",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a1=2、t=3、v1=6）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "两者用同一速度代入本步 0 分；滑雪者时间取 3 s（应为 2 s）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-13-S06",
+      "step_no": 6,
+      "title": "mv₁ + Mv₂ = (M+m)v",
+      "point_id": "B-13-S06",
+      "kind": "equation",
+      "statement": "沿滑道方向动量守恒：m v1＋M v2＝(M＋m)v，即 2×6＋48×7.5＝50v。",
+      "equation": {
+        "latex": "m v_{1} + M v_{2} = (M + m) v",
+        "sympy": "m*v1 + M*v2 - (M + m)*v",
+        "symbols": [
+          "M",
+          "m",
+          "v",
+          "v1",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（M=48、m=2、v=7.44、v1=6、v2=7.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏背包动量项本步 0 分；质量取 2 kg 与 48 kg 之外的值本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-13-S07",
+      "step_no": 7,
+      "title": "v ≈ 7.44 m/s",
+      "point_id": "B-13-S07",
+      "kind": "discussion",
+      "statement": "v＝(12＋360)/50＝7.44 m/s。",
+      "equation": {
+        "latex": "v = 7.44",
+        "sympy": "v - Rational(186,25)",
+        "symbols": [
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": 7.44,
+        "exact": "7.44",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v=7.44）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 7.44 不写单位 m/s 本步 0 分；直接写 7.5 m/s（用滑雪者速度）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-13-S01",
+        "step_id": "B-13-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-13-S02",
+        "step_id": "B-13-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-13-S03",
+        "step_id": "B-13-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-13-S04",
+        "step_id": "B-13-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-13-S05",
+        "step_id": "B-13-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-13-S06",
+        "step_id": "B-13-S06",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-13-S07",
+        "step_id": "B-13-S07",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 11,
+    "score_total": 11,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：斜面牛顿第二定律 + 追及方程 + 动量守恒；L1 逐式回代，11/11 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

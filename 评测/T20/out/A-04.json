@@ -1,0 +1,451 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "A-04",
+    "question_id": "A-04",
+    "group": "A",
+    "source": "2024 全国甲卷",
+    "question_no": 24,
+    "full_score": 12,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:33:54+08:00",
+    "latency_ms": 46167,
+    "tokens": {
+      "in": 990,
+      "out": 9907
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "为抢救病人，一辆救护车紧急出发，鸣着笛沿水平直路从 t＝0 时由静止开始做匀加速运动，加速度大小 a＝2 m/s²，在 t₁＝10 s 时停止加速开始做匀速运动，之后某时刻救护车停止鸣笛，t₂＝41 s 时在救护车出发处的人听到救护车发出的最后的鸣笛声。已知声速 v₀＝340 m/s，求",
+    "figures": [],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "救护车匀速运动时的速度大小。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "在停止鸣笛时救护车距出发处的距离。",
+        "score": 8
+      }
+    ],
+    "stem_sha256": "b70c685218666d1bb89da895cb4ca5319907ace7bca3df4d55d67c8cea20af53",
+    "input_sha256": "28b9273a7b9f97d96d82e8e5d703b29f2eaed0f906ef2b8b2afc34a0053ad9d4"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "救护车",
+        "mass_symbol": "m",
+        "note": "自 t＝0 由静止匀加速（a＝2 m/s²）10 s，随后匀速；质量不参与计算"
+      },
+      {
+        "id": "obj2",
+        "name": "声波",
+        "mass_symbol": "m",
+        "note": "在静止空气中以 340 m/s 匀速传播，不随车运动"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "a",
+        "value": 2.0,
+        "unit": "m/s^2",
+        "text": "加速度 a＝2 m/s^2"
+      },
+      {
+        "symbol": "t1",
+        "value": 10.0,
+        "unit": "s",
+        "text": "加速结束时刻 t1＝10 s"
+      },
+      {
+        "symbol": "t2",
+        "value": 41.0,
+        "unit": "s",
+        "text": "听到最后鸣笛声的时刻 t2＝41 s"
+      },
+      {
+        "symbol": "vs",
+        "value": 340.0,
+        "unit": "m/s",
+        "text": "声速 v_s＝340 m/s"
+      },
+      {
+        "symbol": "vi",
+        "value": 0.0,
+        "unit": "m/s",
+        "text": "救护车初速度 v_i＝0（由静止开始）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v1",
+        "text": "匀速运动时的速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "x",
+        "text": "停止鸣笛时车距出发处的距离"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "匀加速速度公式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "求匀速速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "求加速阶段位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "写停止鸣笛位置",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "最后鸣笛声传声",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "求停止鸣笛时刻",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "列匀速段位移",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "求总位置",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "求停止鸣笛距离",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "A-04-S01",
+      "step_no": 1,
+      "title": "匀加速速度公式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "救护车从静止开始做匀加速运动，到 t1 时刻速度满足 v＝a*t1。",
+      "equation": {
+        "latex": "v - a t1",
+        "sympy": "v - a*t1",
+        "symbols": [
+          "a",
+          "t1",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S02",
+      "step_no": 2,
+      "title": "求匀速速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 a＝2 m/s^2、t1＝10 s，得匀速运动速度 v＝20 m/s。",
+      "equation": {
+        "latex": "v - 2 10",
+        "sympy": "v - 2*10",
+        "symbols": [
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v",
+        "number": 20.0,
+        "exact": "20",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S03",
+      "step_no": 3,
+      "title": "求加速阶段位移",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "加速阶段的位移为 x1＝1/2*a*t1^2。",
+      "equation": {
+        "latex": "x1 - (1/2) a t1^2",
+        "sympy": "x1 - Rational(1,2)*a*t1**2",
+        "symbols": [
+          "a",
+          "t1",
+          "x1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S04",
+      "step_no": 4,
+      "title": "写停止鸣笛位置",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "设停止鸣笛时刻为 T，停止鸣笛位置为 x＝x1+v*(T-t1)。",
+      "equation": {
+        "latex": "x - x1 - v (T - t1)",
+        "sympy": "x - x1 - v*(T - t1)",
+        "symbols": [
+          "T",
+          "t1",
+          "v",
+          "x",
+          "x1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S05",
+      "step_no": 5,
+      "title": "最后鸣笛声传声",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "最后一声从位置 x 传到出发点需时 x/v_s，故 T+x/v_s＝t2。",
+      "equation": {
+        "latex": "T + x/v_s - t2",
+        "sympy": "T + x/v_s - t2",
+        "symbols": [
+          "T",
+          "s",
+          "t2",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S06",
+      "step_no": 6,
+      "title": "求停止鸣笛时刻",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入已知量并联立，得停止鸣笛时刻 T＝39 s。",
+      "equation": {
+        "latex": "T + (100 + 20 (T - 10))/340 - 41",
+        "sympy": "T + (100 + 20*(T - 10))/340 - 41",
+        "symbols": [
+          "T"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "T",
+        "number": 39.0,
+        "exact": "39",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S07",
+      "step_no": 7,
+      "title": "列匀速段位移",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "从 t1 到停止鸣笛，匀速运动时间 T-t1，匀速段位移 s＝v*(T-t1)。",
+      "equation": {
+        "latex": "s - v (T - t1)",
+        "sympy": "s - v*(T - t1)",
+        "symbols": [
+          "T",
+          "s",
+          "t1",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S08",
+      "step_no": 8,
+      "title": "求总位置",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "停止鸣笛时距出发点的距离 x＝x1+s。",
+      "equation": {
+        "latex": "x - x1 - s",
+        "sympy": "x - x1 - s",
+        "symbols": [
+          "s",
+          "x",
+          "x1"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "A-04-S09",
+      "step_no": 9,
+      "title": "求停止鸣笛距离",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 x1＝100 m、v＝20 m/s、T＝39 s、t1＝10 s，得 x＝680 m。",
+      "equation": {
+        "latex": "x - (100 + 20 (39 - 10))",
+        "sympy": "x - (100 + 20*(39 - 10))",
+        "symbols": [
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "x",
+        "number": 680.0,
+        "exact": "680",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 12,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

@@ -1,0 +1,682 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-15",
+    "question_id": "B-15",
+    "group": "B",
+    "source": "2023 江苏卷",
+    "question_no": 15,
+    "full_score": 12,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T21:10:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图所示，滑雪道 AB 由坡道和水平道组成，且平滑连接，坡道倾角均为 45°。平台 BC 与缓冲坡 CD 相连。若滑雪者从 P 点由静止开始下滑，恰好到达 B 点。滑雪者现从 A 点由静止开始下滑，从 B 点飞出。已知 A、P 间的距离为 d，滑雪者与滑道间的动摩擦因数均为 μ，重力加速度为 g，不计空气阻力。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "滑雪道 AB（坡道倾角 45°＋水平道）与平台 BC、缓冲坡 CD；P 在坡道上、B 在坡道与平台交界处；原文无图题",
+        "caption_source": "none",
+        "is_required": true,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "滑雪者运动到 P 点的时间 t。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "滑雪者从 B 点飞出的速度大小 v。",
+        "score": 4
+      },
+      {
+        "no": "(3)",
+        "text": "若滑雪者能着陆在缓冲坡 CD 上，平台 BC 的最大长度 L。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "3057cf1b9ce36971c38c8ecdd5b52ead0b34ba97c1b5d8c47d33fccba7575fd0",
+    "input_sha256": "833af8db1807c334f76cbdfe7a7e05eeed3e20aef88c733e5557ad268b5d613b"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "滑雪者",
+        "mass_symbol": "m",
+        "note": "可视为质点；坡道、平台、缓冲坡的动摩擦因数同为 μ"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "d",
+        "value": null,
+        "unit": "m",
+        "text": "A、P 间的距离 d（符号量）"
+      },
+      {
+        "symbol": "mu",
+        "value": null,
+        "unit": "1",
+        "text": "动摩擦因数 μ（符号量，各段同值）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g（符号量）"
+      },
+      {
+        "symbol": "theta",
+        "value": 45,
+        "unit": "deg",
+        "text": "坡道倾角 45°；角度不入 T09 符号表，sin45°＝cos45°＝√2/2 直接写进方程"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "A→P 沿 45° 坡道匀加速",
+        "start": "A 点由静止释放",
+        "end": "到达 P 点（速度 v_P）"
+      },
+      {
+        "no": 2,
+        "name": "P→B 合功为零段",
+        "start": "P 点由静止（判据情景）",
+        "end": "恰好到达 B 点，末速为零"
+      },
+      {
+        "no": 3,
+        "name": "B 点飞出后的斜抛",
+        "start": "B 点，速度沿坡道方向（与水平成 45°）",
+        "end": "落回与 B 等高的落点"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "t",
+        "text": "滑到 P 点所用时间"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v",
+        "text": "从 B 点飞出的速度大小"
+      },
+      {
+        "no": "(3)",
+        "quantity": "L",
+        "text": "平台 BC 的最大长度"
+      }
+    ],
+    "assumptions": [
+      "坡道倾角全为 45°，故 sin45°＝cos45°＝√2/2：重力沿坡分量与摩擦力项同系数",
+      "P→B 段由静止出发又恰好停在 B 点 ⇒ 该段合功为零；因此从 A 下滑时滑雪者经 P→B 后速度不变，v_B＝v_P",
+      "B 点在坡道与平台交界处，速度方向仍沿坡道，飞出后是抛射角 45° 的斜抛，落回与 B 等高处",
+      "「平台 BC 的最大长度」取斜抛水平射程（着陆点恰为 C 点时为最大）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "沿 45° 坡道列牛顿第二定律",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-15-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "由 d = ½at² 求下滑时间",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-15-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "P→B 段合功为零、速度不变",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-15-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "由 v² = 2ad 求 B 点速度",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-15-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "结果只用 d、μ、g 表示",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-15-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "B 点速度沿坡道、飞出为斜抛",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-15-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "斜抛射程为 v²/g",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-15-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "L = √2 d (1−μ)",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-15-S08"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-15-S01",
+      "step_no": 1,
+      "title": "沿 45° 坡道列牛顿第二定律",
+      "point_id": "B-15-S01",
+      "kind": "equation",
+      "statement": "沿坡道方向：重力沿坡分量 mg sin 45° 减去摩擦力 μmg cos 45°，等于 ma。",
+      "equation": {
+        "latex": "m g \\sin 45° - \\mu m g \\cos 45° = m a",
+        "sympy": "m*g*(sqrt(2)/2) - mu*m*g*(sqrt(2)/2) - m*a",
+        "symbols": [
+          "a",
+          "g",
+          "m",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：a、g、m、mu 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N：mg 为 N、μ 无量纲，两项均为 N，右侧 ma 亦为 N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 μ 项（当作光滑）本步 0 分；sin45° 与 cos45° 按不同值代入本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-15-S02",
+      "step_no": 2,
+      "title": "由 d = ½at² 求下滑时间",
+      "point_id": "B-15-S02",
+      "kind": "equation",
+      "statement": "由上式得 a＝√2g(1−μ)/2，代入 d＝½at² 得 t＝√(2√2d/((1−μ)g))。",
+      "equation": {
+        "latex": "d = \\frac{1}{2} a t^{2}",
+        "sympy": "d - Rational(1,2)*a*t**2",
+        "symbols": [
+          "a",
+          "d",
+          "t"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "t",
+        "number": null,
+        "exact": "sqrt(2*sqrt(2)*d/((1-mu)*g))",
+        "unit": "s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：a、d、t 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m：(m/s²)·s²＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 ½ 本步 0 分；把 d 当作水平位移本步 0 分（本段位移沿坡道）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-15-S03",
+      "step_no": 3,
+      "title": "P→B 段合功为零、速度不变",
+      "point_id": "B-15-S03",
+      "kind": "judgment",
+      "statement": "P→B 段从静止出发、又恰好到达 B 点（末速为零），说明该段合功为零；故从 A 下滑的滑雪者经这一段后速度不再改变，B 点速度大小等于 P 点速度大小。",
+      "equation": null,
+      "criterion": {
+        "expr": "v_B_vs_v_P",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "P→B 段由静止出发又恰好停在 B 点，起末速度都为零 ⇒ 该段合功为零（重力做正功与摩擦做负功等量抵消）。由此从 A 下滑的滑雪者经过 P→B 后速度不变，v_B 的大小等于 v_P 的大小 —— 不是把 B 点速度取成非零的另一值，也不是取零。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-08",
+        "L-10"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s（同为速度大小，量纲一致）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 v_B 取成非零值（如沿用 A→P 段末速的某个变形）本步 0 分；未说明该判断本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-15-S04",
+      "step_no": 4,
+      "title": "由 v² = 2ad 求 B 点速度",
+      "point_id": "B-15-S04",
+      "kind": "equation",
+      "statement": "A→P 为初速为零的匀加速段，v²＝2ad，代入 a 得 v＝√(√2gd(1−μ))。",
+      "equation": {
+        "latex": "v^{2} = 2 a d",
+        "sympy": "v**2 - 2*a*d",
+        "symbols": [
+          "a",
+          "d",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：a、d、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "(m/s)²＝(m/s²)·m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "根号内漏 d 本步 0 分；用全程 A→B 列式但摩擦路程写错本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-15-S05",
+      "step_no": 5,
+      "title": "结果只用 d、μ、g 表示",
+      "point_id": "B-15-S05",
+      "kind": "discussion",
+      "statement": "第 (2) 问结果写成 v＝√(√2gd(1−μ))：式中只剩题给的 d、μ、g，不含中间量 a、t。",
+      "equation": {
+        "latex": "v = \\sqrt{\\sqrt{2} g d (1 - \\mu)}",
+        "sympy": "v**2 - sqrt(2)*g*d*(1 - mu)",
+        "symbols": [
+          "d",
+          "g",
+          "mu",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": null,
+        "exact": "sqrt(sqrt(2)*g*d*(1-mu))",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：d、g、mu、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "结果含中间量 a 或 t 本步 0 分；把 √2 写成 1.4 未说明本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-15-S06",
+      "step_no": 6,
+      "title": "B 点速度沿坡道、飞出为斜抛",
+      "point_id": "B-15-S06",
+      "kind": "judgment",
+      "statement": "B 点在坡道与平台的交界处，滑出速度仍沿坡道方向（与水平成 45°），不是水平；飞出后只受重力，做抛射角 45° 的斜抛。",
+      "equation": null,
+      "criterion": {
+        "expr": "launch_dir",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "B 点是坡道末端、速度仍沿坡道，故与水平方向夹 45°，抛射角为 45°；飞出后只受重力，是斜抛而非平抛 —— 把 B 点速度当作水平的，后面的射程式全错。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01",
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s（速度方向判定，量纲一致）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 B 点速度当作水平本步 0 分；漏写抛射角本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-15-S07",
+      "step_no": 7,
+      "title": "斜抛射程为 v²/g",
+      "point_id": "B-15-S07",
+      "kind": "equation",
+      "statement": "斜抛落回与 B 等高处：飞行时间 t′＝2v sin45°/g，水平射程 L＝v cos45°·t′＝v²/g。",
+      "equation": {
+        "latex": "L = v \\cos 45° \\cdot \\frac{2 v \\sin 45°}{g}",
+        "sympy": "L - v*(sqrt(2)/2)*(2*v*(sqrt(2)/2)/g)",
+        "symbols": [
+          "L",
+          "g",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01",
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、g、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m：(m/s)·s＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 2 倍飞行时间本步 0 分；用 v²sin2θ/g 但 θ 取错本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-15-S08",
+      "step_no": 8,
+      "title": "L = √2 d (1−μ)",
+      "point_id": "B-15-S08",
+      "kind": "discussion",
+      "statement": "把 v²＝√2gd(1−μ) 代入 L＝v²/g，得平台 BC 的最大长度 L＝√2d(1−μ)。",
+      "equation": {
+        "latex": "L = \\sqrt{2} d (1 - \\mu)",
+        "sympy": "L - sqrt(2)*d*(1 - mu)",
+        "symbols": [
+          "L",
+          "d",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "L",
+        "number": null,
+        "exact": "sqrt(2)*d*(1-mu)",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：L、d、mu 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 L 当作平台长度而漏抛体段本步 0 分；根号位置错（写成 √(2d)·(1−μ)）本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-15-S01",
+        "step_id": "B-15-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-15-S02",
+        "step_id": "B-15-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-15-S03",
+        "step_id": "B-15-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-15-S04",
+        "step_id": "B-15-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-15-S05",
+        "step_id": "B-15-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-15-S06",
+        "step_id": "B-15-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-15-S07",
+        "step_id": "B-15-S07",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-15-S08",
+        "step_id": "B-15-S08",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 12,
+    "score_total": 12,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：45° 坡道牛顿第二定律＋d＝½at² 求时＋合功为零段＋斜抛射程；全符号题 L1 全步 na，L2 逐式手判；12/12 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

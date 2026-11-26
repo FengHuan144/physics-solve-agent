@@ -1,0 +1,197 @@
+{
+  "givens": [
+    {
+      "symbol": "m",
+      "value": null,
+      "unit": "kg",
+      "text": "小球A、B质量均为 m（题干给出）"
+    },
+    {
+      "symbol": "L",
+      "value": null,
+      "unit": "m",
+      "text": "绳长及B距O点距离均为 L（题干给出）"
+    },
+    {
+      "symbol": "g",
+      "value": null,
+      "unit": "m/s^2",
+      "text": "重力加速度为 g（题干给出）"
+    },
+    {
+      "symbol": "v",
+      "value": null,
+      "unit": "m/s",
+      "text": "A与B碰撞前瞬间的水平速度为 v（题干给出）"
+    },
+    {
+      "symbol": "v_B",
+      "value": 0,
+      "unit": "m/s",
+      "text": "B初始静止，v_B＝0（题干给出）"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "H = v^2/(2g)",
+      "steps": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "no": "(2)",
+      "result": "F = m*g + m*v^2/L",
+      "steps": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "no": "(3)",
+      "result": "ΔE = m*v^2/4",
+      "steps": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "判断机械能守恒",
+      "kind": "judgment",
+      "stmt": "A由静止下摆到与B碰撞前瞬间的过程中，只有重力做功，机械能守恒。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出A下摆过程机械能守恒"
+    },
+    {
+      "no": 2,
+      "title": "列机械能守恒式",
+      "kind": "equation",
+      "stmt": "取桌面为重力势能零点，释放时A的机械能等于碰撞前瞬间A的机械能。",
+      "eq": "m*g*H - Rational(1,2)*m*v**2",
+      "value": null,
+      "score": 2,
+      "point": "写出 mgH＝1/2mv²"
+    },
+    {
+      "no": 3,
+      "title": "求释放高度H",
+      "kind": "value",
+      "stmt": "由机械能守恒方程解得A释放时距桌面的高度H。",
+      "eq": "H - v**2/(2*g)",
+      "value": {
+        "symbol": "H",
+        "number": null,
+        "exact": "v**2/(2*g)",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "得出 H＝v²/(2g)"
+    },
+    {
+      "no": 4,
+      "title": "判断最低点受力",
+      "kind": "judgment",
+      "stmt": "碰撞前瞬间A在最低点，绳的拉力与重力的合力沿绳方向提供向心力。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出最低点合力提供向心力"
+    },
+    {
+      "no": 5,
+      "title": "列向心力方程",
+      "kind": "equation",
+      "stmt": "沿绳方向取指向圆心O为正，对碰撞前瞬间的小球A列牛顿第二定律。",
+      "eq": "F - m*g - m*v**2/L",
+      "value": null,
+      "score": 2,
+      "point": "写出 F－mg＝mv²/L"
+    },
+    {
+      "no": 6,
+      "title": "求绳拉力F",
+      "kind": "value",
+      "stmt": "由向心力方程解得碰撞前瞬间绳子的拉力大小F。",
+      "eq": "F - m*g - m*v**2/L",
+      "value": {
+        "symbol": "F",
+        "number": null,
+        "exact": "m*g + m*v**2/L",
+        "unit": "N"
+      },
+      "score": 1,
+      "point": "得出 F＝mg＋mv²/L"
+    },
+    {
+      "no": 7,
+      "title": "判断动量守恒",
+      "kind": "judgment",
+      "stmt": "碰撞时间极短，水平方向系统不受外力，A、B组成的系统水平方向动量守恒。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "说明水平方向动量守恒"
+    },
+    {
+      "no": 8,
+      "title": "列动量守恒式",
+      "kind": "equation",
+      "stmt": "取A碰前速度方向为正，设碰后A、B粘在一起的共同速度为 vp。",
+      "eq": "m*v - 2*m*vp",
+      "value": null,
+      "score": 1,
+      "point": "写出 mv＝2mv′"
+    },
+    {
+      "no": 9,
+      "title": "求碰后共同速度",
+      "kind": "value",
+      "stmt": "由水平方向动量守恒方程解得碰后A、B的共同速度。",
+      "eq": "vp - v/2",
+      "value": {
+        "symbol": "vp",
+        "number": null,
+        "exact": "v/2",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "得出 v′＝v/2"
+    },
+    {
+      "no": 10,
+      "title": "列损失机械能定义",
+      "kind": "equation",
+      "stmt": "碰撞过程损失的机械能等于碰前系统总动能减去碰后系统总动能。",
+      "eq": "DeltaE - (Rational(1,2)*m*v**2 - Rational(1,2)*2*m*vp**2)",
+      "value": null,
+      "score": 2,
+      "point": "写出 ΔE＝1/2mv²－1/2(2m)v′²"
+    },
+    {
+      "no": 11,
+      "title": "求损失机械能",
+      "kind": "value",
+      "stmt": "将 vp＝v/2 代入能量损失表达式并化简，得到碰撞过程中系统损失的机械能。",
+      "eq": "DeltaE - m*v**2/4",
+      "value": {
+        "symbol": "DeltaE",
+        "number": null,
+        "exact": "m*v**2/4",
+        "unit": "J"
+      },
+      "score": 1,
+      "point": "得出 ΔE＝mv²/4"
+    }
+  ]
+}

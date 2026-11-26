@@ -1,0 +1,111 @@
+{
+  "qid": "B-07",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-07-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-07-S02",
+        "B-07-S03"
+      ],
+      "basis": "欠定：B-07-S02、B-07-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-07-S02",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-07-S04",
+        "B-07-S05",
+        "B-07-S06"
+      ],
+      "basis": "无锚点：B-07-S04、B-07-S05、B-07-S06 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-07-S03",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-07-S05"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：F - m*g - m*v**2/L",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-07-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-07-S07",
+        "B-07-S08"
+      ],
+      "basis": "无锚点：B-07-S07、B-07-S08 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-07-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-07-S10",
+        "B-07-S11"
+      ],
+      "basis": "field_mismatch：B-07-S11 命中数据缺陷——equation 应为 DeltaE - m*v**2/4 —— value.exact 那一侧本来就是对的",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-07-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-07-S11"
+      ],
+      "basis": "field_mismatch：B-07-S11 命中数据缺陷——equation 应为 DeltaE - m*v**2/4 —— value.exact 那一侧本来就是对的",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "hit": 1,
+    "miss": 0,
+    "na": 5,
+    "score": 1.0,
+    "score_total": 9.0,
+    "judged_rate": "1/6",
+    "hit_rate": "1/1"
+  },
+  "na_reasons": {
+    "欠定": 1,
+    "无锚点": 2,
+    "field_mismatch": 2
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "qid": "A-01",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "A-01-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-01-S01"
+      ],
+      "basis": "无锚点：口径要求『由“平均速度相同”推出相邻段对应点速度重复，故每带损失相同』，承载步 A-01-S01 的 statement 写『第30个减速带后，相邻减速带间的平均速度均相同，说明每段运动达到周期稳定；每通过一个减速带损失的机械能相同，并等于该段重』，无式子可复核（2-gram 覆盖 30%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-01-S02",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "A-01-S02",
+        "A-01-S03"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：W - m*g*d*sin(theta)",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-01-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        3.0
+      ],
+      "by": [
+        "A-01-S04"
+      ],
+      "basis": "欠定：A-01-S04 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-01-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-01-S05",
+        "A-01-S06",
+        "A-01-S07",
+        "A-01-S08"
+      ],
+      "basis": "无锚点：A-01-S05、A-01-S06、A-01-S07、A-01-S08 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-01-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-01-S09",
+        "A-01-S10"
+      ],
+      "basis": "欠定：A-01-S09、A-01-S10 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-01-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "A-01-S03"
+      ],
+      "basis": "欠定：A-01-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-01-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-01-S12"
+      ],
+      "basis": "无锚点：口径要求『L > d + μs/sinθ』，承载步 A-01-S12 的 statement 写『因此 L 应满足 L > d + mu*s/sin(theta)。』，无式子可复核（2-gram 覆盖 57%）",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "hit": 1,
+    "miss": 0,
+    "na": 6,
+    "score": 2.0,
+    "score_total": 12.0,
+    "judged_rate": "1/7",
+    "hit_rate": "1/1"
+  },
+  "na_reasons": {
+    "无锚点": 3,
+    "欠定": 3
+  }
+}

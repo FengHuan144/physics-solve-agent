@@ -1,0 +1,139 @@
+{
+  "givens": [
+    {"symbol": "s1", "value": 0.035, "unit": "m", "text": "题干给出：甲、乙相隔 s1=3.5×10^-2 m"},
+    {"symbol": "s2", "value": 0.02, "unit": "m", "text": "题干给出：乙与边框a相隔 s2=2.0×10^-2 m"},
+    {"symbol": "mu", "value": 0.1, "unit": "1", "text": "题干给出：动摩擦因数 μ=0.1"},
+    {"symbol": "v0", "value": 0.4, "unit": "m/s", "text": "题干给出：甲被拨出的初速度 v0=0.4 m/s"},
+    {"symbol": "v_after", "value": 0.1, "unit": "m/s", "text": "题干给出：碰撞后甲速度大小 v_after=0.1 m/s，方向不变"},
+    {"symbol": "g", "value": 10, "unit": "m/s^2", "text": "题干给出：g=10 m/s^2"},
+    {"symbol": "m", "value": null, "unit": "kg", "text": "题干说明两算珠相同，设每颗算珠质量为 m（碰撞中约去）"},
+    {"symbol": "方向", "value": null, "unit": "1", "text": "由图甲读出：甲朝乙运动，乙朝边框a运动"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "乙能（恰好）滑动到边框a；最大滑行距离 L=0.02 m=s2", "steps": [1, 2, 3, 4]},
+    {"no": "(2)(ⅰ)", "result": "甲碰前运动时间 t1=0.1 s", "steps": [5, 6, 7, 8]},
+    {"no": "(2)(ⅱ)", "result": "甲碰后到停下时间 t2=0.1 s；总时间 T=0.2 s", "steps": [9, 10, 11, 12]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "求甲碰前速度",
+      "kind": "value",
+      "stmt": "设甲与乙碰前瞬间速度为 v1。甲在碰前受滑动摩擦力 μmg 做匀减速，取甲运动方向为正，由速度—位移关系 v1^2-v0^2=-2μg s1 求 v1。",
+      "eq": "v1 - sqrt(v0**2 - 2*mu*g*s1)",
+      "value": {"symbol": "v1", "number": 0.3, "exact": "3/10", "unit": "m/s"},
+      "score": 1,
+      "point": "由运动学方程求出甲碰前速度 v1=0.3 m/s。"
+    },
+    {
+      "no": 2,
+      "title": "求乙碰后速度",
+      "kind": "value",
+      "stmt": "两算珠质量相同，碰撞时间极短，沿导杆方向动量守恒；取碰前甲运动方向为正，有 m v1=m v_after+m v2，解得乙碰后速度 v2。",
+      "eq": "m*v1 - m*v_after - m*v2",
+      "value": {"symbol": "v2", "number": 0.2, "exact": "1/5", "unit": "m/s"},
+      "score": 1,
+      "point": "由动量守恒求出乙碰后速度 v2=0.2 m/s。"
+    },
+    {
+      "no": 3,
+      "title": "求乙滑行距离",
+      "kind": "value",
+      "stmt": "乙碰后受摩擦力做匀减速运动，加速度大小为 μg；从碰后到速度减为零的最大滑行距离 L 满足 0-v2^2=-2μgL，解得 L。",
+      "eq": "v2**2 - 2*mu*g*L",
+      "value": {"symbol": "L", "number": 0.02, "exact": "1/50", "unit": "m"},
+      "score": 1,
+      "point": "求出乙碰后最大滑行距离 L=0.02 m。"
+    },
+    {
+      "no": 4,
+      "title": "判断乙到边框a",
+      "kind": "judgment",
+      "stmt": "L=0.02 m，而乙与边框a的间距 s2=2.0×10^-2 m，故乙速度恰减到零时刚好到达边框a，能够滑动到边框a。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "比较 L 与 s2，判断乙能（恰好）到达边框a。"
+    },
+    {
+      "no": 5,
+      "title": "求甲碰前加速度",
+      "kind": "equation",
+      "stmt": "对甲碰前阶段，滑动摩擦力提供加速度，取运动方向为正，由牛顿第二定律得 a=μg。",
+      "eq": "a - mu*g",
+      "value": null,
+      "score": 1,
+      "point": "写出甲碰前加速度大小 a=μg。"
+    },
+    {
+      "no": 6,
+      "title": "求加速度大小",
+      "kind": "value",
+      "stmt": "代入 μ=0.1、g=10 m/s^2，得 a=1 m/s^2。",
+      "eq": "a - mu*g",
+      "value": {"symbol": "a", "number": 1, "exact": "1", "unit": "m/s^2"},
+      "score": 1,
+      "point": "算出 a=1 m/s^2。"
+    },
+    {
+      "no": 7,
+      "title": "列碰前时间关系",
+      "kind": "equation",
+      "stmt": "甲碰前做匀减速直线运动，初速度 v0=0.4 m/s，碰前速度 v1=0.3 m/s，由 v0-v1=a t1 列式。",
+      "eq": "v0 - v1 - a*t1",
+      "value": null,
+      "score": 1,
+      "point": "列出甲碰前速度与时间的关系。"
+    },
+    {
+      "no": 8,
+      "title": "求碰前时间",
+      "kind": "value",
+      "stmt": "代入 a=1 m/s^2，得 t1=0.1 s。",
+      "eq": "t1 - (v0 - v1)/a",
+      "value": {"symbol": "t1", "number": 0.1, "exact": "1/10", "unit": "s"},
+      "score": 1,
+      "point": "算出碰前运动时间 t1=0.1 s。"
+    },
+    {
+      "no": 9,
+      "title": "列碰后时间关系",
+      "kind": "equation",
+      "stmt": "甲碰后速度 v_after=0.1 m/s，方向不变，受摩擦力做匀减速运动到停止，由 v_after-a t2=0 列式。",
+      "eq": "v_after - a*t2",
+      "value": null,
+      "score": 1,
+      "point": "列出甲碰后速度减到零的时间关系。"
+    },
+    {
+      "no": 10,
+      "title": "求碰后时间",
+      "kind": "value",
+      "stmt": "代入 a=1 m/s^2，得 t2=0.1 s。",
+      "eq": "t2 - v_after/a",
+      "value": {"symbol": "t2", "number": 0.1, "exact": "1/10", "unit": "s"},
+      "score": 2,
+      "point": "算出碰后运动时间 t2=0.1 s。"
+    },
+    {
+      "no": 11,
+      "title": "列总时间关系",
+      "kind": "equation",
+      "stmt": "碰撞时间极短且不计，总时间等于碰前运动时间与碰后运动时间之和，即 T=t1+t2。",
+      "eq": "T - t1 - t2",
+      "value": null,
+      "score": 1,
+      "point": "明确碰撞时间不计，总时间为两段运动时间之和。"
+    },
+    {
+      "no": 12,
+      "title": "求总时间",
+      "kind": "value",
+      "stmt": "代入 t1=0.1 s、t2=0.1 s，得 T=0.2 s。",
+      "eq": "T - t1 - t2",
+      "value": {"symbol": "T", "number": 0.2, "exact": "1/5", "unit": "s"},
+      "score": 2,
+      "point": "算出甲从拨出到停下的总时间 T=0.2 s。"
+    }
+  ]
+}

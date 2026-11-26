@@ -1,0 +1,580 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-03",
+    "question_id": "B-03",
+    "group": "B",
+    "source": "2022 浙江 6 月卷",
+    "question_no": 19,
+    "full_score": 9,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:45:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "物流公司通过滑轨把货物直接装运到卡车中。如图所示，倾斜滑轨与水平面成 24° 角，长度 l₁＝4 m，水平滑轨长度可调，两滑轨间平滑连接。若货物从倾斜滑轨顶端由静止开始下滑，其与滑轨间的动摩擦因数均为 μ＝2/9，货物可视为质点（取 cos 24°＝0.9，sin 24°＝0.4，重力加速度 g 取 10 m/s²）。",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "倾角 24° 的倾斜滑轨（长 4 m）与可调长度的水平滑轨平滑连接；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "货物在倾斜滑轨上滑行时加速度 a₁ 的大小。",
+        "score": 2
+      },
+      {
+        "no": "(2)",
+        "text": "货物在倾斜滑轨末端时速度 v 的大小。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "若货物滑离水平滑轨末端时的速度不超过 2 m/s，求水平滑轨的最短长度 l₂。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "721a5d193536af74468b72652512c0a075e14ec0131ddb118f9b327608bf61b8",
+    "input_sha256": "c9e0c78d7bc08d3ea7513a3f9d4e563563edfed365b2b2cf33bc884c04c7f628"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "货物",
+        "mass_symbol": "m",
+        "note": "视为质点；质量在方程中约去"
+      },
+      {
+        "id": "obj2",
+        "name": "滑轨",
+        "mass_symbol": "m",
+        "note": "倾斜段长 4 m、倾角 24°，水平段长度可调，两段平滑连接"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "s1",
+        "value": 4,
+        "unit": "m",
+        "text": "倾斜滑轨长度 l₁＝4 m —— 本档记作 s1"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.2222222222222222,
+        "unit": "1",
+        "text": "动摩擦因数 μ＝2/9（两段相同）"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g 取 10 m/s²"
+      },
+      {
+        "symbol": "v1",
+        "value": 2,
+        "unit": "m/s",
+        "text": "滑离水平滑轨末端的速度上限 2 m/s（记作 v1）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "斜轨匀加速",
+        "start": "货物自斜轨顶端由静止下滑",
+        "end": "到达斜轨末端，速度 v"
+      },
+      {
+        "no": 2,
+        "name": "水平轨匀减速",
+        "start": "经平滑连接进入水平轨",
+        "end": "滑离末端，速度不超过 2 m/s"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "a1",
+        "text": "斜轨上的加速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v",
+        "text": "斜轨末端速度"
+      },
+      {
+        "no": "(3)",
+        "quantity": "s2",
+        "text": "水平轨的最短长度"
+      }
+    ],
+    "assumptions": [
+      "sin 24°＝0.4、cos 24°＝0.9 直接取题给值，不用角度符号做三角运算",
+      "斜轨上正压力 mg cos 24°，摩擦力 μmg cos 24°；水平轨上正压力 mg，摩擦力 μmg（不含 cos 项）",
+      "两轨平滑连接：速度大小不变、方向由沿斜面变为水平（不计连接处能量损失）",
+      "「不超过 2 m/s」是位移的边界取值，不涉及「恰好」类临界过程"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "斜面：mg sin24° − μmg cos24° = ma₁",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-03-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "v² = 2a₁l₁，v = 4 m/s",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-03-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "v 的方向：沿斜面向下，进入水平段后变水平",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-03-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "水平段 a₂ = μg = 20/9 m/s²",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-03-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "v₁² − v² = −2a₂l₂",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-03-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "l₂ = 2.7 m",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-03-S06"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-03-S01",
+      "step_no": 1,
+      "title": "斜面：mg sin24° − μmg cos24° = ma₁",
+      "point_id": "B-03-S01",
+      "kind": "equation",
+      "statement": "沿斜面方向：mg sin 24°−μmg cos 24°＝ma₁，约去 m 得 a₁＝10×(0.4−2/9×0.9)＝2 m/s²。",
+      "equation": {
+        "latex": "m g \\sin 24° - \\mu m g \\cos 24° = m a_{1}",
+        "sympy": "g*Rational(2,5) - mu*g*Rational(9,10) - a1",
+        "symbols": [
+          "a1",
+          "g",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "a1",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a1=2、g=10、mu=0.222222）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N/kg＝m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 cos24° 或把 sin、cos 配错本步 0 分；μ 取 0.2（应为 2/9）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-03-S02",
+      "step_no": 2,
+      "title": "v² = 2a₁l₁，v = 4 m/s",
+      "point_id": "B-03-S02",
+      "kind": "equation",
+      "statement": "自静止匀加速 4 m：v²＝2a₁s1＝2×2×4＝16，v＝4 m/s。",
+      "equation": {
+        "latex": "v^{2} = 2 a_{1} s_{1}",
+        "sympy": "v**2 - 2*a1*s1",
+        "symbols": [
+          "a1",
+          "s1",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a1=2、s1=4、v=4）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 v＝a₁t 又未求 t 本步 0 分；用水平段长度代替 s1 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-03-S03",
+      "step_no": 3,
+      "title": "v 的方向：沿斜面向下，进入水平段后变水平",
+      "point_id": "B-03-S03",
+      "kind": "discussion",
+      "statement": "v 的方向沿斜面向下；经平滑连接进入水平段后方向变为水平（大小不变，仍为 4 m/s）。",
+      "equation": {
+        "latex": "v = 4",
+        "sympy": "v - 4",
+        "symbols": [
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v=4）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 v 的方向写成竖直本步 0 分；只写 4 不写单位 m/s 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-03-S04",
+      "step_no": 4,
+      "title": "水平段 a₂ = μg = 20/9 m/s²",
+      "point_id": "B-03-S04",
+      "kind": "value",
+      "statement": "水平段只受滑动摩擦力 μmg，正压力为 mg（不是 mg cos 24°）：a₂＝μg＝20/9 m/s²≈2.2 m/s²。",
+      "equation": {
+        "latex": "a_{2} = \\mu g",
+        "sympy": "a2 - mu*g",
+        "symbols": [
+          "a2",
+          "g",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "a2",
+        "number": 2.2222222222222223,
+        "exact": "20/9",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a2=2.22222、g=10、mu=0.222222）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲×m/s²＝m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "沿用 a₁＝2 m/s² 本步 0 分；写成 a₂＝μg cos24° 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-03-S05",
+      "step_no": 5,
+      "title": "v₁² − v² = −2a₂l₂",
+      "point_id": "B-03-S05",
+      "kind": "equation",
+      "statement": "水平段匀减速：v1²−v²＝−2a₂s2，代入 v1＝2 m/s、v＝4 m/s 得 s2＝(16−4)/(2×20/9)＝2.7 m。",
+      "equation": {
+        "latex": "v_{1}^{2} - v^{2} = - 2 a_{2} s_{2}",
+        "sympy": "v1**2 - v**2 + 2*a2*s2",
+        "symbols": [
+          "a2",
+          "s2",
+          "v",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "s2",
+        "number": 2.7,
+        "exact": "27/10",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a2=2.22222、s2=2.7、v=4、v1=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "不等号方向取反后仍得正解不扣分，但得出负长度本步 0 分；漏 2 倍本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-03-S06",
+      "step_no": 6,
+      "title": "l₂ = 2.7 m",
+      "point_id": "B-03-S06",
+      "kind": "discussion",
+      "statement": "水平滑轨的最短长度为 2.7 m。",
+      "equation": {
+        "latex": "s_{2} = \\frac{27}{10}",
+        "sympy": "s2 - Rational(27,10)",
+        "symbols": [
+          "s2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "s2",
+        "number": 2.7,
+        "exact": "27/10",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（s2=2.7）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 2.7 不写单位 m 本步 0 分；写成 2.4 m 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-03-S01",
+        "step_id": "B-03-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-03-S02",
+        "step_id": "B-03-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-03-S03",
+        "step_id": "B-03-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-03-S04",
+        "step_id": "B-03-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-03-S05",
+        "step_id": "B-03-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-03-S06",
+        "step_id": "B-03-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 9,
+    "score_total": 9,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "pass",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：斜面牛顿第二定律 + 速度位移式 + 水平段减速；L1 逐式回代，9/9 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "qid": "B-16",
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "max_tokens": 40000,
+    "prompt_chars": 1699,
+    "figures": [],
+    "created_at": "2026-11-25T20:47:20+08:00",
+    "ok": true,
+    "attempts": 1,
+    "parse_error": "",
+    "finish_reason": "stop",
+    "tokens_in": 1007,
+    "tokens_out": 11207,
+    "reasoning_tokens": 9594,
+    "cost_cny": 0.0784,
+    "extra_params": {},
+    "elapsed_s": 54.0,
+    "n_steps": 11,
+    "n_gold": 8,
+    "step_ratio": 1.375,
+    "issues": [],
+    "score_audit": [
+      {
+        "no": "(1)",
+        "n_steps": 3,
+        "sum_score": 4.0,
+        "paper_score": 4,
+        "delta": 0.0
+      },
+      {
+        "no": "(2)",
+        "n_steps": 3,
+        "sum_score": 4.0,
+        "paper_score": 3,
+        "delta": 1.0
+      },
+      {
+        "no": "(3)",
+        "n_steps": 5,
+        "sum_score": 6.0,
+        "paper_score": 5,
+        "delta": 1.0
+      }
+    ],
+    "schema_rc": 0,
+    "n_e": 0,
+    "n_w": 2,
+    "e_lines": [],
+    "layers": "{\"L1\": \"na\", \"L2\": \"fail\", \"L3\": \"na\", \"L4\": \"na\"}"
+  }
+]

@@ -1,0 +1,190 @@
+{
+  "givens": [
+    {"symbol": "R", "value": 0.4, "unit": "m", "text": "轨道半圆形部分半径 R=0.4 m"},
+    {"symbol": "g", "value": 10, "unit": "m/s^2", "text": "重力加速度 g=10 m/s^2"},
+    {"symbol": "M", "value": null, "unit": "kg", "text": "轨道质量为 M（题设符号）"},
+    {"symbol": "F", "value": 8, "unit": "N", "text": "第(2)(ⅱ)问施加的水平向左推力 F=8 N"},
+    {"symbol": "v_Q", "value": 7, "unit": "m/s", "text": "小物块从Q点离开轨道时相对地面的速度大小 v_Q=7 m/s"},
+    {"symbol": "F_1", "value": 4, "unit": "N", "text": "图乙折点横坐标 F_1=4 N（图上读出）"},
+    {"symbol": "a_1", "value": 2, "unit": "m/s^2", "text": "图乙折点纵坐标 a_1=2 m/s^2（图上读出）"},
+    {"symbol": "F_2", "value": 8, "unit": "N", "text": "图乙高段端点横坐标 F_2=8 N（图上读出，亦为第(2)(ⅱ)问推力）"},
+    {"symbol": "a_2", "value": 6, "unit": "m/s^2", "text": "图乙高段端点纵坐标 a_2=6 m/s^2（图上读出）"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "v=4 m/s", "steps": [1, 2, 3, 4]},
+    {"no": "(2)(ⅰ)", "result": "μ=0.2，m=1 kg", "steps": [5, 6, 7, 8, 9]},
+    {"no": "(2)(ⅱ)", "result": "L=9/2 m（即4.5 m）", "steps": [10, 11, 12, 13, 14, 15, 16, 17]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "Q点弹力方向",
+      "kind": "judgment",
+      "stmt": "在Q点，小物块做圆周运动的向心力必须竖直向下，所以轨道对物块的弹力 N 只能向下。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "明确最高点弹力方向向下，是列向心方程的前提。"
+    },
+    {
+      "no": 2,
+      "title": "列向心方程",
+      "kind": "equation",
+      "stmt": "取向下为正，在Q点由牛顿第二定律得 N+mg=mv^2/R。",
+      "eq": "N+m*g-m*v**2/R",
+      "value": null,
+      "score": 1,
+      "point": "正确列出Q点向心运动方程。"
+    },
+    {
+      "no": 3,
+      "title": "代入弹力大小",
+      "kind": "equation",
+      "stmt": "已知弹力大小 N=3mg，代入得 3mg+mg=mv^2/R，即 v^2=4gR。",
+      "eq": "3*m*g+m*g-m*v**2/R",
+      "value": null,
+      "score": 1,
+      "point": "正确把 N=3mg 代入向心方程。"
+    },
+    {
+      "no": 4,
+      "title": "求Q点速度",
+      "kind": "value",
+      "stmt": "代入 R=0.4 m、g=10 m/s^2，得 v=sqrt(4gR)=4 m/s。",
+      "eq": "v**2-4*g*R",
+      "value": {"symbol": "v", "number": 4, "exact": "4", "unit": "m/s"},
+      "score": 1,
+      "point": "代入数据求出Q点速度大小。"
+    },
+    {
+      "no": 5,
+      "title": "判断运动阶段",
+      "kind": "judgment",
+      "stmt": "图乙低段从原点开始且斜率较小，物块与轨道无相对滑动、共同加速；折点 F=4 N、a=2 m/s^2 为刚要相对滑动的临界点，之后图线斜率改变，物块相对轨道滑动。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "根据图乙分段特征判断临界状态。"
+    },
+    {
+      "no": 6,
+      "title": "求总质量",
+      "kind": "value",
+      "stmt": "低段整体加速度为 a=F/(M+m)。取图乙折点 F=4 N、a=2 m/s^2，得 M+m=2 kg。",
+      "eq": "a*(M+m)-F",
+      "value": {"symbol": "M+m", "number": 2, "exact": "2", "unit": "kg"},
+      "score": 1,
+      "point": "由低段图线或斜率求出总质量 M+m。"
+    },
+    {
+      "no": 7,
+      "title": "求轨道质量",
+      "kind": "value",
+      "stmt": "高段物块相对轨道滑动，对轨道有 F-μmg=Ma；图乙高段斜率 Δa/ΔF=1/M=(6-2)/(8-4)=1，故 M=1 kg。",
+      "eq": "F-mu*m*g-M*a",
+      "value": {"symbol": "M", "number": 1, "exact": "1", "unit": "kg"},
+      "score": 1,
+      "point": "利用高段斜率求出轨道质量 M。"
+    },
+    {
+      "no": 8,
+      "title": "求物块质量",
+      "kind": "value",
+      "stmt": "由 M+m=2 kg 且 M=1 kg，得 m=1 kg。",
+      "eq": "M+m-2",
+      "value": {"symbol": "m", "number": 1, "exact": "1", "unit": "kg"},
+      "score": 0.5,
+      "point": "由总质量关系求出物块质量 m。"
+    },
+    {
+      "no": 9,
+      "title": "求动摩擦因数",
+      "kind": "value",
+      "stmt": "折点 F=4 N、a=2 m/s^2 代入 F-μmg=Ma，即 4-μ×1×10=1×2，得 μ=0.2。",
+      "eq": "4-mu*1*10-1*2",
+      "value": {"symbol": "mu", "number": 0.2, "exact": "1/5", "unit": "1"},
+      "score": 0.5,
+      "point": "由临界点数据求出动摩擦因数 μ。"
+    },
+    {
+      "no": 10,
+      "title": "判断相对滑动",
+      "kind": "judgment",
+      "stmt": "F=8 N>4 N，物块相对轨道滑动。取向左为正，轨道加速度 a_1=(F-μmg)/M=6 m/s^2，物块加速度 a_2=μg=2 m/s^2，物块相对轨道向右运动。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "判定F=8 N时发生相对滑动，并求出两者加速度。"
+    },
+    {
+      "no": 11,
+      "title": "列相对位移式",
+      "kind": "equation",
+      "stmt": "从开始到物块到达P点，二者初速为零，相对加速度为 a_1-a_2=4 m/s^2，故水平部分长度 L=1/2(a_1-a_2)t^2=2t^2。",
+      "eq": "L-Rational(1,2)*(6-2)*t**2",
+      "value": null,
+      "score": 1,
+      "point": "正确列出粗糙水平段上物块相对轨道的位移关系。"
+    },
+    {
+      "no": 12,
+      "title": "求P点速度",
+      "kind": "equation",
+      "stmt": "到P点时二者速度均向左：轨道速度 V_P=6t，物块速度 v_P=2t。",
+      "eq": "V_P-6*t+v_P-2*t",
+      "value": null,
+      "score": 0.5,
+      "point": "写出撤去F时物块与轨道的速度表达式。"
+    },
+    {
+      "no": 13,
+      "title": "判断守恒关系",
+      "kind": "judgment",
+      "stmt": "撤去F后，水平方向无外力，系统水平动量守恒；半圆轨道光滑，只有重力做功，系统机械能守恒。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "识别撤去F后可用动量守恒和机械能守恒。"
+    },
+    {
+      "no": 14,
+      "title": "列动量守恒式",
+      "kind": "equation",
+      "stmt": "设Q点轨道速度为 V_Q，取向左为正；Q点物块相对轨道的速度沿切线向左，故物块对地速度也向左，v_Q=7 m/s。水平动量守恒给 V_Q+7=6t+2t=8t。",
+      "eq": "V_Q+7-8*t",
+      "value": null,
+      "score": 1,
+      "point": "正确列出P到Q过程水平方向动量守恒式。"
+    },
+    {
+      "no": 15,
+      "title": "列机械能守恒式",
+      "kind": "equation",
+      "stmt": "从P到Q机械能守恒：1/2(V_P^2+v_P^2)=1/2(V_Q^2+7^2)+mg·2R，其中 M=m=1 kg。",
+      "eq": "Rational(1,2)*(V_P**2+v_P**2)-Rational(1,2)*(V_Q**2+7**2)-m*g*2*R",
+      "value": null,
+      "score": 0.5,
+      "point": "正确列出P到Q过程机械能守恒式。"
+    },
+    {
+      "no": 16,
+      "title": "相对速度方向取舍",
+      "kind": "discussion",
+      "stmt": "联立得 t=3/2 s 或 t=19/6 s。Q点物块相对轨道的速度为 u_rel=v_Q-V_Q=14-8t；从P沿右半圆到Q时 u_rel 应沿切线向左，即 u_rel>0，故舍去 t=19/6 s，取 t=3/2 s。",
+      "eq": "u_rel-(14-8*t)",
+      "value": null,
+      "score": 0.5,
+      "point": "根据Q点相对速度方向舍弃不符合物理过程的增根。"
+    },
+    {
+      "no": 17,
+      "title": "求水平部分长度",
+      "kind": "value",
+      "stmt": "代回 L=2t^2，得 L=2×(3/2)^2=9/2 m=4.5 m。",
+      "eq": "L-2*t**2",
+      "value": {"symbol": "L", "number": 4.5, "exact": "9/2", "unit": "m"},
+      "score": 1,
+      "point": "由已求出的时间及位移关系得到水平部分长度 L。"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "qid": "B-20",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-20-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-20-S01"
+      ],
+      "basis": "无锚点：口径要求『Q 点速度足够大，轨道对小物块的弹力只能向下：3mg 与 mg 同向』，承载步 B-20-S01 的 statement 写『在Q点，小物块做圆周运动的向心力必须竖直向下，所以轨道对物块的弹力 N 只能向下。』，无式子可复核（2-gram 覆盖 42%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S02",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-20-S02",
+        "B-20-S03"
+      ],
+      "basis": "欠定：B-20-S02、B-20-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S03",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-20-S04"
+      ],
+      "basis": "L1/L2 全 pass：B-20-S04；方程 v**2-4*g*R",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-20-S04",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-20-S05"
+      ],
+      "basis": "无锚点：口径要求『图乙分两段：F ≤ 4 N 时两者相对静止（整体加速）、F > 4 N 时发生相对滑动』，承载步 B-20-S05 的 statement 写『图乙低段从原点开始且斜率较小，物块与轨道无相对滑动、共同加速；折点 F=4 N、a=2 m/s^2 为刚要相对滑动的临界』，无式子可复核（2-gram 覆盖 29%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-20-S07"
+      ],
+      "basis": "欠定：B-20-S07 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-20-S06",
+        "B-20-S07",
+        "B-20-S08",
+        "B-20-S09"
+      ],
+      "basis": "欠定：B-20-S06、B-20-S07、B-20-S08、B-20-S09 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-20-S10"
+      ],
+      "basis": "无锚点：口径要求『F = 8 N 时两者相对滑动：a_轨 = 6 m/s²、a_物 = μg = 2 m/s²』，承载步 B-20-S10 的 statement 写『F=8 N>4 N，物块相对轨道滑动。取向左为正，轨道加速度 a_1=(F-μmg)/M=6 m/s^2，物块加速度 a』，无式子可复核（2-gram 覆盖 43%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S08",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-20-S11",
+        "B-20-S12"
+      ],
+      "basis": "白名单外符号：B-20-S11、B-20-S12 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S09",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-20-S13",
+        "B-20-S14",
+        "B-20-S15"
+      ],
+      "basis": "白名单外符号：B-20-S13、B-20-S14、B-20-S15 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-20-S10",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-20-S16",
+        "B-20-S17"
+      ],
+      "basis": "白名单外符号：B-20-S16、B-20-S17 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "hit": 1,
+    "miss": 0,
+    "na": 9,
+    "score": 1.0,
+    "score_total": 14.0,
+    "judged_rate": "1/10",
+    "hit_rate": "1/1"
+  },
+  "na_reasons": {
+    "无锚点": 3,
+    "欠定": 3,
+    "白名单外符号": 3
+  }
+}

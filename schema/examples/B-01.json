@@ -1,0 +1,550 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-01",
+    "question_id": "B-01",
+    "group": "B",
+    "source": "2024 广西卷",
+    "question_no": 13,
+    "full_score": 10,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:40:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，轮滑训练场沿直线等间距地摆放着若干个定位锥筒，锥筒间距 d＝0.9 m，某同学穿着轮滑鞋向右匀减速滑行。现测出他从 1 号锥筒运动到 2 号锥筒用时 t₁＝0.4 s，从 2 号锥筒运动到 3 号锥筒用时 t₂＝0.5 s。求该同学：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "沿直线等间距 d＝0.9 m 摆放的编号锥筒，同学向右匀减速滑行；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "滑行的加速度大小。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "最远能经过几号锥筒。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "7e2bc909a804f9af9265395ef2ab792f80265607e4007b80350bfbf5630d3dc3",
+    "input_sha256": "e6ef327018f144cff9473d5083dadd695d906e5a412c9b56f4d6440fa72c9ea9"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "轮滑同学",
+        "mass_symbol": "m",
+        "note": "向右匀减速滑行，视为质点；质量不参与计算"
+      },
+      {
+        "id": "obj2",
+        "name": "定位锥筒",
+        "mass_symbol": "m",
+        "note": "等间距 d＝0.9 m 沿直线摆放，1 号在最左；编号 n 的锥筒距 1 号 (n−1)d"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "d",
+        "value": 0.9,
+        "unit": "m",
+        "text": "锥筒间距 d＝0.9 m"
+      },
+      {
+        "symbol": "t1",
+        "value": 0.4,
+        "unit": "s",
+        "text": "1 号到 2 号用时 t₁＝0.4 s"
+      },
+      {
+        "symbol": "t2",
+        "value": 0.5,
+        "unit": "s",
+        "text": "2 号到 3 号用时 t₂＝0.5 s"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "单段匀减速至停止",
+        "start": "经过 1 号锥筒（速度 v）",
+        "end": "滑行 x 后停止，落在 4 号与 5 号之间"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "a",
+        "text": "滑行加速度大小"
+      },
+      {
+        "no": "(2)",
+        "quantity": "x",
+        "text": "从 1 号起算的停止距离，并据此判断最远经过几号"
+      }
+    ],
+    "assumptions": [
+      "向右为正，匀减速故 a 取负值；本题只问大小，a 记正值、方向另注",
+      "每段位移均为 d＝0.9 m；某段平均速度等于该段中间时刻的瞬时速度",
+      "两段中间时刻相隔 t₁/2＋t₂/2＝0.45 s，不是 t₁＋t₂＝0.9 s",
+      "锥筒编号 n 的位置为 (n−1)d：4 号在 2.7 m、5 号在 3.6 m"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "两段平均速度即两中间时刻速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-01-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "两中间时刻相隔 0.45 s，a = 1 m/s²",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-01-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "回到 1 号锥筒时刻的速度 v = 2.45 m/s",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-01-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "停止距离 x = v²/(2a)",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-01-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "位置判断：落在 4 号与 5 号之间",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-01-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "最远经过 4 号锥筒",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-01-S06"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-01-S01",
+      "step_no": 1,
+      "title": "两段平均速度即两中间时刻速度",
+      "point_id": "B-01-S01",
+      "kind": "equation",
+      "statement": "每段位移均为 d：第一段平均速度 v₁＝d/t₁＝0.9/0.4＝2.25 m/s，第二段 v₂＝d/t₂＝0.9/0.5＝1.8 m/s；匀变速下平均速度等于该段中间时刻的瞬时速度。",
+      "equation": {
+        "latex": "v_{1} = \\frac{d}{t_{1}}",
+        "sympy": "v1 - d/t1",
+        "symbols": [
+          "d",
+          "t1",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v1",
+        "number": 2.25,
+        "exact": "d/t1",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（d=0.9、t1=0.4、v1=2.25）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 v₁、v₂ 当作区间两端点的瞬时速度本步 0 分；只写平均速度定义未代入数值本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-01-S02",
+      "step_no": 2,
+      "title": "两中间时刻相隔 0.45 s，a = 1 m/s²",
+      "point_id": "B-01-S02",
+      "kind": "discussion",
+      "statement": "两中间时刻相隔 t₁/2＋t₂/2＝0.2＋0.25＝0.45 s；a＝(v₁−v₂)/0.45＝0.45/0.45＝1 m/s²。",
+      "equation": {
+        "latex": "a = \\frac{v_{1} - v_{2}}{\\frac{t_{1}}{2} + \\frac{t_{2}}{2}}",
+        "sympy": "a - (v1 - v2)/(t1/2 + t2/2)",
+        "symbols": [
+          "a",
+          "t1",
+          "t2",
+          "v1",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "a",
+        "number": 1.0,
+        "exact": "1",
+        "unit": "m/s^2",
+        "direction": "-x",
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a=1、t1=0.4、t2=0.5、v1=2.25、v2=1.8）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "(m/s)/s＝m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "时间间隔取 t₁＋t₂＝0.9 s（未取半）本步 0 分；只写 1 不写单位 m/s² 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-01-S03",
+      "step_no": 3,
+      "title": "回到 1 号锥筒时刻的速度 v = 2.45 m/s",
+      "point_id": "B-01-S03",
+      "kind": "value",
+      "statement": "v₁ 是 t₁ 中间时刻（0.2 s）的速度，回到 1 号锥筒（t＝0）还要加上 a·t₁/2：v＝v₁＋a·t₁/2＝2.25＋1×0.2＝2.45 m/s。",
+      "equation": {
+        "latex": "v = v_{1} + a \\frac{t_{1}}{2}",
+        "sympy": "v - v1 - a*t1/2",
+        "symbols": [
+          "a",
+          "t1",
+          "v",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": 2.45,
+        "exact": "v1 + a*t1/2",
+        "unit": "m/s",
+        "direction": "+x",
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a=1、t1=0.4、v=2.45、v1=2.25）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "直接用 v₁＝2.25 m/s 作为初速度本步 0 分；用 v＝v₁＋a·t₁（时间取整段）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-01-S04",
+      "step_no": 4,
+      "title": "停止距离 x = v²/(2a)",
+      "point_id": "B-01-S04",
+      "kind": "equation",
+      "statement": "从 1 号锥筒到停止：0−v²＝−2ax，故 x＝v²/(2a)＝2.45²/2＝3.001 25 m≈3.00 m。",
+      "equation": {
+        "latex": "x = \\frac{v^{2}}{2 a}",
+        "sympy": "x - v**2/(2*a)",
+        "symbols": [
+          "a",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": 3.00125,
+        "exact": "2401/800",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a=1、v=2.45、x=3.00125）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "(m/s)²/(m/s²)＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用 v₁ 代入得 2.53 m 本步 0 分；写成 x＝v²/a（漏 2）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-01-S05",
+      "step_no": 5,
+      "title": "位置判断：落在 4 号与 5 号之间",
+      "point_id": "B-01-S05",
+      "kind": "judgment",
+      "statement": "4 号锥筒在 3d＝2.7 m，5 号在 4d＝3.6 m；停止点 x≈3.00 m 介于两者之间，故最远经过 4 号锥筒，到不了 5 号。",
+      "equation": null,
+      "criterion": {
+        "expr": "x",
+        "expected": "3*d",
+        "comparator": "gt",
+        "text": "停止点 x≈3.00 m 大于 4 号锥筒的 3d＝2.7 m、小于 5 号的 4d＝3.6 m，故最远经过 4 号。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "判据回代成立（d=0.9、x=3.00125，差值 0.30125）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只把 x 与 3.3 m 或与 d 比较本步 0 分；未建立「锥筒编号—距离」对应本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-01-S06",
+      "step_no": 6,
+      "title": "最远经过 4 号锥筒",
+      "point_id": "B-01-S06",
+      "kind": "discussion",
+      "statement": "最远经过 4 号锥筒（停止点在 4 号与 5 号之间，3.00 m 处）。",
+      "equation": {
+        "latex": "x = \\frac{2401}{800}",
+        "sympy": "x - Rational(2401,800)",
+        "symbols": [
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "x",
+        "number": 3.00125,
+        "exact": "2401/800",
+        "unit": "m",
+        "direction": "+x",
+        "sig_figs": 3
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（x=3.00125）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "答 3 号或 5 号本步 0 分；只写 4 不说明「号」本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-01-S01",
+        "step_id": "B-01-S01",
+        "score_awarded": 3,
+        "score_possible": 3,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-01-S02",
+        "step_id": "B-01-S02",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-01-S03",
+        "step_id": "B-01-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-01-S04",
+        "step_id": "B-01-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-01-S05",
+        "step_id": "B-01-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-01-S06",
+        "step_id": "B-01-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 10,
+    "score_total": 10,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "pass",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：平均速度＝中间时刻速度 + 速度位移式 + 编号判断；L1 逐式回代，10/10 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

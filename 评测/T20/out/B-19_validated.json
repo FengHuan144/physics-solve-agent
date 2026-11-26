@@ -1,0 +1,673 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-19",
+    "question_id": "B-19",
+    "group": "B",
+    "source": "2021 全国乙卷",
+    "question_no": 24,
+    "full_score": 12,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:49:30+08:00",
+    "latency_ms": 54849,
+    "tokens": {
+      "in": 1024,
+      "out": 10805
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "一篮球质量为 m＝0.60 kg，一运动员使其从距地面高度为 h₁＝1.8 m 处由静止自由落下，反弹高度为 h₂＝1.2 m。若使篮球从距地面 h₃＝1.5 m 的高度由静止下落，并在开始下落的同时向下拍球，球落地后反弹的高度也为 1.5 m。假设运动员拍球时对球的作用力为恒力，作用时间为 t＝0.20 s；该篮球每次与地面碰撞前后的动能的比值不变。重力加速度大小取 g＝10 m/s²，不计空气阻力。求：",
+    "figures": [],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "运动员拍球过程中对篮球所做的功。",
+        "score": 6
+      },
+      {
+        "no": "(2)",
+        "text": "运动员拍球时对篮球的作用力的大小。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "8e4d9ef293ac4309d5bd473df67318ae2003da19261d8f58f3a1c65f052438d6",
+    "input_sha256": "5eddd62e8efd7d2202b646b94fd3ba13a88ecb6e728451dece8cc48fff728c6c"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "篮球",
+        "mass_symbol": "m",
+        "note": "质量 0.60 kg；每次与地面碰撞前后的动能比值不变"
+      },
+      {
+        "id": "obj2",
+        "name": "运动员的手",
+        "mass_symbol": "m",
+        "note": "拍球时对球施加竖直向下的恒力 F，作用时间 t＝0.20 s"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": 0.6,
+        "unit": "kg",
+        "text": "篮球质量 m＝0.60 kg"
+      },
+      {
+        "symbol": "h0",
+        "value": 1.8,
+        "unit": "m",
+        "text": "第一次下落高度 h₁＝1.8 m"
+      },
+      {
+        "symbol": "H",
+        "value": 1.2,
+        "unit": "m",
+        "text": "第一次反弹高度 h₂＝1.2 m"
+      },
+      {
+        "symbol": "h",
+        "value": 1.5,
+        "unit": "m",
+        "text": "第二次下落并反弹的高度 h₃＝1.5 m"
+      },
+      {
+        "symbol": "t",
+        "value": 0.2,
+        "unit": "s",
+        "text": "拍球作用时间 t＝0.20 s"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "W",
+        "text": "拍球过程中运动员对篮球做的功"
+      },
+      {
+        "no": "(2)",
+        "quantity": "F",
+        "text": "拍球时运动员对篮球的作用力"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "求碰撞动能比",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "全过程用动能定理",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "利用反弹高度列式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "求拍球做功",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "列拍球过程动量定理",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "写位移关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "写功的定义式",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "解出拍后速度",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "用牛顿定律求F",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "算出作用力大小",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 11,
+      "title": "说明作用力方向",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-19-S01",
+      "step_no": 1,
+      "title": "求碰撞动能比",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "第一次无拍下落，刚碰地前动能为mgh1，反弹后初动能为mgh2，因此碰撞前后动能比k＝mgh2/(mgh1)＝h2/h1。",
+      "equation": {
+        "latex": "k h1 - h2",
+        "sympy": "k*h0 - H",
+        "symbols": [
+          "h1",
+          "h2",
+          "k"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：本步无 value：方程可直接解出 k，但本步没给值，无从比对（chain 再判）｜chain：全题联立后仍含自由符号 k（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S02",
+      "step_no": 2,
+      "title": "全过程用动能定理",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "第二次从开始下落到刚碰地前，初动能为0，重力做功mgh3，拍球做功W，刚碰地前动能为E，由动能定理有W＋mgh3＝E。",
+      "equation": {
+        "latex": "W + m g h3 - E",
+        "sympy": "W + m*g*h - Ek",
+        "symbols": [
+          "W",
+          "g",
+          "h3",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 Ek, W｜chain：全题联立后仍含自由符号 Ek（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S03",
+      "step_no": 3,
+      "title": "利用反弹高度列式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "第二次碰后动能变为kE，反弹到高度h3，最高点动能为0，故kE＝mgh3。",
+      "equation": {
+        "latex": "k E - m g h3",
+        "sympy": "k*Ek - m*g*h",
+        "symbols": [
+          "g",
+          "h3",
+          "k",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 Ek, k｜chain：全题联立后仍含自由符号 Ek, k（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S04",
+      "step_no": 4,
+      "title": "求拍球做功",
+      "point_id": null,
+      "kind": "value",
+      "statement": "联立上面两式消去E，并由k＝h2/h1，得W＝mgh3(h1/h2－1)。代入数据得W＝4.5 J。",
+      "equation": {
+        "latex": "W - m g h3 (h1/h2 - 1)",
+        "sympy": "W - m*g*h*(h0/H - 1)",
+        "symbols": [
+          "W",
+          "g",
+          "h1",
+          "h2",
+          "h3",
+          "m"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "W",
+        "number": 4.5,
+        "exact": "9/2",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 W=4.5，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2；值单位 J 与符号 W 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S05",
+      "step_no": 5,
+      "title": "列拍球过程动量定理",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "拍球过程中初速度为0、末速度为u，取向下为正，合外力F＋mg的冲量等于动量变化，故(F＋mg)t＝mu。",
+      "equation": {
+        "latex": "(F + m g) t - m u",
+        "sympy": "(F + m*g)*t - m*v",
+        "symbols": [
+          "F",
+          "g",
+          "m",
+          "t",
+          "u"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 F, v｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S06",
+      "step_no": 6,
+      "title": "写位移关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "拍球过程为初速度为0的匀加速直线运动，平均速度为u/2，故位移s＝ut/2。",
+      "equation": {
+        "latex": "s - u t/2",
+        "sympy": "x - v*t/2",
+        "symbols": [
+          "s",
+          "t",
+          "u"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 v, x｜chain：全题联立后仍含自由符号 x（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 m",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S07",
+      "step_no": 7,
+      "title": "写功的定义式",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "运动员对篮球的恒力向下，球向下位移，故拍球做功W＝Fs。",
+      "equation": {
+        "latex": "W - F s",
+        "sympy": "W - F*x",
+        "symbols": [
+          "F",
+          "W",
+          "s"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：欠定：2 未知 / 1 方程（chain 可解，本步不判）含 F, x｜chain：全题联立后仍含自由符号 x（欠定，chain 不判）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S08",
+      "step_no": 8,
+      "title": "解出拍后速度",
+      "point_id": null,
+      "kind": "value",
+      "statement": "由动量定理、位移关系和W＝Fs消去F、s，得mu²－mgtu－2W＝0。代入m、g、t、W并取正根，得u＝5 m/s。",
+      "equation": {
+        "latex": "m u^2 - m g t u - 2 W",
+        "sympy": "m*v**2 - m*g*t*v - 2*W",
+        "symbols": [
+          "W",
+          "g",
+          "m",
+          "t",
+          "u"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "v",
+        "number": 5.0,
+        "exact": "5",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 v=-3、5，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m^2/s^2；值单位 m/s 与符号 v 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S09",
+      "step_no": 9,
+      "title": "用牛顿定律求F",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "拍球过程球向下做匀加速运动，加速度a＝u/t；由牛顿第二定律有F＋mg＝ma＝mu/t。",
+      "equation": {
+        "latex": "F + m g - m u/t",
+        "sympy": "F + m*g - m*v/t",
+        "symbols": [
+          "F",
+          "g",
+          "m",
+          "t",
+          "u"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：本步无 value：方程可直接解出 F，但本步没给值，无从比对（chain 再判）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S10",
+      "step_no": 10,
+      "title": "算出作用力大小",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入m＝0.60 kg、u＝5 m/s、t＝0.20 s、g＝10 m/s²，得F＝mu/t－mg＝9 N。",
+      "equation": {
+        "latex": "F - (m u/t - m g)",
+        "sympy": "F - (m*v/t - m*g)",
+        "symbols": [
+          "F",
+          "g",
+          "m",
+          "t",
+          "u"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "F",
+        "number": 9.0,
+        "exact": "9",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "per_step：回代解得 F=9，与本步值一致（相对差 ≤2%）｜chain：全题联立残差 0（chain）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "两边量纲均为 kg·m/s^2；值单位 N 与符号 F 白名单一致",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-19-S11",
+      "step_no": 11,
+      "title": "说明作用力方向",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "运动员向下拍球，结果F为正值，方向与向下拍球一致，故作用力竖直向下。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "正确说明作用力方向竖直向下"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "na",
+          "detail": "data_error(empty): sympy 串为空",
+          "error_code": null
+        }
+      ],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 12,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

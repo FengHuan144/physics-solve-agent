@@ -1,0 +1,34 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-02_t26fix.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-02_t26fix_validated.json
+
+对象：A-02（题 A-02，19 步）
+L1  pass 1 / fail 0 / na 18 / skipped 0    判定通过率 100.0%    na 比例 94.7%
+L2  pass 7 / fail 0 / na 12 / skipped 0    判定通过率 100.0%    na 比例 63.2%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-02-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-02-S01 [L2] data_error(empty): sympy 串为空
+  - A-02-S04 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-02-S04 [L2] data_error(empty): sympy 串为空
+  - A-02-S07 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-02-S07 [L2] data_error(empty): sympy 串为空
+  - A-02-S08 [L1] per_step：data_error(unknown_symbol): 符号「s_A」不在白名单：(m*s_A + 5*m*s_B)/(6*m) - v0*t0 + s_A - Rational(9,25)*v0*t0｜chain：data_error(unknown_symbol): 符号「s_A」不在白名单：(m*s_A + 5*m*s_B)/(6*m) - v0*t0 + s_A - Rational(9,25)*v0*t0
+  - A-02-S08 [L2] data_error(unknown_symbol): 符号「s_A」不在白名单：(m*s_A + 5*m*s_B)/(6*m) - v0*t0 + s_A - Rational(9,25)*v0*t0
+  - A-02-S09 [L1] per_step：data_error(unknown_symbol): 符号「s_B」不在白名单：s_B - Rational(141,125)*v0*t0｜chain：data_error(unknown_symbol): 符号「s_B」不在白名单：s_B - Rational(141,125)*v0*t0
+  - A-02-S09 [L2] data_error(unknown_symbol): 符号「s_B」不在白名单：s_B - Rational(141,125)*v0*t0
+  - A-02-S10 [L1] per_step：data_error(unknown_symbol): 符号「t0」不在白名单：x - Rational(96,125)*v0*t0｜chain：data_error(unknown_symbol): 符号「t0」不在白名单：x - Rational(96,125)*v0*t0
+  - A-02-S10 [L2] data_error(unknown_symbol): 符号「t0」不在白名单：x - Rational(96,125)*v0*t0
+  - A-02-S11 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-02-S11 [L2] data_error(empty): sympy 串为空
+  - A-02-S12 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-02-S12 [L2] data_error(empty): sympy 串为空
+  - A-02-S13 [L1] per_step：data_error(unknown_symbol): 符号「w」不在白名单：m*(-w) + 5*m*Rational(4,5)*v0 - m*2*v0 - 5*m*u_B｜chain：data_error(unknown_symbol): 符号「w」不在白名单：m*(-w) + 5*m*Rational(4,5)*v0 - m*2*v0 - 5*m*u_B
+  - A-02-S13 [L2] data_error(unknown_symbol): 符号「w」不在白名单：m*(-w) + 5*m*Rational(4,5)*v0 - m*2*v0 - 5*m*u_B
+  - A-02-S14 [L1] per_step：data_error(unknown_symbol): 符号「u_B」不在白名单：2*v0 - u_B - w - Rational(4,5)*v0｜chain：data_error(unknown_symbol): 符号「u_B」不在白名单：2*v0 - u_B - w - Rational(4,5)*v0
+  - A-02-S14 [L2] data_error(unknown_symbol): 符号「u_B」不在白名单：2*v0 - u_B - w - Rational(4,5)*v0
+  - A-02-S15 [L1] per_step：data_error(unknown_symbol): 符号「w」不在白名单：w - v0｜chain：data_error(unknown_symbol): 符号「w」不在白名单：w - v0
+  - A-02-S15 [L2] data_error(unknown_symbol): 符号「w」不在白名单：w - v0
+  - A-02-S16 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-02-S16 [L2] data_error(empty): sympy 串为空
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\A-02_t26fix_validated.json

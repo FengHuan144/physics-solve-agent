@@ -1,0 +1,148 @@
+{
+  "givens": [
+    {"symbol": "R", "value": 0.4, "unit": "m", "text": "轨道半圆形部分的半径 R＝0.4 m"},
+    {"symbol": "g", "value": 10, "unit": "m/s^2", "text": "重力加速度 g＝10 m/s²"},
+    {"symbol": "N_Q", "value": null, "unit": "N", "text": "第(1)问给出 Q 点轨道弹力大小 N_Q＝3mg"},
+    {"symbol": "F_c", "value": 4, "unit": "N", "text": "图乙折点读出 F＝4 N"},
+    {"symbol": "a_c", "value": 2, "unit": "m/s^2", "text": "图乙折点读出 a＝2 m/s²"},
+    {"symbol": "F_8", "value": 8, "unit": "N", "text": "图乙及第(2)(ⅱ)问中 F＝8 N"},
+    {"symbol": "a_8", "value": 6, "unit": "m/s^2", "text": "图乙读出 F＝8 N 时 a＝6 m/s²"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "v = 4 m/s", "steps": [1, 2, 3]},
+    {"no": "(2)(ⅰ)", "result": "μ = 0.2，m = 1 kg", "steps": [4, 5, 6, 7]},
+    {"no": "(2)(ⅱ)", "result": "L = 4.5 m", "steps": [8, 9, 10, 11, 12, 13]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "判断Q点弹力方向",
+      "kind": "judgment",
+      "stmt": "在最高点Q，小物块所受轨道的弹力只能沿半径向下，它与重力共同提供向心力。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出Q点轨道弹力方向向下，明确向心力来源"
+    },
+    {
+      "no": 2,
+      "title": "列Q点向心力方程",
+      "kind": "equation",
+      "stmt": "取竖直向下为正，轨道弹力 N_Q＝3mg，故向心力方程为 mg＋3mg＝m v²/R。",
+      "eq": "m*g+3*m*g-m*v**2/R",
+      "value": null,
+      "score": 2,
+      "point": "写出 mg＋N_Q＝m v²/R 并代入 N_Q＝3mg"
+    },
+    {
+      "no": 3,
+      "title": "求Q点速度v",
+      "kind": "value",
+      "stmt": "由 4mg＝m v²/R 得 v²＝4gR，代入 g＝10 m/s²、R＝0.4 m，得 v＝4 m/s。",
+      "eq": "v**2-4*g*R",
+      "value": {"symbol": "v", "number": 4, "exact": "4", "unit": "m/s"},
+      "score": 1,
+      "point": "正确解得 v＝4 m/s"
+    },
+    {
+      "no": 4,
+      "title": "读图判断运动阶段",
+      "kind": "judgment",
+      "stmt": "由图乙读出折点 F_c＝4 N 时 a_c＝2 m/s²，F_8＝8 N 时 a_8＝6 m/s²；F≤4 N 时物块与轨道相对静止，F>4 N 后两者相对滑动。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "读出图乙关键点并正确判断共同加速与相对滑动的分界"
+    },
+    {
+      "no": 5,
+      "title": "求总质量M+m",
+      "kind": "equation",
+      "stmt": "F≤4 N 时整体加速度 a＝F/(M＋m)，代入折点 F_c＝4 N、a_c＝2 m/s²，得 M＋m＝2 kg。",
+      "eq": "F_c-(M+m)*a_c",
+      "value": null,
+      "score": 1,
+      "point": "列整体牛顿第二定律并得出 M＋m＝2 kg"
+    },
+    {
+      "no": 6,
+      "title": "由斜率求M",
+      "kind": "value",
+      "stmt": "F>4 N 后对轨道有 F－μmg＝Ma；图线斜率 1/M＝(6－2)/(8－4)＝1，故 M＝1 kg，于是 m＝(M＋m)－M＝1 kg。",
+      "eq": "(a_8-a_c)*M-(F_8-F_c)",
+      "value": {"symbol": "M", "number": 1, "exact": "1", "unit": "kg"},
+      "score": 1,
+      "point": "由后段斜率求出 M＝1 kg，并得 m＝1 kg"
+    },
+    {
+      "no": 7,
+      "title": "求动摩擦因数",
+      "kind": "value",
+      "stmt": "在折点处对轨道用 F_c－μmg＝Ma_c，代入 M＝m＝1 kg、g＝10 m/s²、F_c＝4 N、a_c＝2 m/s²，得 μ＝0.2。",
+      "eq": "F_c-mu*m*g-M*a_c",
+      "value": {"symbol": "mu", "number": 0.2, "exact": "1/5", "unit": "1"},
+      "score": 1,
+      "point": "代入折点方程解得 μ＝0.2"
+    },
+    {
+      "no": 8,
+      "title": "求F=8时两者加速度",
+      "kind": "equation",
+      "stmt": "F＝8 N>4 N，物块受向左摩擦力，a_m＝μg＝2 m/s²；轨道满足 F－μmg＝Ma_M，得 a_M＝6 m/s²。取向左为正。",
+      "eq": "a_m-mu*g+a_M-(F-mu*m*g)/M",
+      "value": null,
+      "score": 1,
+      "point": "正确求出 a_m＝2 m/s²、a_M＝6 m/s²"
+    },
+    {
+      "no": 9,
+      "title": "写到达P前运动关系",
+      "kind": "equation",
+      "stmt": "从静止加速到物块到达P，取向左为正，v_P＝a_m t，V_P＝a_M t；物块相对轨道向右移动 L，故 L＝(1/2)(a_M－a_m)t²。",
+      "eq": "v_P-a_m*t+V_P-a_M*t+L-Rational(1,2)*(a_M-a_m)*t**2",
+      "value": null,
+      "score": 1,
+      "point": "建立到达P时物块、轨道速度及相对位移 L 与 t 的关系"
+    },
+    {
+      "no": 10,
+      "title": "列水平动量守恒",
+      "kind": "equation",
+      "stmt": "撤去F后系统水平方向不受外力，P到Q过程水平动量守恒，取向左为正：m v_P＋M V_P＝m v_Q＋M V_Q。",
+      "eq": "m*v_P+M*V_P-m*v_Q-M*V_Q",
+      "value": null,
+      "score": 1,
+      "point": "写出从P到Q的水平动量守恒式"
+    },
+    {
+      "no": 11,
+      "title": "列P到Q能量守恒",
+      "kind": "equation",
+      "stmt": "半圆部分光滑，P到Q只有重力做功，物块升高 2R，机械能守恒。",
+      "eq": "Rational(1,2)*m*v_P**2+Rational(1,2)*M*V_P**2-Rational(1,2)*m*v_Q**2-Rational(1,2)*M*V_Q**2-m*g*2*R",
+      "value": null,
+      "score": 1,
+      "point": "写出包含升高 2R 的机械能守恒式"
+    },
+    {
+      "no": 12,
+      "title": "判断方向并舍根",
+      "kind": "discussion",
+      "stmt": "物块沿右半圆到达Q时相对轨道速度向左，取左正的 v_Q 应大于 V_Q。已知 |v_Q|＝7 m/s；取 v_Q＝7 m/s 向左，由动量得 V_Q＝8t－7，代入能量得 12t²－56t＋57＝0，根为 t＝3/2 s 或 t＝19/6 s；t＝19/6 s 时 V_Q>v_Q，与相对速度方向矛盾，舍去，故 t＝3/2 s。若取 v_Q＝－7 m/s 则无正根，也舍去。",
+      "eq": "12*t**2-56*t+57",
+      "value": null,
+      "score": 1,
+      "point": "正确判断Q点速度方向并舍去不合运动方向的根"
+    },
+    {
+      "no": 13,
+      "title": "求水平部分长度L",
+      "kind": "value",
+      "stmt": "由 t＝3/2 s 及 L＝2t²，得 L＝2×(3/2)²＝9/2 m＝4.5 m。",
+      "eq": "L-2*(Rational(3,2))**2",
+      "value": {"symbol": "L", "number": 4.5, "exact": "9/2", "unit": "m"},
+      "score": 1,
+      "point": "代入 t 求得 L＝4.5 m"
+    }
+  ]
+}

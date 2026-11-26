@@ -1,0 +1,759 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-18",
+    "question_id": "B-18",
+    "group": "B",
+    "source": "2025 浙江 1 月卷",
+    "question_no": 16,
+    "full_score": 11,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T21:50:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "一游戏装置的竖直截面如图所示。倾斜直轨道 AB、半径为 R 的竖直螺旋轨道、水平轨道 BC 和 C′E、倾角为 37° 的倾斜直轨道 EF 平滑连接成一个抛体装置。该装置除 EF 段轨道粗糙外，其余各段均光滑，F 点与水平高台 GHI 等高。游戏开始，一质量为 m 的滑块 1 从轨道 AB 上的高度 h 处静止滑下，与静止在 C 点、质量也为 m 的滑块 2 发生完全非弹性碰撞后组合成滑块 3，滑上滑轨。若滑块 3 落在 GH 段，反弹后水平分速度保持不变，竖直分速度减半；若滑块落在 H 点右侧，立即停止运动。已知 R＝0.2 m，m＝0.1 kg，EF 段长度 L＝5/16 m，FG 间距 L_FG＝0.4 m，GH 间距 L_GH＝0.22 m，HI 间距 L_HI＝0.1 m，EF 段 μ＝0.25。滑块 1、2、3 均可视为质点，不计空气阻力，sin 37°＝0.6，cos 37°＝0.8，g 取 10 m/s²。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "倾斜直轨道 AB、半径 R 的竖直螺旋轨道（C、C′ 在同一水平线上、D 为最高点）、水平轨道 BC 与 C′E、倾角 37° 的粗糙 EF 段、与 F 等高的水平高台 GHI；原文无图题",
+        "caption_source": "none",
+        "is_required": true,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "若 h＝0.8 m，碰撞后瞬间滑块 3 的速度大小 v_C。",
+        "score": 3
+      },
+      {
+        "no": "(2)",
+        "text": "若滑块 3 恰好能通过圆轨道 CDC′，高度 h。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "若滑块 3 最终落入 I 点的洞中（游戏成功），讨论游戏成功的高度 h。",
+        "score": 5
+      }
+    ],
+    "stem_sha256": "62d4b580c3ea5215c84a121f207400e0a5576ca5aa44637c875f9d8a085e89f8",
+    "input_sha256": "2cbcfd5f0583b24a6b367cb8cb747bff432eebf93ed44fd8d1023ce6d8bf2efb"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "滑块 1",
+        "mass_symbol": "m",
+        "note": "从 AB 上高度 h 处静止下滑，与滑块 2 碰前速度 v₀"
+      },
+      {
+        "id": "obj2",
+        "name": "滑块 2",
+        "mass_symbol": "m",
+        "note": "静止在 C 点，与滑块 1 完全非弹性碰撞"
+      },
+      {
+        "id": "obj3",
+        "name": "滑块 3（组合体）",
+        "mass_symbol": "m",
+        "note": "质量 2m，碰后速度 v_C，沿光滑轨道滑行后经粗糙 EF 段抛出"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "R",
+        "value": 0.2,
+        "unit": "m",
+        "text": "竖直螺旋轨道半径 R＝0.2 m"
+      },
+      {
+        "symbol": "m",
+        "value": 0.1,
+        "unit": "kg",
+        "text": "滑块 1、2 质量均为 m＝0.1 kg（碰后组合体 2m）"
+      },
+      {
+        "symbol": "L",
+        "value": 0.3125,
+        "unit": "m",
+        "text": "EF 段长度 L＝5/16 m"
+      },
+      {
+        "symbol": "s1",
+        "value": 0.4,
+        "unit": "m",
+        "text": "FG 间距 L_FG＝0.4 m —— 记作 s1"
+      },
+      {
+        "symbol": "s2",
+        "value": 0.22,
+        "unit": "m",
+        "text": "GH 间距 L_GH＝0.22 m —— 记作 s2"
+      },
+      {
+        "symbol": "d",
+        "value": 0.1,
+        "unit": "m",
+        "text": "HI 间距 L_HI＝0.1 m —— 记作 d"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.25,
+        "unit": "1",
+        "text": "EF 段动摩擦因数 μ＝0.25（其余各段光滑）"
+      },
+      {
+        "symbol": "h",
+        "value": 0.8,
+        "unit": "m",
+        "text": "第 (1) 问给定的下滑高度 h＝0.8 m；第 (2)(3) 问的 h 是待求量（2 m、2.5 m 或 2 m）"
+      },
+      {
+        "symbol": "theta",
+        "value": 37,
+        "unit": "deg",
+        "text": "EF 倾角 37°，题给 sin37°＝0.6、cos37°＝0.8；方程里直接写 3/5 与 4/5"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g 取 10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "滑块 1 沿 AB 下滑至 C 点并碰撞",
+        "start": "高度 h 处静止释放",
+        "end": "与滑块 2 合成滑块 3，碰后瞬间速度 v_C"
+      },
+      {
+        "no": 2,
+        "name": "滑块 3 沿光滑轨道经圆轨道到 C′",
+        "start": "C 点（速度 v_C）",
+        "end": "C′ 点（速度 v_C′），D 为圆轨道最高点"
+      },
+      {
+        "no": 3,
+        "name": "C′→E→F 经粗糙段后斜抛落地",
+        "start": "C′ 点",
+        "end": "F 点以 v_F 斜抛；落在 GH 段会反弹一次（竖直分速度减半）"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "vc",
+        "text": "碰撞后瞬间滑块 3 的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "h",
+        "text": "恰好通过圆轨道 CDC′ 时的高度"
+      },
+      {
+        "no": "(3)",
+        "quantity": "h",
+        "text": "落入 I 点洞中（游戏成功）时的高度"
+      }
+    ],
+    "assumptions": [
+      "碰撞时间极短、完全非弹性：mv₀＝2mv_C，碰后速度只有碰前的一半",
+      "C 到 C′ 各段光滑、C 与 C′ 等高（同一水平轨道分居圆轨道两侧），故 v_C′＝v_C",
+      "竖直圆轨道最高点 D 的临界用 2mg＝2mv_D²/R（质量是碰后的 2m），C′→D 用机械能守恒",
+      "C′→F 只有 EF 段有摩擦，摩擦力 μ(2m)g cos37°，路程为 EF 段长 L；F 点与高台 GHI 等高",
+      "斜抛落点水平射程由三段间距之和给出：L_FG＋L_GH＋L_HI＝0.4＋0.22＋0.1＝0.72 m",
+      "反弹后水平分速度不变、竖直分速度减半，故飞行时间由 2v_y/g 变为 3v_y/g（＝1.5 倍）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "滑块 1 由 h 处下滑求 v0",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-18-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "完全非弹性碰撞求 v_C",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-18-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "恰好通过圆轨道最高点 D",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-18-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "C′→D 机械能守恒逆推 h",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-18-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "分直落与反弹两种情形",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-18-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "直接落入 I 洞的射程条件",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-18-S06"
+    },
+    {
+      "step_no": 7,
+      "title": "反弹一次后的射程条件",
+      "depends_on": [
+        6
+      ],
+      "expanded": true,
+      "point_hint": "B-18-S07"
+    },
+    {
+      "step_no": 8,
+      "title": "C′→F 动能定理反推 h",
+      "depends_on": [
+        7
+      ],
+      "expanded": true,
+      "point_hint": "B-18-S08"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-18-S01",
+      "step_no": 1,
+      "title": "滑块 1 由 h 处下滑求 v0",
+      "point_id": "B-18-S01",
+      "kind": "equation",
+      "statement": "滑块 1 沿光滑轨道 AB 下滑，机械能守恒：mgh＝½mv₀²；取 h＝0.8 m 得 v₀＝4 m/s。",
+      "equation": {
+        "latex": "m g h = \\frac{1}{2} m v_{0}^{2}",
+        "sympy": "m*g*h - Rational(1,2)*m*v0**2",
+        "symbols": [
+          "g",
+          "h",
+          "m",
+          "v0"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v0",
+        "number": 4.0,
+        "exact": "4",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（g=10、h=0.8、m=0.1、v0=4）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 ½ 本步 0 分；h 取 0.8 m 之外的轨道高度本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-18-S02",
+      "step_no": 2,
+      "title": "完全非弹性碰撞求 v_C",
+      "point_id": "B-18-S02",
+      "kind": "equation",
+      "statement": "滑块 1 与静止的滑块 2 完全非弹性碰撞，动量守恒：mv₀＝2mv_C，得 v_C＝2 m/s。",
+      "equation": {
+        "latex": "m v_{0} = 2 m v_{C}",
+        "sympy": "m*v0 - 2*m*vc",
+        "symbols": [
+          "m",
+          "v0",
+          "vc"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "vc",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（m=0.1、v0=4、vc=2）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "kg·m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把碰后速度写成 v₀ 本步 0 分；质量比取反本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-18-S03",
+      "step_no": 3,
+      "title": "恰好通过圆轨道最高点 D",
+      "point_id": "B-18-S03",
+      "kind": "judgment",
+      "statement": "「恰好通过圆轨道 CDC′」的临界点在最高点 D，且此时做圆周运动的是碰后质量 2m 的滑块 3：2mg＝2m·v_D²/R。",
+      "equation": null,
+      "criterion": {
+        "expr": "2*m*g - 2*m*v**2/R",
+        "expected": 0,
+        "comparator": "eq",
+        "text": "圆轨道内侧最高点恰好通过的临界条件是弹力为零、只有重力提供向心力；此时在轨道上运动的是碰后质量 2m 的滑块 3，故写 2mg＝2m v_D²/R（质量的 2 倍两侧都要带），临界点判在最高点 D 而不是 C 或 C′。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "判据回代成立（R=0.2、g=10、m=0.1、v=1.41421，差值 0）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N（两侧同为力）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "临界用 mg＝mv²/R 且未说明 2m 已约去（即漏碰后质量 2m）本步 0 分；把临界点判在 C 或 C′ 本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-18-S04",
+      "step_no": 4,
+      "title": "C′→D 机械能守恒逆推 h",
+      "point_id": "B-18-S04",
+      "kind": "equation",
+      "statement": "C′→D 机械能守恒（光滑），高度差为 2R：½(2m)v_C′²＝½(2m)v_D²＋(2m)g·2R，得 v_C′＝√10 m/s；再由 v_C′＝v₀′/2、mgh＝½mv₀′² 逆推得 h＝2 m。",
+      "equation": {
+        "latex": "m v_{C'}^{2} = m v_{D}^{2} + 4 m g R",
+        "sympy": "m*v1**2 - m*v**2 - 4*m*g*R",
+        "symbols": [
+          "R",
+          "g",
+          "m",
+          "v",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "h",
+        "number": 2.0,
+        "exact": "2",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-09",
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（R=0.2、g=10、m=0.1、v=1.41421、v1=3.16228）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏「碰后质量加倍」本步 0 分；高度差取 R（应为 2R）本步 0 分；本步的 h 是第 (2) 问的高度＝2 m，与第 (1) 问给定的 h＝0.8 m 不是同一个值",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-18-S05",
+      "step_no": 5,
+      "title": "分直落与反弹两种情形",
+      "point_id": "B-18-S05",
+      "kind": "judgment",
+      "statement": "落入 I 洞有两条路径：由 F 点直接落入（射程恰为 0.72 m）；或先落在 GH 段、反弹一次后再落入 I。两情形都要列，只讨论一种会漏解。",
+      "equation": null,
+      "criterion": {
+        "expr": "branch_enumeration",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "滑块 3 从 F 点斜抛后可能一次落地就进洞，也可能先落在 GH 段（反弹后水平分速度不变、竖直分速度减半）再落进 I；题给「落在 GH 段才反弹」是分情形的前提，因此必须按「直接落入」与「反弹一次后落入」两条分支分别列射程条件——只写一种情形即漏解。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-01",
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "定性判据（comparator=qualitative），无数值可回代",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m（两种情形的射程都按长度计）",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只讨论一种情形本步 0 分；把反弹后竖直分速度也当作不变本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-18-S06",
+      "step_no": 6,
+      "title": "直接落入 I 洞的射程条件",
+      "point_id": "B-18-S06",
+      "kind": "equation",
+      "statement": "直接落入：水平射程等于 FG＋GH＋HI＝0.4＋0.22＋0.1＝0.72 m，飞行时间 2v_F sin37°/g，故 0.72＝v_F cos37°·(2v_F sin37°/g)，得 v_F²＝7.5。",
+      "equation": {
+        "latex": "s_{1} + s_{2} + d = v_{F} \\cos 37° \\cdot \\frac{2 v_{F} \\sin 37°}{g}",
+        "sympy": "s1 + s2 + d - v2*Rational(4,5)*2*v2*Rational(3,5)/g",
+        "symbols": [
+          "d",
+          "g",
+          "s1",
+          "s2",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v2",
+        "number": 2.7386127875258306,
+        "exact": "sqrt(15/2)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（d=0.1、g=10、s1=0.4、s2=0.22、v2=2.73861）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m：(m/s)·(m/s)/(m/s²)＝m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "射程漏 L_FG 或 L_HI 本步 0 分；飞行时间漏 2 倍本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-18-S07",
+      "step_no": 7,
+      "title": "反弹一次后的射程条件",
+      "point_id": "B-18-S07",
+      "kind": "equation",
+      "statement": "反弹一次：竖直分速度减半后仍占半程，总飞行时间由 2v_F′sin37°/g 变为 3v_F′sin37°/g（1.5 倍），射程仍为 0.72 m，得 v_F′²＝5。",
+      "equation": {
+        "latex": "s_{1} + s_{2} + d = v_{F'} \\cos 37° \\cdot \\frac{3 v_{F'} \\sin 37°}{g}",
+        "sympy": "s1 + s2 + d - v2p*Rational(4,5)*3*v2p*Rational(3,5)/g",
+        "symbols": [
+          "d",
+          "g",
+          "s1",
+          "s2",
+          "v2p"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v2p",
+        "number": 2.23606797749979,
+        "exact": "sqrt(5)",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（d=0.1、g=10、s1=0.4、s2=0.22、v2p=2.23607）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "时间仍用 2 倍（未含反弹增加的半程）本步 0 分；反弹后水平分速度也减半本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-18-S08",
+      "step_no": 8,
+      "title": "C′→F 动能定理反推 h",
+      "point_id": "B-18-S08",
+      "kind": "discussion",
+      "statement": "由 C′→F 的动能定理（EF 段摩擦 μ(2m)g cos37°·L）把 v_F 反推成 v_C′，再由 v_C′＝v₀/2、mgh＝½mv₀² 得 h：直接落入分支 v_F²＝7.5 → v_C″²＝12.5 → h＝2.5 m；反弹分支 v_F′²＝5 → v_C″²＝10 → h＝2 m。答案 h＝2.5 m 或 2 m。",
+      "equation": {
+        "latex": "\\frac{1}{2}(2 m) v_{F}^{2} = \\frac{1}{2}(2 m) v_{C'}^{2} - (2 m g \\sin 37° + \\mu \\cdot 2 m g \\cos 37°) L",
+        "sympy": "Rational(1,2)*2*m*v2**2 - Rational(1,2)*2*m*v1p**2 + (2*m*g*Rational(3,5) + mu*2*m*g*Rational(4,5))*L",
+        "symbols": [
+          "L",
+          "g",
+          "m",
+          "mu",
+          "v1p",
+          "v2"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "h",
+        "number": 2.5,
+        "exact": "5/2",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-08"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（L=0.3125、g=10、m=0.1、mu=0.25、v1p=3.53553、v2=2.73861）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 EF 段摩擦项本步 0 分；只给一个 h 值本步 0 分",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-18-S01",
+        "step_id": "B-18-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-18-S02",
+        "step_id": "B-18-S02",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-18-S03",
+        "step_id": "B-18-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-18-S04",
+        "step_id": "B-18-S04",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-18-S05",
+        "step_id": "B-18-S05",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-18-S06",
+        "step_id": "B-18-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-18-S07",
+        "step_id": "B-18-S07",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-18-S08",
+        "step_id": "B-18-S08",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 11,
+    "score_total": 11,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：下滑＋完全非弹性碰撞＋竖直圆轨道最高点临界＋EF 段摩擦＋双分支斜抛（含反弹竖直分速度减半）；L1 逐式数值回代；11/11 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

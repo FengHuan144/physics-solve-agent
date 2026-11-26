@@ -1,0 +1,37 @@
+{
+  "qid": "A-06",
+  "variant": "v1",
+  "prompt_file": "v1_zero.md",
+  "prompt_sha256": "e3c9ae2b055541b9f4bc01190f4446fb70c6c505ecd81451c71c6baaea136308",
+  "prompt_chars": 291,
+  "stem_sha256": "313c31809ce7bc9312ecc51bf0cca21987e80e7e853d8c7dd29705941f26b818",
+  "model_requested": "deepseek-flash",
+  "temperature": 0.0,
+  "max_tokens": 8192,
+  "created_at": "2026-11-25T09:07:13+08:00",
+  "attempts": [
+    {
+      "ok": false,
+      "status": 402,
+      "elapsed_s": 0.532,
+      "error": "{\"error\":{\"message\":\"Insufficient Balance (request_id: 5ef3ae87-f161-4453-a313-e0d1fcfc40ac)\",\"type\":\"insufficient_balance_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+    },
+    {
+      "ok": false,
+      "status": 402,
+      "elapsed_s": 0.545,
+      "error": "{\"error\":{\"message\":\"Insufficient Balance (request_id: 8df3679d-6a54-4b3a-8ef4-8ed54dc65432)\",\"type\":\"insufficient_balance_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+    },
+    {
+      "ok": false,
+      "status": 402,
+      "elapsed_s": 0.504,
+      "error": "{\"error\":{\"message\":\"Insufficient Balance (request_id: 1e861095-8ab0-4398-96d0-2f2c7cb87929)\",\"type\":\"insufficient_balance_error\",\"param\":null,\"code\":\"invalid_request_error\"}}"
+    }
+  ],
+  "ok": false,
+  "failure": "api_error",
+  "content": "",
+  "usage": {},
+  "elapsed_s": null
+}

@@ -1,0 +1,176 @@
+{
+  "givens": [
+    {"symbol": "L", "value": 0.5, "unit": "m", "text": "两钉间距 L＝0.5 m（题干给出）"},
+    {"symbol": "l", "value": 1.5, "unit": "m", "text": "轻绳长 l＝3L＝1.5 m（题干给出）"},
+    {"symbol": "m", "value": 0.1, "unit": "kg", "text": "小球质量 m＝0.1 kg（题干给出）"},
+    {"symbol": "v0", "value": 10, "unit": "m/s", "text": "初速度 v₀＝10 m/s（题干给出）"},
+    {"symbol": "g", "value": 10, "unit": "m/s^2", "text": "重力加速度 g＝10 m/s²（题干给出）"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "v＝3√10 m/s，Tmax＝19 N", "steps": [1, 2, 3, 4, 5, 6]},
+    {"no": "(2)(ⅰ)", "result": "x＝3 m", "steps": [7, 8, 9, 10]},
+    {"no": "(2)(ⅱ)", "result": "v0min＝5√2 m/s", "steps": [11, 12, 13, 14, 15, 16]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "确定两段半径",
+      "kind": "judgment",
+      "stmt": "由绳长 3L 和几何关系可知，初始小球在 N 正下方，绕 N 的半径 R1=2L；断绳点在 M 正下方距 M 为 L，绕 M 的半径 R2=L；断点比初位置高 L。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "能确定两段圆周半径及初末高度差"
+    },
+    {
+      "no": 2,
+      "title": "初态到断点能量",
+      "kind": "equation",
+      "stmt": "从初态到断绳点，绳中张力不做功，只有重力做功，按机械能守恒有 v0²-v²=2gL。",
+      "eq": "v0**2 - v**2 - 2*g*L",
+      "value": null,
+      "score": 1,
+      "point": "列出初态到断点的机械能守恒方程"
+    },
+    {
+      "no": 3,
+      "title": "求断点速度",
+      "kind": "value",
+      "stmt": "代入 v0=10 m/s、g=10 m/s²、L=0.5 m，得 v²=90，故 v=3√10 m/s（约9.49 m/s）。",
+      "eq": "v**2 - 90",
+      "value": {"symbol": "v", "number": 9.486832980505138, "exact": "3*sqrt(10)", "unit": "m/s"},
+      "score": 1,
+      "point": "算出断绳时速度大小"
+    },
+    {
+      "no": 4,
+      "title": "判断最大拉力点",
+      "kind": "judgment",
+      "stmt": "绕 M 运动阶段半径保持 L；从 M 左侧到 M 正下方高度降低、速率增大，且正下方时重力沿径向向外，故该点所需拉力最大。",
+      "eq": null,
+      "value": null,
+      "score": 0.5,
+      "point": "判断最大拉力出现在 M 正下方断点"
+    },
+    {
+      "no": 5,
+      "title": "断点径向方程",
+      "kind": "equation",
+      "stmt": "在 M 正下方取径向向上为正，绳拉力和重力共同提供向心力：T-mg=mv²/L。",
+      "eq": "T - m*g - m*v**2/L",
+      "value": null,
+      "score": 0.5,
+      "point": "列出断点处的向心力方程"
+    },
+    {
+      "no": 6,
+      "title": "求最大拉力",
+      "kind": "value",
+      "stmt": "代入 m=0.1 kg、g=10 m/s²、v²=90、L=0.5 m，得 Tmax=19 N。",
+      "eq": "T - 19",
+      "value": {"symbol": "T", "number": 19, "exact": "19", "unit": "N"},
+      "score": 0.5,
+      "point": "算出最大拉力 19 N"
+    },
+    {
+      "no": 7,
+      "title": "判断平抛运动",
+      "kind": "judgment",
+      "stmt": "断点处速度水平向右，距地面高度 h=L=0.5 m；断绳后只受重力，做平抛运动。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "判断平抛并确定抛出高度和速度方向"
+    },
+    {
+      "no": 8,
+      "title": "竖直方向方程",
+      "kind": "equation",
+      "stmt": "竖直方向为自由落体，满足 L=1/2 gt²。",
+      "eq": "L - Rational(1,2)*g*t**2",
+      "value": null,
+      "score": 1,
+      "point": "列出平抛竖直方向方程"
+    },
+    {
+      "no": 9,
+      "title": "求平抛时间",
+      "kind": "value",
+      "stmt": "代入 L=0.5 m、g=10 m/s²，得 t²=1/10，故 t=√10/10 s。",
+      "eq": "t**2 - Rational(1,10)",
+      "value": {"symbol": "t", "number": 0.31622776601683794, "exact": "sqrt(10)/10", "unit": "s"},
+      "score": 1,
+      "point": "求出平抛运动时间"
+    },
+    {
+      "no": 10,
+      "title": "求水平距离",
+      "kind": "value",
+      "stmt": "水平方向匀速，x=vt；代入 v=3√10 m/s、t=√10/10 s，得 x=3 m。",
+      "eq": "x - v*t",
+      "value": {"symbol": "x", "number": 3, "exact": "3", "unit": "m"},
+      "score": 1,
+      "point": "算出平抛水平距离 3 m"
+    },
+    {
+      "no": 11,
+      "title": "确定临界位置",
+      "kind": "judgment",
+      "stmt": "要到达 N 的正上方，小球先在以 N 为圆心、半径 2L 的圆弧上运动；该圆弧上不断升高，最高点就是 N 的正上方，是否松弛以该点最危险。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "确定临界点为 N 正上方并明确半径 2L"
+    },
+    {
+      "no": 12,
+      "title": "最高点临界方程",
+      "kind": "equation",
+      "stmt": "在 N 正上方，临界不松弛条件为绳拉力刚好为零，此时重力提供向心力：m v1²/(2L)=mg。",
+      "eq": "m*v1**2/(2*L) - m*g",
+      "value": null,
+      "score": 1,
+      "point": "列出最高点临界向心力方程"
+    },
+    {
+      "no": 13,
+      "title": "初态到最高点能量",
+      "kind": "equation",
+      "stmt": "从初态到 N 正上方，只有重力做功，机械能守恒，初末高度差为 4L。",
+      "eq": "Rational(1,2)*v0min**2 - Rational(1,2)*v1**2 - 4*g*L",
+      "value": null,
+      "score": 1,
+      "point": "列出初态到 N 正上方的能量方程"
+    },
+    {
+      "no": 14,
+      "title": "消去最高点速度",
+      "kind": "equation",
+      "stmt": "将 v1²=2gL 代入能量方程，得 v0min²=10gL。",
+      "eq": "v0min**2 - 10*g*L",
+      "value": null,
+      "score": 1,
+      "point": "消去 v1 得初速度平方条件"
+    },
+    {
+      "no": 15,
+      "title": "说明全程不松弛",
+      "kind": "judgment",
+      "stmt": "在到达 N 正上方前的上升圆弧上，速率逐渐减小且重力沿径向的分量使绳拉力逐渐减小，故最高点满足不松弛即可保证全程不松弛。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "说明最高点条件可保证全程绳不松弛"
+    },
+    {
+      "no": 16,
+      "title": "求最小初速度",
+      "kind": "value",
+      "stmt": "代入 g=10 m/s²、L=0.5 m，得 v0min²=50，故最小值 v0min=5√2 m/s（约7.07 m/s）。",
+      "eq": "v0min**2 - 50",
+      "value": {"symbol": "v0min", "number": 7.0710678118654755, "exact": "5*sqrt(2)", "unit": "m/s"},
+      "score": 1,
+      "point": "算出最小初速度 5√2 m/s"
+    }
+  ]
+}

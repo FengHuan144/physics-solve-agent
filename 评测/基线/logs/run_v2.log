@@ -1,0 +1,25 @@
+[模型] deepseek-chat 不在可用列表，继续探测
+[模型] 请求名=deepseek-flash ｜ 可用=['deepseek-flash', 'deepseek-v4-pro']
+[跳过] v2/A-06 已存在
+[跳过] v2/A-08 已存在
+[跳过] v2/A-09 已存在
+[跳过] v2/A-10 已存在
+[跳过] v2/B-01 已存在
+[跳过] v2/B-02 已存在
+[跳过] v2/B-03 已存在
+[跳过] v2/B-04 已存在
+[跳过] v2/B-05 已存在
+[跳过] v2/B-06 已存在
+[跳过] v2/B-07 已存在
+[OK] v2/B-08  22.2s  finish=stop  tok=268+3670
+[OK] v2/B-09  21.9s  finish=stop  tok=313+3825
+[OK] v2/B-10  102.1s  finish=stop  tok=325+7590
+[OK] v2/B-12  31.7s  finish=stop  tok=320+5045
+[OK] v2/B-13  58.3s  finish=stop  tok=321+5897
+[OK] v2/B-15  273.1s  finish=stop  tok=280+23657
+[OK] v2/B-16  48.6s  finish=stop  tok=244+7249
+[OK] v2/B-17  198.5s  finish=stop  tok=320+18162
+[OK] v2/B-18  253.8s  finish=stop  tok=477+25044
+[OK] v2/B-19  23.2s  finish=stop  tok=261+3737
+[OK] v2/B-20  188.7s  finish=stop  tok=419+18504
+[汇总] v2 → {'OK': 11, 'FAIL': 0, 'skip': 11}

@@ -1,0 +1,22 @@
+{
+  "qid": "B-12",
+  "tag": "_t26fix",
+  "draft": "B-12_draft.json",
+  "call": "B-12_call.json",
+  "cm": {
+    "model": "deepseek-flash",
+    "temperature": 0.2,
+    "latency_ms": 0,
+    "tokens_in": 1083,
+    "tokens_out": 8242
+  },
+  "n_steps": 10,
+  "n_gold": 9,
+  "n_eq": 10,
+  "issues": [],
+  "n_e": 0,
+  "n_w": 1,
+  "e_lines": [],
+  "chained": true,
+  "note": "离线重转：未调用 API，cm 取自 raw/B-12_call.json"
+}

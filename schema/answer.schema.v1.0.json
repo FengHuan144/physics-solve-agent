@@ -1,0 +1,444 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://physics-agent.local/schema/answer.schema.json",
+  "title": "步骤单元解析 answer",
+  "description": "一条解析 = 一次生成尝试的产物。五个环节（S1-S5）共用；四层质检按步定位；老师按步驳回。draft-07，所有对象 additionalProperties:false。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "meta", "question", "situation", "outline", "steps", "grading", "validation", "triage", "review"],
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "description": "Schema 版本。改动字段即改版本号，不许原地兼容。"
+    },
+    "meta": {"$ref": "#/definitions/meta"},
+    "question": {"$ref": "#/definitions/question"},
+    "situation": {"$ref": "#/definitions/situation"},
+    "outline": {
+      "type": "array",
+      "minItems": 1,
+      "description": "步骤大纲。支撑「先出大纲再逐步展开」：expanded=false 表示尚未展开，允许部分完成。",
+      "items": {"$ref": "#/definitions/outline_item"}
+    },
+    "steps": {
+      "type": "array",
+      "description": "已展开的步骤单元。step_no 必须 ⊆ outline，且严格递增。允许只覆盖大纲的前 k 步（部分完成）。",
+      "items": {"$ref": "#/definitions/step"}
+    },
+    "grading": {"$ref": "#/definitions/grading"},
+    "validation": {"$ref": "#/definitions/validation"},
+    "triage": {"$ref": "#/definitions/triage"},
+    "review": {"$ref": "#/definitions/review"}
+  },
+  "definitions": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["answer_id", "question_id", "group", "source", "question_no", "full_score", "mode", "model", "prompt_version", "temperature", "generated_at", "latency_ms", "tokens", "stem_source"],
+      "properties": {
+        "answer_id": {
+          "type": "string",
+          "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?$",
+          "description": "本次解析的标识。同一题多次生成时用 -R2/-R3 区分，与 question_id 不同。"
+        },
+        "question_id": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}$", "description": "金标题号，与采分点表 point_id 的前缀一致（A-06）。"},
+        "group": {"enum": ["A", "B"], "description": "A 压轴 / B 作业。指标必须分组报，故进 Schema。"},
+        "source": {"type": "string", "minLength": 2, "maxLength": 40},
+        "question_no": {"type": "integer", "minimum": 1},
+        "full_score": {"type": "number", "exclusiveMinimum": 0, "description": "卷面分。必须等于 grading.score_total 与各小问分值之和。"},
+        "mode": {
+          "enum": ["gold", "free", "rewrite"],
+          "description": "gold 下 steps[].point_id 必填；free 下由 S5 回填，允许暂空；rewrite 只改失败步，steps 可为子集且 rewrite_rounds>=1。"
+        },
+        "model": {"type": "string", "minLength": 1, "maxLength": 60},
+        "prompt_version": {"type": "string", "minLength": 1, "maxLength": 20},
+        "temperature": {"type": "number", "minimum": 0, "maximum": 2},
+        "generated_at": {"type": "string", "format": "date-time"},
+        "latency_ms": {"type": "integer", "minimum": 0},
+        "tokens": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["in", "out"],
+          "properties": {
+            "in": {"type": "integer", "minimum": 0},
+            "out": {"type": "integer", "minimum": 0}
+          }
+        },
+        "stem_source": {
+          "enum": ["original", "summary", "reconstructed"],
+          "description": "题干来源。summary = 40-80 字要点，不足以拆点；reconstructed = 由采分点反推复原，须标注。"
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stem_text", "stem_sha256", "figures", "subquestions"],
+      "properties": {
+        "stem_text": {"type": "string", "minLength": 10},
+        "stem_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$", "description": "stem_text 的 sha256（UTF-8 原文字节）。扰动实验靠它确认题干真的变了。"},
+        "figures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fig_no", "caption", "caption_source", "is_required"],
+            "properties": {
+              "fig_no": {"type": "integer", "minimum": 1},
+              "caption": {"type": "string", "minLength": 2},
+              "caption_source": {"enum": ["vlm", "human", "summary", "none"], "description": "none 表示该图无 caption，则依赖图题必须降级为人工。"},
+              "is_required": {"type": "boolean", "description": "对应采分点表「依赖图」列：题干必须配图才能唯一确定情境。"}
+            }
+          }
+        },
+        "subquestions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["no", "text", "score"],
+            "properties": {
+              "no": {"type": "string", "pattern": "^\\(\\d+\\)$"},
+              "text": {"type": "string", "minLength": 2},
+              "score": {"type": "number", "exclusiveMinimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "situation": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "S1 情境解析的四要素。缺任一要素，S2 无从建模。",
+      "required": ["objects", "given", "process_segments", "targets", "assumptions"],
+      "properties": {
+        "objects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "name", "mass_symbol", "note"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^obj\\d+$"},
+              "name": {"type": "string", "minLength": 1},
+              "mass_symbol": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$", "description": "T09 symbol_id，不许写 m₁ 这类 Unicode 下标。"},
+              "note": {"type": "string"}
+            }
+          }
+        },
+        "given": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["symbol", "value", "unit", "text"],
+            "properties": {
+              "symbol": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$"},
+              "value": {"type": ["number", "null"], "description": "非数值条件（如 M=m）填 null，在 text 里写清。"},
+              "unit": {"type": "string", "pattern": "^[A-Za-z0-9/^*.·-]+$", "description": "无量纲写 1。"},
+              "text": {"type": "string", "minLength": 2}
+            }
+          }
+        },
+        "process_segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["no", "name", "start", "end"],
+            "properties": {
+              "no": {"type": "integer", "minimum": 1},
+              "name": {"type": "string", "minLength": 1},
+              "start": {"type": "string", "minLength": 1},
+              "end": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["no", "quantity", "text"],
+            "properties": {
+              "no": {"type": "string", "pattern": "^\\(\\d+\\)$"},
+              "quantity": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$"},
+              "text": {"type": "string", "minLength": 2}
+            }
+          }
+        },
+        "assumptions": {"type": "array", "items": {"type": "string", "minLength": 2}}
+      }
+    },
+    "outline_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step_no", "title", "depends_on", "expanded"],
+      "properties": {
+        "step_no": {"type": "integer", "minimum": 1},
+        "title": {"type": "string", "minLength": 2, "maxLength": 40},
+        "depends_on": {
+          "type": "array",
+          "items": {"type": "integer", "minimum": 1},
+          "description": "前序 step_no。空数组表示无前置。"
+        },
+        "expanded": {"type": "boolean", "description": "false = 只出了大纲、还没展开成 step。部分完成时靠它读数。"},
+        "point_hint": {"type": ["string", "null"], "pattern": "^[A-Z]{1,3}-\\d{2}-S\\d{2}$", "description": "S1 阶段对采分点的猜测，可空。最终以 steps[].point_id 为准。"}
+      }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step_id", "step_no", "title", "point_id", "kind", "statement", "equation", "value", "law_ids", "checks", "confidence", "status"],
+      "properties": {
+        "step_id": {
+          "type": "string",
+          "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?-S\\d{2}$",
+          "description": "本次解析的第几步。free 模式下必须与 point_id 拉开（如 A-06-R2-S01），否则 S5 对齐无从判断。"
+        },
+        "step_no": {"type": "integer", "minimum": 1},
+        "title": {"type": "string", "minLength": 2, "maxLength": 40},
+        "point_id": {
+          "type": ["string", "null"],
+          "pattern": "^[A-Z]{1,3}-\\d{2}-S\\d{2}$",
+          "description": "金标采分点。gold 必填且须在采分点表存在；free 由 S5 回填；null 表示尚未对齐。"
+        },
+        "kind": {
+          "enum": ["judgment", "equation", "value", "discussion", "critical"],
+          "description": "对应采分点五类：①judgment 状态判断 ②equation 原始方程 ③value 过程量与结果 ④discussion 结果规范 ⑤critical 临界与范围。"
+        },
+        "statement": {"type": "string", "minLength": 5, "description": "这一步在说什么。给老师看的一句话，不是解题过程。"},
+        "equation": {"$ref": "#/definitions/equation"},
+        "value": {"$ref": "#/definitions/value"},
+        "law_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^L-\\d{2}$"},
+          "description": "T10 的 law_id（L-01…L-12）。equation / critical 步不得为空；judgment 步可空。"
+        },
+        "checks": {"type": "array", "items": {"$ref": "#/definitions/check"}},
+        "confidence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "仅用于同批排序，禁止作为通过阈值（方案 D4）。"
+        },
+        "status": {"enum": ["draft", "checked", "failed", "rejected"]}
+      }
+    },
+    "equation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latex", "sympy", "symbols", "parse_status"],
+      "properties": {
+        "latex": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 200,
+          "description": "受限 LaTeX 子集（T09 R8）：frac sqrt cdot times sin cos tan le ge approx ^ _ { } 与 mu theta alpha omega Delta pi，加字母数字。禁 text/mathrm/left/right/begin，禁中文。"
+        },
+        "sympy": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 200,
+          "pattern": "^[^=]+$",
+          "description": "归一化可解析串，写成「左边减右边」=0 的形式（f - mu*m*g）。不许出现等号；分数写 Rational(1,2) 或 S(1)/2，不许裸 1/2；不许小数。"
+        },
+        "symbols": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$"},
+          "description": "T09 symbol_id 引用，不许自由文本。符号必须与 sympy 里实际出现的名字一致。"
+        },
+        "parse_status": {
+          "enum": ["ok", "degraded", "failed"],
+          "description": "解析失败是状态不是判错。degraded 单独统计比例，>20% 停用 L2；不得计入 fail。"
+        }
+      }
+    },
+    "value": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["symbol", "unit"],
+      "description": "本步得出的量。只做判断或只列式的步填 null。",
+      "properties": {
+        "symbol": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9]*$"},
+        "number": {"type": ["number", "null"], "description": "十进制近似值，供 L1 回代。精确值同时写 exact。"},
+        "exact": {"type": ["string", "null"], "maxLength": 40, "description": "精确值字符串，如 5/9、3*sqrt(2*g*R)/2。不许写 0.56 这种近似。", "pattern": "^[0-9A-Za-z+\\-*/().^_ ]+$"},
+        "unit": {"type": "string", "pattern": "^[A-Za-z0-9/^*.·-]+$"},
+        "direction": {"enum": ["+x", "-x", "+y", "-y", "逆时针", "顺时针", null], "description": "只允许这几个值，自由文本方向无法比对。"},
+        "sig_figs": {"type": ["integer", "null"], "minimum": 1, "maximum": 6}
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layer", "status", "detail", "error_code"],
+      "properties": {
+        "layer": {"enum": ["L1", "L2", "L3", "L4"], "description": "checks 只记自动四层。L5 建模与依据仅人工、L6 表达仅辅助，不产生步级自动检查。"},
+        "status": {"enum": ["pass", "fail", "na", "skipped"], "description": "skipped = 因 degraded 停用该层，不是 fail。"},
+        "detail": {"type": "string", "minLength": 1},
+        "error_code": {"$ref": "#/definitions/error_code"}
+      }
+    },
+    "error_code": {
+      "enum": [
+        "E-01", "E-02", "E-03", "E-04", "E-05", "E-06", "E-07", "E-08", "E-09", "E-10",
+        "E-11", "E-12", "E-13", "E-14", "E-15", "E-16",
+        "E-20", "E-21", "E-22", "E-23", "E-24",
+        null
+      ],
+      "description": "取值域 = 错误码枚举 21 条（E-01~E-16、E-20~E-24），不许自创。"
+    },
+    "grading": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["point_hits", "missing_points", "extra_steps", "score_awarded", "score_total", "weighted_rate"],
+      "properties": {
+        "point_hits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["point_id", "step_id", "score_awarded", "score_possible", "hit", "note"],
+            "properties": {
+              "point_id": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}-S\\d{2}$"},
+              "step_id": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?-S\\d{2}$"},
+              "score_awarded": {"type": "number", "minimum": 0},
+              "score_possible": {"type": "number", "exclusiveMinimum": 0, "description": "必须等于采分点表该点的分值。"},
+              "hit": {"type": "boolean", "description": "hit=false 但进 point_hits，表示部分分。"},
+              "note": {"type": "string"}
+            }
+          }
+        },
+        "missing_points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["point_id", "reason"],
+            "properties": {
+              "point_id": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}-S\\d{2}$"},
+              "reason": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "extra_steps": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?-S\\d{2}$"},
+          "description": "有步骤但不对应任何采分点。多写不扣分，但要在界面标出来。"
+        },
+        "score_awarded": {"type": "number", "minimum": 0},
+        "score_total": {"type": "number", "exclusiveMinimum": 0, "description": "必须等于 meta.full_score。"},
+        "weighted_rate": {"type": "number", "minimum": 0, "maximum": 1, "description": "主指标：score_awarded / score_total。校验器会重算，不接受手填。"}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layers", "failures", "zero_point_hit", "rewrite_rounds"],
+      "properties": {
+        "layers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["L1", "L2", "L3", "L4"],
+          "description": "整题层状态。L1 计算(sympy 回代) L2 量纲(pint) L3 边界(扰动/极限) L4 条件一致 L5 建模与依据(仅人工) L6 表达(仅辅助)。",
+          "properties": {
+            "L1": {"$ref": "#/definitions/layer_status"},
+            "L2": {"$ref": "#/definitions/layer_status"},
+            "L3": {"$ref": "#/definitions/layer_status"},
+            "L4": {"$ref": "#/definitions/layer_status"},
+            "L5": {"$ref": "#/definitions/layer_status"},
+            "L6": {"$ref": "#/definitions/layer_status"}
+          }
+        },
+        "failures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["step_id", "layer", "error_code", "detail"],
+            "properties": {
+              "step_id": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?-S\\d{2}$"},
+              "layer": {"enum": ["L1", "L2", "L3", "L4", "L5", "L6"], "description": "失败归到哪一层。L5 的失败只能来自人工标注。"},
+              "error_code": {"$ref": "#/definitions/error_code"},
+              "detail": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "zero_point_hit": {"type": "boolean", "description": "是否触碰归零点（E-01 基数误取 / E-20 图像读数错）。true 则 triage.level 必须 red。"},
+        "rewrite_rounds": {"type": "integer", "minimum": 0, "description": "本题已重写轮数。三档路由靠「重写 2 轮仍失败」区分红档。"}
+      }
+    },
+    "layer_status": {"enum": ["pass", "fail", "na", "skipped"]},
+    "triage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "signals", "reason"],
+      "properties": {
+        "level": {"enum": ["green", "yellow", "red"], "description": "green 自动入库+5% 抽检；yellow 老师快扫；red 全审。归零点命中必须 red。"},
+        "signals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["hard_check", "question_type_prior", "self_rank", "rework_rate"],
+          "properties": {
+            "hard_check": {"enum": ["pass", "partial", "fail"]},
+            "question_type_prior": {"enum": ["high", "mid", "low"], "description": "题型先验风险：多过程/含临界=high。"},
+            "self_rank": {"type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "同批内排序位次（分位数），不是模型自评分绝对值。gold 稿可填 null。"},
+            "rework_rate": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+          }
+        },
+        "reason": {"type": "string", "minLength": 4}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verdict", "rejected_steps", "reason_codes", "diffs", "added_steps", "reordered"],
+      "properties": {
+        "verdict": {"enum": ["pending", "approved", "rejected", "edited"]},
+        "rejected_steps": {"type": "array", "items": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?-S\\d{2}$"}},
+        "reason_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "#/definitions/error_code"},
+          "description": "驳回原因码，取值域 = 21 条错误码，不许自创「建模错/依据错」这类新词。"
+        },
+        "diffs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["step_id", "before", "after"],
+            "properties": {
+              "step_id": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?-S\\d{2}$"},
+              "before": {"type": "string", "minLength": 1},
+              "after": {"type": "string", "minLength": 1}
+            }
+          },
+          "description": "D6：老师的修改必须落成结构化前后文本，自由文本批注沉淀不成规则。"
+        },
+        "added_steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["step_id", "title", "statement"],
+            "properties": {
+              "step_id": {"type": "string", "pattern": "^[A-Z]{1,3}-\\d{2}(-R\\d{1,2})?-S\\d{2}$"},
+              "title": {"type": "string", "minLength": 2},
+              "statement": {"type": "string", "minLength": 5}
+            }
+          }
+        },
+        "reordered": {"type": "boolean"}
+      }
+    }
+  }
+}

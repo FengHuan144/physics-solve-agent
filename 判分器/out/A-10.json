@@ -1,0 +1,136 @@
+{
+  "qid": "A-10",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "A-10-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-10-S01",
+        "A-10-S02"
+      ],
+      "basis": "无锚点：A-10-S01、A-10-S02 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-10-S02",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-10-S03"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：v**2 - Gc*M/r",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-10-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-10-S04"
+      ],
+      "basis": "无锚点：口径要求『球体内质量按体积均匀分布：M₀ = M·(4/3)πr³ ÷ (4/3)πR³ = Mr³/R³』，承载步 A-10-S04 的 statement 写『r≤R 时，球内物质均匀分布，半径 r 内的通常物质质量为 M(r)=M*r^3/R^3。』，无式子可复核（2-gram 覆盖 19%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-10-S04",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-10-S05"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：Gc*M0*m/r**2 - m*v**2/r",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-10-S05",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-10-S06"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：v**2 - Gc*M*r**2/R**3",
+      "uncertain": false
+    },
+    {
+      "point_id": "A-10-S06",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-10-S07"
+      ],
+      "basis": "无锚点：口径要求『“r>R 范围速度几乎不变”即 r = R 与 r = nR 处速率同为 v₀，可对两处分别写引力＝向心』，承载步 A-10-S07 的 statement 写『由题图或题意，r>R 区域恒星速度大小几乎不变，因此取 v(nR)≈v(R)。』，无式子可复核（2-gram 覆盖 18%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-10-S07",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "A-10-S08",
+        "A-10-S09",
+        "A-10-S10",
+        "A-10-S11"
+      ],
+      "basis": "无锚点：A-10-S08、A-10-S09、A-10-S10、A-10-S11 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "A-10-S08",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "A-10-S12"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：Mp - (n-1)*M",
+      "uncertain": false
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "hit": 4,
+    "miss": 0,
+    "na": 4,
+    "score": 4.0,
+    "score_total": 12.0,
+    "judged_rate": "4/8",
+    "hit_rate": "4/4"
+  },
+  "na_reasons": {
+    "无锚点": 4
+  }
+}

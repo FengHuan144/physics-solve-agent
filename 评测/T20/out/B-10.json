@@ -1,0 +1,523 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-10",
+    "question_id": "B-10",
+    "group": "B",
+    "source": "2022 山东卷",
+    "question_no": 16,
+    "full_score": 9,
+    "mode": "free",
+    "model": "deepseek-flash",
+    "prompt_version": "p1",
+    "temperature": 0.2,
+    "generated_at": "2026-11-25T20:47:01+08:00",
+    "latency_ms": 87735,
+    "tokens": {
+      "in": 1088,
+      "out": 16627
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "某粮库使用额定电压 U＝380 V，内阻 R＝0.25 Ω 的电动机运粮，如图所示，配重和电动机连接小车的缆绳均平行于斜坡，装满粮食的小车以速度 v＝2 m/s 沿斜坡匀速上行，此时电流 I＝40 A，关闭电动机后，小车又沿斜坡上行路程 L 到达卸粮点时，速度恰好为零。卸粮后，给小车一个向下的初速度，小车沿斜坡刚好匀速下行。已知小车质量 m₁＝100 kg，车上粮食质量 m₂＝1 200 kg，配重质量 m₀＝40 kg，取重力加速度 g＝10 m/s²，小车运动时受到的摩擦阻力与车及车上粮食总重力成正比，比例系数为 k，配重始终未接触地面，不计电动机自身机械摩擦损耗及缆绳质量。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "斜坡上的小车（载粮）经缆绳与电动机、配重相连，缆绳平行于斜坡；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "比例系数 k 值。",
+        "score": 5
+      },
+      {
+        "no": "(2)",
+        "text": "上行路程 L 值。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "d222586e8a1b8d71764de3363643f60f0a19ff9b9eff000ff7c4626a00484d83",
+    "input_sha256": "42d4ff76774b76eb6ed179dc79d212cb0141364a55fd0e571316f9282deaa320"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小车与粮食",
+        "mass_symbol": "m1",
+        "note": "车 100 kg、粮 1200 kg；沿斜坡上行，受摩擦阻力 k(m₁+m₂)g"
+      },
+      {
+        "id": "obj2",
+        "name": "配重",
+        "mass_symbol": "M",
+        "note": "质量 m₀＝40 kg，经缆绳与小车相连，始终未触地"
+      },
+      {
+        "id": "obj3",
+        "name": "电动机",
+        "mass_symbol": "M",
+        "note": "额定电压 380 V、内阻 0.25 Ω，工作时电流 40 A"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "U",
+        "value": 380.0,
+        "unit": "V",
+        "text": "电动机额定电压 U＝380 V"
+      },
+      {
+        "symbol": "R",
+        "value": 0.25,
+        "unit": "ohm",
+        "text": "电动机内阻 R＝0.25 Ω"
+      },
+      {
+        "symbol": "I",
+        "value": 40.0,
+        "unit": "A",
+        "text": "正常运粮时电流 I＝40 A"
+      },
+      {
+        "symbol": "v",
+        "value": 2.0,
+        "unit": "m/s",
+        "text": "装满粮食的小车匀速上行速度 v＝2 m/s"
+      },
+      {
+        "symbol": "m1",
+        "value": 100.0,
+        "unit": "kg",
+        "text": "小车质量 m₁＝100 kg"
+      },
+      {
+        "symbol": "m2",
+        "value": 1200.0,
+        "unit": "kg",
+        "text": "车上粮食质量 m₂＝1200 kg"
+      },
+      {
+        "symbol": "m0",
+        "value": 40.0,
+        "unit": "kg",
+        "text": "配重质量 m₀＝40 kg"
+      },
+      {
+        "symbol": "g",
+        "value": 10.0,
+        "unit": "m/s^2",
+        "text": "取重力加速度 g＝10 m/s²"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "整题（首跑不分段）",
+        "start": "题设初始状态",
+        "end": "各小问所求量全部求出",
+        "segment_id": "SEG-01",
+        "boundary_reference": "首跑统一 SEG-01；分段能力不在本卡验证范围"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "k",
+        "text": "摩擦阻力比例系数"
+      },
+      {
+        "no": "(2)",
+        "quantity": "L",
+        "text": "关闭电动机后上行的路程"
+      }
+    ],
+    "assumptions": []
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "求电机牵引力F",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 2,
+      "title": "满载上行力平衡",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 3,
+      "title": "空车下行力平衡",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 4,
+      "title": "联立求k",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 5,
+      "title": "关闭后系统运动",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 6,
+      "title": "系统牛顿第二定律",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 7,
+      "title": "求减速度a",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 8,
+      "title": "匀减速到零",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 9,
+      "title": "位移与速度关系",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    },
+    {
+      "step_no": 10,
+      "title": "求上行路程L",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": null
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-10-S01",
+      "step_no": 1,
+      "title": "求电机牵引力F",
+      "point_id": null,
+      "kind": "value",
+      "statement": "电动机正常工作时，输出机械功率等于输入电功率减内阻热功率，即 Fv＝UI－I²R；代入 U＝380 V、I＝40 A、R＝0.25 Ω、v＝2 m/s，得 F＝7400 N。",
+      "equation": {
+        "latex": "F v - U I + I^2 R",
+        "sympy": "F*v - U*I + I**2*R",
+        "symbols": [
+          "F",
+          "R",
+          "U",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "F",
+        "number": 7400.0,
+        "exact": "7400",
+        "unit": "N",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S02",
+      "step_no": 2,
+      "title": "满载上行力平衡",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "设斜面倾角为θ，装满粮食的小车质量 M＝m₁＋m₂＝1300 kg。上行匀速时，电动机牵引力 F 和配重拉力 m₀g 沿斜面向上，重力分力和摩擦力向下，故 F＋m₀g－Mg sinθ－kMg＝0。",
+      "equation": {
+        "latex": "F + m_0 g - (m_1+m_2) g sin(theta) - k (m_1+m_2) g",
+        "sympy": "F + m_0*g - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g",
+        "symbols": [
+          "F",
+          "g",
+          "k",
+          "m",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S03",
+      "step_no": 3,
+      "title": "空车下行力平衡",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "卸粮后空车质量 m₁。小车匀速下行时，重力沿斜面的分力与摩擦力和配重拉力平衡，故 m₁g sinθ－m₀g－km₁g＝0。",
+      "equation": {
+        "latex": "m_1 g sin(theta) - m_0 g - k m_1 g",
+        "sympy": "m_1*g*sin(theta) - m_0*g - k*m_1*g",
+        "symbols": [
+          "g",
+          "k",
+          "m",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S04",
+      "step_no": 4,
+      "title": "联立求k",
+      "point_id": null,
+      "kind": "value",
+      "statement": "联立上面两方程，解得 sinθ＝1/2、k＝1/10。",
+      "equation": {
+        "latex": "k - (1/10)",
+        "sympy": "k - Rational(1,10)",
+        "symbols": [
+          "k"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "k",
+        "number": 0.1,
+        "exact": "1/10",
+        "unit": "1",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S05",
+      "step_no": 5,
+      "title": "关闭后系统运动",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "关闭电动机后，小车与配重仍由缆绳相连，二者速度大小和加速度大小相同；小车继续上行的减速度方向沿斜面向下。取沿斜面向下为正来求该减速度 a。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "明确关闭电动机后系统的连接关系及加速度方向。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S06",
+      "step_no": 6,
+      "title": "系统牛顿第二定律",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "取沿斜面向下为正，满载小车与配重组成的系统受合外力为 (m₁＋m₂)g sinθ＋k(m₁＋m₂)g－m₀g，故 (m₁＋m₂＋m₀)a－(m₁＋m₂)g sinθ－k(m₁＋m₂)g＋m₀g＝0。",
+      "equation": {
+        "latex": "(m_1+m_2+m_0) a - (m_1+m_2) g sin(theta) - k (m_1+m_2) g + m_0 g",
+        "sympy": "(m_1+m_2+m_0)*a - (m_1+m_2)*g*sin(theta) - k*(m_1+m_2)*g + m_0*g",
+        "symbols": [
+          "a",
+          "g",
+          "k",
+          "m",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S07",
+      "step_no": 7,
+      "title": "求减速度a",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 m₁＋m₂＝1300 kg、m₀＝40 kg、k＝1/10、sinθ＝1/2、g＝10 m/s²，得 a＝(6500＋1300－400)/1340＝370/67 m/s²，方向沿斜面向下。",
+      "equation": {
+        "latex": "a - (m_1+m_2) g sin(theta)/(m_1+m_2+m_0) - k (m_1+m_2) g/(m_1+m_2+m_0) + m_0 g/(m_1+m_2+m_0)",
+        "sympy": "a - (m_1+m_2)*g*sin(theta)/(m_1+m_2+m_0) - k*(m_1+m_2)*g/(m_1+m_2+m_0) + m_0*g/(m_1+m_2+m_0)",
+        "symbols": [
+          "a",
+          "g",
+          "k",
+          "m",
+          "theta"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "a",
+        "number": 5.522388059701493,
+        "exact": "370/67",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S08",
+      "step_no": 8,
+      "title": "匀减速到零",
+      "point_id": null,
+      "kind": "judgment",
+      "statement": "关闭电动机后，小车以初速度 v＝2 m/s 沿斜面做匀减速直线运动，到达卸粮点时末速度为零，上行路程为 L。",
+      "equation": null,
+      "criterion": {
+        "expr": "True",
+        "expected": null,
+        "comparator": "qualitative",
+        "text": "判断上行为匀减速运动且末速度为零。"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S09",
+      "step_no": 9,
+      "title": "位移与速度关系",
+      "point_id": null,
+      "kind": "equation",
+      "statement": "由匀变速直线运动规律 v²＝2aL，得 v²－2aL＝0。",
+      "equation": {
+        "latex": "v^2 - 2 a L",
+        "sympy": "v**2 - 2*a*L",
+        "symbols": [
+          "L",
+          "a",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": null,
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    },
+    {
+      "step_id": "B-10-S10",
+      "step_no": 10,
+      "title": "求上行路程L",
+      "point_id": null,
+      "kind": "value",
+      "statement": "代入 v＝2 m/s、a＝370/67 m/s²，得 L＝v²/(2a)＝67/185 m。",
+      "equation": {
+        "latex": "L - v^2/(2 a)",
+        "sympy": "L - v**2/(2*a)",
+        "symbols": [
+          "L",
+          "a",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "segment_id": "SEG-01",
+      "value": {
+        "symbol": "L",
+        "number": 0.3621621621621622,
+        "exact": "67/185",
+        "unit": "m",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [],
+      "checks": [],
+      "confidence": 3,
+      "status": "draft"
+    }
+  ],
+  "grading": {
+    "point_hits": [],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 0,
+    "score_total": 9,
+    "weighted_rate": 0.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "na",
+      "L3": "na",
+      "L4": "na"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "yellow",
+    "signals": {
+      "hard_check": "partial",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "模型首跑稿：结构由代码补齐，未人工核分、未与采分点对齐，按 yellow 走老师快扫；归零点未判"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

@@ -1,0 +1,29 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-04.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-04_validated.json
+
+对象：B-04（题 B-04，10 步）
+L1  pass 1 / fail 0 / na 9 / skipped 0    判定通过率 100.0%    na 比例 90.0%
+L2  pass 0 / fail 1 / na 9 / skipped 0    判定通过率 0.0%    na 比例 90.0%
+整题层状态：{"L1": "na", "L2": "fail", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-04-S01 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-04-S01 [L2] data_error(empty): sympy 串为空
+  - B-04-S02 [L1] per_step：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：P*Rational(3,5) - Q*Rational(4,5)｜chain：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：P*Rational(3,5) - Q*Rational(4,5)
+  - B-04-S02 [L2] data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：P*Rational(3,5) - Q*Rational(4,5)
+  - B-04-S03 [L1] per_step：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：P*Rational(4,5) + Q*Rational(3,5) - m*g｜chain：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：P*Rational(4,5) + Q*Rational(3,5) - m*g
+  - B-04-S03 [L2] data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：P*Rational(4,5) + Q*Rational(3,5) - m*g
+  - B-04-S05 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-04-S05 [L2] data_error(empty): sympy 串为空
+  - B-04-S06 [L1] per_step：data_error(unknown_symbol): 符号「W_G」不在白名单：W_G - m*g*h｜chain：data_error(unknown_symbol): 符号「W_G」不在白名单：W_G - m*g*h
+  - B-04-S06 [L2] data_error(unknown_symbol): 符号「W_G」不在白名单：W_G - m*g*h
+  - B-04-S07 [L1] per_step：data_error(unknown_symbol): 符号「W_G」不在白名单：W_G - 42*10*10｜chain：data_error(unknown_symbol): 符号「W_G」不在白名单：W_G - 42*10*10
+  - B-04-S07 [L2] data_error(unknown_symbol): 符号「W_G」不在白名单：W_G - 42*10*10
+  - B-04-S08 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-04-S08 [L2] data_error(empty): sympy 串为空
+  - B-04-S09 [L1] per_step：data_error(unknown_symbol): 符号「W_G」不在白名单：W_G + W_T｜chain：data_error(unknown_symbol): 符号「W_G」不在白名单：W_G + W_T
+  - B-04-S09 [L2] data_error(unknown_symbol): 符号「W_G」不在白名单：W_G + W_T
+  - B-04-S10 [L1] per_step：data_error(unknown_symbol): 符号「W_T」不在白名单：W_T + 4200｜chain：data_error(unknown_symbol): 符号「W_T」不在白名单：W_T + 4200
+  - B-04-S10 [L2] data_error(unknown_symbol): 符号「W_T」不在白名单：W_T + 4200
+失败：
+  x B-04-S04 [L2/E-12] 加减项量纲不一致：5*P/4 为 kg·m^2/s^3；-g*m 为 kg·m/s^2；值单位 N 的量纲 [mass] * [length] / [time] ** 2 与符号 P 的白名单量纲 [mass] * [length] ** 2 / [time] ** 3 不符
+check 契约校验：0 处违约
+已写：评测\T20\out\B-04_validated.json

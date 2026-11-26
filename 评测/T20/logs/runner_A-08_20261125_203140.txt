@@ -1,0 +1,48 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-08_t26fix.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-08_t26fix_validated.json
+
+对象：A-08（题 A-08，19 步）
+L1  pass 0 / fail 0 / na 19 / skipped 0    判定通过率 —    na 比例 100.0%
+L2  pass 0 / fail 0 / na 19 / skipped 0    判定通过率 —    na 比例 100.0%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-08-S01 [L1] per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2
+  - A-08-S01 [L2] data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2
+  - A-08-S02 [L1] per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2
+  - A-08-S02 [L2] data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - Rational(1,2)*m_a*v_P**2
+  - A-08-S03 [L1] per_step：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - m_a*g - m_a*v_P**2/R｜chain：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - m_a*g - m_a*v_P**2/R
+  - A-08-S03 [L2] data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - m_a*g - m_a*v_P**2/R
+  - A-08-S04 [L1] per_step：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - 3*m_a*g｜chain：data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - 3*m_a*g
+  - A-08-S04 [L2] data_error(reserved): 用了 sympy 保留名「N」，会被静默替换：N - 3*m_a*g
+  - A-08-S05 [L1] per_step：data_error(unknown_symbol): 符号「v_Ma」不在白名单：v_Ma**2 - v_P**2 + 2*mu*g*d｜chain：data_error(unknown_symbol): 符号「v_Ma」不在白名单：v_Ma**2 - v_P**2 + 2*mu*g*d
+  - A-08-S05 [L2] data_error(unknown_symbol): 符号「v_Ma」不在白名单：v_Ma**2 - v_P**2 + 2*mu*g*d
+  - A-08-S06 [L1] per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b*(m_a+m_b) - 2*m_a*v_Ma｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b*(m_a+m_b) - 2*m_a*v_Ma
+  - A-08-S06 [L2] data_error(unknown_symbol): 符号「v_b」不在白名单：v_b*(m_a+m_b) - 2*m_a*v_Ma
+  - A-08-S07 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-08-S07 [L2] data_error(empty): sympy 串为空
+  - A-08-S08 [L1] per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1 - v0｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1 - v0
+  - A-08-S08 [L2] data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - mu*g*t1 - v0
+  - A-08-S09 [L1] per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：s1 - Rational(1,2)*(v_b+v0)*t1｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：s1 - Rational(1,2)*(v_b+v0)*t1
+  - A-08-S09 [L2] data_error(unknown_symbol): 符号「v_b」不在白名单：s1 - Rational(1,2)*(v_b+v0)*t1
+  - A-08-S10 [L1] per_step：data_error(unknown_symbol): 符号「t_total」不在白名单：t_total - t1 - (L - s1)/v0｜chain：data_error(unknown_symbol): 符号「t_total」不在白名单：t_total - t1 - (L - s1)/v0
+  - A-08-S10 [L2] data_error(unknown_symbol): 符号「t_total」不在白名单：t_total - t1 - (L - s1)/v0
+  - A-08-S11 [L1] per_step：data_error(reserved): 用了 sympy 保留名「I」，会被静默替换：I - m_b*(v_1 + v0)｜chain：data_error(reserved): 用了 sympy 保留名「I」，会被静默替换：I - m_b*(v_1 + v0)
+  - A-08-S11 [L2] data_error(reserved): 用了 sympy 保留名「I」，会被静默替换：I - m_b*(v_1 + v0)
+  - A-08-S12 [L1] per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*Delta_t + v0｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*Delta_t + v0
+  - A-08-S12 [L2] data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*Delta_t + v0
+  - A-08-S13 [L1] per_step：data_error(unknown_symbol): 符号「s_rel」不在白名单：s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2｜chain：data_error(unknown_symbol): 符号「s_rel」不在白名单：s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2
+  - A-08-S13 [L2] data_error(unknown_symbol): 符号「s_rel」不在白名单：s_rel - (v_1+v0)*Delta_t + Rational(1,2)*mu*g*Delta_t**2
+  - A-08-S14 [L1] per_step：data_error(unknown_symbol): 符号「d_1」不在白名单：d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2｜chain：data_error(unknown_symbol): 符号「d_1」不在白名单：d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2
+  - A-08-S14 [L2] data_error(unknown_symbol): 符号「d_1」不在白名单：d_1 - v_1*Delta_t + Rational(1,2)*mu*g*Delta_t**2
+  - A-08-S15 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - A-08-S15 [L2] data_error(empty): sympy 串为空
+  - A-08-S16 [L1] per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)
+  - A-08-S16 [L2] data_error(unknown_symbol): 符号「v_1」不在白名单：v_1*t_e - Rational(1,2)*mu*g*t_e**2 - (L - 10*d_1)
+  - A-08-S17 [L1] per_step：data_error(unknown_symbol): 符号「t_e」不在白名单：25*t_e**2 - 20*t_e + 3｜chain：data_error(unknown_symbol): 符号「t_e」不在白名单：25*t_e**2 - 20*t_e + 3
+  - A-08-S17 [L2] data_error(unknown_symbol): 符号「t_e」不在白名单：25*t_e**2 - 20*t_e + 3
+  - A-08-S18 [L1] per_step：data_error(unknown_symbol): 符号「s_e」不在白名单：s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2｜chain：data_error(unknown_symbol): 符号「s_e」不在白名单：s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2
+  - A-08-S18 [L2] data_error(unknown_symbol): 符号「s_e」不在白名单：s_e - (v_1+v0)*t_e + Rational(1,2)*mu*g*t_e**2
+  - A-08-S19 [L1] per_step：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*(10*s_rel + s_e)｜chain：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*(10*s_rel + s_e)
+  - A-08-S19 [L2] data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*(10*s_rel + s_e)
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\A-08_t26fix_validated.json

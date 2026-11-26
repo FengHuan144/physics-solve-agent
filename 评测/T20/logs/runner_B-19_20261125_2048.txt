@@ -1,0 +1,32 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-19.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\B-19_validated.json
+
+对象：B-19（题 B-19，11 步）
+L1  pass 0 / fail 0 / na 11 / skipped 0    判定通过率 —    na 比例 100.0%
+L2  pass 0 / fail 0 / na 11 / skipped 0    判定通过率 —    na 比例 100.0%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - B-19-S01 [L1] per_step：data_error(unknown_symbol): 符号「h1」不在白名单：k*h1 - h2｜chain：data_error(unknown_symbol): 符号「h1」不在白名单：k*h1 - h2
+  - B-19-S01 [L2] data_error(unknown_symbol): 符号「h1」不在白名单：k*h1 - h2
+  - B-19-S02 [L1] per_step：data_error(unknown_symbol): 符号「h3」不在白名单：W + m*g*h3 - E｜chain：data_error(unknown_symbol): 符号「h3」不在白名单：W + m*g*h3 - E
+  - B-19-S02 [L2] data_error(unknown_symbol): 符号「h3」不在白名单：W + m*g*h3 - E
+  - B-19-S03 [L1] per_step：data_error(reserved): 用了 sympy 保留名「E」，会被静默替换：k*E - m*g*h3｜chain：data_error(reserved): 用了 sympy 保留名「E」，会被静默替换：k*E - m*g*h3
+  - B-19-S03 [L2] data_error(reserved): 用了 sympy 保留名「E」，会被静默替换：k*E - m*g*h3
+  - B-19-S04 [L1] per_step：data_error(unknown_symbol): 符号「h3」不在白名单：W - m*g*h3*(h1/h2 - 1)｜chain：data_error(unknown_symbol): 符号「h3」不在白名单：W - m*g*h3*(h1/h2 - 1)
+  - B-19-S04 [L2] data_error(unknown_symbol): 符号「h3」不在白名单：W - m*g*h3*(h1/h2 - 1)
+  - B-19-S05 [L1] per_step：data_error(unknown_symbol): 符号「u」不在白名单：(F + m*g)*t - m*u｜chain：data_error(unknown_symbol): 符号「u」不在白名单：(F + m*g)*t - m*u
+  - B-19-S05 [L2] data_error(unknown_symbol): 符号「u」不在白名单：(F + m*g)*t - m*u
+  - B-19-S06 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：s - u*t/2｜chain：data_error(unknown_symbol): 符号「s」不在白名单：s - u*t/2
+  - B-19-S06 [L2] data_error(unknown_symbol): 符号「s」不在白名单：s - u*t/2
+  - B-19-S07 [L1] per_step：data_error(unknown_symbol): 符号「s」不在白名单：W - F*s｜chain：data_error(unknown_symbol): 符号「s」不在白名单：W - F*s
+  - B-19-S07 [L2] data_error(unknown_symbol): 符号「s」不在白名单：W - F*s
+  - B-19-S08 [L1] per_step：data_error(unknown_symbol): 符号「u」不在白名单：m*u**2 - m*g*t*u - 2*W｜chain：data_error(unknown_symbol): 符号「u」不在白名单：m*u**2 - m*g*t*u - 2*W
+  - B-19-S08 [L2] data_error(unknown_symbol): 符号「u」不在白名单：m*u**2 - m*g*t*u - 2*W
+  - B-19-S09 [L1] per_step：data_error(unknown_symbol): 符号「u」不在白名单：F + m*g - m*u/t｜chain：data_error(unknown_symbol): 符号「u」不在白名单：F + m*g - m*u/t
+  - B-19-S09 [L2] data_error(unknown_symbol): 符号「u」不在白名单：F + m*g - m*u/t
+  - B-19-S10 [L1] per_step：data_error(unknown_symbol): 符号「u」不在白名单：F - (m*u/t - m*g)｜chain：data_error(unknown_symbol): 符号「u」不在白名单：F - (m*u/t - m*g)
+  - B-19-S10 [L2] data_error(unknown_symbol): 符号「u」不在白名单：F - (m*u/t - m*g)
+  - B-19-S11 [L1] per_step：data_error(empty): sympy 串为空｜chain：data_error(empty): sympy 串为空
+  - B-19-S11 [L2] data_error(empty): sympy 串为空
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\B-19_validated.json

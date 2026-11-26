@@ -1,0 +1,566 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-05",
+    "question_id": "B-05",
+    "group": "B",
+    "source": "2025 黑吉辽蒙卷",
+    "question_no": 13,
+    "full_score": 10,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T19:55:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图，一雪块从倾角 θ＝37° 的屋顶上的 O 点由静止开始下滑，滑到 A 点后离开屋顶。O、A 间距离 x＝2.5 m，A 点距地面的高度 h＝1.95 m，雪块与屋顶的动摩擦因数 μ＝0.125。不计空气阻力，雪块质量不变，取 sin 37°＝0.6，重力加速度大小 g＝10 m/s²。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "倾角 37° 的屋顶，雪块自 O 点下滑至 A 点后离开，A 距地面 h；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "雪块从 A 点离开屋顶时的速度大小 v₀。",
+        "score": 4
+      },
+      {
+        "no": "(2)",
+        "text": "雪块落地时的速度大小 v₁，及其速度方向与水平方向的夹角 α。",
+        "score": 6
+      }
+    ],
+    "stem_sha256": "b87cea864ad8f9fdc7e925a41d55a3b2e688014593f02b15bf17f55937e8205e",
+    "input_sha256": "ebffc27aac2aa98750319fa7c470ee10662727e637509476085fb0fc0510ab8e"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "雪块",
+        "mass_symbol": "m",
+        "note": "质量不变（不融化），视为质点；先沿屋顶下滑、后斜抛"
+      },
+      {
+        "id": "obj2",
+        "name": "屋顶",
+        "mass_symbol": "m",
+        "note": "倾角 37°，O 到 A 长 2.5 m"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "x",
+        "value": 2.5,
+        "unit": "m",
+        "text": "O、A 间距离 x＝2.5 m"
+      },
+      {
+        "symbol": "h",
+        "value": 1.95,
+        "unit": "m",
+        "text": "A 点距地面高度 h＝1.95 m"
+      },
+      {
+        "symbol": "mu",
+        "value": 0.125,
+        "unit": "1",
+        "text": "雪块与屋顶动摩擦因数 μ＝0.125"
+      },
+      {
+        "symbol": "g",
+        "value": 10,
+        "unit": "m/s^2",
+        "text": "重力加速度 g＝10 m/s²"
+      },
+      {
+        "symbol": "theta",
+        "value": 37,
+        "unit": "deg",
+        "text": "屋顶倾角 θ＝37°（sin 37°＝0.6、cos 37°＝0.8）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "屋顶匀加速下滑",
+        "start": "雪块在 O 点由静止",
+        "end": "到达 A 点，速度 v（沿屋面向下）"
+      },
+      {
+        "no": 2,
+        "name": "离屋顶后斜抛落地",
+        "start": "雪块以 v 沿 37° 向下飞出",
+        "end": "落到地面，速度 v1"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "v",
+        "text": "离开屋顶时的速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "v1",
+        "text": "落地速度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "angA",
+        "text": "落地速度与水平方向的夹角"
+      }
+    ],
+    "assumptions": [
+      "沿屋顶下滑时正压力 mg cos 37°，摩擦力 μmg cos 37°；sin 37°＝0.6、cos 37°＝0.8",
+      "离开屋顶后只受重力，机械能守恒；斜抛的水平分速度不变",
+      "离开速度与水平方向夹角为 37°（沿屋面向下），故水平分量 v cos 37°＝0.8v",
+      "角度符号 angA 在 nums 中以弧度代入三角函数，在 value 中以度为单位作答"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "沿屋顶：mg sin37° − μmg cos37° = ma",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-05-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "v₀² = 2ax，v = 5 m/s",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-05-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "离屋顶后机械能守恒",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-05-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "v₁ = 8 m/s",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-05-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "水平分速度不变：v₁cos α = v cos37°",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-05-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "cos α = 0.5，α = 60°",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-05-S06"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-05-S01",
+      "step_no": 1,
+      "title": "沿屋顶：mg sin37° − μmg cos37° = ma",
+      "point_id": "B-05-S01",
+      "kind": "equation",
+      "statement": "沿屋面向下：mg sin 37°−μmg cos 37°＝ma，约去 m 得 a＝10×(0.6−0.125×0.8)＝5 m/s²。",
+      "equation": {
+        "latex": "m g \\sin 37° - \\mu m g \\cos 37° = m a",
+        "sympy": "g*Rational(3,5) - mu*g*Rational(4,5) - a",
+        "symbols": [
+          "a",
+          "g",
+          "mu"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "a",
+        "number": 5.0,
+        "exact": "5",
+        "unit": "m/s^2",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-04",
+        "L-05"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a=5、g=10、mu=0.125）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N/kg＝m/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 cos 项或 sin、cos 配错本步 0 分；μ 未取 0.125 本步 0 分；方程对即给分，结果错扣 0.5（1 分步记 0）（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-05-S02",
+      "step_no": 2,
+      "title": "v₀² = 2ax，v = 5 m/s",
+      "point_id": "B-05-S02",
+      "kind": "equation",
+      "statement": "自 O 点静止匀加速 2.5 m：v²＝2ax＝2×5×2.5＝25，v＝5 m/s。",
+      "equation": {
+        "latex": "v^{2} = 2 a x",
+        "sympy": "v**2 - 2*a*x",
+        "symbols": [
+          "a",
+          "v",
+          "x"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v",
+        "number": 5.0,
+        "exact": "5",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-01"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（a=5、v=5、x=2.5）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m²/s²",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 v＝at 又未求 t 本步 0 分；只写 5 不写单位 m/s 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-05-S03",
+      "step_no": 3,
+      "title": "离屋顶后机械能守恒",
+      "point_id": "B-05-S03",
+      "kind": "equation",
+      "statement": "从 A 点到落地只有重力做功：½mv1²＝½mv²＋mgh，即 ½v1²＝½×25＋10×1.95。",
+      "equation": {
+        "latex": "\\frac{1}{2} m v_{1}^{2} = \\frac{1}{2} m v^{2} + m g h",
+        "sympy": "Rational(1,2)*v1**2 - Rational(1,2)*v**2 - g*h",
+        "symbols": [
+          "g",
+          "h",
+          "v",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（g=10、h=1.95、v=5、v1=8）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "各项均为 J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏 ½mv² 项（把离屋顶速度当作零）本步 0 分；高度差取 h 以外的值本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-05-S04",
+      "step_no": 4,
+      "title": "v₁ = 8 m/s",
+      "point_id": "B-05-S04",
+      "kind": "discussion",
+      "statement": "v1²＝25＋39＝64，故 v1＝8 m/s。",
+      "equation": {
+        "latex": "v_{1} = 8",
+        "sympy": "v1 - 8",
+        "symbols": [
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "v1",
+        "number": 8.0,
+        "exact": "8",
+        "unit": "m/s",
+        "direction": null,
+        "sig_figs": 1
+      },
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（v1=8）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 8 不写单位 m/s 本步 0 分；写成 √25+19.5 未化简本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-05-S05",
+      "step_no": 5,
+      "title": "水平分速度不变：v₁cos α = v cos37°",
+      "point_id": "B-05-S05",
+      "kind": "equation",
+      "statement": "斜抛中水平分速度不变：v1 cos α＝v cos 37°＝5×0.8＝4 m/s。",
+      "equation": {
+        "latex": "v_{1} \\cos\\alpha = v \\cos 37°",
+        "sympy": "v1*cos(angA) - v*Rational(4,5)",
+        "symbols": [
+          "angA",
+          "v",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（angA=1.0472、v=5、v1=8）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把 α 当作速度与竖直方向夹角（得 30°）本步 0 分；用 v1 sin α 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-05-S06",
+      "step_no": 6,
+      "title": "cos α = 0.5，α = 60°",
+      "point_id": "B-05-S06",
+      "kind": "discussion",
+      "statement": "cos α＝4/8＝0.5，故 α＝60°。",
+      "equation": {
+        "latex": "\\cos\\alpha = \\frac{1}{2}",
+        "sympy": "cos(angA) - Rational(1,2)",
+        "symbols": [
+          "angA"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "angA",
+        "number": 60.0,
+        "exact": "60",
+        "unit": "deg",
+        "direction": null,
+        "sig_figs": 2
+      },
+      "law_ids": [
+        "L-02"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "pass",
+          "detail": "回代残差 0（angA=1.0472）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "无量纲",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "只写 60 不写单位、或写成 60 rad 本步 0 分；答 30° 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-05-S01",
+        "step_id": "B-05-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-05-S02",
+        "step_id": "B-05-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-05-S03",
+        "step_id": "B-05-S03",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-05-S04",
+        "step_id": "B-05-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-05-S05",
+        "step_id": "B-05-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-05-S06",
+        "step_id": "B-05-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 10,
+    "score_total": 10,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "pass",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：斜面匀加速 + 斜抛机械能守恒与速度分解；L1 逐式回代，10/10 满分"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

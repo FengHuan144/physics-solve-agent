@@ -1,0 +1,117 @@
+{
+  "givens": [
+    {"symbol": "v0", "value": 10, "unit": "m/s", "text": "滑块初速度 v₀＝10 m/s"},
+    {"symbol": "f", "value": 1, "unit": "N", "text": "滑块向上滑动时受滑杆摩擦力 f＝1 N"},
+    {"symbol": "m", "value": 0.2, "unit": "kg", "text": "滑块质量 m＝0.2 kg"},
+    {"symbol": "M", "value": 0.6, "unit": "kg", "text": "滑杆质量 M＝0.6 kg"},
+    {"symbol": "l", "value": 1.2, "unit": "m", "text": "A、B 间距离 l＝1.2 m"},
+    {"symbol": "g", "value": 10, "unit": "m/s^2", "text": "重力加速度 g＝10 m/s²"}
+  ],
+  "sub_results": [
+    {"no": "(1)", "result": "N₁ = 8 N，N₂ = 7 N", "steps": [1, 2, 3, 4]},
+    {"no": "(2)", "result": "v₁ = 8 m/s", "steps": [5, 6]},
+    {"no": "(3)", "result": "h = 0.2 m", "steps": [7, 8, 9, 10]}
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "静止时整体受力平衡",
+      "kind": "equation",
+      "stmt": "滑块静止时，把滑块和滑杆看成整体，竖直方向受总重力和桌面支持力 N₁，由平衡条件得 N₁＝(M＋m)g。",
+      "eq": "N1 - (M + m)*g",
+      "value": null,
+      "score": 1,
+      "point": "能对整体列竖直方向平衡方程"
+    },
+    {
+      "no": 2,
+      "title": "求出静止时支持力",
+      "kind": "value",
+      "stmt": "代入 M＝0.6 kg、m＝0.2 kg、g＝10 m/s²，得 N₁＝8 N。",
+      "eq": "N1 - (M + m)*g",
+      "value": {"symbol": "N1", "number": 8, "exact": "8", "unit": "N"},
+      "score": 1,
+      "point": "算出 N₁＝8 N"
+    },
+    {
+      "no": 3,
+      "title": "滑动时滑杆受力分析",
+      "kind": "equation",
+      "stmt": "滑块向上滑动时，滑块对滑杆的摩擦力方向竖直向上，大小为 f；滑杆静止，受重力 Mg、桌面支持力 N₂ 和摩擦力 f，由平衡条件得 N₂＋f＝Mg。",
+      "eq": "N2 + f - M*g",
+      "value": null,
+      "score": 1,
+      "point": "正确判断滑块对滑杆摩擦力的方向并列出滑杆平衡方程"
+    },
+    {
+      "no": 4,
+      "title": "求出滑动时支持力",
+      "kind": "value",
+      "stmt": "代入 M＝0.6 kg、g＝10 m/s²、f＝1 N，得 N₂＝Mg－f＝5 N，即 N₂＝5 N。",
+      "eq": "N2 + f - M*g",
+      "value": {"symbol": "N2", "number": 5, "exact": "5", "unit": "N"},
+      "score": 1,
+      "point": "算出 N₂＝5 N"
+    },
+    {
+      "no": 5,
+      "title": "滑块上滑列动能定理",
+      "kind": "equation",
+      "stmt": "滑块从 A 到 B 向上滑动过程中，受重力 mg 和摩擦力 f 均做负功，由动能定理得 －mgl－fl＝½mv₁²－½mv₀²。",
+      "eq": "Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2 + m*g*l + f*l",
+      "value": null,
+      "score": 2,
+      "point": "对滑块上滑过程正确列动能定理方程"
+    },
+    {
+      "no": 6,
+      "title": "求出碰前速度",
+      "kind": "value",
+      "stmt": "代入 m＝0.2 kg、g＝10 m/s²、f＝1 N、l＝1.2 m、v₀＝10 m/s，解得 v₁²＝64 (m/s)²，故 v₁＝8 m/s。",
+      "eq": "Rational(1,2)*m*v1**2 - Rational(1,2)*m*v0**2 + m*g*l + f*l",
+      "value": {"symbol": "v1", "number": 8, "exact": "8", "unit": "m/s"},
+      "score": 2,
+      "point": "算出 v₁＝8 m/s"
+    },
+    {
+      "no": 7,
+      "title": "完全非弹性碰撞动量守恒",
+      "kind": "equation",
+      "stmt": "滑块与滑杆发生完全非弹性碰撞，碰后二者以共同速度 v 竖直向上运动，碰撞时间极短，内力远大于外力，动量守恒：mv₁＝(M＋m)v。",
+      "eq": "m*v1 - (M + m)*v",
+      "value": null,
+      "score": 2,
+      "point": "正确选取碰撞过程并列出动量守恒方程"
+    },
+    {
+      "no": 8,
+      "title": "求出碰后共同速度",
+      "kind": "value",
+      "stmt": "代入 m＝0.2 kg、M＝0.6 kg、v₁＝8 m/s，得 v＝mv₁/(M＋m)＝2 m/s。",
+      "eq": "m*v1 - (M + m)*v",
+      "value": {"symbol": "v", "number": 2, "exact": "2", "unit": "m/s"},
+      "score": 1,
+      "point": "算出碰后共同速度 v＝2 m/s"
+    },
+    {
+      "no": 9,
+      "title": "整体上升列机械能守恒",
+      "kind": "equation",
+      "stmt": "碰后滑块和滑杆一起竖直上升，只受重力，机械能守恒；从碰后瞬间到最高点，动能全部转化为重力势能：½(M＋m)v²＝(M＋m)gh。",
+      "eq": "Rational(1,2)*(M + m)*v**2 - (M + m)*g*h",
+      "value": null,
+      "score": 2,
+      "point": "对碰后整体上升过程正确列机械能守恒方程"
+    },
+    {
+      "no": 10,
+      "title": "求出最大高度",
+      "kind": "value",
+      "stmt": "代入 v＝2 m/s、g＝10 m/s²，得 h＝v²/(2g)＝0.2 m。",
+      "eq": "Rational(1,2)*(M + m)*v**2 - (M + m)*g*h",
+      "value": {"symbol": "h", "number": 0.2, "exact": "1/5", "unit": "m"},
+      "score": 1,
+      "point": "算出 h＝0.2 m"
+    }
+  ]
+}

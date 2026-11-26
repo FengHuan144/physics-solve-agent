@@ -1,0 +1,120 @@
+{
+  "qid": "B-04",
+  "mode": "free",
+  "grader_version": "t25-s2",
+  "points": [
+    {
+      "point_id": "B-04-S01",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-04-S01"
+      ],
+      "basis": "无锚点：口径要求『重物缓慢下降→任一时刻处于平衡态，重力与两绳拉力的合力为零』，承载步 B-04-S01 的 statement 写『选重物为研究对象；因重物缓慢竖直下降，每一时刻速度变化可忽略，处于平衡状态，受重力、P绳拉力和Q绳拉力。』，无式子可复核（2-gram 覆盖 44%）",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-04-S02",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "B-04-S02"
+      ],
+      "basis": "方程与采分点完全同式（eqsim=1.0）：F1*Rational(3,5) - F2*Rational(4,5)",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-04-S03",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        2.0
+      ],
+      "by": [
+        "B-04-S03"
+      ],
+      "basis": "欠定：B-04-S03 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-04-S04",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-04-S10"
+      ],
+      "basis": "L1/L2 全 pass：B-04-S10；方程 W + 4200",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-04-S05",
+      "credit": "na",
+      "score": 0.0,
+      "score_range": [
+        0.0,
+        1.0
+      ],
+      "by": [
+        "B-04-S08",
+        "B-04-S09"
+      ],
+      "basis": "无锚点：B-04-S08、B-04-S09 的 L1/L2 未给出 pass/fail",
+      "uncertain": true
+    },
+    {
+      "point_id": "B-04-S06",
+      "credit": "hit",
+      "score": 2.0,
+      "score_range": [
+        2.0,
+        2.0
+      ],
+      "by": [
+        "B-04-S10"
+      ],
+      "basis": "L1/L2 全 pass：B-04-S10；方程 W + 4200",
+      "uncertain": false
+    },
+    {
+      "point_id": "B-04-S07",
+      "credit": "hit",
+      "score": 1.0,
+      "score_range": [
+        1.0,
+        1.0
+      ],
+      "by": [
+        "B-04-S10"
+      ],
+      "basis": "L1/L2 全 pass：B-04-S10；方程 W + 4200",
+      "uncertain": false
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "hit": 4,
+    "miss": 0,
+    "na": 3,
+    "score": 6.0,
+    "score_total": 10.0,
+    "judged_rate": "4/7",
+    "hit_rate": "4/4"
+  },
+  "na_reasons": {
+    "无锚点": 2,
+    "欠定": 1
+  }
+}

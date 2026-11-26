@@ -1,0 +1,56 @@
+$ C:\Users\34357\.workbuddy\binaries\python\versions\3.13.12\python.exe -m 验证器.cli D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-08_nothink.json --out D:\峤的个人档案\做点东西\物理解题agent\评测\T20\out\A-08_nothink_validated.json
+
+对象：A-08（题 A-08，23 步）
+L1  pass 0 / fail 0 / na 23 / skipped 0    判定通过率 —    na 比例 100.0%
+L2  pass 0 / fail 0 / na 23 / skipped 0    判定通过率 —    na 比例 100.0%
+整题层状态：{"L1": "na", "L2": "na", "L3": "na", "L4": "na"}
+数据错误（不静默修，已跳过）：
+  - A-08-S01 [L1] per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - m_a*v_P**Rational(2,2)｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - m_a*v_P**Rational(2,2)
+  - A-08-S01 [L2] data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*g*R - m_a*v_P**Rational(2,2)
+  - A-08-S02 [L1] per_step：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P**2 - 2*g*R｜chain：data_error(unknown_symbol): 符号「v_P」不在白名单：v_P**2 - 2*g*R
+  - A-08-S02 [L2] data_error(unknown_symbol): 符号「v_P」不在白名单：v_P**2 - 2*g*R
+  - A-08-S03 [L1] per_step：data_error(unknown_symbol): 符号「F_N」不在白名单：F_N - m_a*g - m_a*v_P**2/R｜chain：data_error(unknown_symbol): 符号「F_N」不在白名单：F_N - m_a*g - m_a*v_P**2/R
+  - A-08-S03 [L2] data_error(unknown_symbol): 符号「F_N」不在白名单：F_N - m_a*g - m_a*v_P**2/R
+  - A-08-S04 [L1] per_step：data_error(unknown_symbol): 符号「v_M」不在白名单：v_M**2 - v_P**2 + 2*mu*g*d｜chain：data_error(unknown_symbol): 符号「v_M」不在白名单：v_M**2 - v_P**2 + 2*mu*g*d
+  - A-08-S04 [L2] data_error(unknown_symbol): 符号「v_M」不在白名单：v_M**2 - v_P**2 + 2*mu*g*d
+  - A-08-S05 [L1] per_step：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*v_M - m_a*v_a2 - m_b*v_b + (m_a*v_M**Rational(2,2) - m_a*v_a2**Rational(2,2) - m_b*v_b**Rational(2,2))｜chain：data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*v_M - m_a*v_a2 - m_b*v_b + (m_a*v_M**Rational(2,2) - m_a*v_a2**Rational(2,2) - m_b*v_b**Rational(2,2))
+  - A-08-S05 [L2] data_error(unknown_symbol): 符号「m_a」不在白名单：m_a*v_M - m_a*v_a2 - m_b*v_b + (m_a*v_M**Rational(2,2) - m_a*v_a2**Rational(2,2) - m_b*v_b**Rational(2,2))
+  - A-08-S06 [L1] per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - 2*m_a*v_M/(m_a + m_b)｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - 2*m_a*v_M/(m_a + m_b)
+  - A-08-S06 [L2] data_error(unknown_symbol): 符号「v_b」不在白名单：v_b - 2*m_a*v_M/(m_a + m_b)
+  - A-08-S07 [L1] per_step：data_error(unknown_symbol): 符号「v_b」不在白名单：d - v_b*t + mu*g*t**Rational(2,2)｜chain：data_error(unknown_symbol): 符号「v_b」不在白名单：d - v_b*t + mu*g*t**Rational(2,2)
+  - A-08-S07 [L2] data_error(unknown_symbol): 符号「v_b」不在白名单：d - v_b*t + mu*g*t**Rational(2,2)
+  - A-08-S08 [L1] per_step：data_error(unknown_symbol): 符号「v_N」不在白名单：v_N - v_b + mu*g*t｜chain：data_error(unknown_symbol): 符号「v_N」不在白名单：v_N - v_b + mu*g*t
+  - A-08-S08 [L2] data_error(unknown_symbol): 符号「v_N」不在白名单：v_N - v_b + mu*g*t
+  - A-08-S09 [L1] per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - v_N - I/m_b｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - v_N - I/m_b
+  - A-08-S09 [L2] data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - v_N - I/m_b
+  - A-08-S10 [L1] per_step：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*t_1｜chain：data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*t_1
+  - A-08-S10 [L2] data_error(unknown_symbol): 符号「v_1」不在白名单：v_1 - mu*g*t_1
+  - A-08-S11 [L1] per_step：data_error(unknown_symbol): 符号「v_2」不在白名单：v_2 + mu*g*t_2｜chain：data_error(unknown_symbol): 符号「v_2」不在白名单：v_2 + mu*g*t_2
+  - A-08-S11 [L2] data_error(unknown_symbol): 符号「v_2」不在白名单：v_2 + mu*g*t_2
+  - A-08-S12 [L1] per_step：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - v_2 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - v_2 - I/m_b
+  - A-08-S12 [L2] data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - v_2 - I/m_b
+  - A-08-S13 [L1] per_step：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - mu*g*t_3｜chain：data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - mu*g*t_3
+  - A-08-S13 [L2] data_error(unknown_symbol): 符号「v_3」不在白名单：v_3 - mu*g*t_3
+  - A-08-S14 [L1] per_step：data_error(unknown_symbol): 符号「v_4」不在白名单：v_4 + mu*g*t_4｜chain：data_error(unknown_symbol): 符号「v_4」不在白名单：v_4 + mu*g*t_4
+  - A-08-S14 [L2] data_error(unknown_symbol): 符号「v_4」不在白名单：v_4 + mu*g*t_4
+  - A-08-S15 [L1] per_step：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - v_4 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - v_4 - I/m_b
+  - A-08-S15 [L2] data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - v_4 - I/m_b
+  - A-08-S16 [L1] per_step：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - mu*g*t_5｜chain：data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - mu*g*t_5
+  - A-08-S16 [L2] data_error(unknown_symbol): 符号「v_5」不在白名单：v_5 - mu*g*t_5
+  - A-08-S17 [L1] per_step：data_error(unknown_symbol): 符号「v_6」不在白名单：v_6 + mu*g*t_6｜chain：data_error(unknown_symbol): 符号「v_6」不在白名单：v_6 + mu*g*t_6
+  - A-08-S17 [L2] data_error(unknown_symbol): 符号「v_6」不在白名单：v_6 + mu*g*t_6
+  - A-08-S18 [L1] per_step：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - v_6 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - v_6 - I/m_b
+  - A-08-S18 [L2] data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - v_6 - I/m_b
+  - A-08-S19 [L1] per_step：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - mu*g*t_7｜chain：data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - mu*g*t_7
+  - A-08-S19 [L2] data_error(unknown_symbol): 符号「v_7」不在白名单：v_7 - mu*g*t_7
+  - A-08-S20 [L1] per_step：data_error(unknown_symbol): 符号「v_8」不在白名单：v_8 + mu*g*t_8｜chain：data_error(unknown_symbol): 符号「v_8」不在白名单：v_8 + mu*g*t_8
+  - A-08-S20 [L2] data_error(unknown_symbol): 符号「v_8」不在白名单：v_8 + mu*g*t_8
+  - A-08-S21 [L1] per_step：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - v_8 - I/m_b｜chain：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - v_8 - I/m_b
+  - A-08-S21 [L2] data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - v_8 - I/m_b
+  - A-08-S22 [L1] per_step：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - mu*g*t_9｜chain：data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - mu*g*t_9
+  - A-08-S22 [L2] data_error(unknown_symbol): 符号「v_9」不在白名单：v_9 - mu*g*t_9
+  - A-08-S23 [L1] per_step：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*2*(2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5))｜chain：data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*2*(2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5))
+  - A-08-S23 [L2] data_error(reserved): 用了 sympy 保留名「Q」，会被静默替换：Q - mu*m_b*g*2*(2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5) + 2*Rational(1,10) + 2*Rational(2,5))
+失败：无
+check 契约校验：0 处违约
+已写：评测\T20\out\A-08_nothink_validated.json

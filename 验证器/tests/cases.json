@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "base": "A-06.json",
+  "note": "人造反例：在 A-06 金标（10 步真数据）上做单点变异。每条都写明「期望被什么层、以什么错误码抓到」，以及「期望哪些步失败」——后者防过度报错（一个错点炸出一串 fail）。",
+  "cases": [
+    {
+      "id": "C01",
+      "name": "E-10 代入代数错：两只眼都该看见",
+      "why": "S08 的 v2 由 1 改成 2。per_step 解本步方程得 1；chain 代入全题后 S08 残差 1（尺度 2，容差 0.04）。",
+      "mutations": [
+        {"op": "value_number", "step": "A-06-S08", "value": 2.0}
+      ],
+      "expect": [
+        {"step": "A-06-S08", "layer": "L1", "status": "fail", "error_code": "E-10"}
+      ],
+      "expect_fail_steps": ["A-06-S08"]
+    },
+    {
+      "id": "C02",
+      "name": "E-10 代入代数错：只有 per_step 能定位",
+      "why": "S02 的 a1 由 3 改成 4。方程 mu*m*g=m*a1 里 m 是自由符号，chain 的残差是 -m（符号量），只能给 na；per_step 用前序已知解出 a1=3，能抓。",
+      "mutations": [
+        {"op": "value_number", "step": "A-06-S02", "value": 4.0}
+      ],
+      "expect": [
+        {"step": "A-06-S02", "layer": "L1", "status": "fail", "error_code": "E-10"}
+      ],
+      "expect_fail_steps": ["A-06-S02"]
+    },
+    {
+      "id": "C03",
+      "name": "E-12 量纲不符",
+      "why": "S04 把 1/2·a2·t² 写成 1/2·a2·t：左边 m/s，右边 m。L2 报 E-12。该步 L1 本来也会判 E-10（式子变了，解出的 t=1/9），但那是同一个病灶的症状，按 §10-4 去重降为 na——失败只计一次。",
+      "mutations": [
+        {"op": "sympy", "step": "A-06-S04",
+         "value": "Rational(1,2)*a2*t - L/6",
+         "symbols": ["a2", "t", "L"]}
+      ],
+      "expect": [
+        {"step": "A-06-S04", "layer": "L2", "status": "fail", "error_code": "E-12"},
+        {"step": "A-06-S04", "layer": "L1", "status": "na"}
+      ],
+      "expect_fail_steps": ["A-06-S04"]
+    },
+    {
+      "id": "C04",
+      "name": "E-11 单位缺失",
+      "why": "S10 的 value.unit 置空。L2 报 E-11；L1 完全不受影响（数值仍对）。",
+      "mutations": [
+        {"op": "value_unit", "step": "A-06-S10", "value": ""}
+      ],
+      "expect": [
+        {"step": "A-06-S10", "layer": "L2", "status": "fail", "error_code": "E-11"},
+        {"step": "A-06-S10", "layer": "L1", "status": "pass"}
+      ],
+      "expect_fail_steps": ["A-06-S10"]
+    },
+    {
+      "id": "C05",
+      "name": "E-04 项遗漏（导致矛盾 → 必须抓）",
+      "why": "S05 删掉 -s2。v0/t/a1/L 全都已知，chain 残差 1/6（尺度 4/3，容差 0.027）；逐项试「只改一个值」都不能让全题归零（改 v0 会撞 S06，改 a1 会把 S02 变成符号式，改 L 会撞 S04），所以只能报结构性问题 E-04。",
+      "mutations": [
+        {"op": "sympy", "step": "A-06-S05",
+         "value": "v0*t - Rational(1,2)*a1*t**2 - L",
+         "symbols": ["v0", "t", "a1", "L"]}
+      ],
+      "expect": [
+        {"step": "A-06-S05", "layer": "L1", "status": "fail", "error_code": "E-04"}
+      ],
+      "expect_fail_steps": ["A-06-S05"]
+    },
+    {
+      "id": "C06",
+      "name": "E-04 项遗漏（不导致矛盾 → 必须如实报抓不到）",
+      "why": "S01 删掉 f-，方程剩 -mu*m*g。f 和 m 都没有数值，残差始终是符号量，L1 只能给 na。这正是「验证器不是判分器」的边界：不许为了凑数把它判成 fail。",
+      "mutations": [
+        {"op": "sympy", "step": "A-06-S01",
+         "value": "-mu*m*g",
+         "symbols": ["mu", "m", "g"]}
+      ],
+      "expect": [
+        {"step": "A-06-S01", "layer": "L1", "status": "na"}
+      ],
+      "expect_fail_steps": []
+    },
+    {
+      "id": "C07",
+      "name": "欠定不是失败：单方程三未知",
+      "why": "整题换成一步 m·v1 - m·v2 = F·t，5 个符号全无数值。欠定是正常的列方程状态，必须 na，不许 fail（卡 §1.3 / 陷阱 2）。",
+      "mutations": [
+        {"op": "given", "value": []},
+        {"op": "steps", "value": [
+          {
+            "step_id": "A-06-S01",
+            "step_no": 1,
+            "title": "欠定测试",
+            "point_id": null,
+            "kind": "equation",
+            "statement": "单方程三未知，模拟「先列方程、最后联立」的正常步骤",
+            "equation": {
+              "latex": "m v_1 - m v_2 = F t",
+              "sympy": "m*v1 - m*v2 - F*t",
+              "symbols": ["m", "v1", "v2", "F", "t"],
+              "parse_status": "ok"
+            },
+            "value": null,
+            "law_ids": ["L-11"],
+            "checks": [],
+            "confidence": 3,
+            "status": "draft"
+          }
+        ]}
+      ],
+      "expect": [
+        {"step": "A-06-S01", "layer": "L1", "status": "na"}
+      ],
+      "expect_fail_steps": []
+    },
+    {
+      "id": "C08",
+      "name": "degraded 必须是 skipped，且不进统计",
+      "why": "S03 标 degraded。L1/L2 都停用该层，status=skipped（不是 na、不是 fail），且该步不计入分子分母。",
+      "mutations": [
+        {"op": "parse_status", "step": "A-06-S03", "value": "degraded"}
+      ],
+      "expect": [
+        {"step": "A-06-S03", "layer": "L1", "status": "skipped"},
+        {"step": "A-06-S03", "layer": "L2", "status": "skipped"}
+      ],
+      "expect_fail_steps": [],
+      "expect_stats": {
+        "L1": {"pass": 5, "fail": 0, "na": 4, "skipped": 1},
+        "L2": {"pass": 9, "fail": 0, "na": 0, "skipped": 1}
+      }
+    },
+    {
+      "id": "C09",
+      "name": "data_error：sympy 串里出现等号（不静默 split）",
+      "why": "S04 的 sympy 写成「=」形式。Schema 硬规定左边减右边；出现等号是上游数据问题——报 data_error、该步 L1/L2 都不判，不许自己 split 成两个式子。",
+      "mutations": [
+        {"op": "sympy", "step": "A-06-S04",
+         "value": "Rational(1,2)*a2*t**2 = L/6",
+         "symbols": ["a2", "t", "L"]}
+      ],
+      "expect": [
+        {"step": "A-06-S04", "layer": "L1", "status": "na"},
+        {"step": "A-06-S04", "layer": "L2", "status": "na"}
+      ],
+      "expect_fail_steps": [],
+      "expect_data_errors": ["A-06-S04"]
+    },
+    {
+      "id": "C10",
+      "name": "data_error：白名单外符号（小写 l 未归一为 L）",
+      "why": "白名单只有大写 L（字段清单 §4 记过 l→L 的归一化缺口）。验证器不许自作主张把 l 换成 L，报 unknown_symbol 并跳过该步。",
+      "mutations": [
+        {"op": "sympy", "step": "A-06-S04",
+         "value": "Rational(1,2)*a2*t**2 - l/6",
+         "symbols": ["a2", "t", "l"]}
+      ],
+      "expect": [
+        {"step": "A-06-S04", "layer": "L1", "status": "na"},
+        {"step": "A-06-S04", "layer": "L2", "status": "na"}
+      ],
+      "expect_fail_steps": [],
+      "expect_data_errors": ["A-06-S04"]
+    },
+    {
+      "id": "C11",
+      "name": "去重不能吞掉独立缺陷：值单位错 + 数值错，两条都要留",
+      "why": "S08 同时改两处：v2 由 1 改成 2（L1 该报 E-10），value.unit 改成 m/s^2（L2 该报 E-12）。此时方程本身量纲是对的，L1 的失败不是 L2 的症状——去重若照吞，就漏掉一个真算错的数。",
+      "mutations": [
+        {"op": "value_number", "step": "A-06-S08", "value": 2.0},
+        {"op": "value_unit", "step": "A-06-S08", "value": "m/s^2"}
+      ],
+      "expect": [
+        {"step": "A-06-S08", "layer": "L1", "status": "fail", "error_code": "E-10"},
+        {"step": "A-06-S08", "layer": "L2", "status": "fail", "error_code": "E-12"}
+      ],
+      "expect_fail_steps": ["A-06-S08"]
+    }
+  ]
+}

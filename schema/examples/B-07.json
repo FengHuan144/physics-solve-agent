@@ -1,0 +1,558 @@
+{
+  "schema_version": "1.2.1",
+  "meta": {
+    "answer_id": "B-07",
+    "question_id": "B-07",
+    "group": "B",
+    "source": "2023 北京卷",
+    "question_no": 18,
+    "full_score": 9,
+    "mode": "gold",
+    "model": "human-gold",
+    "prompt_version": "p1",
+    "temperature": 0,
+    "generated_at": "2026-11-25T20:10:00+08:00",
+    "latency_ms": 0,
+    "tokens": {
+      "in": 0,
+      "out": 0
+    },
+    "stem_source": "original"
+  },
+  "question": {
+    "stem_text": "如图所示，质量为 m 的小球 A 用一不可伸长的轻绳悬挂在 O 点，在 O 点正下方的光滑桌面上有一个与 A 完全相同的静止小球 B，B 距 O 点的距离等于绳长 L。现将 A 拉至某一高度，由静止释放，A 以速度 v 在水平方向和 B 发生正碰并粘在一起。重力加速度为 g。求：",
+    "figures": [
+      {
+        "fig_no": 1,
+        "caption": "轻绳悬于 O 点、球 A 拉至高度 H 释放，O 正下方桌面上的球 B；原文无图题",
+        "caption_source": "none",
+        "is_required": false,
+        "file": null,
+        "file_sha256": null
+      }
+    ],
+    "subquestions": [
+      {
+        "no": "(1)",
+        "text": "A 释放时距桌面的高度 H。",
+        "score": 2
+      },
+      {
+        "no": "(2)",
+        "text": "碰撞前瞬间绳子的拉力大小 F。",
+        "score": 3
+      },
+      {
+        "no": "(3)",
+        "text": "碰撞过程中系统损失的机械能 ΔE。",
+        "score": 4
+      }
+    ],
+    "stem_sha256": "2ed4fdc7469378521d867b7d009a4b0e8f796150ce40cfdf18082bfe31e21f83",
+    "input_sha256": "3062a7b55a6f66c5ddc76ac335884dd053ad59bde8ff723dfe82a687b96e61fa"
+  },
+  "situation": {
+    "objects": [
+      {
+        "id": "obj1",
+        "name": "小球 A",
+        "mass_symbol": "m",
+        "note": "质量 m，用长 L 的轻绳悬于 O 点，自高度 H 释放"
+      },
+      {
+        "id": "obj2",
+        "name": "小球 B",
+        "mass_symbol": "m",
+        "note": "与 A 完全相同（质量 m），静止在 O 正下方桌面"
+      }
+    ],
+    "given": [
+      {
+        "symbol": "m",
+        "value": null,
+        "unit": "kg",
+        "text": "A、B 质量均为 m（符号量）"
+      },
+      {
+        "symbol": "L",
+        "value": null,
+        "unit": "m",
+        "text": "绳长 L，B 距 O 点也为 L（符号量）"
+      },
+      {
+        "symbol": "v",
+        "value": null,
+        "unit": "m/s",
+        "text": "A 与 B 碰前的速度 v（符号量）"
+      },
+      {
+        "symbol": "g",
+        "value": null,
+        "unit": "m/s^2",
+        "text": "重力加速度 g（符号量）"
+      }
+    ],
+    "process_segments": [
+      {
+        "no": 1,
+        "name": "A 下摆至最低点",
+        "start": "A 在高度 H 处静止释放",
+        "end": "A 到达最低点，速度 v"
+      },
+      {
+        "no": 2,
+        "name": "A 与 B 完全非弹性碰撞",
+        "start": "A 在最低点与静止的 B 接触",
+        "end": "两者粘在一起，共同速度 v′"
+      }
+    ],
+    "targets": [
+      {
+        "no": "(1)",
+        "quantity": "H",
+        "text": "释放高度"
+      },
+      {
+        "no": "(2)",
+        "quantity": "F",
+        "text": "碰前瞬间绳的拉力"
+      },
+      {
+        "no": "(3)",
+        "quantity": "Qheat",
+        "text": "碰撞损失的机械能"
+      }
+    ],
+    "assumptions": [
+      "绳不可伸长、下摆过程拉力始终与速度垂直，不做功；只有重力做功，机械能守恒",
+      "最低点绳竖直，向心方向竖直向上：F−mg 提供向心力",
+      "碰后粘在一起 ⇒ 完全非弹性碰撞：动量守恒、动能减少，共同速度 v′＝v/2",
+      "损失机械能记作 Qheat（白名单无 ΔE，见回执 §需上报）"
+    ]
+  },
+  "outline": [
+    {
+      "step_no": 1,
+      "title": "A 下摆：mgH = ½mv²",
+      "depends_on": [],
+      "expanded": true,
+      "point_hint": "B-07-S01"
+    },
+    {
+      "step_no": 2,
+      "title": "最低点沿绳方向列向心力式",
+      "depends_on": [
+        1
+      ],
+      "expanded": true,
+      "point_hint": "B-07-S02"
+    },
+    {
+      "step_no": 3,
+      "title": "F = mg + mv²/L",
+      "depends_on": [
+        2
+      ],
+      "expanded": true,
+      "point_hint": "B-07-S03"
+    },
+    {
+      "step_no": 4,
+      "title": "粘在一起 ⇒ 完全非弹性，v′ = v/2",
+      "depends_on": [
+        3
+      ],
+      "expanded": true,
+      "point_hint": "B-07-S04"
+    },
+    {
+      "step_no": 5,
+      "title": "ΔE = ½mv² − ½·2m·v′²",
+      "depends_on": [
+        4
+      ],
+      "expanded": true,
+      "point_hint": "B-07-S05"
+    },
+    {
+      "step_no": 6,
+      "title": "ΔE = ¼mv²",
+      "depends_on": [
+        5
+      ],
+      "expanded": true,
+      "point_hint": "B-07-S06"
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "B-07-S01",
+      "step_no": 1,
+      "title": "A 下摆：mgH = ½mv²",
+      "point_id": "B-07-S01",
+      "kind": "equation",
+      "statement": "A 自高度 H 静止下摆到最低点，绳拉力不做功：mgH＝½mv²。",
+      "equation": {
+        "latex": "m g H = \\frac{1}{2} m v^{2}",
+        "sympy": "m*g*H - Rational(1,2)*m*v**2",
+        "symbols": [
+          "H",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-09"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：H、g、m、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "用绳长 L 代替高度 H 本步 0 分；写成 mgH＝mv²（漏 ½）本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-07-S02",
+      "step_no": 2,
+      "title": "最低点沿绳方向列向心力式",
+      "point_id": "B-07-S02",
+      "kind": "equation",
+      "statement": "最低点绳竖直向上，拉力与重力的合力提供向心力：F−mg＝mv²/L。",
+      "equation": {
+        "latex": "F - m g = m \\frac{v^{2}}{L}",
+        "sympy": "F - m*g - m*v**2/L",
+        "symbols": [
+          "F",
+          "L",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：F、L、g、m、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 F＝mv²/L（漏重力）本步 0 分；分母用 H 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-07-S03",
+      "step_no": 3,
+      "title": "F = mg + mv²/L",
+      "point_id": "B-07-S03",
+      "kind": "discussion",
+      "statement": "F＝mg＋mv²/L；若用 H 表示，由 v²＝2gH 得 F＝mg＋2mgH/L，但最终结果不得含未消去的 H。",
+      "equation": {
+        "latex": "F = m g + m \\frac{v^{2}}{L}",
+        "sympy": "F - m*g - m*v**2/L",
+        "symbols": [
+          "F",
+          "L",
+          "g",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "F",
+        "number": null,
+        "exact": "m*g + m*v^2/L",
+        "unit": "N",
+        "direction": "+y",
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-06"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：F、L、g、m、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "N",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "结果含未消去的 H 本步 0 分；写成 F＝mg−mv²/L 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-07-S04",
+      "step_no": 4,
+      "title": "粘在一起 ⇒ 完全非弹性，v′ = v/2",
+      "point_id": "B-07-S04",
+      "kind": "judgment",
+      "statement": "两球碰后粘在一起，是完全非弹性碰撞：动量守恒 mv＝2mv′，故共同速度 v′＝v/2（不是弹性碰撞的「B 得 v、A 停」）。",
+      "equation": null,
+      "criterion": {
+        "expr": "v1",
+        "expected": "v/2",
+        "comparator": "eq",
+        "text": "粘在一起 ⇒ 完全非弹性碰撞，动量守恒 mv＝2mv′，得 v′＝v/2；弹性碰撞的结论不适用。"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "判据含无给定数值的符号 v、v1，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "m/s",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "把碰撞当作弹性（B 得 v、A 停）本步 0 分；只写「动量守恒」未给出 v′ 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-07-S05",
+      "step_no": 5,
+      "title": "ΔE = ½mv² − ½·2m·v′²",
+      "point_id": "B-07-S05",
+      "kind": "equation",
+      "statement": "碰撞损失的机械能等于碰前总动能减碰后总动能：ΔE＝½mv²−½·2m·v′²。",
+      "equation": {
+        "latex": "\\Delta E = \\frac{1}{2} m v^{2} - \\frac{1}{2} \\cdot 2 m v_{1}^{2}",
+        "sympy": "Qheat - (Rational(1,2)*m*v**2 - Rational(1,2)*2*m*v1**2)",
+        "symbols": [
+          "Qheat",
+          "m",
+          "v",
+          "v1"
+        ],
+        "parse_status": "ok"
+      },
+      "value": null,
+      "law_ids": [
+        "L-12",
+        "L-10"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Qheat、m、v、v1 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "漏碰后动能项（把 ΔE 写成 ½mv²）本步 0 分；碰后质量写成 m 本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    },
+    {
+      "step_id": "B-07-S06",
+      "step_no": 6,
+      "title": "ΔE = ¼mv²",
+      "point_id": "B-07-S06",
+      "kind": "discussion",
+      "statement": "代入 v′＝v/2：ΔE＝½mv²−m·(v²/4)＝¼mv²。",
+      "equation": {
+        "latex": "\\Delta E = \\frac{1}{4} m v^{2}",
+        "sympy": "Qheat - Rational(1,4)*m*v**2",
+        "symbols": [
+          "Qheat",
+          "m",
+          "v"
+        ],
+        "parse_status": "ok"
+      },
+      "value": {
+        "symbol": "Qheat",
+        "number": null,
+        "exact": "m*v^2/4",
+        "unit": "J",
+        "direction": null,
+        "sig_figs": null
+      },
+      "law_ids": [
+        "L-12",
+        "L-10"
+      ],
+      "checks": [
+        {
+          "layer": "L1",
+          "status": "na",
+          "detail": "全符号题：Qheat、m、v 无给定数值，无法数值回代（只做量纲与符号闭合）",
+          "error_code": null
+        },
+        {
+          "layer": "L2",
+          "status": "pass",
+          "detail": "J",
+          "error_code": null
+        },
+        {
+          "layer": "L4",
+          "status": "pass",
+          "detail": "写成 ½mv² 或 ⅛mv² 本步 0 分；结果含 v′ 未消去本步 0 分（口径）",
+          "error_code": null
+        }
+      ],
+      "confidence": 5,
+      "status": "checked"
+    }
+  ],
+  "grading": {
+    "point_hits": [
+      {
+        "point_id": "B-07-S01",
+        "step_id": "B-07-S01",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-07-S02",
+        "step_id": "B-07-S02",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-07-S03",
+        "step_id": "B-07-S03",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-07-S04",
+        "step_id": "B-07-S04",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-07-S05",
+        "step_id": "B-07-S05",
+        "score_awarded": 2,
+        "score_possible": 2,
+        "hit": true,
+        "note": ""
+      },
+      {
+        "point_id": "B-07-S06",
+        "step_id": "B-07-S06",
+        "score_awarded": 1,
+        "score_possible": 1,
+        "hit": true,
+        "note": ""
+      }
+    ],
+    "missing_points": [],
+    "extra_steps": [],
+    "score_awarded": 9,
+    "score_total": 9,
+    "weighted_rate": 1.0
+  },
+  "validation": {
+    "layers": {
+      "L1": "na",
+      "L2": "pass",
+      "L3": "na",
+      "L4": "pass"
+    },
+    "failures": [],
+    "zero_point_hit": false,
+    "rewrite_rounds": 0
+  },
+  "triage": {
+    "level": "green",
+    "signals": {
+      "hard_check": "pass",
+      "question_type_prior": "high",
+      "self_rank": null,
+      "rework_rate": null
+    },
+    "reason": "金标参考解：全符号 + 摆球机械能守恒 + 最低点向心力 + 完全非弹性碰撞；L1 全步 na"
+  },
+  "review": {
+    "verdict": "pending",
+    "rejected_steps": [],
+    "reason_codes": [],
+    "diffs": [],
+    "added_steps": [],
+    "reordered": false
+  }
+}

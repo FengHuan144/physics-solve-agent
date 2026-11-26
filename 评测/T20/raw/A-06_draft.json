@@ -1,0 +1,207 @@
+{
+  "givens": [
+    {
+      "symbol": "l",
+      "value": 1.0,
+      "unit": "m",
+      "text": "薄板长度 l＝1.0 m"
+    },
+    {
+      "symbol": "m",
+      "value": null,
+      "unit": "kg",
+      "text": "物块与薄板质量相等，均为 m"
+    },
+    {
+      "symbol": "μ",
+      "value": 0.3,
+      "unit": "1",
+      "text": "物块与薄板间动摩擦因数 μ＝0.3"
+    },
+    {
+      "symbol": "g",
+      "value": 10,
+      "unit": "m/s^2",
+      "text": "重力加速度 g＝10 m/s²"
+    },
+    {
+      "symbol": "Δl",
+      "value": 0.1666666667,
+      "unit": "m",
+      "text": "薄板运动距离 Δl＝l/6＝1/6 m（由 l＝1.0 m 得）"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "v0 = 4 m/s，t1 = 1/3 s",
+      "steps": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "no": "(2)(ⅰ)",
+      "result": "物块离板后到薄板中心到 O 的时间 t2 = 1/3 s",
+      "steps": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "no": "(2)(ⅱ)",
+      "result": "平台距地面的高度 H = 5/9 m",
+      "steps": [
+        9,
+        10,
+        11
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "摩擦力与加速度",
+      "kind": "equation",
+      "stmt": "取向右为正。物块受摩擦力向左，薄板受摩擦力向右，大小均为 μmg；由牛顿第二定律得 a1＝－μg，a2＝μg。",
+      "eq": "f - mu*m*g + a1 + a2",
+      "value": null,
+      "score": 1,
+      "point": "写出滑动摩擦力大小 μmg，并由质量相等得出两物体加速度等大反向。"
+    },
+    {
+      "no": 2,
+      "title": "由板位移求时间",
+      "kind": "value",
+      "stmt": "薄板从静止开始做匀加速运动，运动 Δl＝l/6 时物块离板，代入 a2＝μg＝3 m/s²、l＝1.0 m，求时间 t1。",
+      "eq": "Rational(1,2)*3*t1**2 - Rational(1,6)",
+      "value": {
+        "symbol": "t1",
+        "number": 0.3333333333,
+        "exact": "1/3",
+        "unit": "s"
+      },
+      "score": 1,
+      "point": "由薄板位移 Δl＝l/6 列运动学方程并求出 t1＝1/3 s。"
+    },
+    {
+      "no": 3,
+      "title": "物块位移关系",
+      "kind": "equation",
+      "stmt": "从开始到物块离板，物块相对薄板向右移动 l，薄板又向右移动 l/6，因此物块对地位移为 l＋l/6；物块对地做匀减速运动。",
+      "eq": "v0*t1 - Rational(1,2)*mu*g*t1**2 - Rational(7,6)*l",
+      "value": null,
+      "score": 1,
+      "point": "写出分离时物块绝对位移等于 l＋l/6，并联立物块匀减速位移公式。"
+    },
+    {
+      "no": 4,
+      "title": "求物块初速度",
+      "kind": "value",
+      "stmt": "把 t1＝1/3 s、μ＝0.3、g＝10 m/s²、l＝1.0 m 代入物块位移关系，求得物块初速度 v0。",
+      "eq": "v0*Rational(1,3) - Rational(1,2)*3*(Rational(1,3))**2 - Rational(7,6)",
+      "value": {
+        "symbol": "v0",
+        "number": 4,
+        "exact": "4",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "代入时间与已知量，正确求出物块初速度 v0＝4 m/s。"
+    },
+    {
+      "no": 5,
+      "title": "离板后板匀速",
+      "kind": "judgment",
+      "stmt": "物块从薄板右端飞出后，薄板在光滑平台上水平方向不再受摩擦力，因此薄板保持匀速直线运动。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "识别物块离板后薄板水平方向不受力，后续运动为匀速。"
+    },
+    {
+      "no": 6,
+      "title": "分离时板速度",
+      "kind": "value",
+      "stmt": "薄板从静止以 a2＝μg 加速 t1＝1/3 s，分离时薄板速度 v_b＝a2t1。",
+      "eq": "v_b - mu*g*t1",
+      "value": {
+        "symbol": "v_b",
+        "number": 1,
+        "exact": "1",
+        "unit": "m/s"
+      },
+      "score": 1,
+      "point": "由 a2t1 求出物块离板瞬间薄板速度 v_b＝1 m/s。"
+    },
+    {
+      "no": 7,
+      "title": "板心剩余位移",
+      "kind": "value",
+      "stmt": "初始时薄板中心在 O 点左侧 l/2 处；分离时薄板已向右运动 l/6，故薄板中心还需运动 s＝l/2－l/6。",
+      "eq": "s - l/2 + l/6",
+      "value": {
+        "symbol": "s",
+        "number": 0.3333333333,
+        "exact": "1/3",
+        "unit": "m"
+      },
+      "score": 1,
+      "point": "正确确定初始板心到 O 的距离及剩余位移 s＝l/3。"
+    },
+    {
+      "no": 8,
+      "title": "求后续运动时间",
+      "kind": "value",
+      "stmt": "物块离板后薄板以速度 v_b 匀速运动，薄板中心再运动 s 到达 O 点，所用时间 t2＝s/v_b。",
+      "eq": "t2 - s/v_b",
+      "value": {
+        "symbol": "t2",
+        "number": 0.3333333333,
+        "exact": "1/3",
+        "unit": "s"
+      },
+      "score": 1,
+      "point": "用剩余位移除以薄板匀速速度，求出 t2＝1/3 s。"
+    },
+    {
+      "no": 9,
+      "title": "平抛竖直方向",
+      "kind": "equation",
+      "stmt": "物块从薄板右端水平飞出后做平抛运动，竖直方向初速度为零，只受重力，满足 H＝1/2 g t²。",
+      "eq": "H - Rational(1,2)*g*t2**2",
+      "value": null,
+      "score": 2,
+      "point": "写出平抛运动竖直方向的自由落体高度公式。"
+    },
+    {
+      "no": 10,
+      "title": "时间对应的判断",
+      "kind": "judgment",
+      "stmt": "题给“当物块落到地面时，薄板中心恰好运动到 O 点”，所以物块平抛飞行的时间等于薄板中心运动到 O 点所用的时间 t2。",
+      "eq": null,
+      "value": null,
+      "score": 2,
+      "point": "明确落地时刻与薄板中心到 O 的时刻相同，因此平抛时间取 t2。"
+    },
+    {
+      "no": 11,
+      "title": "求平台高度",
+      "kind": "value",
+      "stmt": "代入 t2＝1/3 s、g＝10 m/s²，求平台距地面的高度 H。",
+      "eq": "H - Rational(1,2)*10*(Rational(1,3))**2",
+      "value": {
+        "symbol": "H",
+        "number": 0.5555555556,
+        "exact": "5/9",
+        "unit": "m"
+      },
+      "score": 2,
+      "point": "代入 t2 后正确求得平台高度 H＝5/9 m。"
+    }
+  ]
+}

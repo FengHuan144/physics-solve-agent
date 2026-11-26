@@ -1,0 +1,210 @@
+{
+  "givens": [
+    {
+      "symbol": "theta",
+      "value": null,
+      "unit": "1",
+      "text": "斜面倾角 θ"
+    },
+    {
+      "symbol": "d",
+      "value": null,
+      "unit": "m",
+      "text": "相邻减速带间的距离 d"
+    },
+    {
+      "symbol": "m",
+      "value": null,
+      "unit": "kg",
+      "text": "小车质量 m"
+    },
+    {
+      "symbol": "L",
+      "value": null,
+      "unit": "m",
+      "text": "释放点到第一个减速带的距离 L"
+    },
+    {
+      "symbol": "mu",
+      "value": null,
+      "unit": "1",
+      "text": "小车与水平地面间的动摩擦因数 μ"
+    },
+    {
+      "symbol": "g",
+      "value": null,
+      "unit": "m/s^2",
+      "text": "重力加速度 g"
+    },
+    {
+      "symbol": "s",
+      "value": null,
+      "unit": "m",
+      "text": "进入水平地面后滑行距离 s"
+    }
+  ],
+  "sub_results": [
+    {
+      "no": "(1)",
+      "result": "DeltaE2 = m*g*d*sin(theta)",
+      "steps": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "no": "(2)",
+      "result": "Ebar = m*g*((L+29*d)*sin(theta)-mu*s)/30",
+      "steps": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "no": "(3)",
+      "result": "L > d + mu*s/sin(theta)",
+      "steps": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "no": 1,
+      "title": "识别稳态损失",
+      "kind": "judgment",
+      "stmt": "第30个减速带后，相邻减速带间的平均速度均相同，说明每段运动达到周期稳定；每通过一个减速带损失的机械能相同，并等于该段重力势能的减少量。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "指出第30个后各减速带损失相同且由重力做功补偿。"
+    },
+    {
+      "no": 2,
+      "title": "列稳态能量平衡",
+      "kind": "equation",
+      "stmt": "设第30个后每个减速带损失的机械能为 DeltaE2；相邻两带间重力做功为 m*g*d*sin(theta)，稳态时 DeltaE2 = m*g*d*sin(theta)。",
+      "eq": "DeltaE2 - m*g*d*sin(theta)",
+      "value": null,
+      "score": 2,
+      "point": "列出第30个后单个减速带损失与重力做功相等的方程。"
+    },
+    {
+      "no": 3,
+      "title": "求之后损失能",
+      "kind": "value",
+      "stmt": "由稳态能量平衡可得，第30个减速带后经过每一个减速带损失的机械能为 DeltaE2 = m*g*d*sin(theta)。",
+      "eq": "DeltaE2 - m*g*d*sin(theta)",
+      "value": {
+        "symbol": "DeltaE2",
+        "number": null,
+        "exact": "m*g*d*sin(theta)",
+        "unit": "J"
+      },
+      "score": 1,
+      "point": "得出第30个后每个减速带损失为 m*g*d*sin(theta)。"
+    },
+    {
+      "no": 4,
+      "title": "水平段求速度",
+      "kind": "equation",
+      "stmt": "第50个减速带后小车进入水平地面，滑行距离 s 后停下；摩擦力做功等于动能减少量，取刚进入水平地面的速度为 v50，则 mu*m*g*s = Rational(1,2)*m*v50**2。",
+      "eq": "mu*m*g*s - Rational(1,2)*m*v50**2",
+      "value": null,
+      "score": 1,
+      "point": "列出水平滑行阶段的能量方程。"
+    },
+    {
+      "no": 5,
+      "title": "说明速度相等",
+      "kind": "judgment",
+      "stmt": "第30个到第50个减速带之间有20个间距和20个减速带；每个间距重力做功为 m*g*d*sin(theta)，每个减速带损失也为 m*g*d*sin(theta)，总机械能净变化为零，因此 v30 = v50。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "说明第30个后到第50个后总机械能不变，故 v30=v50。"
+    },
+    {
+      "no": 6,
+      "title": "列前30段能量式",
+      "kind": "equation",
+      "stmt": "从释放到刚通过第30个减速带后，总下滑距离为 L+29*d；重力做功等于末动能与前30个减速带总损失之和，设前30个平均每个损失为 Ebar，则 m*g*(L+29*d)*sin(theta) = Rational(1,2)*m*v30**2 + 30*Ebar。",
+      "eq": "m*g*(L+29*d)*sin(theta) - Rational(1,2)*m*v30**2 - 30*Ebar",
+      "value": null,
+      "score": 1,
+      "point": "正确列出从释放到第30个减速带后的能量关系。"
+    },
+    {
+      "no": 7,
+      "title": "求平均损失能",
+      "kind": "value",
+      "stmt": "由水平段得 v50**2 = 2*mu*g*s，又 v30 = v50，所以 Rational(1,2)*m*v30**2 = mu*m*g*s；代入前式解得 Ebar = m*g*((L+29*d)*sin(theta)-mu*s)/30。",
+      "eq": "Ebar - m*g*((L+29*d)*sin(theta)-mu*s)/30",
+      "value": {
+        "symbol": "Ebar",
+        "number": null,
+        "exact": "m*g*((L+29*d)*sin(theta)-mu*s)/30",
+        "unit": "J"
+      },
+      "score": 1,
+      "point": "得出前30个减速带上平均每个损失的机械能。"
+    },
+    {
+      "no": 8,
+      "title": "列平均损失条件",
+      "kind": "judgment",
+      "stmt": "题目要求前30个减速带上平均每个的损失 Ebar 大于之后每个减速带的损失 DeltaE2，即 Ebar > m*g*d*sin(theta)。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "把文字条件转化为 Ebar > m*g*d*sin(theta)。"
+    },
+    {
+      "no": 9,
+      "title": "列临界等式",
+      "kind": "equation",
+      "stmt": "取临界情况 Ebar = m*g*d*sin(theta)，代入 Ebar 的表达式。",
+      "eq": "m*g*((L+29*d)*sin(theta)-mu*s)/30 - m*g*d*sin(theta)",
+      "value": null,
+      "score": 2,
+      "point": "正确代入平均损失表达式并列出临界方程。"
+    },
+    {
+      "no": 10,
+      "title": "化简临界条件",
+      "kind": "equation",
+      "stmt": "约去非零的 m*g，并把含有 d 的项合并，临界条件化为 (L-d)*sin(theta)-mu*s = 0。",
+      "eq": "(L-d)*sin(theta)-mu*s",
+      "value": null,
+      "score": 1,
+      "point": "将临界方程正确化简为 (L-d)*sin(theta)-mu*s=0。"
+    },
+    {
+      "no": 11,
+      "title": "判断不等号方向",
+      "kind": "discussion",
+      "stmt": "临界值为 L0 = d + mu*s/sin(theta)。Ebar 随 L 增大，题目要求 Ebar 严格大于之后每个损失，且 sin(theta)>0，故应取 L > L0。",
+      "eq": "(L-d)*sin(theta)-mu*s",
+      "value": null,
+      "score": 1,
+      "point": "讨论增大 L 对 Ebar 的影响并确定取大于临界值。"
+    },
+    {
+      "no": 12,
+      "title": "给出L条件",
+      "kind": "judgment",
+      "stmt": "因此 L 应满足 L > d + mu*s/sin(theta)。",
+      "eq": null,
+      "value": null,
+      "score": 1,
+      "point": "写出最终 L 的不等式条件。"
+    }
+  ]
+}

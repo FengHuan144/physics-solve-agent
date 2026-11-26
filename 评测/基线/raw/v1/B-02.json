@@ -1,0 +1,40 @@
+{
+  "qid": "B-02",
+  "variant": "v1",
+  "prompt_file": "v1_zero.md",
+  "prompt_sha256": "e3c9ae2b055541b9f4bc01190f4446fb70c6c505ecd81451c71c6baaea136308",
+  "prompt_chars": 215,
+  "stem_sha256": "b72b95696b4d57b6de2079744eed2772e5be09ea625aa52438748d3501b6edb1",
+  "model_requested": "deepseek-flash",
+  "temperature": 0.0,
+  "max_tokens": 16384,
+  "created_at": "2026-11-25T09:34:56+08:00",
+  "attempts": [
+    {
+      "ok": true,
+      "status": null,
+      "elapsed_s": 7.113,
+      "error": null
+    }
+  ],
+  "ok": true,
+  "content": "设抛出点为地面，竖直向上为正方向。\n\n### （1）抛出时的初速度大小 \\(v_0\\)\n\n物体从地面竖直上抛，到最高点时速度为 0。由运动学公式：\n\\[\n0=v_0-gt\n\\]\n所以：\n\\[\n\\boxed{v_0=gt}\n\\]\n单位为：\n\\[\n\\boxed{\\text{m/s}}\n\\]\n\n### （2）炸裂后瞬间 B 的速度大小 \\(v_B\\)\n\n在最高点炸裂前，物体速度为 0，因此系统总动量为 0。炸裂瞬间动量守恒。\n\n取 A 飞出的水平方向为正方向，则：\n\\[\n2m\\cdot v+m\\cdot v_{Bx}=0\n\\]\n\\[\nv_{Bx}=-2v\n\\]\n负号表示 B 的速度方向与 A 相反。\n\n因此 B 的速度大小为：\n\\[\n\\boxed{v_B=2v}\n\\]\n单位为：\n\\[\n\\boxed{\\text{m/s}}\n\\]\n\n### （3）A、B 落地点之间的距离 \\(d\\)\n\n最高点离地高度为：\n\\[\nh=\\frac12 gt^2\n\\]\n炸裂后 A、B 均无竖直分速度，因此从最高点落到地面的时间均为：\n\\[\nt'=\\sqrt{\\frac{2h}{g}}=t\n\\]\n\n水平位移大小分别为：\n\\[\nx_A=vt\n\\]\n\\[\nx_B=2vt\n\\]\n两者沿相反方向运动，因此落地点之间的距离为：\n\\[\nd=x_A+x_B=vt+2vt=3vt\n\\]\n所以：\n\\[\n\\boxed{d=3vt}\n\\]\n单位为：\n\\[\n\\boxed{\\text{m}}\n\\]\n\n### 最终答案\n\n\\[\n\\boxed{(1)\\ v_0=gt\\quad \\text{，单位 m/s}}\n\\]\n\n\\[\n\\boxed{(2)\\ v_B=2v\\quad \\text{，单位 m/s}}\n\\]\n\n\\[\n\\boxed{(3)\\ d=3vt\\quad \\text{，单位 m}}\n\\]\n\n其中 B 的运动方向与 A 的水平飞出方向相反。",
+  "reasoning_content": "We need answer Chinese. Need solve physics. Need be careful interpretation. Object thrown vertically upward, time t to highest point. At highest point explodes into A mass 2m, B mass m. A flies horizontally with speed v. Need (1) initial speed v0; (2) speed B immediately after explosion; (3) distance between landing points A,B.\n\nWe need use momentum conservation at explosion. At highest point before explosion velocity zero. Total mass? 3m? A=2m B=m. Initially at max height h=1/2 g t^2 = v0^2/(2g); v0=gt.\n\nExplosion: A velocity horizontal v (say +x). Initial momentum zero. 2m * v x + m * u_B = 0. u_B = -2v x. So B velocity immediately horizontal opposite with speed 2v. But wait explosion also could have vertical components? Statement: A以速度v沿水平方向飞出. At highest point total momentum zero. If B velocity maybe has vertical component? Momentum conservation vector: m_A vec v_A + m_B vec v_B=0 => vec v_B= -(2m/m) vec v_A = -2 vec v_A exactly opposite to A. Since A horizontal, B horizontal opposite. Speed 2v. Yes.\n\nThen both pieces fall from same height h under gravity. Horizontal motion: A horizontal speed v, B horizontal speed 2v opposite. But here's subtle: vertical initial velocity after explosion are both zero (since B horizontal). Fall time from height h under gravity: T = sqrt(2h/g) = t. They strike same ground after t. Horizontal displacements: A x = v t; B x = -2v t. Distance between landing points = |v t - (-2v t)| = 3 v t. Need consider if the explosion impulse affects vertical? No.\n\nWait if initial before explosion at highest point, height h = v0 t - 1/2 g t^2 with v0=gt gives h=1/2 g t^2. Fall time t. d=3vt. Answers: v0=gt. vB=2v. d=3vt. Units? v0 m/s, vB m/s, d m. But note v units in problem not defined? It says A 以速度 v 水平飞出; likely v known. t known? yes. g known. Need units maybe expressions include given symbols. We can state.\n\nNeed maybe include direction for vB? They ask speed magnitude, so 2v. Distance.\n\nBut let's examine possible hidden issue: The object is thrown vertically up from ground; it reaches highest point after time t. Then explodes. Need v0 = gt. At explosion at height H = 1/2 gt^2. After explosion, both have vertical velocity zero if A horizontal, B horizontal. Both fall time t. Horizontal distance between landing points: A travels v t, B travels 2v t opposite. d=3vt. Good.\n\nLet's produce final answer in Chinese, teacher style, with reasoning concise. Need maybe mention total mass M? If object original mass? A+B=3m, initial total mass 3m. At highest point before explosion velocity zero, so momentum zero. Momentum conservation: 2m v + m v_B vector? Use vector. B speed 2v.\n\nPotential ambiguity: Does A mass 2m, B m, but original mass? 3m. Yes.\n\nNeed perhaps account if explosion energy vertical? Since A specified horizontally, B must opposite horizontally by momentum conservation. Good.\n\nLet's craft final.\n\nNeed each final answer and units. Maybe final summary.\n\nLet's answer in Chinese.",
+  "finish_reason": "stop",
+  "usage": {
+    "prompt_tokens": 163,
+    "completion_tokens": 1224,
+    "total_tokens": 1387,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 777
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 163
+  },
+  "model_returned": "deepseek-flash",
+  "response_id": "fff6e810-185a-43d8-9745-17e8e153a706",
+  "elapsed_s": 7.113
+}
